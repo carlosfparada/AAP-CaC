@@ -27,6 +27,9 @@ aap.example.org
 [database]
 aap.example.org
 
+#[execution_nodes]
+#aap.example.org
+
 [all:vars]
 
 # Common variables
