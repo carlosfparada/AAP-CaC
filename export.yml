@@ -4,16 +4,11 @@
   hosts: all
   connection: local
   gather_facts: false
-
-  # tasks:
-  #   - debug:
-  #       msg: "{{ apic_username }} {{ apic_password }}"
-
   vars:
-   controller_username: "{{ vault_controller_username | default(lookup('env', 'CONTROLLER_USERNAME')) }}"
-   controller_password: "{{ vault_controller_password | default(lookup('env', 'CONTROLLER_PASSWORD')) }}"
-   controller_hostname: "{{ vault_controller_hostname | default(lookup('env', 'CONTROLLER_HOST')) }}"
-   controller_validate_certs: "{{ vault_controller_validate_certs | default(lookup('env', 'CONTROLLER_VERIFY_SSL')) }}"
+    controller_hostname: "172.16.1.45"
+    controller_validate_certs: "no"
+    controller_username: "{{ controller_username }}"
+    controller_password: "{{ controller_password }}"
 
   pre_tasks:
     - name: "Setup authentication (block)"
