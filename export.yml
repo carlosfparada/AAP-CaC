@@ -28,6 +28,11 @@
           ansible.builtin.set_fact:
             controller_oauthtoken: "{{ authtoken_res.json.token }}"
             controller_oauthtoken_url: "{{ authtoken_res.json.url }}"
+        - name: "Get the Tower/AAP instance version"
+          ansible.builtin.set_fact:
+            aap_version: "{{ lookup(controller_api_plugin, 'ping',
+                              host=controller_hostname, oauth_token=controller_oauthtoken,
+                              verify_ssl=controller_validate_certs).version }}"
       no_log: "{{ controller_configuration_filetree_create_secure_logging | default('false') }}"
       when: controller_oauthtoken is not defined
 
