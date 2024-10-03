@@ -38,7 +38,8 @@
                       verify_ssl=controller_validate_certs) }}"
   roles:
     - role: infra.controller_configuration.filetree_create
-      controller_api_plugin: 'ansible.controller.controller_api'
+      vars:
+        controller_api_plugin: 'ansible.controller.controller_api'
 
 
   post_tasks:
