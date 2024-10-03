@@ -13,6 +13,8 @@
   pre_tasks:
     - name: "Setup authentication (block)"
       block:
+        - debug:
+            msg:  "{{ controller_hostname }} {{ controller_username }} {{ controller_password }}"
         - name: "Get the Authentication Token for the future requests"
           ansible.builtin.uri:
             url: "https://{{ controller_hostname }}/api/v2/tokens/"
