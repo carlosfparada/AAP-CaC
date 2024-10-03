@@ -34,10 +34,13 @@
       when: controller_oauthtoken is not defined
 
     - name: "Get the Tower/AAP instance version"
-      ansible.builtin.set_fact:
-        aap_version: "{{ lookup(controller_api_plugin, 'ping',
-                          host=controller_hostname, oauth_token=controller_oauthtoken,
-                          verify_ssl=controller_validate_certs) }}"
+      debug:
+        msg: "Admin users: {{ query('awx.awx.controller_api', 'users', query_params={ 'is_superuser': true }) | map(attribute='username') | join(', ') }}"
+
+        # msg: "{{ lookup(controller_api_plugin, 'ping',
+        #                   host=controller_hostname, oauth_token=controller_oauthtoken,
+        #                   verify_ssl=controller_validate_certs) }}"
+
         # aap_version: "{{ lookup(controller_api_plugin, 'ping',
         #                   host=controller_hostname, oauth_token=controller_oauthtoken,
         #                   verify_ssl=controller_validate_certs).version }}"
