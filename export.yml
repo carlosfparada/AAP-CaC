@@ -35,7 +35,7 @@
 
     - name: "Get the Tower/AAP instance version"
       debug:
-        msg: "Admin users: {{ query('awx.awx.controller_api', 'users', query_params={ 'is_superuser': true }) | map(attribute='username') | join(', ') }}"
+        msg: "AAA {{ lookup('awx.awx.controller_api', 'settings/ui') }}"
 
         # msg: "{{ lookup(controller_api_plugin, 'ping',
         #                   host=controller_hostname, oauth_token=controller_oauthtoken,
