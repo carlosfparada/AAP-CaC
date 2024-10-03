@@ -1,4 +1,4 @@
 collections:
   - infra.controller_configuration
   # - ansible.controller
-  # - awx.awx
+  - awx.awx
