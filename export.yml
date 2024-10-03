@@ -33,9 +33,11 @@
       no_log: "{{ controller_configuration_filetree_create_secure_logging | default('false') }}"
       when: controller_oauthtoken is not defined
 
-    - name: "Get the Tower/AAP instance version"
+    - name: "Debug"
       debug:
-        msg: "AAA {{ lookup('awx.awx.controller_api', 'settings/ui') }}"
+        msg: "AAA {{ lookup('awx.awx.controller_api', 'settings/ui', 
+                      host=controller_hostname, oauth_token=controller_oauthtoken,
+                      verify_ssl=controller_validate_certs) }}"
 
         # msg: "{{ lookup(controller_api_plugin, 'ping',
         #                   host=controller_hostname, oauth_token=controller_oauthtoken,
