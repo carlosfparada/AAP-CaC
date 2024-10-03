@@ -35,12 +35,12 @@
 
     - name: "Debug"
       debug:
-        msg: "AAA {{ lookup('awx.awx.controller_api', 'ping', 
+        msg: "AAA {{ lookup('ansible.controller.controller_api', 'ping', 
                       host=controller_hostname, oauth_token=controller_oauthtoken,
                       verify_ssl=controller_validate_certs) }}"
   roles:
     - role: infra.controller_configuration.filetree_create
-      controller_api_plugin: 'awx.awx.controller_api'
+      controller_api_plugin: 'ansible.controller.controller_api'
 
 
   post_tasks:
