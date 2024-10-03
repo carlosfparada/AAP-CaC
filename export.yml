@@ -35,7 +35,7 @@
 
     - name: "Debug"
       debug:
-        msg: "AAA {{ lookup(controller_api, 'settings/ui', 
+        msg: "AAA {{ lookup('awx.awx.controller_api', 'settings/ui', 
                       host=controller_hostname, oauth_token=controller_oauthtoken,
                       verify_ssl=controller_validate_certs) }}"
 
