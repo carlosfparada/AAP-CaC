@@ -55,7 +55,4 @@
         validate_certs: "{{ controller_validate_certs }}"
         status_code: 204
       when: controller_oauthtoken_url is defined
-    - name: Fetch data 
-      ansible.builtin.fetch:
-        src: /tmp/filetree_output
-        dest: /tmp/filetree_output
+
