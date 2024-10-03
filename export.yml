@@ -38,16 +38,10 @@
         msg: "AAA {{ lookup('awx.awx.controller_api', 'ping', 
                       host=controller_hostname, oauth_token=controller_oauthtoken,
                       verify_ssl=controller_validate_certs) }}"
-
-        # msg: "{{ lookup(controller_api_plugin, 'ping',
-        #                   host=controller_hostname, oauth_token=controller_oauthtoken,
-        #                   verify_ssl=controller_validate_certs) }}"
-
-        # aap_version: "{{ lookup(controller_api_plugin, 'ping',
-        #                   host=controller_hostname, oauth_token=controller_oauthtoken,
-        #                   verify_ssl=controller_validate_certs).version }}"
   roles:
-    - infra.controller_configuration.filetree_create
+    - role: infra.controller_configuration.filetree_create
+      controller_api_plugin: 'awx.awx.controller_api'
+
 
   post_tasks:
     - name: "Delete the Authentication Token used"
