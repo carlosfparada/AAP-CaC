@@ -31,7 +31,7 @@
       no_log: "{{ controller_configuration_filetree_create_secure_logging | default('false') }}"
       when: controller_oauthtoken is not defined
 
-    # - name: "Debug"
+    # - name: "Debug" 
     #   debug:
     #     msg: "{{ lookup('ansible.controller.controller_api', 'ping', 
     #                   host=controller_hostname, oauth_token=controller_oauthtoken,
