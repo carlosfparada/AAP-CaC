@@ -55,12 +55,9 @@
         status_code: 204
       when: controller_oauthtoken_url is defined
 
-
-
-
-# - name: Set branch name
-#   set_fact:
-#     branch_name: "branch-{{ '%Y%m%dT%H%M%S' | strftime }}"
+- name: Set branch name
+  set_fact:
+    branch_name: "branch-{{ '%Y%m%dT%H%M%S' | strftime }}"
 
 # - name: Create a repo branch
 #   ansible.builtin.expect:
