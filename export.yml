@@ -1,7 +1,7 @@
 ---
 
 - name: Extract AAP artifacts to a CaC format
-  hosts: conttroller-1
+  hosts: controller-1
   connection: local
   gather_facts: false
   vars:
