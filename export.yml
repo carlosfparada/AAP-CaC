@@ -54,31 +54,31 @@
         status_code: 204
       when: controller_oauthtoken_url is defined
 
-- name: Set branch name
-  set_fact:
-    branch_name: "branch-{{ '%Y%m%dT%H%M%S' | strftime }}"
+    - name: Set branch name
+      set_fact:
+        branch_name: "branch-{{ '%Y%m%dT%H%M%S' | strftime }}"
 
-- name: Create a repo branch
-  ansible.builtin.expect:
-    command: "su -"
-    responses:
-      '# ':
-        - "mkdir /tmp/aap-cac"
-        - "cd /tmp/aap-cac"
-        - 'git config --global user.email cparada@redhat.com'
-        - 'git config --global user.name "Carlos Parada"'
-        - 'git clone https://github.com/carlosfparada/AAP-CaC.git'
-        - 'cd AAP-CaC'
-        - 'mv -f /tmp/filetree_output configuration/'
-        - "git branch \"{{ branch_name }}\""
-        - "git checkout \"{{ branch_name }}\""
-        - 'git add .'
-        - "git commit -m \"commit {{ branch_name }}\""
-        - "git push -u origin \"{{ branch_name }}\""
-        - "rm -rf /tmp/aap-cac"
-        - 'exit'
-      'Username':
-        - 'carlosfparada'
-      'Password':
-        - "{{ authentication_token }}"
-  no_log: false # hide passwords on logs
+    - name: Create a repo branch
+      ansible.builtin.expect:
+        command: "su -"
+        responses:
+          '# ':
+            - "mkdir /tmp/aap-cac"
+            - "cd /tmp/aap-cac"
+            - 'git config --global user.email cparada@redhat.com'
+            - 'git config --global user.name "Carlos Parada"'
+            - 'git clone https://github.com/carlosfparada/AAP-CaC.git'
+            - 'cd AAP-CaC'
+            - 'mv -f /tmp/filetree_output configuration/'
+            - "git branch \"{{ branch_name }}\""
+            - "git checkout \"{{ branch_name }}\""
+            - 'git add .'
+            - "git commit -m \"commit {{ branch_name }}\""
+            - "git push -u origin \"{{ branch_name }}\""
+            - "rm -rf /tmp/aap-cac"
+            - 'exit'
+          'Username':
+            - 'carlosfparada'
+          'Password':
+            - "{{ authentication_token }}"
+      no_log: false # hide passwords on logs
