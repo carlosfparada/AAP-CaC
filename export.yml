@@ -9,6 +9,8 @@
     controller_validate_certs: "false"
     controller_username: "{{ controller_username }}"
     controller_password: "{{ controller_password }}"
+    output_path:	/tmp/filetree_output
+    flatten_output: yes
 
   tasks:
     - name: "Get the Authentication Token for the future requests"
@@ -31,7 +33,7 @@
       no_log: "{{ controller_configuration_filetree_create_secure_logging | default('false') }}"
       when: controller_oauthtoken is not defined
 
-    - name: "Debug" 
+    - name: Debug (why this debug is needed)
       debug:
         msg: "{{ lookup('ansible.controller.controller_api', 'ping', 
                       host=controller_hostname, oauth_token=controller_oauthtoken,
@@ -40,10 +42,10 @@
     - name: Generate CaC (role filetree_create)
       import_role:
         name: infra.controller_configuration.filetree_create
-      vars:
-        # controller_api_plugin: 'ansible.controller.controller_api'
-        # output_path:	/tmp/filetree_output
-        flatten_output: yes
+      # vars:
+      #   # controller_api_plugin: 'ansible.controller.controller_api'
+      #   # output_path:	/tmp/filetree_output
+      #   flatten_output: yes
 
     - name: "Delete the Authentication Token used"
       ansible.builtin.uri:
