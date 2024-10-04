@@ -41,8 +41,8 @@
       import_role:
         name: infra.controller_configuration.filetree_create
       vars:
-        controller_api_plugin: 'ansible.controller.controller_api'
-        output_path:	/tmp/filetree_output
+        # controller_api_plugin: 'ansible.controller.controller_api'
+        # output_path:	/tmp/filetree_output
         flatten_output: yes
 
     - name: "Delete the Authentication Token used"
