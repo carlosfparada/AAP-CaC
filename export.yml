@@ -10,24 +10,24 @@
     controller_username: "{{ controller_username }}"
     controller_password: "{{ controller_password }}"
 
-  pre_tasks:
-    - name: "Setup authentication (block)"
-      block:
-        - name: "Get the Authentication Token for the future requests"
-          ansible.builtin.uri:
-            url: "https://{{ controller_hostname }}/api/v2/tokens/"
-            user: "{{ controller_username }}"
-            password: "{{ controller_password }}"
-            method: POST
-            force_basic_auth: true
-            validate_certs: "{{ controller_validate_certs }}"
-            status_code: 201
-          register: authtoken_res
+  tasks:
+    - name: "Get the Authentication Token for the future requests"
+      ansible.builtin.uri:
+        url: "https://{{ controller_hostname }}/api/v2/tokens/"
+        user: "{{ controller_username }}"
+        password: "{{ controller_password }}"
+        method: POST
+        force_basic_auth: true
+        validate_certs: "{{ controller_validate_certs }}"
+        status_code: 201
+      register: authtoken_res
+      no_log: "{{ controller_configuration_filetree_create_secure_logging | default('false') }}"
+      when: controller_oauthtoken is not defined
 
-        - name: "Set the oauth token to be used since now"
-          ansible.builtin.set_fact:
-            controller_oauthtoken: "{{ authtoken_res.json.token }}"
-            controller_oauthtoken_url: "{{ authtoken_res.json.url }}"
+    - name: "Set the oauth token to be used since now"
+      ansible.builtin.set_fact:
+        controller_oauthtoken: "{{ authtoken_res.json.token }}"
+        controller_oauthtoken_url: "{{ authtoken_res.json.url }}"
       no_log: "{{ controller_configuration_filetree_create_secure_logging | default('false') }}"
       when: controller_oauthtoken is not defined
 
@@ -37,14 +37,14 @@
                       host=controller_hostname, oauth_token=controller_oauthtoken,
                       verify_ssl=controller_validate_certs) }}"
 
-  roles:
-    - role: infra.controller_configuration.filetree_create
+    - name: Generate CaC (role filetree_create)
+      import_role:
+        name: infra.controller_configuration.filetree_create
       vars:
         controller_api_plugin: 'ansible.controller.controller_api'
         output_path:	/tmp/filetree_output
         flatten_output: yes
 
-  post_tasks:
     - name: "Delete the Authentication Token used"
       ansible.builtin.uri:
         url: "https://{{ controller_hostname }}{{ controller_oauthtoken_url }}"
