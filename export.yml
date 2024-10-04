@@ -31,11 +31,11 @@
       no_log: "{{ controller_configuration_filetree_create_secure_logging | default('false') }}"
       when: controller_oauthtoken is not defined
 
-    - name: "Debug"
-      debug:
-        msg: "{{ lookup('ansible.controller.controller_api', 'ping', 
-                      host=controller_hostname, oauth_token=controller_oauthtoken,
-                      verify_ssl=controller_validate_certs) }}"
+    # - name: "Debug"
+    #   debug:
+    #     msg: "{{ lookup('ansible.controller.controller_api', 'ping', 
+    #                   host=controller_hostname, oauth_token=controller_oauthtoken,
+    #                   verify_ssl=controller_validate_certs) }}"
 
   roles:
     - role: infra.controller_configuration.filetree_create
