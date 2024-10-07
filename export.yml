@@ -61,7 +61,7 @@
         
     - name: Create a repo branch
       ansible.builtin.command:
-        command: "{{ item }}"
+        cmd: "{{ item }}"
       loop:
         - "mkdir /tmp/aap-cac"
         - "cd /tmp/aap-cac"
