@@ -77,7 +77,7 @@
         cmd: "{{ item }}"
         chdir:  "/tmp/aap-cac/AAP-CaC"
       loop:
-        - 'mv -f /tmp/filetree_output controller/'
+        - 'mv -f /tmp/filetree_output/* /tmp/aap-cac/AAP-CaC/controller/*'
         - "git branch \"{{ branch_name }}\""
         - "git checkout \"{{ branch_name }}\""
         - 'git add .'
