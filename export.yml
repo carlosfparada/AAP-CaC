@@ -79,7 +79,7 @@
         chdir:  "/tmp/aap-cac/AAP-CaC"
       loop:
         - "ls {{ output_path }}"
-        - "cp -rf {{ output_path }}/* /tmp/aap-cac/AAP-CaC/controller/"
+        - "cp -f {{ output_path }}/ /tmp/aap-cac/AAP-CaC/controller/"
         - "git branch \"{{ branch_name }}\""
         - "git checkout \"{{ branch_name }}\""
         - "git add ."
