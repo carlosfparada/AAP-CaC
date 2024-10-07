@@ -41,7 +41,6 @@
       import_role:
         name: infra.controller_configuration.filetree_create
       vars:
-        project_id: 244
         output_path:	/tmp/filetree_output
         flatten_output: yes
 
