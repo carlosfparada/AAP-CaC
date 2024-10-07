@@ -69,8 +69,33 @@
         - 'git config --global user.name "Carlos Parada"'
         - 'git clone https://github.com/carlosfparada/AAP-CaC.git'
         - 'cd AAP-CaC'
+        - 'mv -f /tmp/filetree_output /tmp/controller/'
+        - "git branch \"{{ branch_name }}\""
+        - "git checkout \"{{ branch_name }}\""
+        - 'git add .'
+        - "git commit -m \"commit {{ branch_name }}\""
+        - "git push -u origin \"{{ branch_name }}\""
+        - "rm -rf /tmp/aap-cac"
+
+    - name: Create a repo dir
+      ansible.builtin.command:
+        cmd: "mkdir /tmp/aap-cac"
+
+    - name: Clone a repo into dir
+      ansible.builtin.command:
+        cmd: "{{ item }}"
+        chdir:  "/tmp/aap-cac"
+      loop:
+        - 'git config --global user.email cparada@redhat.com'
+        - 'git config --global user.name "Carlos Parada"'
+        - 'git clone https://github.com/carlosfparada/AAP-CaC.git'
+
+    - name: Change repo content and create a branch
+      ansible.builtin.command:
+        cmd: "{{ item }}"
+        chdir:  "/tmp/aap-cac/AAP-CaC"
+      loop:
         - 'mv -f /tmp/filetree_output controller/'
-        - 'pwd'
         - "git branch \"{{ branch_name }}\""
         - "git checkout \"{{ branch_name }}\""
         - 'git add .'
