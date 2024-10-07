@@ -55,28 +55,6 @@
         status_code: 204
       when: controller_oauthtoken_url is defined
 
-    - name: Set branch name
-      set_fact:
-        branch_name: "branch-{{ '%Y%m%dT%H%M%S' | strftime }}"
-        
-    - name: Create a repo branch
-      ansible.builtin.command:
-        cmd: "{{ item }}"
-      loop:
-        - "mkdir /tmp/aap-cac"
-        - "cd /tmp/aap-cac"
-        - 'git config --global user.email cparada@redhat.com'
-        - 'git config --global user.name "Carlos Parada"'
-        - 'git clone https://github.com/carlosfparada/AAP-CaC.git'
-        - 'cd AAP-CaC'
-        - 'mv -f /tmp/filetree_output /tmp/controller/'
-        - "git branch \"{{ branch_name }}\""
-        - "git checkout \"{{ branch_name }}\""
-        - 'git add .'
-        - "git commit -m \"commit {{ branch_name }}\""
-        - "git push -u origin \"{{ branch_name }}\""
-        - "rm -rf /tmp/aap-cac"
-
     - name: Create a repo dir
       ansible.builtin.command:
         cmd: "mkdir /tmp/aap-cac"
@@ -89,6 +67,10 @@
         - 'git config --global user.email cparada@redhat.com'
         - 'git config --global user.name "Carlos Parada"'
         - 'git clone https://github.com/carlosfparada/AAP-CaC.git'
+
+    - name: Set branch name
+      set_fact:
+        branch_name: "branch-{{ '%Y%m%dT%H%M%S' | strftime }}"
 
     - name: Change repo content and create a branch
       ansible.builtin.command:
