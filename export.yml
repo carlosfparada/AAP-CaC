@@ -6,6 +6,8 @@
   gather_facts: false
   vars:
     git_repository: "github.com/carlosfparada/AAP-CaC.git"
+    git_email: "cparada@redhat.com"
+    git_username: "carlosfparada"
     controller_hostname: "{{ ansible_host }}"
     controller_validate_certs: "false"
     controller_username: "{{ controller_username }}"
@@ -67,8 +69,8 @@
         cmd: "{{ item }}"
         chdir:  "/tmp/aap-cac"
       loop:
-        - 'git config --global user.email cparada@redhat.com'
-        - 'git config --global user.name "carlosfparada"'
+        - "git config --global user.email {{ git_email }}"
+        - "git config --global user.name {{ git_username }}"
         - "git clone https://{{ git_repository }}"
 
     - name: Change repo content and create a branch
