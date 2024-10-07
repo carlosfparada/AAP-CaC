@@ -5,6 +5,7 @@
   connection: local
   gather_facts: false
   vars:
+    git_repository: "github.com/carlosfparada/AAP-CaC.git"
     controller_hostname: "{{ ansible_host }}"
     controller_validate_certs: "false"
     controller_username: "{{ controller_username }}"
@@ -69,8 +70,8 @@
         chdir:  "/tmp/aap-cac"
       loop:
         - 'git config --global user.email cparada@redhat.com'
-        - 'git config --global user.name "carlosfparada"'   authentication_token
-        - 'git clone https://github.com/carlosfparada/AAP-CaC.git'
+        - 'git config --global user.name "carlosfparada"'
+        - "git clone {{ git_repository }}"
 
     - name: Change repo content and create a branch
       ansible.builtin.command:
@@ -83,6 +84,6 @@
         - 'git add .'
         - "git commit -m \"commit {{ branch_name }}\""
         - "git remote remove origin"
-        - "git remote add origin https://{{ authentication_token }}@github.com/carlosfparada/AAP-CaC.git"
+        - "git remote add origin https://{{ authentication_token }}@{{ git_repository }}"
         - "git push -u origin \"{{ branch_name }}\""
         - "rm -rf /tmp/aap-cac"
