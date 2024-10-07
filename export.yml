@@ -71,7 +71,7 @@
       loop:
         - 'git config --global user.email cparada@redhat.com'
         - 'git config --global user.name "carlosfparada"'
-        - "git clone {{ git_repository }}"
+        - "git clone https://{{ git_repository }}"
 
     - name: Change repo content and create a branch
       ansible.builtin.command:
