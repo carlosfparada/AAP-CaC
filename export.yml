@@ -69,7 +69,7 @@
         - 'git config --global user.name "Carlos Parada"'
         - 'git clone https://github.com/carlosfparada/AAP-CaC.git'
         - 'cd AAP-CaC'
-        - 'mv -f /tmp/filetree_output configuration/'
+        - 'mv -f /tmp/filetree_output controller/'
         - "git branch \"{{ branch_name }}\""
         - "git checkout \"{{ branch_name }}\""
         - 'git add .'
