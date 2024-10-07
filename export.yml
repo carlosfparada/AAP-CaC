@@ -70,6 +70,7 @@
         - 'git clone https://github.com/carlosfparada/AAP-CaC.git'
         - 'cd AAP-CaC'
         - 'mv -f /tmp/filetree_output controller/'
+        - 'pwd'
         - "git branch \"{{ branch_name }}\""
         - "git checkout \"{{ branch_name }}\""
         - 'git add .'
