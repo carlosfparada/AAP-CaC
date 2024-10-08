@@ -103,7 +103,6 @@
       ansible.builtin.file:
         path: /tmp/foo.conf
         state: touch
-        mode: u=rw,g=r,o=r
       delegate_to: "172.16.1.47"
 
     # - name: Copy CaC to server
