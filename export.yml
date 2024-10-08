@@ -95,12 +95,18 @@
       ansible.builtin.copy:
         content: '# This file was moved to /etc/other.conf'
         dest: /etc/foo.conf
+        owner: root
+        group: root
+        mode: '0644'
 
     - name: Create CaC folder on server
       ansible.builtin.file:
         path: "/tmp/controller-cac/"
         state: directory
         mode: '0755'
+        owner: root
+        group: root
+        mode: '0644'
 
     - name: Touch a file, using symbolic modes to set the permissions (equivalent to 0644)
       ansible.builtin.file:
