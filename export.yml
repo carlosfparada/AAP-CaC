@@ -95,6 +95,7 @@
       ansible.builtin.file:
         path: "/tmp/controller-cac/"
         state: directory
+        mode: '0755'
       become: true
 
     - name: Copy CaC to server
