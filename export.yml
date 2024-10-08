@@ -101,19 +101,16 @@
         path: "/tmp/controller-cac/"
         state: directory
         mode: '0755'
-      become: true
 
     - name: Touch a file, using symbolic modes to set the permissions (equivalent to 0644)
       ansible.builtin.file:
         path: /root/foo.conf
         state: touch
-      become: true
 
     - name: Touch a file, using symbolic modes to set the permissions (equivalent to 0644)
       ansible.builtin.file:
         path: /tmp/foo.conf
         state: touch
-      become: true
 
     # - name: Copy CaC to server
     #   copy:
