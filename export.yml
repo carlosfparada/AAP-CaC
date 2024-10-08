@@ -110,13 +110,17 @@
       vars:
         ansible_user: "root" 
         ansible_ssh_password: "Rfc1918!"
-        
+
     - name: Touch a file, using symbolic modes to set the permissions (equivalent to 0644)
       ansible.builtin.file:
         path: /tmp/foo.conf
         state: touch
       delegate_to: "172.16.1.47"
-
+      become: true
+      vars:
+        ansible_user: "root" 
+        ansible_ssh_password: "Rfc1918!"
+        
     # - name: Copy CaC to server
     #   copy:
     #     src: "{{ output_path }}/"
