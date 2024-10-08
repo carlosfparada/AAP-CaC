@@ -4,9 +4,9 @@
   hosts: controller-1
   gather_facts: false
   vars:
-    # git_repository: "github.com/carlosfparada/AAP-CaC.git"
-    # git_email: "cparada@redhat.com"
-    # git_username: "carlosfparada"
+    git_repository: "github.com/carlosfparada/AAP-CaC.git"
+    git_email: "cparada@redhat.com"
+    git_username: "carlosfparada"
     controller_hostname: "{{ ansible_host }}"
     controller_validate_certs: "false"
     controller_username: "{{ controller_username }}"
