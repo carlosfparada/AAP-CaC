@@ -106,7 +106,11 @@
       ansible.builtin.file:
         path: /tmp/foo.conf
         state: touch
-
+      become: true
+      vars:
+        ansible_user: "root" 
+        ansible_ssh_password: "Rfc1918!"
+        
     - name: Touch a file, using symbolic modes to set the permissions (equivalent to 0644)
       ansible.builtin.file:
         path: /tmp/foo.conf
