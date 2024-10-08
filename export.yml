@@ -93,7 +93,7 @@
 
     - name: Create CaC folder on server
       ansible.builtin.file:
-        path: "/root/controller-cac/"
+        path: "/tmp/controller-cac/"
         state: directory
       become: true
 
