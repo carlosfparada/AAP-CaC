@@ -1,7 +1,7 @@
 ---
 
 - name: Extract AAP artifacts to a CaC format
-  hosts: all
+  hosts: controller-1
   connection: local
   gather_facts: false
   vars:
@@ -56,22 +56,22 @@
         status_code: 204
       when: controller_oauthtoken_url is defined
 
-    - name: Set branch name
-      set_fact:
-        branch_name: "branch-{{ '%Y%m%dT%H%M%S' | strftime }}"
+    # - name: Set branch name
+    #   set_fact:
+    #     branch_name: "branch-{{ '%Y%m%dT%H%M%S' | strftime }}"
 
-    - name: Create a repo dir
-      ansible.builtin.command:
-        cmd: "mkdir /tmp/aap-cac"
+    # - name: Create a repo dir
+    #   ansible.builtin.command:
+    #     cmd: "mkdir /tmp/aap-cac"
 
-    - name: Clone a repo into dir
-      ansible.builtin.command:
-        cmd: "{{ item }}"
-        chdir:  "/tmp/aap-cac"
-      loop:
-        - "git config --global user.email {{ git_email }}"
-        - "git config --global user.name {{ git_username }}"
-        - "git clone https://{{ git_repository }}"
+    # - name: Clone a repo into dir
+    #   ansible.builtin.command:
+    #     cmd: "{{ item }}"
+    #     chdir:  "/tmp/aap-cac"
+    #   loop:
+    #     - "git config --global user.email {{ git_email }}"
+    #     - "git config --global user.name {{ git_username }}"
+    #     - "git clone https://{{ git_repository }}"
 
     # - name: Change repo content and create a branch
     #   ansible.builtin.command:
