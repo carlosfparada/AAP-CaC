@@ -106,7 +106,6 @@
         mode: '0755'
         owner: root
         group: root
-        mode: '0644'
 
     - name: Touch a file, using symbolic modes to set the permissions (equivalent to 0644)
       ansible.builtin.file:
