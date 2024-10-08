@@ -67,38 +67,39 @@
         dest: "/root/controller-cac/"
       become: true
 
-    # - name: Set branch name
-    #   set_fact:
-    #     branch_name: "branch-{{ '%Y%m%dT%H%M%S' | strftime }}"
+    - name: Set branch name
+      set_fact:
+        branch_name: "branch-{{ '%Y%m%dT%H%M%S' | strftime }}"
 
-    # - name: Create a repo dir
-    #   ansible.builtin.command:
-    #     cmd: "mkdir /tmp/aap-cac"
+    - name: Create a repo dir
+      ansible.builtin.command:
+        cmd: "mkdir /tmp/aap-cac"
 
-    # - name: Clone a repo into dir
-    #   ansible.builtin.command:
-    #     cmd: "{{ item }}"
-    #     chdir:  "/tmp/aap-cac"
-    #   loop:
-    #     - "git config --global user.email {{ git_email }}"
-    #     - "git config --global user.name {{ git_username }}"
-    #     - "git clone https://{{ git_repository }}"
+    - name: Clone a repo into dir
+      ansible.builtin.command:
+        cmd: "{{ item }}"
+        chdir:  "/tmp/aap-cac"
+      loop:
+        - "git config --global user.email {{ git_email }}"
+        - "git config --global user.name {{ git_username }}"
+        - "git clone https://{{ git_repository }}"
 
-    # - name: Change repo content and create a branch
-    #   ansible.builtin.command:
-    #     cmd: "{{ item }}"
-    #     chdir:  "/tmp/aap-cac/AAP-CaC"
-    #   loop:
-    #     - "ls -la {{ output_path }}/"
-    #     - 'cp -r {{ output_path }}/. /tmp/aap-cac/AAP-CaC/controller/'
-    #     - "ls -la /tmp/aap-cac/AAP-CaC/controller/"
-    #     - "git branch \"{{ branch_name }}\""
-    #     - "git checkout \"{{ branch_name }}\""
-    #     - "git add ."
-    #     - "git commit -m \"commit {{ branch_name }}\""
-    #     - "git remote remove origin"
-    #     - "git remote add origin https://{{ authentication_token }}@{{ git_repository }}"
-    #     - "git push -u origin \"{{ branch_name }}\""
-    #     - "rm -rf /tmp/aap-cac"
-    #   ignore_errors: true
+    - name: Change repo content and create a branch
+      ansible.builtin.command:
+        cmd: "{{ item }}"
+        chdir:  "/tmp/aap-cac/AAP-CaC"
+      loop:
+        - "ls -la {{ output_path }}/"
+        - "cp -r {{ output_path }}/. /tmp/aap-cac/AAP-CaC/controller/"
+        - "rm {{ output_path }}/credentials.yaml"
+        - "ls -la /tmp/aap-cac/AAP-CaC/controller/"
+        - "git branch \"{{ branch_name }}\""
+        - "git checkout \"{{ branch_name }}\""
+        - "git add ."
+        - "git commit -m \"commit {{ branch_name }}\""
+        - "git remote remove origin"
+        - "git remote add origin https://{{ authentication_token }}@{{ git_repository }}"
+        - "git push -u origin \"{{ branch_name }}\""
+        - "rm -rf /tmp/aap-cac"
+      ignore_errors: true
 
