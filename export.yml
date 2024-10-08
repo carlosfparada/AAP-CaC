@@ -35,13 +35,13 @@
       when: controller_oauthtoken is not defined
 
     - name: Debug (why this debug is needed)
-      debug:
+      ansible.builtin.debug:
         msg: "{{ lookup('ansible.controller.controller_api', 'ping', 
                       host=controller_hostname, oauth_token=controller_oauthtoken,
                       verify_ssl=controller_validate_certs) }}"
 
     - name: Generate CaC (role filetree_create)
-      import_role:
+      ansible.builtin.import_role:
         name: infra.controller_configuration.filetree_create
 
     - name: "Delete the Authentication Token used"
@@ -57,18 +57,18 @@
 
     - name: Create CaC folder on server
       ansible.builtin.file:
-        path: "/tmp/controller-cac"
+        path: "/root/controller-cac"
         state: directory
         mode: '0755'
 
     - name: Copy CaC to server
-      copy:
+      ansible.builtin.copy:
         src: "{{ output_path }}/"
         dest: "/root/controller-cac/"
       become: true
 
     - name: Set branch name
-      set_fact:
+      ansible.builtin.set_fact:
         branch_name: "branch-{{ '%Y%m%dT%H%M%S' | strftime }}"
 
     - name: Create a repo dir
