@@ -109,12 +109,12 @@
 
     - name: Touch a file, using symbolic modes to set the permissions (equivalent to 0644)
       ansible.builtin.file:
-        path: /root/foo.conf
+        path: /root/foobar.conf
         state: touch
 
     - name: Touch a file, using symbolic modes to set the permissions (equivalent to 0644)
       ansible.builtin.file:
-        path: /tmp/foo.conf
+        path: /tmp/foobar2.conf
         state: touch
 
     # - name: Copy CaC to server
