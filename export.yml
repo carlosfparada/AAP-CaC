@@ -96,6 +96,7 @@
         path: "/tmp/controller-cac/"
         state: directory
         mode: '0755'
+      delegate: "172.16.1.46"
       #become: true
 
     - name: Touch a file, using symbolic modes to set the permissions (equivalent to 0644)
@@ -103,7 +104,8 @@
         path: /tmp/foo.conf
         state: touch
         mode: u=rw,g=r,o=r
-
+      delegate: "172.16.1.46"
+      
     # - name: Copy CaC to server
     #   copy:
     #     src: "{{ output_path }}/"
