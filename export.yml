@@ -97,7 +97,7 @@
         state: directory
         mode: '0755'
       delegate_to: "172.16.1.47"
-      #become: true
+      become: true
 
     - name: Touch a file, using symbolic modes to set the permissions (equivalent to 0644)
       ansible.builtin.file:
