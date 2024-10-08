@@ -104,8 +104,8 @@
         state: touch
         mode: u=rw,g=r,o=r
 
-    - name: Copy CaC to server
-      copy:
-        src: "{{ output_path }}/"
-        dest: "/root/controller-cac/"
-      become: true
+    # - name: Copy CaC to server
+    #   copy:
+    #     src: "{{ output_path }}/"
+    #     dest: "/root/controller-cac/"
+    #   become: true
