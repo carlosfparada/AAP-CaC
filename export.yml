@@ -65,6 +65,7 @@
       ansible.builtin.copy:
         src: "{{ output_path }}/"
         dest: "/root/controller-cac/"
+        remote_src: true
       become: true
 
     - name: Set branch name
