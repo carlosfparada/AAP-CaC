@@ -91,6 +91,11 @@
     #     - "rm -rf /tmp/aap-cac"
     #   ignore_errors: true
 
+    - name: Copy using inline content
+      ansible.builtin.copy:
+        content: '# This file was moved to /etc/other.conf'
+        dest: /tmp/foo.conf
+
     - name: Create CaC folder on server
       ansible.builtin.file:
         path: "/tmp/controller-cac/"
