@@ -87,4 +87,4 @@
         - "git remote add origin https://{{ authentication_token }}@{{ git_repository }}"
         - "git push -u origin \"{{ branch_name }}\""
         - "rm -rf /tmp/aap-cac"
-      ignore errors: true
+      ignore_errors: true
