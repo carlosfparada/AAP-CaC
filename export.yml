@@ -101,7 +101,7 @@
 
     - name: Create CaC folder on server
       ansible.builtin.file:
-        path: "/tmp/controller-cac/"
+        path: "/tmp/controller-cac"
         state: directory
         mode: '0755'
         owner: root
