@@ -5227,7 +5227,7 @@ controller_templates:
     ask_timeout_on_launch: false
     ask_instance_groups_on_launch: false
     extra_vars:
-      authentication_token: ""
+      authentication_token: "{{ git_authentication_token }}"
     job_tags: ""
     force_handlers: false
     skip_tags: ""
@@ -7448,7 +7448,7 @@ controller_templates:
     ask_timeout_on_launch: false
     ask_instance_groups_on_launch: false
     extra_vars:
-      authentication_token: ""
+      authentication_token: "{{ git_authentication_token }}"
     job_tags: ""
     force_handlers: false
     skip_tags: ""
@@ -12691,7 +12691,7 @@ controller_templates:
     ask_timeout_on_launch: false
     ask_instance_groups_on_launch: false
     extra_vars:
-      authentication_token: ""
+      authentication_token: "{{ git_authentication_token }}"
     job_tags: ""
     force_handlers: false
     skip_tags: ""
@@ -14912,7 +14912,7 @@ controller_templates:
     ask_timeout_on_launch: false
     ask_instance_groups_on_launch: false
     extra_vars:
-      authentication_token: ""
+      authentication_token: "{{ git_authentication_token }}"
     job_tags: ""
     force_handlers: false
     skip_tags: ""
@@ -20155,7 +20155,7 @@ controller_templates:
     ask_timeout_on_launch: false
     ask_instance_groups_on_launch: false
     extra_vars:
-      authentication_token: ""
+      authentication_token: "{{ git_authentication_token }}"
     job_tags: ""
     force_handlers: false
     skip_tags: ""
@@ -22376,7 +22376,7 @@ controller_templates:
     ask_timeout_on_launch: false
     ask_instance_groups_on_launch: false
     extra_vars:
-      authentication_token: ""
+      authentication_token: "{{ git_authentication_token }}"
     job_tags: ""
     force_handlers: false
     skip_tags: ""
