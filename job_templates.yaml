@@ -46,7 +46,6 @@ controller_templates:
     diff_mode: false
     webhook_service: "github"
     prevent_instance_group_fallback: false
-...
   - name: "AAP: Export"
     description: ""
     organization: "Default"
@@ -91,7 +90,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "AWS: RHEL Config"
     description: ""
     organization: "Default"
@@ -137,7 +135,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "AWS: RHEL Deployment"
     description: ""
     organization: "Default"
@@ -182,7 +179,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "AWS: RHEL Undeployment"
     description: ""
     organization: "Default"
@@ -227,7 +223,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Demo Cisco/Juniper: 01-basic playbook"
     description: ""
     organization: "Default"
@@ -272,7 +267,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Demo Cisco/Juniper: 02-cisco gather facts"
     description: ""
     organization: "Default"
@@ -317,7 +311,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Demo Cisco/Juniper: 03-cisco config vlan survey"
     description: ""
     organization: "Default"
@@ -412,7 +405,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Demo Cisco/Juniper: 04-cisco config vlans"
     description: ""
     organization: "Default"
@@ -457,7 +449,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Demo Cisco/Juniper: 05-cisco config ips"
     description: ""
     organization: "Default"
@@ -502,7 +493,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Demo Cisco/Juniper: 06-cisco config bgp"
     description: ""
     organization: "Default"
@@ -547,7 +537,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Demo Cisco/Juniper: 07-juniper gather facts"
     description: ""
     organization: "Default"
@@ -592,7 +581,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Demo Cisco/Juniper: 08-juniper config vlans"
     description: ""
     organization: "Default"
@@ -637,7 +625,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Demo Cisco/Juniper: 09-juniper config ips"
     description: ""
     organization: "Default"
@@ -682,7 +669,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Demo Cisco/Juniper: 10-juniper config bgp"
     description: ""
     organization: "Default"
@@ -727,7 +713,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Demo Job Slicing"
     description: ""
     organization: "Default"
@@ -772,7 +757,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Demo Job Template (Private Automation Hub hosted EE)"
     description: ""
     organization: "Default"
@@ -816,7 +800,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Demo Netbox: 0. CLEANUP NETBOX"
     description: ""
     organization: "Default"
@@ -861,7 +844,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Demo Netbox: 1. GET FACTS, PUSH NETBOX"
     description: ""
     organization: "Default"
@@ -906,7 +888,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Demo Netbox: 2. QUERY NETBOX"
     description: ""
     organization: "Default"
@@ -951,7 +932,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Demo Netbox: 3. UPDATE VLAN INTERFACE"
     description: ""
     organization: "Default"
@@ -996,7 +976,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Demo Netbox: 4. UPDATE IP INTERFACE"
     description: ""
     organization: "Default"
@@ -1041,7 +1020,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "AAP Backup & Restore: backup"
     description: ""
     organization: "Default"
@@ -1086,7 +1064,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Aruba (N/A, Future)"
     description: ""
     organization: "Default"
@@ -1130,7 +1107,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Aruba: 1. get facts (N/A, Future)"
     description: ""
     organization: "Default"
@@ -1174,7 +1150,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Aruba: 2. create vlans (N/A, Future)"
     description: ""
     organization: "Default"
@@ -1218,7 +1193,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Aruba: 3. create ips (N/A, Future)"
     description: ""
     organization: "Default"
@@ -1262,7 +1236,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "BigIP F5"
     description: ""
     organization: "Default"
@@ -1307,7 +1280,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "BigIP F5: 0-revoke license"
     description: ""
     organization: "Default"
@@ -1350,7 +1322,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "BigIP F5: 1-license"
     description: ""
     organization: "Default"
@@ -1393,7 +1364,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "BigIP F5: 2-facts"
     description: ""
     organization: "Default"
@@ -1436,7 +1406,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "BigIP F5: 3-provision"
     description: ""
     organization: "Default"
@@ -1479,7 +1448,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "BigIP F5: 4-post provision"
     description: ""
     organization: "Default"
@@ -1522,7 +1490,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "BigIP F5: 5-poolmember state"
     description: ""
     organization: "Default"
@@ -1586,7 +1553,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "BigIP F5: 6.1-pool report read"
     description: ""
     organization: "Default"
@@ -1633,7 +1599,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "BigIP F5: 7-reverse engineering"
     description: ""
     organization: "Default"
@@ -1678,7 +1643,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "CentOS Web Server"
     description: ""
     organization: "Default"
@@ -1723,7 +1687,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Cisco ACI"
     description: ""
     organization: "Default"
@@ -1766,7 +1729,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Cisco ACI: 1-tenant + ap"
     description: ""
     organization: "Default"
@@ -1830,7 +1792,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Cisco ACI: 2-vrf"
     description: ""
     organization: "Default"
@@ -1894,7 +1855,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Cisco ACI: 3-bd + subnet"
     description: ""
     organization: "Default"
@@ -1958,7 +1918,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Cisco ACI: 4-epg + contract"
     description: ""
     organization: "Default"
@@ -2022,7 +1981,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Cisco ACI: 5-query"
     description: ""
     organization: "Default"
@@ -2065,7 +2023,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Cisco DNAC"
     description: ""
     organization: "Default"
@@ -2108,7 +2065,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Cisco IOS Config: radius config (NA)"
     description: ""
     organization: "Default"
@@ -2153,7 +2109,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Cisco IOS Config: vlans rm"
     description: ""
     organization: "Default"
@@ -2198,7 +2153,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Cisco Meraki"
     description: ""
     organization: "Default"
@@ -2241,7 +2195,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Create EE"
     description: ""
     organization: "Default"
@@ -2287,7 +2240,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Firewalls"
     description: ""
     organization: "Default"
@@ -2332,7 +2284,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Firewalls: fortinet"
     description: ""
     organization: "Default"
@@ -2375,7 +2326,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Firewalls: fortinet: facts"
     description: ""
     organization: "Default"
@@ -2420,7 +2370,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Firewalls: fortinet: rules"
     description: ""
     organization: "Default"
@@ -2463,7 +2412,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Firewalls: juniper srx"
     description: ""
     organization: "Default"
@@ -2508,7 +2456,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Firewalls: juniper srx: facts"
     description: ""
     organization: "Default"
@@ -2553,7 +2500,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Firewalls: juniper srx: rules config"
     description: ""
     organization: "Default"
@@ -2598,7 +2544,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Firewalls: juniper srx: rules template"
     description: ""
     organization: "Default"
@@ -2643,7 +2588,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Firewalls: paloalto"
     description: ""
     organization: "Default"
@@ -2688,7 +2632,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Firewalls: paloalto: facts"
     description: ""
     organization: "Default"
@@ -2733,7 +2676,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Firewalls: paloalto: rules"
     description: ""
     organization: "Default"
@@ -2778,7 +2720,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Fortinet: 0. controller (N/A)"
     description: ""
     organization: "Default"
@@ -2823,7 +2764,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Fortinet: 1.a vmware (N/A)"
     description: ""
     organization: "Default"
@@ -2868,7 +2808,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Fortinet: 2. fortigate"
     description: ""
     organization: "Default"
@@ -2913,7 +2852,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Fortinet: 3. fortianalyzer"
     description: ""
     organization: "Default"
@@ -2958,7 +2896,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Fortinet: 4. fortimanager"
     description: ""
     organization: "Default"
@@ -3003,7 +2940,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Network Basic"
     description: ""
     organization: "Default"
@@ -3046,7 +2982,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Network Basic: 1-parse facts"
     description: ""
     organization: "Default"
@@ -3089,7 +3024,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Network Basic: 2-parse intf"
     description: ""
     organization: "Default"
@@ -3132,7 +3066,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Network Basic: 3-parse vlan"
     description: ""
     organization: "Default"
@@ -3175,7 +3108,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Network Basic: 4-push intf basic"
     description: ""
     organization: "Default"
@@ -3218,7 +3150,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Network Basic: 5-push intf l3"
     description: ""
     organization: "Default"
@@ -3261,7 +3192,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Network Basic: 6-push intf l2"
     description: ""
     organization: "Default"
@@ -3304,7 +3234,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Network Basic: 7-push intf l2 survey"
     description: ""
     organization: "Default"
@@ -3371,7 +3300,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Routing BGP"
     description: ""
     organization: "Default"
@@ -3416,7 +3344,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Routing BGP: rm"
     description: ""
     organization: "Default"
@@ -3459,7 +3386,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Routing BGP: templated"
     description: ""
     organization: "Default"
@@ -3504,7 +3430,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "ServiceNow-ITSM: 1. create incident"
     description: ""
     organization: "Default"
@@ -3550,7 +3475,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "ServiceNow-ITSM: 2. attach problem"
     description: ""
     organization: "Default"
@@ -3596,7 +3520,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "ServiceNow-ITSM: 3. attach change"
     description: ""
     organization: "Default"
@@ -3642,7 +3565,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "ServiceNow-ITSM: 4. create config"
     description: ""
     organization: "Default"
@@ -3690,7 +3612,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "ServiceNow-ITSM: 5. query records"
     description: ""
     organization: "Default"
@@ -3738,7 +3659,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "ServiceNow-ITSM: 6. close records"
     description: ""
     organization: "Default"
@@ -3786,7 +3706,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Workflows: Job1"
     description: ""
     organization: "Default"
@@ -3831,7 +3750,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Workflows: Job2"
     description: ""
     organization: "Default"
@@ -3876,7 +3794,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "BigIP F5: 6.2-pool report write"
     description: ""
     organization: "Default"
@@ -3921,7 +3838,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "BigIP F5: 6-pool report"
     description: ""
     organization: "Default"
@@ -3966,7 +3882,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Validated Content: network.base"
     description: ""
     organization: "Default"
@@ -4011,7 +3926,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Validated Content: network.bgp"
     description: ""
     organization: "Default"
@@ -4056,7 +3970,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "NXOS Upgrade: main"
     description: ""
     organization: "Default"
@@ -4101,7 +4014,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "NXOS Upgrade: prechecks"
     description: ""
     organization: "Default"
@@ -4146,7 +4058,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "NXOS Upgrade: backup"
     description: ""
     organization: "Default"
@@ -4191,7 +4102,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "NXOS Upgrade: smoketests"
     description: ""
     organization: "Default"
@@ -4236,7 +4146,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "NXOS Upgrade: upgrade"
     description: ""
     organization: "Default"
@@ -4281,7 +4190,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "NXOS Upgrade: fallback"
     description: ""
     organization: "Default"
@@ -4326,7 +4234,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "NXOS Upgrade: imagedownload"
     description: ""
     organization: "Default"
@@ -4371,7 +4278,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Firewalls: asa: facts"
     description: ""
     organization: "Default"
@@ -4416,7 +4322,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Firewalls: asa: rules"
     description: ""
     organization: "Default"
@@ -4461,7 +4366,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Firewalls: asa"
     description: ""
     organization: "Default"
@@ -4506,7 +4410,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "VXLAN-Juniper: create vxlan"
     description: ""
     organization: "Default"
@@ -4550,7 +4453,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "VXLAN-Juniper: query vxlan"
     description: ""
     organization: "Default"
@@ -4594,7 +4496,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Cisco-Backup-Restore: backup"
     description: ""
     organization: "Default"
@@ -4639,7 +4540,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Cisco-Backup-Restore: restore"
     description: ""
     organization: "Default"
@@ -4684,7 +4584,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Firewalls: checkpoint: facts (AWS)"
     description: ""
     organization: "Default"
@@ -4729,7 +4628,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Firewalls: checkpoint: rules (AWS)"
     description: ""
     organization: "Default"
@@ -4774,7 +4672,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Firewalls: checkpoint (AWS)"
     description: ""
     organization: "Default"
@@ -4819,7 +4716,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "AWS: Checkpoint Deployment (N/A)"
     description: ""
     organization: "Default"
@@ -4864,7 +4760,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "AWS: Checkpoint Undeployment (N/A)"
     description: ""
     organization: "Default"
@@ -4909,7 +4804,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "AWS: Checkpoint Policy Rules (N/A)"
     description: ""
     organization: "Default"
@@ -4954,7 +4848,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Fortinet: 1.b aws"
     description: ""
     organization: "Default"
@@ -4999,7 +4892,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Fortinet: 6.b aws undeploy"
     description: ""
     organization: "Default"
@@ -5044,7 +4936,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Fortinet: 6.a vmware undeploy (N/A)"
     description: ""
     organization: "Default"
@@ -5089,7 +4980,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Fortinet: 5. fortigate create rules"
     description: ""
     organization: "Default"
@@ -5148,7 +5038,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Firewalls: asa: rules read from sot"
     description: ""
     organization: "Default"
@@ -5193,7 +5082,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Firewalls: asa: rules store on sot"
     description: ""
     organization: "Default"
@@ -5254,7 +5142,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Firewalls: fortinet: restore (N/A)"
     description: ""
     organization: "Default"
@@ -5297,7 +5184,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Firewalls: fortinet: backup"
     description: ""
     organization: "Default"
@@ -5340,7 +5226,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "BigIP F5: backup"
     description: ""
     organization: "Default"
@@ -5383,7 +5268,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "BigIP F5: restore"
     description: ""
     organization: "Default"
@@ -5426,7 +5310,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Azure: RHEL Deployment"
     description: ""
     organization: "Default"
@@ -5471,7 +5354,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Azure: RHEL Undeployment"
     description: ""
     organization: "Default"
@@ -5516,7 +5398,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Azure: RHEL Config"
     description: ""
     organization: "Default"
@@ -5562,7 +5443,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "AWS Networking: VPC Peering"
     description: ""
     organization: "Default"
@@ -5607,7 +5487,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "AWS Networking: VPC Peering delete"
     description: ""
     organization: "Default"
@@ -5652,7 +5531,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "AWS Networking: VPC Transit"
     description: ""
     organization: "Default"
@@ -5697,7 +5575,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "AWS Networking: VPC Transit delete"
     description: ""
     organization: "Default"
@@ -5742,7 +5619,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Orange-Juniper: facts MX"
     description: ""
     organization: "Default"
@@ -5787,7 +5663,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Orange-Juniper: create vxlan"
     description: ""
     organization: "Default"
@@ -5832,7 +5707,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Orange-Juniper: delete vxlan"
     description: ""
     organization: "Default"
@@ -5877,7 +5751,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Orange-Juniper: facts QFX"
     description: ""
     organization: "Default"
@@ -5922,7 +5795,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "AWS Infoblox: deploy"
     description: ""
     organization: "Default"
@@ -5968,7 +5840,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "AWS Infoblox: delete"
     description: ""
     organization: "Default"
@@ -6014,7 +5885,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Orange-Juniper: create qinq"
     description: ""
     organization: "Default"
@@ -6059,7 +5929,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Orange-Juniper: delete qinq"
     description: ""
     organization: "Default"
@@ -6104,7 +5973,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Orange-Juniper: create vlan"
     description: ""
     organization: "Default"
@@ -6149,7 +6017,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Orange-Juniper: delete vlan"
     description: ""
     organization: "Default"
@@ -6194,7 +6061,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Orange-Juniper: create setup"
     description: ""
     organization: "Default"
@@ -6239,7 +6105,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Orange-Juniper: delete setup"
     description: ""
     organization: "Default"
@@ -6284,7 +6149,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Orange-Juniper: create ebgp"
     description: ""
     organization: "Default"
@@ -6329,7 +6193,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Orange-Juniper: delete ebgp"
     description: ""
     organization: "Default"
@@ -6374,7 +6237,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Fortinet: 5. fortigate create rules reorder"
     description: ""
     organization: "Default"
@@ -6419,7 +6281,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "EDA Paloalto: panos setup"
     description: ""
     organization: "Default"
@@ -6464,7 +6325,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "EDA Paloalto: config remediation"
     description: ""
     organization: "Default"
@@ -6509,7 +6369,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Demo Cisco/Juniper: 02a-cisco show commands"
     description: ""
     organization: "Default"
@@ -6554,7 +6413,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Demo Cisco/Juniper: 04-cisco&juniper config vlans"
     description: ""
     organization: "Default"
@@ -6599,7 +6457,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Demo Cisco/Juniper: 02a-cisco show commands survey"
     description: ""
     organization: "Default"
@@ -6687,7 +6544,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "EDA Paloalto: config compliance tag"
     description: ""
     organization: "Default"
@@ -6732,7 +6588,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "EDA Paloalto: rules provisioning"
     description: ""
     organization: "Default"
@@ -6777,7 +6632,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "EDA Paloalto: config compliance log"
     description: ""
     organization: "Default"
@@ -6822,7 +6676,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "BigIP F5: 8-unprovision"
     description: ""
     organization: "Default"
@@ -6865,7 +6718,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "EDA Paloalto: rules provisioning delete"
     description: ""
     organization: "Default"
@@ -6910,7 +6762,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "EDA Paloalto: panos setup delete"
     description: ""
     organization: "Default"
@@ -6955,7 +6806,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Databases: mysql create"
     description: ""
     organization: "Default"
@@ -7000,7 +6850,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Databases: mysql backup restore"
     description: ""
     organization: "Default"
@@ -7045,7 +6894,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Databases: mysql delete"
     description: ""
     organization: "Default"
@@ -7090,7 +6938,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Databases: mysql replication"
     description: ""
     organization: "Default"
@@ -7135,7 +6982,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Databases: mysql sql"
     description: ""
     organization: "Default"
@@ -7180,7 +7026,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "VMWare: RHEL Deployment"
     description: ""
     organization: "Default"
@@ -7225,7 +7070,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "VMWare: RHEL Undeployment"
     description: ""
     organization: "Default"
@@ -7270,7 +7114,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "VMWare: RHEL Config"
     description: ""
     organization: "Default"
@@ -7316,7 +7159,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Active-Directory: ad"
     description: ""
     organization: "Default"
@@ -7368,7 +7210,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "Lightspeed: api"
     description: ""
     organization: "Default"
@@ -7413,7 +7254,6 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
   - name: "AAP CaC: export"
     description: ""
     organization: "Default"
@@ -7461,4 +7301,3 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
