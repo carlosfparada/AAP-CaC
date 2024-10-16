@@ -256,18 +256,18 @@ controller_workflows:
     survey_enabled: False
   - name: "AWS: RHEL workflow"
     description: ""
-    organization: "ToDo: The WF 'AWS: RHEL workflow' must belong to an organization"
+    organization: "Default"
     state: "present"
     simplified_workflow_nodes:
       - identifier: "6d8facbc-da48-4235-95c2-66db9e8b8418"
         workflow_job_template: "AWS: RHEL workflow"
         unified_job_template: "AWS: RHEL Config"
-        organization: "ToDo: The WF 'AWS: RHEL workflow' must belong to an organization"
+        organization: "Default"
         all_parents_must_converge: "False"
       - identifier: "16f37aed-6e67-48b1-9826-9368b1a1a052"
         workflow_job_template: "AWS: RHEL workflow"
         unified_job_template: "AWS: RHEL Deployment"
-        organization: "ToDo: The WF 'AWS: RHEL workflow' must belong to an organization"
+        organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
           - 6d8facbc-da48-4235-95c2-66db9e8b8418
@@ -278,13 +278,13 @@ controller_workflows:
     survey_enabled: False
   - name: "Workflow Approval"
     description: ""
-    organization: "ToDo: The WF 'Workflow Approval' must belong to an organization"
+    organization: "Default"
     state: "present"
     simplified_workflow_nodes:
       - identifier: "d549309b-9e41-470c-9a9e-19558d57858d"
         workflow_job_template: "Workflow Approval"
         unified_job_template: "Network Basic: 1-parse facts"
-        organization: "ToDo: The WF 'Workflow Approval' must belong to an organization"
+        organization: "Default"
         all_parents_must_converge: "False"
     ask_variables_on_launch: "False"
     allow_simultaneous: "False"
@@ -293,27 +293,27 @@ controller_workflows:
     survey_enabled: False
   - name: "NXOS Upgrade: workflow"
     description: ""
-    organization: "ToDo: The WF 'NXOS Upgrade: workflow' must belong to an organization"
+    organization: "Default"
     state: "present"
     simplified_workflow_nodes:
       - identifier: "66313361-3d1c-4279-829a-64478cc9c347"
         workflow_job_template: "NXOS Upgrade: workflow"
         unified_job_template: "NXOS Upgrade: fallback"
-        organization: "ToDo: The WF 'NXOS Upgrade: workflow' must belong to an organization"
+        organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
           - c36a30e8-a253-4b67-b3d6-912852689bcf
       - identifier: "d1c91988-97ec-427b-93ac-1a9722765707"
         workflow_job_template: "NXOS Upgrade: workflow"
         unified_job_template: "NXOS Upgrade: imagedownload"
-        organization: "ToDo: The WF 'NXOS Upgrade: workflow' must belong to an organization"
+        organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
           - 197372b7-0965-4257-9172-890ff615f651
       - identifier: "417877d9-73ef-4046-891c-22c1cc577981"
         workflow_job_template: "NXOS Upgrade: workflow"
         unified_job_template: "NXOS Upgrade: upgrade"
-        organization: "ToDo: The WF 'NXOS Upgrade: workflow' must belong to an organization"
+        organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
           - c5157041-54ad-470f-9172-2a7bd5483eb0
@@ -322,40 +322,40 @@ controller_workflows:
       - identifier: "c36a30e8-a253-4b67-b3d6-912852689bcf"
         workflow_job_template: "NXOS Upgrade: workflow"
         unified_job_template: "NXOS Upgrade: upgrade"
-        organization: "ToDo: The WF 'NXOS Upgrade: workflow' must belong to an organization"
+        organization: "Default"
         all_parents_must_converge: "False"
       - identifier: "197372b7-0965-4257-9172-890ff615f651"
         workflow_job_template: "NXOS Upgrade: workflow"
         unified_job_template: "Cisco-Backup-Restore: backup"
-        organization: "ToDo: The WF 'NXOS Upgrade: workflow' must belong to an organization"
+        organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
           - 417877d9-73ef-4046-891c-22c1cc577981
       - identifier: "1962c1c2-a55a-4f14-bc06-3813ea7ddcaa"
         workflow_job_template: "NXOS Upgrade: workflow"
         unified_job_template: "NXOS Upgrade: fallback"
-        organization: "ToDo: The WF 'NXOS Upgrade: workflow' must belong to an organization"
+        organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
           - 8b32892c-ee49-4a70-a741-0be43aab7a72
       - identifier: "388502f0-c9ea-4605-87b8-3cf6d2c59441"
         workflow_job_template: "NXOS Upgrade: workflow"
         unified_job_template: "NXOS Upgrade: prechecks"
-        organization: "ToDo: The WF 'NXOS Upgrade: workflow' must belong to an organization"
+        organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
           - d1c91988-97ec-427b-93ac-1a9722765707
       - identifier: "c5157041-54ad-470f-9172-2a7bd5483eb0"
         workflow_job_template: "NXOS Upgrade: workflow"
         unified_job_template: "NXOS Upgrade: smoketests"
-        organization: "ToDo: The WF 'NXOS Upgrade: workflow' must belong to an organization"
+        organization: "Default"
         all_parents_must_converge: "False"
         failure_nodes:
           - 1962c1c2-a55a-4f14-bc06-3813ea7ddcaa
       - identifier: "8b32892c-ee49-4a70-a741-0be43aab7a72"
         workflow_job_template: "NXOS Upgrade: workflow"
         unified_job_template: "NXOS Upgrade: upgrade"
-        organization: "ToDo: The WF 'NXOS Upgrade: workflow' must belong to an organization"
+        organization: "Default"
         all_parents_must_converge: "False"
     ask_variables_on_launch: "False"
     allow_simultaneous: "False"
@@ -364,13 +364,13 @@ controller_workflows:
     survey_enabled: False
   - name: "Cisco ACI: Workflow"
     description: ""
-    organization: "ToDo: The WF 'Cisco ACI: Workflow' must belong to an organization"
+    organization: "Default"
     state: "present"
     simplified_workflow_nodes:
       - identifier: "7772b8f1-e7fe-4872-bf94-e499b3c7b574"
         workflow_job_template: "Cisco ACI: Workflow"
         unified_job_template: "Cisco ACI: 2-vrf"
-        organization: "ToDo: The WF 'Cisco ACI: Workflow' must belong to an organization"
+        organization: "Default"
         all_parents_must_converge: "False"
         extra_data:
           aci_vrf_state: present
@@ -379,7 +379,7 @@ controller_workflows:
       - identifier: "d0ab8bc7-4380-4924-b275-4ebf9c521954"
         workflow_job_template: "Cisco ACI: Workflow"
         unified_job_template: "Cisco ACI: 1-tenant + ap"
-        organization: "ToDo: The WF 'Cisco ACI: Workflow' must belong to an organization"
+        organization: "Default"
         all_parents_must_converge: "False"
         extra_data:
           aci_tenant_state: present
@@ -388,7 +388,7 @@ controller_workflows:
       - identifier: "34c9251d-bf06-454c-8c4d-3ffde10af6a6"
         workflow_job_template: "Cisco ACI: Workflow"
         unified_job_template: "Cisco ACI: 3-bd + subnet"
-        organization: "ToDo: The WF 'Cisco ACI: Workflow' must belong to an organization"
+        organization: "Default"
         all_parents_must_converge: "False"
         extra_data:
           aci_bd_state: present
@@ -397,7 +397,7 @@ controller_workflows:
       - identifier: "0ff3064a-22a9-4d64-8f25-249695789db2"
         workflow_job_template: "Cisco ACI: Workflow"
         unified_job_template: "Cisco ACI: 4-epg + contract"
-        organization: "ToDo: The WF 'Cisco ACI: Workflow' must belong to an organization"
+        organization: "Default"
         all_parents_must_converge: "False"
         extra_data:
           aci_epg_state: present
@@ -406,7 +406,7 @@ controller_workflows:
       - identifier: "514bf53a-f512-43f4-b5e7-428e41cfc348"
         workflow_job_template: "Cisco ACI: Workflow"
         unified_job_template: "Cisco ACI: 5-query"
-        organization: "ToDo: The WF 'Cisco ACI: Workflow' must belong to an organization"
+        organization: "Default"
         all_parents_must_converge: "False"
     ask_variables_on_launch: "False"
     allow_simultaneous: "False"
@@ -415,20 +415,20 @@ controller_workflows:
     survey_enabled: False
   - name: "Azure: RHEL workflow"
     description: ""
-    organization: "ToDo: The WF 'Azure: RHEL workflow' must belong to an organization"
+    organization: "Default"
     state: "present"
     simplified_workflow_nodes:
       - identifier: "7716da9c-7e76-4500-857b-df00e55244d3"
         workflow_job_template: "Azure: RHEL workflow"
         unified_job_template: "Azure: RHEL Deployment"
-        organization: "ToDo: The WF 'Azure: RHEL workflow' must belong to an organization"
+        organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
           - adc1b648-21df-483d-81d8-17e010814cec
       - identifier: "adc1b648-21df-483d-81d8-17e010814cec"
         workflow_job_template: "Azure: RHEL workflow"
         unified_job_template: "Azure: RHEL Config"
-        organization: "ToDo: The WF 'Azure: RHEL workflow' must belong to an organization"
+        organization: "Default"
         all_parents_must_converge: "False"
     ask_variables_on_launch: "False"
     allow_simultaneous: "False"
@@ -437,32 +437,32 @@ controller_workflows:
     survey_enabled: False
   - name: "Databases: mysql workflow"
     description: ""
-    organization: "ToDo: The WF 'Databases: mysql workflow' must belong to an organization"
+    organization: "Default"
     state: "present"
     simplified_workflow_nodes:
       - identifier: "fc86dedf-67f0-4eb7-a4d5-508864285f1b"
         workflow_job_template: "Databases: mysql workflow"
         unified_job_template: "Databases: mysql create"
-        organization: "ToDo: The WF 'Databases: mysql workflow' must belong to an organization"
+        organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
           - 23bef8ef-be78-4fcb-9c51-9df1c99dff67
       - identifier: "23bef8ef-be78-4fcb-9c51-9df1c99dff67"
         workflow_job_template: "Databases: mysql workflow"
         unified_job_template: "Databases: mysql replication"
-        organization: "ToDo: The WF 'Databases: mysql workflow' must belong to an organization"
+        organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
           - 489afa70-226d-435c-8d6b-b68423b77346
       - identifier: "df1983d5-0d3d-4e71-a32d-10be6ec4f341"
         workflow_job_template: "Databases: mysql workflow"
         unified_job_template: "Databases: mysql backup restore"
-        organization: "ToDo: The WF 'Databases: mysql workflow' must belong to an organization"
+        organization: "Default"
         all_parents_must_converge: "False"
       - identifier: "489afa70-226d-435c-8d6b-b68423b77346"
         workflow_job_template: "Databases: mysql workflow"
         unified_job_template: "Databases: mysql sql"
-        organization: "ToDo: The WF 'Databases: mysql workflow' must belong to an organization"
+        organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
           - df1983d5-0d3d-4e71-a32d-10be6ec4f341
