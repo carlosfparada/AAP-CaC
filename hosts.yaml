@@ -5,8 +5,6 @@ controller_hosts:
     inventory: "Demo Inventory"
     variables:
       ansible_connection: local
----
-controller_hosts:
   - name: "controller34"
     description: ""
     inventory: "Controllers"
@@ -19,13 +17,9 @@ controller_hosts:
     variables:
       ansible_host: 172.16.1.45
       ansible_python_interpreter: /usr/bin/python3
----
-controller_hosts:
   - name: "aoscx-1"
     description: ""
     inventory: "Aruba"
----
-controller_hosts:
   - name: "webserver-1"
     description: ""
     inventory: "CentOS"
@@ -36,8 +30,6 @@ controller_hosts:
     inventory: "CentOS"
     variables:
       ansible_host: 172.16.2.200
----
-controller_hosts:
   - name: "sandboxdnac"
     description: ""
     inventory: "Cisco DNAC"
@@ -46,8 +38,6 @@ controller_hosts:
       ansible_connection: local
       ansible_host: sandboxdnac.cisco.com
       ansible_network_os: dnac
----
-controller_hosts:
   - name: "sandboxmeraki"
     description: ""
     inventory: "Cisco Meraki"
@@ -56,15 +46,11 @@ controller_hosts:
       ansible_connection: local
       ansible_host: n149.meraki.com
       ansible_network_os: meraki
----
-controller_hosts:
   - name: "controller-1"
     description: ""
     inventory: "Controller"
     variables:
       ansible_host: 172.16.1.45
----
-controller_hosts:
   - name: "ios-rt1"
     description: ""
     inventory: "Cisco/Juniper"
@@ -93,8 +79,6 @@ controller_hosts:
       ansible_connection: netconf
       ansible_host: 172.16.2.214
       ansible_network_os: junos
----
-controller_hosts:
   - name: "eos-rt1"
     description: ""
     inventory: "Netbox"
@@ -120,8 +104,6 @@ controller_hosts:
     inventory: "Netbox"
     variables:
       ansible_host: 172.16.2.162
----
-controller_hosts:
   - name: "asa-1"
     description: ""
     inventory: "EVE Firewalls"
@@ -172,8 +154,6 @@ controller_hosts:
       ansible_host: 172.16.2.210
       ansible_network_os: junos
       ansible_port: 22
----
-controller_hosts:
   - name: "controller-1"
     description: ""
     inventory: "Fortinet"
@@ -210,8 +190,6 @@ controller_hosts:
       ansible_httpapi_use_ssl: false
       ansible_httpapi_validate_certs: false
       ansible_network_os: fortinet.fortimanager.fortimanager
----
-controller_hosts:
   - name: "controller-1"
     description: ""
     inventory: "ServiceNow-ITSM"
@@ -227,11 +205,8 @@ controller_hosts:
     inventory: "ServiceNow-ITSM"
     variables:
       ansible_host: 172.16.2.200
----
-controller_hosts:
   - name: "dbserver"
     description: ""
     inventory: "Databases"
     variables:
       ansible_host: 172.16.1.45
-...
