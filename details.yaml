@@ -1,0 +1,63 @@
+branch_name: ansible-extract_aap_artifacts_to_a_cac_format-2025-02-03T182922.355924+0000
+branches:
+- main
+- main
+- main
+changed: true
+failed: false
+msg: 'Successfully retrieved repository: https://github.com/carlosfparada/AAP-CaC.git'
+name: AAP-CaC
+output:
+-   command: git -C /tmp clone --depth=1 --progress --no-single-branch https://github.com/carlosfparada/AAP-CaC.git
+    env: ''
+    return_code: 0
+    stderr_lines:
+    - Cloning into 'AAP-CaC'...
+    - 'remote: Enumerating objects: 8, done.        '
+    - 'remote: Counting objects:  12% (1/8)        '
+    - 'remote: Counting objects:  25% (2/8)        '
+    - 'remote: Counting objects:  37% (3/8)        '
+    - 'remote: Counting objects:  50% (4/8)        '
+    - 'remote: Counting objects:  62% (5/8)        '
+    - 'remote: Counting objects:  75% (6/8)        '
+    - 'remote: Counting objects:  87% (7/8)        '
+    - 'remote: Counting objects: 100% (8/8)        '
+    - 'remote: Counting objects: 100% (8/8), done.        '
+    - 'remote: Compressing objects:  16% (1/6)        '
+    - 'remote: Compressing objects:  33% (2/6)        '
+    - 'remote: Compressing objects:  50% (3/6)        '
+    - 'remote: Compressing objects:  66% (4/6)        '
+    - 'remote: Compressing objects:  83% (5/6)        '
+    - 'remote: Compressing objects: 100% (6/6)        '
+    - 'remote: Compressing objects: 100% (6/6), done.        '
+    - 'remote: Total 8 (delta 1), reused 5 (delta 1), pack-reused 0 (from 0)        '
+    - 'Receiving objects:  12% (1/8)'
+    - 'Receiving objects:  25% (2/8)'
+    - 'Receiving objects:  37% (3/8)'
+    - 'Receiving objects:  50% (4/8)'
+    - 'Receiving objects:  62% (5/8)'
+    - 'Receiving objects:  75% (6/8)'
+    - 'Receiving objects:  87% (7/8)'
+    - 'Receiving objects: 100% (8/8)'
+    - 'Receiving objects: 100% (8/8), done.'
+    - 'Resolving deltas:   0% (0/1)'
+    - 'Resolving deltas: 100% (1/1)'
+    - 'Resolving deltas: 100% (1/1), done.'
+    stdout_lines: []
+-   command: git -C /tmp/AAP-CaC branch -a
+    env: ''
+    return_code: 0
+    stderr_lines: []
+    stdout_lines:
+    - '* main'
+    - '  remotes/origin/HEAD -> origin/main'
+    - '  remotes/origin/main'
+-   command: git -C /tmp/AAP-CaC checkout -t -b ansible-extract_aap_artifacts_to_a_cac_format-2025-02-03T182922.355924+0000
+    env: ''
+    return_code: 0
+    stderr_lines:
+    - Switched to a new branch 'ansible-extract_aap_artifacts_to_a_cac_format-2025-02-03T182922.355924+0000'
+    stdout_lines:
+    - branch 'ansible-extract_aap_artifacts_to_a_cac_format-2025-02-03T182922.355924+0000'
+        set up to track 'main'.
+path: /tmp/AAP-CaC
