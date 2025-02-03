@@ -79,20 +79,24 @@
         var: repository
       delegate_to: localhost
 
-    - name: Add to the repository
-      ansible.builtin.copy:
-        content: "{{ repository | to_nice_yaml }}"
-        dest: "{{ repository['path'] }}/details.yaml"
-        remote_src: true
-      delegate_to: localhost
+    # - name: Add to the repository
+    #   ansible.builtin.copy:
+    #     content: "{{ repository | to_nice_yaml }}"
+    #     dest: "{{ repository['path'] }}/details.yaml"
+    #     remote_src: true
+    #   delegate_to: localhost
 
-    - name: Add to the repository
-      ansible.builtin.copy:
-        src: "{{ output_path }}"
-        dest: "{{ repository['path'] }}/data"
-        #remote_src: true
-      become: true
-      delegate_to: localhost
+    # - name: Add to the repository
+    #   ansible.builtin.copy:
+    #     src: "{{ output_path }}"
+    #     dest: "{{ repository['path'] }}/data"
+    #     #remote_src: true
+    #   become: true
+    #   delegate_to: localhost
+
+    - name: Move filetree_output files to git folder
+      ansible.builtin.command:
+        cmd: "mv {{ output_path }} {{ repository['path'] }}/data"
 
     - name: Publish the changes
       ansible.scm.git_publish:
