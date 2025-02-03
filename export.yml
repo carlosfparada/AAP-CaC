@@ -72,7 +72,17 @@
       ansible.scm.git_retrieve:
         origin:
           url: https://github.com/carlosfparada/AAP-CaC.git
+      register: repository
 
+    - name: Add to the repository
+      ansible.builtin.copy:
+        content: "{{ repository | to_nice_yaml }}"
+        dest: "{{ repository['path'] }}/details.yaml"
+        mode: '0644'
+
+    - name: Publish the changes
+      ansible.scm.git_publish:
+        path: "{{ repository['path'] }}"
 
     # - name: Set branch name
     #   ansible.builtin.set_fact:
