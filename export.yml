@@ -83,7 +83,7 @@
       ansible.builtin.copy:
         src: "{{ output_path }}"
         dest: "{{ repository['path'] }}/data"
-        remote_src: true
+        #remote_src: true
       become: true
       delegate_to: localhost
 
