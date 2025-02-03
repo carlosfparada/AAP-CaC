@@ -1,0 +1,58 @@
+---
+
+controller_projects:
+  - name: _Deploy Demos Project
+    description: Deploy Demos AAP Project
+    organization: Default
+    scm_type: git
+    scm_url: 'https://github.com/carlosfparada/AAP-CaC.git'
+    scm_update_on_launch: "True"
+    wait: true
+
+controller_inventories:
+  - name: _Deploy Demos Inventory
+    description: Deploy Demos AAP Inventory
+    organization: Default
+
+controller_hosts:
+  - name: localhost
+    inventory: _Deploy Demos Inventory
+    organization: Default
+    variables:
+      ansible_connection: ssh
+
+controller_credentials:
+  - name: _Deploy Demos Credential
+    description: _Deploy Demos AAP Credential
+    organization: Default
+    credential_type: Red Hat Ansible Automation Platform
+    inputs:
+      username: person
+      password: password
+
+controller_templates:
+  - name: _Deploy Demos Template
+    description: Deploy Demos AAP Template
+    organization: Default
+    project: _Deploy Demos Project
+    inventory: _Deploy Demos Inventory
+    playbook: deploy_demos.yml
+    job_type: run
+    credentials:
+      - _Deploy Demos Credential
+    execution_environment: Default execution environment
+    survey_enabled: true
+    survey_spec:
+      description: Deploy Demos AAP Job Template
+      name: _Deploy Demos Survey
+      spec:
+      - choices:
+        - demo1
+        - demo2
+        default: demo1
+        new_question: true
+        question_description: Select the Demos to Deploy
+        question_name: Demos to Deploy
+        required: true
+        type: multiselect
+        variable: demo_name
