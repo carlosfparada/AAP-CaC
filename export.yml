@@ -40,31 +40,31 @@
                       host=controller_hostname, oauth_token=controller_oauthtoken,
                       verify_ssl=controller_validate_certs) }}"
 
-    # - name: Generate CaC (role filetree_create)
-    #   ansible.builtin.import_role:
-    #     name: infra.controller_configuration.filetree_create
+    - name: Generate CaC (role filetree_create)
+      ansible.builtin.import_role:
+        name: infra.controller_configuration.filetree_create
 
-    # - name: "Delete the Authentication Token used"
-    #   ansible.builtin.uri:
-    #     url: "https://{{ controller_hostname }}{{ controller_oauthtoken_url }}"
-    #     user: "{{ controller_username }}"
-    #     password: "{{ controller_password }}"
-    #     method: DELETE
-    #     force_basic_auth: true
-    #     validate_certs: "{{ controller_validate_certs }}"
-    #     status_code: 204
-    #   when: controller_oauthtoken_url is defined
+    - name: "Delete the Authentication Token used"
+      ansible.builtin.uri:
+        url: "https://{{ controller_hostname }}{{ controller_oauthtoken_url }}"
+        user: "{{ controller_username }}"
+        password: "{{ controller_password }}"
+        method: DELETE
+        force_basic_auth: true
+        validate_certs: "{{ controller_validate_certs }}"
+        status_code: 204
+      when: controller_oauthtoken_url is defined
 
     # - name: Create CaC folder on server
     #   ansible.builtin.file:
-    #     path: "/tmp/controller-cac"
+    #     path: "/tmp/aap-cac"
     #     state: directory
     #     mode: '0755'
 
     # - name: Copy CaC to server
     #   ansible.builtin.copy:
     #     src: "{{ output_path }}/"
-    #     dest: "/tmp/controller-cac/"
+    #     dest: "/tmp/aap-cac/"
     #     remote_src: true
     #   become: true
 
@@ -72,20 +72,17 @@
       ansible.scm.git_retrieve:
         origin:
           url: https://github.com/carlosfparada/AAP-CaC.git
-        #parent_directory: /tmp
       register: repository
       delegate_to: localhost
 
-    - debug: 
-        var: repository
-      delegate_to: localhost
+    # - debug: 
+    #     var: repository
+    #   delegate_to: localhost
 
     - name: Add to the repository
       ansible.builtin.copy:
-        content: "{{ repository | to_nice_yaml }}"
-        dest: "{{ repository['path'] }}/details.yaml"
-        #dest: /tmp/AAP-CaC//details.yaml
-        #mode: '0644'
+        src: "{{ output_path }}"
+        dest: "{{ repository['path'] }}/data"
       delegate_to: localhost
       become: true
 
