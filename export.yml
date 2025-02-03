@@ -74,6 +74,9 @@
           url: https://github.com/carlosfparada/AAP-CaC.git
       register: repository
 
+    - debug: 
+        var: repository
+
     - name: Add to the repository
       ansible.builtin.copy:
         content: "{{ repository | to_nice_yaml }}"
