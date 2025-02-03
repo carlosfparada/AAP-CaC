@@ -79,12 +79,13 @@
     #     var: repository
     #   delegate_to: localhost
 
-    - name: Add to the repository
-      ansible.builtin.copy:
-        src: "{{ output_path }}"
-        dest: "{{ repository['path'] }}/data"
-        remote_src: true
-      become: true
+    # - name: Add to the repository
+    #   ansible.builtin.copy:
+    #     src: "{{ output_path }}"
+    #     dest: "{{ repository['path'] }}/data"
+    #     remote_src: true
+    #   become: true
+    #   delegate_to: localhost
 
     - name: Publish the changes
       ansible.scm.git_publish:
