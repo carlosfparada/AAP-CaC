@@ -40,9 +40,9 @@
                       host=controller_hostname, oauth_token=controller_oauthtoken,
                       verify_ssl=controller_validate_certs) }}"
 
-    - name: Generate CaC (role filetree_create)
-      ansible.builtin.import_role:
-        name: infra.controller_configuration.filetree_create
+    # - name: Generate CaC (role filetree_create)
+    #   ansible.builtin.import_role:
+    #     name: infra.controller_configuration.filetree_create
 
     - name: "Delete the Authentication Token used"
       ansible.builtin.uri:
