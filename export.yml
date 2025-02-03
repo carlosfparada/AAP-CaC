@@ -72,6 +72,7 @@
       ansible.scm.git_retrieve:
         origin:
           url: https://github.com/carlosfparada/AAP-CaC.git
+          parent_directory: /tmp/AAP-CaC/
       register: repository
 
     - debug: 
@@ -81,6 +82,7 @@
       ansible.builtin.copy:
         content: "{{ repository | to_nice_yaml }}"
         dest: "{{ repository['path'] }}/details.yaml"
+        dest: /tmp/AAP-CaC/
         mode: '0644'
 
     - name: Publish the changes
