@@ -74,9 +74,11 @@
           url: https://github.com/carlosfparada/AAP-CaC.git
         parent_directory: /tmp
       register: repository
+      delegate_to: localhost
 
     - debug: 
         var: repository
+      delegate_to: localhost
 
     - name: Add to the repository
       ansible.builtin.copy:
@@ -84,12 +86,14 @@
         dest: "{{ repository['path'] }}/details.yaml"
         #dest: /tmp/AAP-CaC//details.yaml
         #mode: '0644'
+      delegate_to: localhost
       become: true
 
     - name: Publish the changes
       ansible.scm.git_publish:
         path: "{{ repository['path'] }}"
         token: "{{ authentication_token }}"
+      delegate_to: localhost
 
     # - name: Set branch name
     #   ansible.builtin.set_fact:
