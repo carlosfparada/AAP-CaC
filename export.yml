@@ -86,6 +86,7 @@
     - name: Publish the changes
       ansible.scm.git_publish:
         path: "{{ repository['path'] }}"
+        token: authentication_token
 
     # - name: Set branch name
     #   ansible.builtin.set_fact:
