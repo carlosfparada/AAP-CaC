@@ -84,6 +84,7 @@
         dest: "{{ repository['path'] }}/details.yaml"
         #dest: /tmp/AAP-CaC//details.yaml
         #mode: '0644'
+      become: true
 
     - name: Publish the changes
       ansible.scm.git_publish:
