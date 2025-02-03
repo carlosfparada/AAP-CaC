@@ -81,8 +81,8 @@
     - name: Add to the repository
       ansible.builtin.copy:
         content: "{{ repository | to_nice_yaml }}"
-        dest: "{{ repository['path'] }}/details.yaml"
-        dest: /tmp/AAP-CaC/
+        #dest: "{{ repository['path'] }}/details.yaml"
+        dest: /tmp/AAP-CaC//details.yaml
         mode: '0644'
 
     - name: Publish the changes
