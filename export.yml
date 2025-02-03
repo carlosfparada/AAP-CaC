@@ -87,6 +87,7 @@
     #   become: true
     #   delegate_to: localhost
 
+
     - name: Add to the repository
       ansible.builtin.copy:
         content: "{{ repository | to_nice_yaml }}"
