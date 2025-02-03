@@ -57,16 +57,22 @@
 
     - name: Create CaC folder on server
       ansible.builtin.file:
-        path: "/root/controller-cac"
+        path: "/tmp/controller-cac"
         state: directory
         mode: '0755'
 
     - name: Copy CaC to server
       ansible.builtin.copy:
         src: "{{ output_path }}/"
-        dest: "/root/controller-cac/"
+        dest: "/tmp/controller-cac/"
         remote_src: true
       become: true
+
+    - name: Retrieve a repository
+      ansible.scm.git_retrieve:
+        origin:
+          url: https://github.com/carlosfparada/AAP-CaC.git
+
 
     # - name: Set branch name
     #   ansible.builtin.set_fact:
