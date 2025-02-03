@@ -75,16 +75,8 @@
       register: repository
       delegate_to: localhost
 
-    # - debug: 
-    #     var: repository
-    #   delegate_to: localhost
-
-    - name: Add to the repository
-      ansible.builtin.copy:
-        src: "{{ output_path }}"
-        dest: "{{ repository['path'] }}/data"
-        #remote_src: true
-      become: true
+    - debug: 
+        var: repository
       delegate_to: localhost
 
     - name: Add to the repository
@@ -92,6 +84,14 @@
         content: "{{ repository | to_nice_yaml }}"
         dest: "{{ repository['path'] }}/details.yaml"
         remote_src: true
+      delegate_to: localhost
+
+    - name: Add to the repository
+      ansible.builtin.copy:
+        src: "{{ output_path }}"
+        dest: "{{ repository['path'] }}/data"
+        #remote_src: true
+      become: true
       delegate_to: localhost
 
     - name: Publish the changes
