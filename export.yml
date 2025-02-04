@@ -114,7 +114,7 @@
 
     - name: Sync to the git repository
       ansible.posix.synchronize:
-        mode: pull
+        mode: push
         src: "{{ output_path }}/"
         dest: "{{ repository['path'] }}/data/"
 
