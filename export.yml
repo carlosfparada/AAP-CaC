@@ -2,7 +2,7 @@
 
 - name: Extract AAP artifacts to a CaC format
   hosts: controller-1
-  gather_facts: true
+  gather_facts: false
   vars:
     git_repository: "github.com/carlosfparada/AAP-CaC.git"
     git_email: "cparada@redhat.com"
