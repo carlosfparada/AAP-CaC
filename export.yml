@@ -96,27 +96,32 @@
 
     - name: ls controller
       ansible.builtin.command:
-        cmd: "ls -la /tmp"
-
-    - name: ls controller
-      ansible.builtin.command:
         cmd: "ls -la /tmp/filetree_output/"
-
-    - name: ls localhost
-      ansible.builtin.command:
-        cmd: "ls -la /tmp"
-      delegate_to: localhost
 
     - name: ls localhost
       ansible.builtin.command:
         cmd: "ls -la {{ repository['path'] }}/"
       delegate_to: localhost
 
-    - name: Sync to the git repository
-      ansible.posix.synchronize:
-        mode: push
-        src: "{{ output_path }}/"
+    # - name: Sync to the git repository
+    #   ansible.posix.synchronize:
+    #     mode: push
+    #     #mode: pull
+    #     src: "{{ output_path }}/"
+    #     dest: "{{ repository['path'] }}/data/"
+
+    - name: Find result files
+      ansible.builtin.find:
+        paths: "{{ output_path }}/"
+        file_type: file
+        patterns: '*.yml'
+      register: output_files
+
+    - name: Fetch files to git repository
+      ansible.builtin.fetch:
+        src: "{{ item.path }}"
         dest: "{{ repository['path'] }}/data/"
+      loop: "{{ output_files }}"
 
     - name: Publish the changes
       ansible.scm.git_publish:
