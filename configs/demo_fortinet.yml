@@ -1,6 +1,6 @@
 ---
 
-
+# Projects
 controller_projects:
   - name: "AWS Fortinet"
     description: ""
@@ -10,6 +10,13 @@ controller_projects:
     scm_update_on_launch: "True"
 
 
+# Inventories
+
+
+# Credentials
+
+
+# Job Templates
 controller_templates:
   - name: "AWS Fortinet: 0. Controller (N/A)"
     description: ""
