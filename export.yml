@@ -112,8 +112,14 @@
         cmd: "ls -la {{ repository['path'] }}/"
       delegate_to: localhost
 
+    # - name: Copy to the repository
+    #   ansible.builtin.copy:
+    #     src: "{{ output_path }}/"
+    #     dest: "{{ repository['path'] }}/data/"
+    #     remote_src: true
+
     - name: Copy to the repository
-      ansible.builtin.copy:
+      ansible.builtin.fetch:
         src: "{{ output_path }}/"
         dest: "{{ repository['path'] }}/data/"
         remote_src: true
