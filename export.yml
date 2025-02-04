@@ -116,7 +116,7 @@
       ansible.builtin.copy:
         src: "{{ output_path }}/"
         dest: "{{ repository['path'] }}/data/"
-        #remote_src: true
+        remote_src: true
 
     - name: Publish the changes
       ansible.scm.git_publish:
