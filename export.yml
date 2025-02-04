@@ -96,12 +96,12 @@
 
     - name: ls delegate
       ansible.builtin.command:
-        cmd: "mv {{ output_path }}"
+        cmd: "ls -la {{ output_path }}"
       delegate_to: localhost
 
     - name: ls not delegate
       ansible.builtin.command:
-        cmd: "mv {{ output_path }}"
+        cmd: "ls -la {{ output_path }}"
       
     - name: Move filetree_output files to git folder
       ansible.builtin.command:
