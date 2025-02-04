@@ -109,7 +109,7 @@
 
     - name: ls localhost
       ansible.builtin.command:
-        cmd: "ls -la /tmp/tmp*/"
+        cmd: "ls -la {{ repository['path'] }}/"
       delegate_to: localhost
 
     - name: Copy to the repository
