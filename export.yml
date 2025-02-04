@@ -112,10 +112,11 @@
         cmd: "ls -la /tmp/tmp*/"
       delegate_to: localhost
 
-    - name: Move filetree_output files to git folder
-      ansible.builtin.command:
-        cmd: "mv {{ output_path }}/ {{ repository['path'] }}/data"
-      delegate_to: localhost
+    - name: Copy to the repository
+      ansible.builtin.copy:
+        src: "{{ output_path }}"
+        dest: "{{ repository['path'] }}/data"
+        remote_src: true
 
     - name: Publish the changes
       ansible.scm.git_publish:
