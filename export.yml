@@ -94,15 +94,24 @@
     #   become: true
     #   delegate_to: localhost
 
-    - name: ls delegate
+    - name: ls controller
+      ansible.builtin.command:
+        cmd: "ls -la /tmp"
+
+    - name: ls controller
+      ansible.builtin.command:
+        cmd: "ls -la /tmp/filetree_output/"
+
+    - name: ls localhost
       ansible.builtin.command:
         cmd: "ls -la /tmp"
       delegate_to: localhost
 
-    - name: ls not delegate
+    - name: ls localhost
       ansible.builtin.command:
-        cmd: "ls -la /tmp"
-      
+        cmd: "ls -la /tmp/tmp*/"
+      delegate_to: localhost
+
     - name: Move filetree_output files to git folder
       ansible.builtin.command:
         cmd: "mv {{ output_path }}/ {{ repository['path'] }}/data"
