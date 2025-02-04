@@ -112,8 +112,9 @@
         cmd: "ls -la {{ repository['path'] }}/"
       delegate_to: localhost
 
-    - name: Copy to the repository
-      ansible.builtin.copy:
+    - name: Sync to the git repository
+      ansible.posix.synchronize:
+        mode: pull
         src: "{{ output_path }}/"
         dest: "{{ repository['path'] }}/data/"
         remote_src: true
