@@ -123,11 +123,11 @@
         dest: "{{ repository['path'] }}/data/"
       loop: "{{ output_files.files }}"
 
-    - name: Publish the changes
-      ansible.scm.git_publish:
-        path: "{{ repository['path'] }}"
-        token: "{{ authentication_token }}"
-      delegate_to: localhost
+    # - name: Publish the changes
+    #   ansible.scm.git_publish:
+    #     path: "{{ repository['path'] }}"
+    #     token: "{{ authentication_token }}"
+    #   delegate_to: localhost
 
     # - name: Set branch name
     #   ansible.builtin.set_fact:
