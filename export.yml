@@ -2,7 +2,7 @@
 
 - name: Extract AAP artifacts to a CaC format
   hosts: controller-1
-  gather_facts: false
+  gather_facts: true
   vars:
     git_repository: "github.com/carlosfparada/AAP-CaC.git"
     git_email: "cparada@redhat.com"
@@ -94,9 +94,18 @@
     #   become: true
     #   delegate_to: localhost
 
+    - name: ls delegate
+      ansible.builtin.command:
+        cmd: "mv {{ output_path }}"
+      delegate_to: localhost
+
+    - name: ls not delegate
+      ansible.builtin.command:
+        cmd: "mv {{ output_path }}"
+      
     - name: Move filetree_output files to git folder
       ansible.builtin.command:
-        cmd: "mv {{ output_path }} {{ repository['path'] }}/data"
+        cmd: "mv {{ output_path }}/ {{ repository['path'] }}/data"
       delegate_to: localhost
 
     - name: Publish the changes
