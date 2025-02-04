@@ -97,6 +97,7 @@
     - name: Move filetree_output files to git folder
       ansible.builtin.command:
         cmd: "mv {{ output_path }} {{ repository['path'] }}/data"
+      delegate_to: localhost
 
     - name: Publish the changes
       ansible.scm.git_publish:
