@@ -114,8 +114,8 @@
 
     - name: Copy to the repository
       ansible.builtin.copy:
-        src: "{{ output_path }}"
-        dest: "{{ repository['path'] }}/data"
+        src: "{{ output_path }}/"
+        dest: "{{ repository['path'] }}/data/"
         remote_src: true
 
     - name: Publish the changes
