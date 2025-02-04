@@ -11,7 +11,7 @@
     controller_validate_certs: "false"
     controller_username: "{{ controller_username }}"
     controller_password: "{{ controller_password }}"
-    output_path:	/tmp/filetree_output
+    output_path:	"/tmp/filetree_output"
     flatten_output: yes
   tasks:
     - name: "Get the Authentication Token for the future requests"
