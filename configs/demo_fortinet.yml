@@ -1,58 +1,133 @@
 ---
 
+
 controller_projects:
-  - name: _Deploy Demos Project
-    description: Deploy Demos AAP Project
-    organization: Default
-    scm_type: git
-    scm_url: 'https://github.com/carlosfparada/AAP-CaC.git'
+  - name: "AWS Fortinet"
+    description: ""
+    organization: "Default"
+    scm_type: "git"
+    scm_url: "https://github.com/carlosfparada/AWS-Fortinet.git"
     scm_update_on_launch: "True"
-    wait: true
 
-controller_inventories:
-  - name: _Deploy Demos Inventory
-    description: Deploy Demos AAP Inventory
-    organization: Default
-
-controller_hosts:
-  - name: localhost
-    inventory: _Deploy Demos Inventory
-    organization: Default
-    variables:
-      ansible_connection: ssh
-
-controller_credentials:
-  - name: _Deploy Demos Credential
-    description: _Deploy Demos AAP Credential
-    organization: Default
-    credential_type: Red Hat Ansible Automation Platform
-    inputs:
-      username: person
-      password: password
 
 controller_templates:
-  - name: _Deploy Demos Template
-    description: Deploy Demos AAP Template
-    organization: Default
-    project: _Deploy Demos Project
-    inventory: _Deploy Demos Inventory
-    playbook: deploy_demos.yml
-    job_type: run
+  - name: "AWS Fortinet: 0. Controller (N/A)"
+    description: ""
+    organization: "Default"
+    project: "AWS Fortinet"
+    inventory: "AWS"
+    playbook: "controller.yml"
+    verbosity: 0
+    job_type: "run"
     credentials:
-      - _Deploy Demos Credential
-    execution_environment: Default execution environment
-    survey_enabled: true
-    survey_spec:
-      description: Deploy Demos AAP Job Template
-      name: _Deploy Demos Survey
-      spec:
-      - choices:
-        - demo1
-        - demo2
-        default: demo1
-        new_question: true
-        question_description: Select the Demos to Deploy
-        question_name: Demos to Deploy
-        required: true
-        type: multiselect
-        variable: demo_name
+      - "Vault quay.io"
+    execution_environment: "CUSTOM: Collections Supported Fortinet (AAP2.3)"
+    survey_enabled: false
+  - name: "AWS Fortinet: 1.a VMWare Deploy (N/A)"
+    description: ""
+    organization: "Default"
+    project: "AWS Fortinet"
+    inventory: "AWS"
+    playbook: "vmware.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "EVE-NG Fortinet"
+    execution_environment: "CUSTOM: Collections Supported Fortinet (AAP2.3)"
+    survey_enabled: false
+  - name: "AWS Fortinet: 1.b AWS Deploy"
+    description: ""
+    organization: "Default"
+    project: "AWS Fortinet"
+    inventory: "AWS"
+    playbook: "aws.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS"
+    execution_environment: "CUSTOM AH: Collections Supported (AAP2.3)"
+    survey_enabled: false
+  - name: "AWS Fortinet: 2. Fortigate"
+    description: ""
+    organization: "Default"
+    project: "AWS Fortinet"
+    inventory: "AWS"
+    playbook: "fortigate.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Fortinet"
+    execution_environment: "CUSTOM AH: Collections Supported Fortinet (AAP2.3)"
+    survey_enabled: false
+  - name: "AWS Fortinet: 3. FortiAnalyzer"
+    description: ""
+    organization: "Default"
+    project: "AWS Fortinet"
+    inventory: "AWS"
+    playbook: "fortianalyzer.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Fortinet"
+    execution_environment: "CUSTOM AH: Collections Supported Fortinet (AAP2.3)"
+    survey_enabled: false
+  - name: "AWS Fortinet: 4. FortiManager"
+    description: ""
+    organization: "Default"
+    project: "AWS Fortinet"
+    inventory: "AWS"
+    playbook: "fortimanager.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Fortinet"
+    execution_environment: "CUSTOM AH: Collections Supported Fortinet (AAP2.3)"
+    survey_enabled: false
+  - name: "AWS Fortinet: 5. Fortigate Create Rules"
+    description: ""
+    organization: "Default"
+    project: "AWS Fortinet"
+    inventory: "AWS"
+    playbook: "fortigate_create_rules.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Fortinet"
+    execution_environment: "CUSTOM AH: Collections Supported Fortinet (AAP2.3)"
+    survey_enabled: false
+  - name: "AWS Fortinet: 5. Fortigate Create Rules Reorder"
+    description: ""
+    organization: "Default"
+    project: "AWS Fortinet"
+    inventory: "AWS"
+    playbook: "fortigate_create_rules_reorder.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Fortinet"
+    execution_environment: "CUSTOM AH: Collections Supported Fortinet (AAP2.3)"
+    survey_enabled: false
+  - name: "AWS Fortinet: 6.b AWS Undeploy"
+    description: ""
+    organization: "Default"
+    project: "AWS Fortinet"
+    inventory: "AWS"
+    playbook: "aws-undeploy.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS"
+    execution_environment: "CUSTOM AH: Collections Supported (AAP2.3)"
+    survey_enabled: false
+  - name: "AWS Fortinet: 6.a VMWare Undeploy (N/A)"
+    description: ""
+    organization: "Default"
+    project: "AWS Fortinet"
+    inventory: "AWS"
+    playbook: "vmware-undeploy.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "EVE-NG Fortinet"
+    execution_environment: "CUSTOM: Collections Supported Fortinet (AAP2.3)"
+    survey_enabled: false
