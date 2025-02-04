@@ -96,7 +96,7 @@
 
     - name: ls controller
       ansible.builtin.command:
-        cmd: "ls -la /tmp/filetree_output/"
+        cmd: "ls -la {{ output_path }}/"
 
     - name: ls localhost
       ansible.builtin.command:
@@ -114,7 +114,7 @@
       ansible.builtin.find:
         paths: "{{ output_path }}/"
         file_type: file
-        patterns: '*.yml'
+        patterns: '*.yaml'
       register: output_files
 
     - name: Fetch files to git repository folder
