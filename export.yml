@@ -121,7 +121,7 @@
       ansible.builtin.fetch:
         src: "{{ item.path }}"
         dest: "{{ repository['path'] }}/data/"
-      loop: "{{ output_files }}"
+      loop: "{{ output_files.files }}"
 
     - name: Publish the changes
       ansible.scm.git_publish:
