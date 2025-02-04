@@ -117,7 +117,7 @@
         patterns: '*.yml'
       register: output_files
 
-    - name: Fetch files to git repository
+    - name: Fetch files to git repository folder
       ansible.builtin.fetch:
         src: "{{ item.path }}"
         dest: "{{ repository['path'] }}/data/"
