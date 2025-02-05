@@ -17,8 +17,8 @@ controller_credentials:
     credential_type: "Amazon Web Services"
     organization: "Default"
     inputs:
-      password: 'pass'
-      username: 'user'
+      password: "{{ aws_access_key }}"
+      username: "{{ aws_secret_key }}"
 
 
 # Inventories
@@ -37,6 +37,14 @@ controller_inventory_sources:
     update_on_launch: "True"
     overwrite: "True"
     credential: "AWS"
+
+
+# Execution Environments
+controller_execution_environments:
+  - name: "CUSTOM AH: Collections Supported Fortinet (AAP2.3)"
+    description: ""
+    image: "172.16.1.47/ee-supported-rh-cparada-fortinet-23:latest"
+    pull: "always"
 
 
 # Job Templates

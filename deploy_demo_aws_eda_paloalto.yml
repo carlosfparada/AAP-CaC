@@ -17,7 +17,7 @@
       groups: "aap"
     when: node_name is defined
 
-- name: Create baseline AAP configs
+- name: Deploy Demo AWS Fortinet
   hosts: localhost
   connection: local
   gather_facts: no
@@ -29,11 +29,12 @@
     aap_configuration_enforce_defaults: true
     aap_validate_certs: false
   pre_tasks:
-    - name: Include CaC from controller.yml file
-      ansible.builtin.include_vars: '../configs/controller.yml'
+    - name: Include CaC vars
+      ansible.builtin.include_vars: '../configs/demo_aws_fortinet.yml'
   roles:
     - {role: infra.aap_configuration.controller_projects, when: controller_projects is defined}
     - {role: infra.aap_configuration.controller_credentials, when: controller_credentials is defined}
     - {role: infra.aap_configuration.controller_inventories, when: controller_inventories is defined}
+    - {role: infra.aap_configuration.controller_inventory_sources, when: controller_inventories is defined}
     - {role: infra.aap_configuration.controller_hosts, when: controller_hosts is defined}
     - {role: infra.aap_configuration.controller_job_templates, when: controller_templates is defined}
