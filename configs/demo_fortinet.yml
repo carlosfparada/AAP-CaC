@@ -10,10 +10,33 @@ controller_projects:
     scm_update_on_launch: "True"
 
 
-# Inventories
-
-
 # Credentials
+controller_credentials:
+  - name: "AWS"
+    description: ""
+    credential_type: "Amazon Web Services"
+    organization: "Default"
+    inputs:
+      password: ''
+      username: ''
+
+
+# Inventories
+controller_inventories:
+  - name: "AWS"
+    description: ""
+    organization: "Default"
+
+controller_inventory_sources:
+  - name: "AWS Source"
+    description: ""
+    organization: "Default"
+    source: "ec2"
+    source_path: ""
+    inventory: "AWS"
+    update_on_launch: "True"
+    overwrite: "True"
+    credential: "AWS"
 
 
 # Job Templates
