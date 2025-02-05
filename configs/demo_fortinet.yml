@@ -17,8 +17,8 @@ controller_credentials:
     credential_type: "Amazon Web Services"
     organization: "Default"
     inputs:
-      password: ''
-      username: ''
+      password: 'pass'
+      username: 'user'
 
 
 # Inventories
