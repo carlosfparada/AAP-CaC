@@ -22,15 +22,15 @@ controller_credentials:
       password: "{{ aws_access_key }}"
       username: "{{ aws_secret_key }}"
 
-  - name: "QUAY.IO Credentials"
-    description: ""
-    credential_type: "Container Registry"
-    organization: "Default"
-    inputs:
-      host: quay.io
-      password: "{{ quay_password }}"
-      username: "{{ quay_username }}"
-      verify_ssl: true
+  # - name: "QUAY.IO Credentials"
+  #   description: ""
+  #   credential_type: "Container Registry"
+  #   organization: "Default"
+  #   inputs:
+  #     host: quay.io
+  #     password: "{{ quay_password }}"
+  #     username: "{{ quay_username }}"
+  #     verify_ssl: true
 
 
 # Inventories
