@@ -1,3 +1,5 @@
+---
+
 collections:
   - amazon.aws
   - ansible.hub
