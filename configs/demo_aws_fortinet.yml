@@ -6,7 +6,7 @@ controller_projects:
     description: ""
     organization: "Default"
     scm_type: "git"
-    scm_url: "https://github.com/carlosfparada/AWS-Fortinet.git"
+    scm_url: "{{ project_git_url }}"
     scm_update_on_launch: "True"
 
 
@@ -19,6 +19,16 @@ controller_credentials:
     inputs:
       password: "{{ aws_access_key }}"
       username: "{{ aws_secret_key }}"
+
+  - name: "QUAY.IO Credentials"
+    description: ""
+    credential_type: "Container Registry"
+    organization: "Default"
+    inputs:
+      host: quay.io
+      password: "{{ quay_password }}"
+      username: "{{ quay_username }}"
+      verify_ssl: true
 
 
 # Inventories
@@ -41,10 +51,12 @@ controller_inventory_sources:
 
 # Execution Environments
 controller_execution_environments:
-  - name: "CUSTOM AH: Collections Supported Fortinet (AAP2.3)"
+  - name: "EE Supported Fortinet"
     description: ""
-    image: "172.16.1.47/ee-supported-rh-cparada-fortinet-23:latest"
+    image: "{{ registry_fortinet_url }}"
     pull: "always"
+    credential: "QUAY.IO Credentials"
+
 
 
 # Job Templates
