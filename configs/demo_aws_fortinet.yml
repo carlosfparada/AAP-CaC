@@ -53,7 +53,7 @@ controller_inventory_sources:
 controller_execution_environments:
   - name: "EE Supported Fortinet"
     description: ""
-    image: "{{ registry_fortinet_url }}"
+    image: "{{ registry_url }}"
     pull: "always"
     credential: "QUAY.IO Credentials"
 
