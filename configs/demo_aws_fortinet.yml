@@ -6,7 +6,7 @@ controller_projects:
     description: ""
     organization: "Default"
     scm_type: "git"
-    scm_url: "{{ project_git_url }}"
+    scm_url: "{{ project_url }}"
     scm_update_on_launch: "True"
 
 
@@ -71,7 +71,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "Vault quay.io"
-    execution_environment: "CUSTOM: Collections Supported Fortinet (AAP2.3)"
+    execution_environment: "EE Supported Fortinet"
     survey_enabled: false
   - name: "AWS Fortinet: 1.a VMWare Deploy (N/A)"
     description: ""
@@ -83,7 +83,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "EVE-NG Fortinet"
-    execution_environment: "CUSTOM: Collections Supported Fortinet (AAP2.3)"
+    execution_environment: "EE Supported Fortinet"
     survey_enabled: false
   - name: "AWS Fortinet: 1.b AWS Deploy"
     description: ""
@@ -95,7 +95,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS"
-    execution_environment: "CUSTOM AH: Collections Supported (AAP2.3)"
+    execution_environment: "EE Supported Fortinet"
     survey_enabled: false
   - name: "AWS Fortinet: 2. Fortigate"
     description: ""
@@ -107,7 +107,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Fortinet"
-    execution_environment: "CUSTOM AH: Collections Supported Fortinet (AAP2.3)"
+    execution_environment: "EE Supported Fortinet"
     survey_enabled: false
   - name: "AWS Fortinet: 3. FortiAnalyzer"
     description: ""
@@ -119,7 +119,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Fortinet"
-    execution_environment: "CUSTOM AH: Collections Supported Fortinet (AAP2.3)"
+    execution_environment: "EE Supported Fortinet"
     survey_enabled: false
   - name: "AWS Fortinet: 4. FortiManager"
     description: ""
@@ -131,7 +131,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Fortinet"
-    execution_environment: "CUSTOM AH: Collections Supported Fortinet (AAP2.3)"
+    execution_environment: "EE Supported Fortinet"
     survey_enabled: false
   - name: "AWS Fortinet: 5. Fortigate Create Rules"
     description: ""
@@ -143,7 +143,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Fortinet"
-    execution_environment: "CUSTOM AH: Collections Supported Fortinet (AAP2.3)"
+    execution_environment: "EE Supported Fortinet"
     survey_enabled: false
   - name: "AWS Fortinet: 5. Fortigate Create Rules Reorder"
     description: ""
@@ -155,7 +155,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Fortinet"
-    execution_environment: "CUSTOM AH: Collections Supported Fortinet (AAP2.3)"
+    execution_environment: "EE Supported Fortinet"
     survey_enabled: false
   - name: "AWS Fortinet: 6.b AWS Undeploy"
     description: ""
@@ -167,7 +167,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS"
-    execution_environment: "CUSTOM AH: Collections Supported (AAP2.3)"
+    execution_environment: "EE Supported Fortinet"
     survey_enabled: false
   - name: "AWS Fortinet: 6.a VMWare Undeploy (N/A)"
     description: ""
@@ -179,5 +179,5 @@ controller_templates:
     job_type: "run"
     credentials:
       - "EVE-NG Fortinet"
-    execution_environment: "CUSTOM: Collections Supported Fortinet (AAP2.3)"
+    execution_environment: "EE Supported Fortinet"
     survey_enabled: false
