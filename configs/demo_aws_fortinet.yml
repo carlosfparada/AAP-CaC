@@ -8,6 +8,7 @@ controller_projects:
     scm_type: "git"
     scm_url: "{{ demos.aws_fortinet.project_url }}"
     scm_update_on_launch: "True"
+    execution_environment: "Default execution environment"
 
 
 # Credentials
