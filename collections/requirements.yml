@@ -1,0 +1,10 @@
+collections:
+  - amazon.aws
+  - ansible.hub
+  - ansible.controller
+  - ansible.eda
+  - ansible.platform
+  - infra.ah_configuration
+  - infra.controller_configuration
+  - infra.eda_configuration
+  - infra.aap_configuration
