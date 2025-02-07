@@ -2,13 +2,6 @@
 
 # Credentials
 controller_credentials:
-  # - name: "AWS Credential"
-  #   description: "AWS Credential"
-  #   credential_type: "Amazon Web Services"
-  #   organization: "Default"
-  #   inputs:
-  #     password: "{{ aws_access_key }}"
-  #     username: "{{ aws_secret_key }}"
   - name: "AWS Fortinet Credential"
     description: "AWS Fortinet Credential"
     credential_type: "Machine"
@@ -28,33 +21,6 @@ controller_projects:
     scm_update_on_launch: "True"
     execution_environment: "{{ ee_name }}"
     wait: true
-
-
-# Inventories
-# controller_inventories:
-#   - name: "AWS Inventory"
-#     description: "AWS Inventory"
-#     organization: "Default"
-
-# controller_inventory_sources:
-#   - name: "AWS Source Inventory"
-#     description: "AWS Source Inventory"
-#     organization: "Default"
-#     source: "ec2"
-#     execution_environment: "{{ ee_name }}"
-#     inventory: "AWS Inventory"
-#     update_on_launch: "True"
-#     overwrite: "True"
-#     credential: "AWS Credential"
-
-
-# # Execution Environments
-# controller_execution_environments:
-#   - name: "{{ ee_name }}"
-#     description: ""
-#     image: "{{ registry_url }}"
-#     pull: "always"
-#     credential: "QUAY.IO Credentials"
 
 
 # Job Templates
