@@ -117,8 +117,8 @@ controller_templates:
 
 # Workflow Job Templates
 controller_workflows:
-  - name: "Fortinet: workflow fortigate"
-    description: ""
+  - name: "AWS Fortinet: workflow fortigate"
+    description: "AWS Fortinet: workflow fortigate"
     organization: "Default"
     state: "present"
     simplified_workflow_nodes:
