@@ -116,3 +116,85 @@ controller_templates:
     survey_enabled: false
 
 # Workflow Job Templates
+controller_workflows:
+  - name: "Fortinet: workflow fortigate"
+    description: ""
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "FortiGate Configs"
+        workflow_job_template: "Fortinet: workflow fortigate"
+        unified_job_template: "Fortinet: 2. fortigate"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - 8d1cb1a6-ff20-4eb4-8d4f-8d037d554c7a
+      - identifier: "AWS Deployment"
+        workflow_job_template: "Fortinet: workflow fortigate"
+        unified_job_template: "Fortinet: 1.b aws"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - FortiGate Configs
+      - identifier: "8d1cb1a6-ff20-4eb4-8d4f-8d037d554c7a"
+        workflow_job_template: "Fortinet: workflow fortigate"
+        unified_job_template: "Fortinet: 6.b aws undeploy"
+        organization: "Default"
+        all_parents_must_converge: "False"
+    ask_variables_on_launch: "False"
+    allow_simultaneous: "False"
+    scm_branch: ""
+    webhook_service: ""
+    survey_enabled: False
+  # - name: "Fortinet: workflow fortigate/analyzer/manager"
+  #   description: ""
+  #   organization: "Default"
+  #   state: "present"
+  #   simplified_workflow_nodes:
+  #     - identifier: "FortiGate Configs"
+  #       workflow_job_template: "Fortinet: workflow fortigate/analyzer/manager"
+  #       unified_job_template: "Fortinet: 2. fortigate"
+  #       organization: "Default"
+  #       all_parents_must_converge: "False"
+  #       always_nodes:
+  #         - FortiAnalyzer Configs
+  #     - identifier: "FortiManager Configs"
+  #       workflow_job_template: "Fortinet: workflow fortigate/analyzer/manager"
+  #       unified_job_template: "Fortinet: 4. fortimanager"
+  #       organization: "Default"
+  #       all_parents_must_converge: "False"
+  #       always_nodes:
+  #         - 67a7b785-7d0f-4fde-9b07-b4695bb7b0f5
+  #     - identifier: "FortiAnalyzer Configs"
+  #       workflow_job_template: "Fortinet: workflow fortigate/analyzer/manager"
+  #       unified_job_template: "Fortinet: 3. fortianalyzer"
+  #       organization: "Default"
+  #       all_parents_must_converge: "False"
+  #       always_nodes:
+  #         - FortiManager Configs
+  #     - identifier: "AWS Deployment"
+  #       workflow_job_template: "Fortinet: workflow fortigate/analyzer/manager"
+  #       unified_job_template: "Fortinet: 1.b aws"
+  #       organization: "Default"
+  #       all_parents_must_converge: "False"
+  #       always_nodes:
+  #         - FortiGate Configs
+  #     - identifier: "67a7b785-7d0f-4fde-9b07-b4695bb7b0f5"
+  #       workflow_job_template: "Fortinet: workflow fortigate/analyzer/manager"
+  #       unified_job_template: "Fortinet: 6.b aws undeploy"
+  #       organization: "Default"
+  #       all_parents_must_converge: "False"
+  #       always_nodes:
+  #         - c13d378f-110d-4b0c-b662-5c15f5be3b46
+  #     - identifier: "c13d378f-110d-4b0c-b662-5c15f5be3b46"
+  #       workflow_job_template: "Fortinet: workflow fortigate/analyzer/manager"
+  #       unified_job_template: "Fortinet: 6.b aws undeploy"
+  #       organization: "Default"
+  #       all_parents_must_converge: "False"
+  #   ask_variables_on_launch: "False"
+  #   allow_simultaneous: "False"
+  #   scm_branch: ""
+  #   webhook_service: ""
+  #   notification_templates_error:
+  #     - "E-mail notification"
+  #   survey_enabled: False
