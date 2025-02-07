@@ -36,16 +36,16 @@ controller_projects:
 #     description: "AWS Inventory"
 #     organization: "Default"
 
-controller_inventory_sources:
-  - name: "AWS Source Inventory"
-    description: "AWS Source Inventory"
-    organization: "Default"
-    source: "ec2"
-    source_path: ""
-    inventory: "AWS Inventory"
-    update_on_launch: "True"
-    overwrite: "True"
-    credential: "AWS Credential"
+# controller_inventory_sources:
+#   - name: "AWS Source Inventory"
+#     description: "AWS Source Inventory"
+#     organization: "Default"
+#     source: "ec2"
+#     source_path: ""
+#     inventory: "AWS Inventory"
+#     update_on_launch: "True"
+#     overwrite: "True"
+#     credential: "AWS Credential"
 
 
 # # Execution Environments
@@ -123,7 +123,7 @@ controller_templates:
       - "AWS Fortinet Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS Fortinet: 5. Fortigate Create Rules Reorder"
+  - name: "AWS Fortinet: 5.a Fortigate Create Rules Reorder"
     description: ""
     organization: "Default"
     project: "AWS Fortinet Project"
@@ -136,7 +136,7 @@ controller_templates:
       - "AWS Fortinet Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS Fortinet: 6 AWS Undeploy"
+  - name: "AWS Fortinet: 6. AWS Undeploy"
     description: ""
     organization: "Default"
     project: "AWS Fortinet Project"
