@@ -53,7 +53,7 @@ controller_inventory_sources:
 
 # Execution Environments
 controller_execution_environments:
-  - name: "EE Supported Fortinet"
+  - name: "EE 2.5 RHEL9 Custom"
     description: ""
     image: "{{ registry_url }}"
     pull: "always"
@@ -73,7 +73,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "Vault quay.io"
-    execution_environment: "EE Supported Fortinet"
+    execution_environment: "EE 2.5 RHEL9 Custom"
     survey_enabled: false
   - name: "AWS Fortinet: 1.a VMWare Deploy (N/A)"
     description: ""
@@ -85,7 +85,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "EVE-NG Fortinet"
-    execution_environment: "EE Supported Fortinet"
+    execution_environment: "EE 2.5 RHEL9 Custom"
     survey_enabled: false
   - name: "AWS Fortinet: 1.b AWS Deploy"
     description: ""
@@ -97,7 +97,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS"
-    execution_environment: "EE Supported Fortinet"
+    execution_environment: "EE 2.5 RHEL9 Custom"
     survey_enabled: false
   - name: "AWS Fortinet: 2. Fortigate"
     description: ""
@@ -109,7 +109,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Fortinet"
-    execution_environment: "EE Supported Fortinet"
+    execution_environment: "EE 2.5 RHEL9 Custom"
     survey_enabled: false
   - name: "AWS Fortinet: 3. FortiAnalyzer"
     description: ""
@@ -121,7 +121,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Fortinet"
-    execution_environment: "EE Supported Fortinet"
+    execution_environment: "EE 2.5 RHEL9 Custom"
     survey_enabled: false
   - name: "AWS Fortinet: 4. FortiManager"
     description: ""
@@ -133,7 +133,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Fortinet"
-    execution_environment: "EE Supported Fortinet"
+    execution_environment: "EE 2.5 RHEL9 Custom"
     survey_enabled: false
   - name: "AWS Fortinet: 5. Fortigate Create Rules"
     description: ""
@@ -145,7 +145,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Fortinet"
-    execution_environment: "EE Supported Fortinet"
+    execution_environment: "EE 2.5 RHEL9 Custom"
     survey_enabled: false
   - name: "AWS Fortinet: 5. Fortigate Create Rules Reorder"
     description: ""
@@ -157,7 +157,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Fortinet"
-    execution_environment: "EE Supported Fortinet"
+    execution_environment: "EE 2.5 RHEL9 Custom"
     survey_enabled: false
   - name: "AWS Fortinet: 6.b AWS Undeploy"
     description: ""
@@ -169,7 +169,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS"
-    execution_environment: "EE Supported Fortinet"
+    execution_environment: "EE 2.5 RHEL9 Custom"
     survey_enabled: false
   - name: "AWS Fortinet: 6.a VMWare Undeploy (N/A)"
     description: ""
@@ -181,5 +181,5 @@ controller_templates:
     job_type: "run"
     credentials:
       - "EVE-NG Fortinet"
-    execution_environment: "EE Supported Fortinet"
+    execution_environment: "EE 2.5 RHEL9 Custom"
     survey_enabled: false
