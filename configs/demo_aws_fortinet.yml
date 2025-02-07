@@ -148,56 +148,48 @@ controller_workflows:
         unified_job_template: "AWS Fortinet: 6. AWS Undeploy"
         organization: "Default"
         all_parents_must_converge: "False"
-        
-  # - name: "Fortinet: workflow fortigate/analyzer/manager"
-  #   description: ""
-  #   organization: "Default"
-  #   state: "present"
-  #   simplified_workflow_nodes:
-  #     - identifier: "FortiGate Configs"
-  #       workflow_job_template: "Fortinet: workflow fortigate/analyzer/manager"
-  #       unified_job_template: "Fortinet: 2. fortigate"
-  #       organization: "Default"
-  #       all_parents_must_converge: "False"
-  #       always_nodes:
-  #         - FortiAnalyzer Configs
-  #     - identifier: "FortiManager Configs"
-  #       workflow_job_template: "Fortinet: workflow fortigate/analyzer/manager"
-  #       unified_job_template: "Fortinet: 4. fortimanager"
-  #       organization: "Default"
-  #       all_parents_must_converge: "False"
-  #       always_nodes:
-  #         - 67a7b785-7d0f-4fde-9b07-b4695bb7b0f5
-  #     - identifier: "FortiAnalyzer Configs"
-  #       workflow_job_template: "Fortinet: workflow fortigate/analyzer/manager"
-  #       unified_job_template: "Fortinet: 3. fortianalyzer"
-  #       organization: "Default"
-  #       all_parents_must_converge: "False"
-  #       always_nodes:
-  #         - FortiManager Configs
-  #     - identifier: "AWS Deployment"
-  #       workflow_job_template: "Fortinet: workflow fortigate/analyzer/manager"
-  #       unified_job_template: "Fortinet: 1.b aws"
-  #       organization: "Default"
-  #       all_parents_must_converge: "False"
-  #       always_nodes:
-  #         - FortiGate Configs
-  #     - identifier: "67a7b785-7d0f-4fde-9b07-b4695bb7b0f5"
-  #       workflow_job_template: "Fortinet: workflow fortigate/analyzer/manager"
-  #       unified_job_template: "Fortinet: 6.b aws undeploy"
-  #       organization: "Default"
-  #       all_parents_must_converge: "False"
-  #       always_nodes:
-  #         - c13d378f-110d-4b0c-b662-5c15f5be3b46
-  #     - identifier: "c13d378f-110d-4b0c-b662-5c15f5be3b46"
-  #       workflow_job_template: "Fortinet: workflow fortigate/analyzer/manager"
-  #       unified_job_template: "Fortinet: 6.b aws undeploy"
-  #       organization: "Default"
-  #       all_parents_must_converge: "False"
-  #   ask_variables_on_launch: "False"
-  #   allow_simultaneous: "False"
-  #   scm_branch: ""
-  #   webhook_service: ""
-  #   notification_templates_error:
-  #     - "E-mail notification"
-  #   survey_enabled: False
+  - name: "AWS Fortinet: Workflow FortiGate/FortiAnalyzer/FortiManager"
+    description: "AWS Fortinet: Workflow FortiGate/FortiAnalyzer/FortiManager"
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "AWS Deploy"
+        workflow_job_template: "AWS Fortinet: Workflow FortiGate/FortiAnalyzer/FortiManager"
+        unified_job_template: "AWS Fortinet: 1. AWS Deploy"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - FortiGate Configs
+      - identifier: "FortiGate Configs"
+        workflow_job_template: "AWS Fortinet: Workflow FortiGate/FortiAnalyzer/FortiManager"
+        unified_job_template: "AWS Fortinet: 2. FortiGate"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - FortiAnalizer Configs
+      - identifier: "FortiAnalyzer Configs"
+        workflow_job_template: "AWS Fortinet: Workflow FortiGate/FortiAnalyzer/FortiManager"
+        unified_job_template: "AWS Fortinet: 3. FortiAnalyzer"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - FortiManager Configs
+      - identifier: "FortiManager Configs"
+        workflow_job_template: "AWS Fortinet: Workflow FortiGate/FortiAnalyzer/FortiManager"
+        unified_job_template: "AWS Fortinet: 4. FortiManager"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - FortiGate Create Rules
+      - identifier: "FortiGate Create Rules"
+        workflow_job_template: "AWS Fortinet: Workflow FortiGate/FortiAnalyzer/FortiManager"
+        unified_job_template: "AWS Fortinet: 5. FortiGate Create Rules"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - AWS Undeploy        
+      - identifier: "AWS Undeploy"
+        workflow_job_template: "AWS Fortinet: Workflow FortiGate/FortiAnalyzer/FortiManager"
+        unified_job_template: "AWS Fortinet: 6. AWS Undeploy"
+        organization: "Default"
+        all_parents_must_converge: "False"
