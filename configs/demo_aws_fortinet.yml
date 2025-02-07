@@ -2,15 +2,15 @@
 
 # Credentials
 controller_credentials:
-  - name: "AWS"
-    description: "AWS"
-    credential_type: "Amazon Web Services"
-    organization: "Default"
-    inputs:
-      password: "{{ aws_access_key }}"
-      username: "{{ aws_secret_key }}"
-  - name: "AWS Fortinet"
-    description: ""
+  # - name: "AWS Credential"
+  #   description: "AWS Credential"
+  #   credential_type: "Amazon Web Services"
+  #   organization: "Default"
+  #   inputs:
+  #     password: "{{ aws_access_key }}"
+  #     username: "{{ aws_secret_key }}"
+  - name: "AWS Fortinet Credential"
+    description: "AWS Fortinet Credential"
     credential_type: "Machine"
     organization: "Default"
     inputs:
@@ -20,8 +20,8 @@ controller_credentials:
 
 # Projects
 controller_projects:
-  - name: "AWS Fortinet"
-    description: "AWS Fortinet"
+  - name: "AWS Fortinet Project"
+    description: "AWS Fortinet Project"
     organization: "Default"
     scm_type: "git"
     scm_url: "{{ project_url }}"
@@ -31,21 +31,21 @@ controller_projects:
 
 
 # Inventories
-controller_inventories:
-  - name: "AWS"
-    description: "AWS"
-    organization: "Default"
+# controller_inventories:
+#   - name: "AWS Inventory"
+#     description: "AWS Inventory"
+#     organization: "Default"
 
 controller_inventory_sources:
-  - name: "AWS Source"
-    description: "AWS Source"
+  - name: "AWS Source Inventory"
+    description: "AWS Source Inventory"
     organization: "Default"
     source: "ec2"
     source_path: ""
-    inventory: "AWS"
+    inventory: "AWS Inventory"
     update_on_launch: "True"
     overwrite: "True"
-    credential: "AWS"
+    credential: "AWS Credential"
 
 
 # # Execution Environments
@@ -62,90 +62,90 @@ controller_templates:
   - name: "AWS Fortinet: 1. AWS Deploy"
     description: ""
     organization: "Default"
-    project: "AWS Fortinet"
-    inventory: "AWS"
+    project: "AWS Fortinet Project"
+    inventory: "AWS Inventory"
     playbook: "aws.yml"
     verbosity: 0
     job_type: "run"
     credentials:
-      - "AWS"
+      - "AWS Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
   - name: "AWS Fortinet: 2. Fortigate"
     description: ""
     organization: "Default"
-    project: "AWS Fortinet"
-    inventory: "AWS"
+    project: "AWS Fortinet Project"
+    inventory: "AWS Inventory"
     playbook: "fortigate.yml"
     verbosity: 0
     job_type: "run"
     credentials:
-      - "AWS"
-      - "AWS Fortinet"
+      - "AWS Credential"
+      - "AWS Fortinet Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
   - name: "AWS Fortinet: 3. FortiAnalyzer"
     description: ""
     organization: "Default"
-    project: "AWS Fortinet"
-    inventory: "AWS"
+    project: "AWS Fortinet Project"
+    inventory: "AWS Inventory"
     playbook: "fortianalyzer.yml"
     verbosity: 0
     job_type: "run"
     credentials:
-      - "AWS"
-      - "AWS Fortinet"
+      - "AWS Credential"
+      - "AWS Fortinet Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
   - name: "AWS Fortinet: 4. FortiManager"
     description: ""
     organization: "Default"
-    project: "AWS Fortinet"
-    inventory: "AWS"
+    project: "AWS Fortinet Project"
+    inventory: "AWS Inventory"
     playbook: "fortimanager.yml"
     verbosity: 0
     job_type: "run"
     credentials:
-      - "AWS"
-      - "AWS Fortinet"
+      - "AWS Credential"
+      - "AWS Fortinet Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
   - name: "AWS Fortinet: 5. Fortigate Create Rules"
     description: ""
     organization: "Default"
-    project: "AWS Fortinet"
-    inventory: "AWS"
+    project: "AWS Fortinet Project"
+    inventory: "AWS Inventory"
     playbook: "fortigate_create_rules.yml"
     verbosity: 0
     job_type: "run"
     credentials:
-      - "AWS"
-      - "AWS Fortinet"
+      - "AWS Credential"
+      - "AWS Fortinet Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
   - name: "AWS Fortinet: 5. Fortigate Create Rules Reorder"
     description: ""
     organization: "Default"
-    project: "AWS Fortinet"
-    inventory: "AWS"
+    project: "AWS Fortinet Project"
+    inventory: "AWS Inventory"
     playbook: "fortigate_create_rules_reorder.yml"
     verbosity: 0
     job_type: "run"
     credentials:
-      - "AWS"
-      - "AWS Fortinet"
+      - "AWS Credential"
+      - "AWS Fortinet Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
   - name: "AWS Fortinet: 6 AWS Undeploy"
     description: ""
     organization: "Default"
-    project: "AWS Fortinet"
-    inventory: "AWS"
+    project: "AWS Fortinet Project"
+    inventory: "AWS Inventory"
     playbook: "aws-undeploy.yml"
     verbosity: 0
     job_type: "run"
     credentials:
-      - "AWS"
+      - "AWS Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
 
