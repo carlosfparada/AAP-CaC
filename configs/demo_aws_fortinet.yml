@@ -166,7 +166,7 @@ controller_workflows:
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
-          - FortiAnalizer Configs
+          - FortiAnalyzer Configs
       - identifier: "FortiAnalyzer Configs"
         workflow_job_template: "AWS Fortinet: Workflow FortiGate/FortiAnalyzer/FortiManager"
         unified_job_template: "AWS Fortinet: 3. FortiAnalyzer"
