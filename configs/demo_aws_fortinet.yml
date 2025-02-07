@@ -41,7 +41,7 @@ controller_projects:
 #     description: "AWS Source Inventory"
 #     organization: "Default"
 #     source: "ec2"
-#     source_path: ""
+#     execution_environment: "{{ ee_name }}"
 #     inventory: "AWS Inventory"
 #     update_on_launch: "True"
 #     overwrite: "True"
