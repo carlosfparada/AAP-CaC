@@ -117,28 +117,28 @@ controller_templates:
 
 # Workflow Job Templates
 controller_workflows:
-  - name: "AWS Fortinet: workflow fortigate"
-    description: "AWS Fortinet: workflow fortigate"
+  - name: "AWS Fortinet: Workflow FortiGate"
+    description: "AWS Fortinet: Workflow FortiGate"
     organization: "Default"
     state: "present"
     simplified_workflow_nodes:
       - identifier: "FortiGate Configs"
-        workflow_job_template: "Fortinet: workflow fortigate"
+        workflow_job_template: "AWS Fortinet: Workflow FortiGate"
         unified_job_template: "Fortinet: 2. fortigate"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
           - 8d1cb1a6-ff20-4eb4-8d4f-8d037d554c7a
       - identifier: "AWS Deployment"
-        workflow_job_template: "Fortinet: workflow fortigate"
-        unified_job_template: "Fortinet: 1.b aws"
+        workflow_job_template: "AWS Fortinet: Workflow FortiGate"
+        unified_job_template: "Fortinet: 1.b AWS Deploy"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
           - FortiGate Configs
       - identifier: "8d1cb1a6-ff20-4eb4-8d4f-8d037d554c7a"
-        workflow_job_template: "Fortinet: workflow fortigate"
-        unified_job_template: "Fortinet: 6.b aws undeploy"
+        workflow_job_template: "AWS Fortinet: Workflow FortiGate"
+        unified_job_template: "AWS Fortinet: 6. AWS Undeploy"
         organization: "Default"
         all_parents_must_converge: "False"
     ask_variables_on_launch: "False"
