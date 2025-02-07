@@ -26,7 +26,7 @@ controller_projects:
     scm_type: "git"
     scm_url: "{{ project_url }}"
     scm_update_on_launch: "True"
-    execution_environment: "{{ registry_url }}"
+    execution_environment: "{{ ee_name }}"
     wait: true
 
 
