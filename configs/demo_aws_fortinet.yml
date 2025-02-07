@@ -148,3 +148,5 @@ controller_templates:
       - "AWS"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
+
+# Workflow Job Templates
