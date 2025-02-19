@@ -189,7 +189,7 @@ controller_workflows:
         unified_job_template: "AWS Fortinet: 5. FortiGate Create Rules"
         organization: "Default"
         all_parents_must_converge: "False"
-        always_nodes:
+      #   always_nodes:
       #     - AWS Undeploy
       # - identifier: "AWS Undeploy"
       #   workflow_job_template: "AWS Fortinet: Workflow FortiGate/FortiAnalyzer/FortiManager"
