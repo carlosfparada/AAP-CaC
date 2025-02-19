@@ -160,6 +160,7 @@ controller_workflows:
         unified_job_template: "AWS Fortinet: 1. AWS Deploy"
         organization: "Default"
         all_parents_must_converge: "False"
+        skip_tags: "never"
         always_nodes:
           - FortiGate Configs
       - identifier: "FortiGate Configs"
