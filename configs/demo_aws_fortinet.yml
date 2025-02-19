@@ -33,6 +33,7 @@ controller_templates:
     playbook: "aws.yml"
     verbosity: 0
     job_type: "run"
+    ask_skip_tags_on_launch: yes
     credentials:
       - "AWS Credential"
     execution_environment: "{{ ee_name }}"
