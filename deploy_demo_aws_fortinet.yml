@@ -9,7 +9,7 @@
     set_fact:
       node_name: "{{ item }}"
     loop: "{{ groups['all'] }}"
-    when: hostvars[item].tags is defined and hostvars[item].tags.Name | regex_search("^aap-(.*)$")
+    when: hostvars[item].tags is defined and hostvars[item].tags.Name | regex_search("^aap-1$")
 
   - name: Add aap node to the aap group
     add_host:
