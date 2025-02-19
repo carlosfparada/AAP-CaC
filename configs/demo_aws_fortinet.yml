@@ -89,7 +89,7 @@ controller_templates:
       - "AWS Fortinet Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS Fortinet: 5.1 FortiGate Create Rules Reorder"
+  - name: "AWS Fortinet: 5 FortiGate Create Rules Reorder"
     description: ""
     organization: "Default"
     project: "AWS Fortinet Project"
