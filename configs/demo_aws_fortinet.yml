@@ -33,7 +33,6 @@ controller_templates:
     playbook: "aws.yml"
     verbosity: 0
     job_type: "run"
-    skip_tags: full
     credentials:
       - "AWS Credential"
     execution_environment: "{{ ee_name }}"
@@ -128,6 +127,7 @@ controller_workflows:
         unified_job_template: "AWS Fortinet: 1. AWS Deploy"
         organization: "Default"
         all_parents_must_converge: "False"
+        skip_tags: full
         always_nodes:
           - FortiGate Configs
       - identifier: "FortiGate Configs"
