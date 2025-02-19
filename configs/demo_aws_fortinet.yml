@@ -7,7 +7,7 @@ controller_credentials:
     credential_type: "Machine"
     organization: "Default"
     inputs:
-      password: "{{ admin_password }}"
+      password: "{{ fortinet_admin_password }}"
       username: admin
 
 
