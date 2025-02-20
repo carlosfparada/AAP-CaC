@@ -51,8 +51,8 @@ controller_templates:
       - "AWS Fortinet Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-    extra_vars:
-      fortinet_admin_password: "{{ fortinet_admin_password }}"
+    # extra_vars:
+    #   fortinet_admin_password: "{{ fortinet_admin_password }}"
   - name: "AWS Fortinet: 3. FortiAnalyzer"
     description: ""
     organization: "Default"
@@ -66,8 +66,8 @@ controller_templates:
       - "AWS Fortinet Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-    extra_vars:
-      fortinet_admin_password: "{{ fortinet_admin_password }}"
+    # extra_vars:
+    #   fortinet_admin_password: "{{ fortinet_admin_password }}"
   - name: "AWS Fortinet: 4. FortiManager"
     description: ""
     organization: "Default"
@@ -81,8 +81,8 @@ controller_templates:
       - "AWS Fortinet Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-    extra_vars:
-      fortinet_admin_password: "{{ fortinet_admin_password }}"
+    # extra_vars:
+    #   fortinet_admin_password: "{{ fortinet_admin_password }}"
   - name: "AWS Fortinet: 5. FortiGate Create Rules"
     description: ""
     organization: "Default"
@@ -96,8 +96,8 @@ controller_templates:
       - "AWS Fortinet Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-    extra_vars:
-      fortinet_admin_password: "{{ fortinet_admin_password }}"
+    # extra_vars:
+    #   fortinet_admin_password: "{{ fortinet_admin_password }}"
   - name: "AWS Fortinet: 5. FortiGate Create Rules Reorder"
     description: ""
     organization: "Default"
@@ -111,8 +111,8 @@ controller_templates:
       - "AWS Fortinet Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-    extra_vars:
-      fortinet_admin_password: "{{ fortinet_admin_password }}"
+    # extra_vars:
+    #   fortinet_admin_password: "{{ fortinet_admin_password }}"
   - name: "AWS Fortinet: 6. AWS Undeploy"
     description: ""
     organization: "Default"
