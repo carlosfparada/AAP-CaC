@@ -111,6 +111,7 @@ controller_templates:
     playbook: "aws-undeploy.yml"
     verbosity: 0
     job_type: "run"
+    ask_skip_tags_on_launch: yes
     credentials:
       - "AWS Credential"
     execution_environment: "{{ ee_name }}"
@@ -150,6 +151,7 @@ controller_workflows:
         unified_job_template: "AWS Fortinet: 6. AWS Undeploy"
         organization: "Default"
         all_parents_must_converge: "False"
+        skip_tags: "full"
   - name: "AWS Fortinet: Workflow FortiGate/FortiAnalyzer/FortiManager"
     description: "AWS Fortinet: Workflow FortiGate/FortiAnalyzer/FortiManager"
     organization: "Default"
@@ -196,3 +198,4 @@ controller_workflows:
       #   unified_job_template: "AWS Fortinet: 6. AWS Undeploy"
       #   organization: "Default"
       #   all_parents_must_converge: "False"
+      #   skip_tags: "never"
