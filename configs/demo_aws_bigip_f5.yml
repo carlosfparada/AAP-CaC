@@ -1,0 +1,194 @@
+---
+
+# Credentials
+controller_credentials:
+  - name: "AWS BigIP F5 Credential"
+    description: "AWS BigIP F5 Credential"
+    credential_type: "Machine"
+    organization: "Default"
+    inputs:
+      password: "{{ bigip_f5_admin_password }}"
+      username: admin
+
+
+# Projects
+controller_projects:
+  - name: "AWS BigIP F5 Project"
+    description: "AWS BigIP F5 Project"
+    organization: "Default"
+    scm_type: "git"
+    scm_url: "{{ project_url }}"
+    scm_update_on_launch: "True"
+    execution_environment: "{{ ee_name }}"
+    wait: true
+
+
+# Job Templates
+controller_templates:
+  - name: "AWS BigIP F5: 1. AWS Deploy"
+    description: ""
+    organization: "Default"
+    project: "AWS BigIP F5 Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_bigipf5_deploy.yml"
+    verbosity: 0
+    job_type: "run"
+    ask_skip_tags_on_launch: yes
+    credentials:
+      - "AWS Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS BigIP F5: 2. Provisioning"
+    description: ""
+    organization: "Default"
+    project: "AWS BigIP F5 Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_bigipf5_provision.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS BigIP F5 Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS BigIP F5: 3. Gather Facts"
+    description: ""
+    organization: "Default"
+    project: "AWS BigIP F5 Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_bigipf5_facts.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS BigIP F5 Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS BigIP F5: 4. Create Report"
+    description: ""
+    organization: "Default"
+    project: "AWS BigIP F5 Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_bigipf5_report.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS BigIP F5 Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS BigIP F5: 5. Backup"
+    description: ""
+    organization: "Default"
+    project: "AWS BigIP F5 Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_bigipf5_backup.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS BigIP F5 Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS BigIP F5: 6. Restore"
+    description: ""
+    organization: "Default"
+    project: "AWS BigIP F5 Project"
+    inventory: "AWS Inventory"
+    playbook: "ws_bigipf5_restore.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS BigIP F5 Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS BigIP F5: 7. Unprovisioning"
+    description: ""
+    organization: "Default"
+    project: "AWS BigIP F5 Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_bigipf5_unprovision.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS BigIP F5 Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS BigIP F5: 8. AWS Undeploy"
+    description: ""
+    organization: "Default"
+    project: "AWS BigIP F5 Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_bigipf5_undeploy.yml"
+    verbosity: 0
+    job_type: "run"
+    ask_skip_tags_on_launch: yes
+    credentials:
+      - "AWS Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+
+# Workflow Job Templates
+controller_workflows:
+  - name: "AWS BigIP F5: Workflow"
+    description: "AWS BigIP F5: Workflow"
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "AWS Deploy"
+        workflow_job_template: "AWS BigIP F5: Workflow"
+        unified_job_template: "AWS BigIP F5: 1. AWS Deploy"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        skip_tags: "full"
+        always_nodes:
+          - BigIP F5 Provisioning
+      - identifier: "BigIP F5 Provisioning"
+        workflow_job_template: "AWS BigIP F5: Workflow"
+        unified_job_template: "AWS BigIP F5: 2. Provisioning"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - BigIP F5 Gather Facts
+      - identifier: "BigIP F5 Gather Facts"
+        workflow_job_template: "AWS BigIP F5: Workflow"
+        unified_job_template: "AWS BigIP F5: 3. Gather Facts"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - BigIP F5 Create Report
+      - identifier: "BigIP F5 Create Report"
+        workflow_job_template: "AWS BigIP F5: Workflow"
+        unified_job_template: "AWS BigIP F5: 4. Create Report"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - BigIP F5 Backup
+      - identifier: "BigIP F5 Backup"
+        workflow_job_template: "AWS BigIP F5: Workflow"
+        unified_job_template: "AWS BigIP F5: 5. Backup"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - BigIP F5 Restore
+      - identifier: "BigIP F5 Restore"
+        workflow_job_template: "AWS BigIP F5: Workflow"
+        unified_job_template: "AWS BigIP F5: 6. Restore"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - BigIP F5 Unprovisioning
+      - identifier: "BigIP F5 Unprovisioning"
+        workflow_job_template: "AWS BigIP F5: Workflow"
+        unified_job_template: "AWS BigIP F5: 7. Unprovisioning"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - AWS Undeploy        
+      - identifier: "AWS Undeploy"
+        workflow_job_template: "AWS BigIP F5: Workflow"
+        unified_job_template: "AWS BigIP F5: 8. AWS Undeploy"
+        organization: "Default"
+        all_parents_must_converge: "False"
