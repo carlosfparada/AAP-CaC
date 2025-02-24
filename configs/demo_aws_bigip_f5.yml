@@ -95,7 +95,7 @@ controller_templates:
     organization: "Default"
     project: "AWS BigIP F5 Project"
     inventory: "AWS Inventory"
-    playbook: "ws_bigipf5_restore.yml"
+    playbook: "aws_bigipf5_restore.yml"
     verbosity: 0
     job_type: "run"
     credentials:
