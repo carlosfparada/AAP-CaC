@@ -33,7 +33,6 @@ controller_templates:
     playbook: "aws_bigipf5_deploy.yml"
     verbosity: 0
     job_type: "run"
-    ask_skip_tags_on_launch: yes
     credentials:
       - "AWS BigIP F5 Credential"
       - "AWS Credential"
@@ -125,7 +124,6 @@ controller_templates:
     playbook: "aws_bigipf5_undeploy.yml"
     verbosity: 0
     job_type: "run"
-    ask_skip_tags_on_launch: yes
     credentials:
       - "AWS Credential"
       - "AWS BigIP F5 Credential"
@@ -144,7 +142,6 @@ controller_workflows:
         unified_job_template: "AWS BigIP F5: 1. AWS Deploy"
         organization: "Default"
         all_parents_must_converge: "False"
-        skip_tags: "full"
         always_nodes:
           - BigIP F5 Provisioning
       - identifier: "BigIP F5 Provisioning"
