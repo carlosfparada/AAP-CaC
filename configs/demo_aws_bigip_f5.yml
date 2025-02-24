@@ -35,6 +35,7 @@ controller_templates:
     job_type: "run"
     ask_skip_tags_on_launch: yes
     credentials:
+      - "AWS BigIP F5 Credential"
       - "AWS Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
@@ -127,6 +128,7 @@ controller_templates:
     ask_skip_tags_on_launch: yes
     credentials:
       - "AWS Credential"
+      - "AWS BigIP F5 Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
 
