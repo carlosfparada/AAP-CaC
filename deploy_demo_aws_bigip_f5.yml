@@ -17,7 +17,7 @@
       groups: "aap"
     when: node_name is defined
 
-- name: Deploy Demo AWS Fortinet
+- name: Deploy Demo AWS BigIP F5
   hosts: localhost
   connection: local
   gather_facts: no
@@ -29,9 +29,10 @@
     aap_validate_certs: false
   pre_tasks:
     - name: Include CaC vars
-      ansible.builtin.include_vars: 'configs/demo_aws_fortinet.yml'
+      ansible.builtin.include_vars: 'configs/demo_aws_bigip_f5.yml'
   roles:
     - {role: infra.aap_configuration.controller_credentials, when: controller_credentials is defined}
     - {role: infra.aap_configuration.controller_projects, when: controller_projects is defined}
+    - {role: infra.aap_configuration.controller_project_update, when: controller_projects is defined}
     - {role: infra.aap_configuration.controller_job_templates, when: controller_templates is defined}
     - {role: infra.aap_configuration.controller_workflow_job_templates, when: controller_workflows is defined}
