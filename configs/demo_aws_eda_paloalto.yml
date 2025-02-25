@@ -211,9 +211,11 @@ eda_credentials:
     organization: Default
     inputs:
       host: quay.io
-      password: "{{ quay_password }}"
-      username: "{{ quay_username }}"
-      verify_ssl: true
+      username: aaa
+      password: aaa
+      # password: "{{ quay_password }}"
+      # username: "{{ quay_username }}"
+      # verify_ssl: true
 
 # # EDA Decision Environment
 # eda_decision_environments:
