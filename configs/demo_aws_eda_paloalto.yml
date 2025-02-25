@@ -238,5 +238,6 @@ eda_rulebook_activations:
     project: "AWS EDA Paloalto Project"
     rulebook: config_rulebook.yml
     decision_environment: "{{ de_name }}"
+    enabled: false
     log_level: DEBUG
 
