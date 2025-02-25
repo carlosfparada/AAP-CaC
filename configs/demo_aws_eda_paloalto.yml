@@ -236,6 +236,7 @@ eda_rulebook_activations:
   - name: "AWS EDA Paloalto: Config Compliance"
     description: "AWS EDA Paloalto: Config Compliance"
     organization_name: "Default"
+    organization: "Default"
     project: "AWS EDA Paloalto Project"
     rulebook: config_rulebook.yml
     decision_environment: "{{ de_name }}"
