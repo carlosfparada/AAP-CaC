@@ -197,3 +197,30 @@ controller_workflows:
         unified_job_template: "AWS EDA Paloalto: 7. AWS Undeploy"
         organization: "Default"
         all_parents_must_converge: "False"
+
+
+# EDA Decision Environment
+eda_decision_environments:
+  - name: "{{ de_custom.name }}"
+    description: "{{ de_custom.name }}"
+    image: "{{ de_custom.url }}"
+    pull: always
+    credential: QUAY.IO Credentials
+
+# EDA Projects
+eda_projects:
+  - name: "AWS EDA Paloalto Project"
+    description: "AWS EDA Paloalto Project"
+    #organization: "Default"
+    url: "{{ project_url }}"
+    tls_validation: true
+
+controller_projects:
+  - name: "AWS EDA Paloalto Project"
+    description: "AWS EDA Paloalto Project"
+    organization: "Default"
+    scm_type: "git"
+    scm_url: "{{ project_url }}"
+    scm_update_on_launch: "True"
+    execution_environment: "{{ ee_name }}"
+    wait: true
