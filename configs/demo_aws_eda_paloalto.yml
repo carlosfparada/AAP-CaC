@@ -219,8 +219,8 @@ eda_credentials:
 eda_decision_environments:
   - name: "{{ de_name }}"
     description: "{{ de_name }}"
+    organization: "Default"
     image_url: "{{ de_url }}"
-    pull: always
     credential: QUAY.IO Credentials
 
 # EDA Projects
