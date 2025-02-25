@@ -217,9 +217,9 @@ eda_credentials:
 
 # EDA Decision Environment
 eda_decision_environments:
-  - name: "{{ de_custom.name }}"
-    description: "{{ de_custom.name }}"
-    image: "{{ de_custom.url }}"
+  - name: "{{ de_name }}"
+    description: "{{ de_name }}"
+    image: "{{ de_url }}"
     pull: always
     credential: QUAY.IO Credentials
 
