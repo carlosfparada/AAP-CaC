@@ -215,7 +215,7 @@ eda_decision_environments:
 eda_projects:
   - name: "AWS EDA Paloalto Project"
     description: "AWS EDA Paloalto Project"
-    #organization: "Default"
+    organization: "Default"
     url: "{{ project_url }}"
     tls_validation: true
 
