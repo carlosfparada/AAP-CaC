@@ -27,7 +27,6 @@ controller_projects:
     execution_environment: "{{ ee_name }}"
     wait: true
 
-
 # Job Templates
 controller_templates:
   - name: "AWS EDA Paloalto: 1. AWS Deploy"
