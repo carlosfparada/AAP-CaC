@@ -211,35 +211,33 @@ eda_credentials:
     organization: Default
     inputs:
       host: quay.io
-      username: aaa
-      password: aaa
-      # password: "{{ quay_password }}"
-      # username: "{{ quay_username }}"
-      # verify_ssl: true
+      password: "{{ quay_password }}"
+      username: "{{ quay_username }}"
+      verify_ssl: true
 
-# # EDA Decision Environment
-# eda_decision_environments:
-#   - name: "{{ de_custom.name }}"
-#     description: "{{ de_custom.name }}"
-#     image: "{{ de_custom.url }}"
-#     pull: always
-#     credential: QUAY.IO Credentials
+# EDA Decision Environment
+eda_decision_environments:
+  - name: "{{ de_custom.name }}"
+    description: "{{ de_custom.name }}"
+    image: "{{ de_custom.url }}"
+    pull: always
+    credential: QUAY.IO Credentials
 
-# # EDA Projects
-# eda_projects:
-#   - name: "AWS EDA Paloalto Project"
-#     description: "AWS EDA Paloalto Project"
-#     organization: "Default"
-#     url: "{{ project_url }}"
-#     #scm_url: 'https://github.com/carlosfparada/AWS-EDA-Paloalto.git'
-#     tls_validation: true
+# EDA Projects
+eda_projects:
+  - name: "AWS EDA Paloalto Project"
+    description: "AWS EDA Paloalto Project"
+    organization: "Default"
+    url: "{{ project_url }}"
+    #scm_url: 'https://github.com/carlosfparada/AWS-EDA-Paloalto.git'
+    tls_validation: true
 
-# # EDA Rulebook Activations
-# eda_rulebook_activations:
-#   - name: "AWS EDA Paloalto: Config Compliance"
-#     description: "AWS EDA Paloalto: Config Compliance"
-#     project: "AWS EDA Paloalto Project"
-#     rulebook: config_rulebook.yml
-#     decision_environment: "{{ de_custom.name }}"
-#     log_level: DEBUG
+# EDA Rulebook Activations
+eda_rulebook_activations:
+  - name: "AWS EDA Paloalto: Config Compliance"
+    description: "AWS EDA Paloalto: Config Compliance"
+    project: "AWS EDA Paloalto Project"
+    rulebook: config_rulebook.yml
+    decision_environment: "{{ de_custom.name }}"
+    log_level: DEBUG
 
