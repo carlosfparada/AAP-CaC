@@ -203,6 +203,17 @@ controller_workflows:
         organization: "Default"
         all_parents_must_converge: "False"
 
+# EDA Credentials
+eda_credentials:
+  - name: QUAY.IO Credentials
+    description: QUAY.IO Credentials
+    credential_type: Container Registry
+    organization: Default
+    inputs:
+      host: quay.io
+      password: "{{ quay_password }}"
+      username: "{{ quay_username }}"
+
 # EDA Decision Environment
 eda_decision_environments:
   - name: "{{ de_custom.name }}"
