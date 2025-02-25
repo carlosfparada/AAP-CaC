@@ -198,7 +198,6 @@ controller_workflows:
         organization: "Default"
         all_parents_must_converge: "False"
 
-
 # EDA Decision Environment
 eda_decision_environments:
   - name: "{{ de_custom.name }}"
