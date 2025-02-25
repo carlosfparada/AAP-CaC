@@ -237,6 +237,6 @@ eda_rulebook_activations:
     description: "AWS EDA Paloalto: Config Compliance"
     project: "AWS EDA Paloalto Project"
     rulebook: config_rulebook.yml
-    decision_environment: "{{ de_custom.name }}"
+    decision_environment: "{{ de_name }}"
     log_level: DEBUG
 
