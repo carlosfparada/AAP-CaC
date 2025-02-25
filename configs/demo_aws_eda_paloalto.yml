@@ -1,0 +1,193 @@
+---
+
+# Credentials
+controller_credentials:
+  - name: "AWS Paloalto Credential"
+    description: "AWS EDA Paloalto Credential"
+    credential_type: "Machine"
+    organization: "Default"
+    inputs:
+      password: "{{ paloalto_admin_password }}"
+      username: admin
+
+
+# Projects
+controller_projects:
+  - name: "AWS EDA Paloalto Project"
+    description: "AWS EDA Paloalto Project"
+    organization: "Default"
+    scm_type: "git"
+    scm_url: "{{ project_url }}"
+    scm_update_on_launch: "True"
+    execution_environment: "{{ ee_name }}"
+    wait: true
+
+
+# Job Templates
+controller_templates:
+  - name: "AWS EDA Paloalto: 1. AWS Deploy"
+    description: ""
+    organization: "Default"
+    project: "AWS EDA Paloalto Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_bigipf5_deploy.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS EDA Paloalto Credential"
+      - "AWS Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS EDA Paloalto: 2. Provisioning"
+    description: ""
+    organization: "Default"
+    project: "AWS EDA Paloalto Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_bigipf5_provision.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS EDA Paloalto Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS EDA Paloalto: 3. Gather Facts"
+    description: ""
+    organization: "Default"
+    project: "AWS EDA Paloalto Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_bigipf5_facts.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS EDA Paloalto Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS EDA Paloalto: 4. Create Report"
+    description: ""
+    organization: "Default"
+    project: "AWS EDA Paloalto Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_bigipf5_report.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS EDA Paloalto Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS EDA Paloalto: 5. Backup"
+    description: ""
+    organization: "Default"
+    project: "AWS EDA Paloalto Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_bigipf5_backup.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS EDA Paloalto Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS EDA Paloalto: 6. Restore"
+    description: ""
+    organization: "Default"
+    project: "AWS EDA Paloalto Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_bigipf5_restore.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS EDA Paloalto Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS EDA Paloalto: 7. Unprovisioning"
+    description: ""
+    organization: "Default"
+    project: "AWS EDA Paloalto Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_bigipf5_unprovision.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS EDA Paloalto Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS EDA Paloalto: 8. AWS Undeploy"
+    description: ""
+    organization: "Default"
+    project: "AWS EDA Paloalto Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_bigipf5_undeploy.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS EDA Paloalto Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+
+# Workflow Job Templates
+controller_workflows:
+  - name: "AWS EDA Paloalto: Workflow"
+    description: "AWS EDA Paloalto: Workflow"
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "AWS Deploy"
+        workflow_job_template: "AWS EDA Paloalto: Workflow"
+        unified_job_template: "AWS EDA Paloalto: 1. AWS Deploy"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - BigIP F5 Provisioning
+      - identifier: "BigIP F5 Provisioning"
+        workflow_job_template: "AWS EDA Paloalto: Workflow"
+        unified_job_template: "AWS EDA Paloalto: 2. Provisioning"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - BigIP F5 Gather Facts
+      - identifier: "BigIP F5 Gather Facts"
+        workflow_job_template: "AWS EDA Paloalto: Workflow"
+        unified_job_template: "AWS EDA Paloalto: 3. Gather Facts"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - BigIP F5 Create Report
+      - identifier: "BigIP F5 Create Report"
+        workflow_job_template: "AWS EDA Paloalto: Workflow"
+        unified_job_template: "AWS EDA Paloalto: 4. Create Report"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - BigIP F5 Backup
+      - identifier: "BigIP F5 Backup"
+        workflow_job_template: "AWS EDA Paloalto: Workflow"
+        unified_job_template: "AWS EDA Paloalto: 5. Backup"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - BigIP F5 Restore
+      - identifier: "BigIP F5 Restore"
+        workflow_job_template: "AWS EDA Paloalto: Workflow"
+        unified_job_template: "AWS EDA Paloalto: 6. Restore"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - BigIP F5 Unprovisioning
+      - identifier: "BigIP F5 Unprovisioning"
+        workflow_job_template: "AWS EDA Paloalto: Workflow"
+        unified_job_template: "AWS EDA Paloalto: 7. Unprovisioning"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - AWS Undeploy        
+      - identifier: "AWS Undeploy"
+        workflow_job_template: "AWS EDA Paloalto: Workflow"
+        unified_job_template: "AWS EDA Paloalto: 8. AWS Undeploy"
+        organization: "Default"
+        all_parents_must_converge: "False"
