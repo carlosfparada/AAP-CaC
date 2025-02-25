@@ -14,9 +14,7 @@ controller_credentials:
     credential_type: "Vault"
     organization: "Default"
     inputs:
-      password: "{{ paloalto_vault_secret }}"
-      secret: "{{ paloalto_vault_secret }}"
-
+      vault_password: "{{ paloalto_vault_secret }}"
 
 # Projects
 controller_projects:
