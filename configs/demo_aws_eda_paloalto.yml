@@ -194,6 +194,6 @@ controller_workflows:
           - AWS Undeploy        
       - identifier: "AWS Undeploy"
         workflow_job_template: "AWS EDA Paloalto: Workflow"
-        unified_job_template: "AWS EDA Paloalto: 8. AWS Undeploy"
+        unified_job_template: "AWS EDA Paloalto: 7. AWS Undeploy"
         organization: "Default"
         all_parents_must_converge: "False"
