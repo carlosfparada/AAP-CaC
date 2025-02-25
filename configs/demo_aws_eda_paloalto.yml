@@ -216,9 +216,9 @@ eda_projects:
   - name: "AWS EDA Paloalto Project"
     description: "AWS EDA Paloalto Project"
     organization: "Default"
-    #url: "{{ project_url }}"
-    scm_url: 'https://github.com/carlosfparada/AWS-EDA-Paloalto.git'
-    #tls_validation: true
+    url: "{{ project_url }}"
+    #scm_url: 'https://github.com/carlosfparada/AWS-EDA-Paloalto.git'
+    tls_validation: true
 
 # EDA Rulebook Activations
 eda_rulebook_activations:
