@@ -9,6 +9,13 @@ controller_credentials:
     inputs:
       password: "{{ paloalto_admin_password }}"
       username: admin
+  - name: "AWS Paloalto Vault"
+    description: "AWS Paloalto Vault "
+    credential_type: "Vault"
+    organization: "Default"
+    inputs:
+      password: "{{ paloalto_vault_secret }}"
+      secret: "{{ paloalto_vault_secret }}"
 
 
 # Projects
@@ -49,6 +56,7 @@ controller_templates:
     credentials:
       - "AWS Credential"
       - "AWS Paloalto Credential"
+      - "AWS Paloalto Vault"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
   - name: "AWS EDA Paloalto: 3. Setup"
