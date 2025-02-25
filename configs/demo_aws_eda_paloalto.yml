@@ -3,7 +3,7 @@
 # Credentials
 controller_credentials:
   - name: "AWS Paloalto Credential"
-    description: "AWS EDA Paloalto Credential"
+    description: "AWS Paloalto Credential"
     credential_type: "Machine"
     organization: "Default"
     inputs:
@@ -34,7 +34,7 @@ controller_templates:
     verbosity: 0
     job_type: "run"
     credentials:
-      - "AWS EDA Paloalto Credential"
+      - "AWS Paloalto Credential"
       - "AWS Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
@@ -48,7 +48,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS EDA Paloalto Credential"
+      - "AWS Paloalto Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
   - name: "AWS EDA Paloalto: 3. Setup"
@@ -61,7 +61,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS EDA Paloalto Credential"
+      - "AWS Paloalto Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
   - name: "AWS EDA Paloalto: 4. Rules Provisioning"
@@ -74,7 +74,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS EDA Paloalto Credential"
+      - "AWS Paloalto Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
   - name: "AWS EDA Paloalto: 5. Rules Delete"
@@ -87,7 +87,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS EDA Paloalto Credential"
+      - "AWS Paloalto Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
   - name: "AWS EDA Paloalto: 6. Setup Delete"
@@ -100,7 +100,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS EDA Paloalto Credential"
+      - "AWS Paloalto Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
   - name: "AWS EDA Paloalto: 7. AWS Undeploy"
@@ -113,7 +113,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS EDA Paloalto Credential"
+      - "AWS Paloalto Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
   - name: "AWS EDA Paloalto: Fix Compliance Log"
@@ -126,7 +126,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS EDA Paloalto Credential"
+      - "AWS Paloalto Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
   - name: "AWS EDA Paloalto: Fix Compliance Tag"
@@ -139,7 +139,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS EDA Paloalto Credential"
+      - "AWS Paloalto Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
 
