@@ -64,7 +64,7 @@ controller_templates:
       - "AWS EDA Paloalto Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS EDA Paloalto: 4. Rule Provisioning"
+  - name: "AWS EDA Paloalto: 4. Rules Provisioning"
     description: ""
     organization: "Default"
     project: "AWS EDA Paloalto Project"
@@ -77,7 +77,7 @@ controller_templates:
       - "AWS EDA Paloalto Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS EDA Paloalto: 5. Rule Delete"
+  - name: "AWS EDA Paloalto: 5. Rules Delete"
     description: ""
     organization: "Default"
     project: "AWS EDA Paloalto Project"
@@ -156,45 +156,38 @@ controller_workflows:
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
-          - BigIP F5 Provisioning
-      - identifier: "BigIP F5 Provisioning"
+          - Paloalto Set Password
+      - identifier: "Paloalto Set Password"
         workflow_job_template: "AWS EDA Paloalto: Workflow"
-        unified_job_template: "AWS EDA Paloalto: 2. Provisioning"
+        unified_job_template: "AWS EDA Paloalto: 2. Set Password"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
-          - BigIP F5 Gather Facts
-      - identifier: "BigIP F5 Gather Facts"
+          - Paloalto Setup
+      - identifier: "Paloalto Setup"
         workflow_job_template: "AWS EDA Paloalto: Workflow"
-        unified_job_template: "AWS EDA Paloalto: 3. Gather Facts"
+        unified_job_template: "AWS EDA Paloalto: 3. Setup"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
-          - BigIP F5 Create Report
-      - identifier: "BigIP F5 Create Report"
+          - Paloalto Rules Provisioning
+      - identifier: "Paloalto Rules Provisioning"
         workflow_job_template: "AWS EDA Paloalto: Workflow"
-        unified_job_template: "AWS EDA Paloalto: 4. Create Report"
+        unified_job_template: "AWS EDA Paloalto: 4. Rules Provisioning"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
-          - BigIP F5 Backup
-      - identifier: "BigIP F5 Backup"
+          - Paloalto Rules Delete
+      - identifier: "Paloalto Rules Delete"
         workflow_job_template: "AWS EDA Paloalto: Workflow"
-        unified_job_template: "AWS EDA Paloalto: 5. Backup"
+        unified_job_template: "AWS EDA Paloalto: 5. Rules Delete"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
-          - BigIP F5 Restore
-      - identifier: "BigIP F5 Restore"
+          - Paloalto Setup Delete
+      - identifier: "Paloalto Setup Delete"
         workflow_job_template: "AWS EDA Paloalto: Workflow"
-        unified_job_template: "AWS EDA Paloalto: 6. Restore"
-        organization: "Default"
-        all_parents_must_converge: "False"
-        always_nodes:
-          - BigIP F5 Unprovisioning
-      - identifier: "BigIP F5 Unprovisioning"
-        workflow_job_template: "AWS EDA Paloalto: Workflow"
-        unified_job_template: "AWS EDA Paloalto: 7. Unprovisioning"
+        unified_job_template: "AWS EDA Paloalto: 6. Setup Delete"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
