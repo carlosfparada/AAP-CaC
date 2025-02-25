@@ -239,5 +239,5 @@ eda_rulebook_activations:
     rulebook: config_rulebook.yml
     decision_environment: "{{ de_name }}"
     enabled: false
-    log_level: DEBUG
+    log_level: debug
 
