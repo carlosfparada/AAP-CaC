@@ -249,6 +249,7 @@ eda_rulebook_activations:
     rulebook: config_rulebook.yml
     decision_environment: "{{ de_name }}"
     eda_credentials: "Controller Credentials"
+    restart_policy: always
     #enabled: false
     log_level: debug
 
