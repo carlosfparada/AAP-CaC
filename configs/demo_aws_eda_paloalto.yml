@@ -209,26 +209,26 @@ controller_workflows:
 #     description: "Controller Token"
 #     token: MISSING
 
-# EDA Credentials
-eda_credentials:
-  - name: "QUAY.IO Credentials"
-    description: "QUAY.IO Credentials"
-    credential_type: "Container Registry"
-    organization: Default
-    inputs:
-      host: quay.io
-      username: "{{ quay_username }}"
-      password: "{{ quay_password }}"
-      verify_ssl: true
-  - name: "Controller Credentials"
-    description: "Controller Credentials"
-    credential_type: "Red Hat Ansible Automation Platform"
-    organization: Default
-    inputs:
-      host: "{{ groups['aap'][0] }}"
-      username: "admin"
-      password: "{{ admin_password }}"
-      verify_ssl: false
+# # EDA Credentials
+# eda_credentials:
+#   - name: "QUAY.IO Credentials"
+#     description: "QUAY.IO Credentials"
+#     credential_type: "Container Registry"
+#     organization: Default
+#     inputs:
+#       host: quay.io
+#       username: "{{ quay_username }}"
+#       password: "{{ quay_password }}"
+#       verify_ssl: true
+#   - name: "Controller Credentials"
+#     description: "Controller Credentials"
+#     credential_type: "Red Hat Ansible Automation Platform"
+#     organization: Default
+#     inputs:
+#       host: "{{ groups['aap'][0] }}"
+#       username: "admin"
+#       password: "{{ admin_password }}"
+#       verify_ssl: false
 
 # EDA Decision Environment
 eda_decision_environments:
