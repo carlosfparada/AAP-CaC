@@ -230,13 +230,13 @@ controller_workflows:
 #       password: "{{ admin_password }}"
 #       verify_ssl: false
 
-# EDA Decision Environment
-eda_decision_environments:
-  - name: "{{ de_name }}"
-    description: "{{ de_name }}"
-    organization: "Default"
-    image_url: "{{ de_url }}"
-    credential: QUAY.IO Credentials
+# # EDA Decision Environment
+# eda_decision_environments:
+#   - name: "{{ de_name }}"
+#     description: "{{ de_name }}"
+#     organization: "Default"
+#     image_url: "{{ de_url }}"
+#     credential: QUAY.IO Credentials
 
 # EDA Projects
 eda_projects:
@@ -254,7 +254,7 @@ eda_rulebook_activations:
     project: "AWS EDA Paloalto Project"
     rulebook: config_rulebook.yml
     decision_environment: "{{ de_name }}"
-    eda_credentials: "Controller Credentials"
+    eda_credentials: "EDA Controller Credentials"
     #enabled: false
     log_level: debug
 
