@@ -203,12 +203,6 @@ controller_workflows:
         organization: "Default"
         all_parents_must_converge: "False"
 
-# EDA Credentials
-# eda_controller_tokens:
-#   - name: "Controller Token"
-#     description: "Controller Token"
-#     token: MISSING
-
 # # EDA Credentials
 # eda_credentials:
 #   - name: "QUAY.IO Credentials"
@@ -254,7 +248,7 @@ eda_rulebook_activations:
     project: "AWS EDA Paloalto Project"
     rulebook: config_rulebook.yml
     decision_environment: "{{ de_name }}"
-    eda_credentials: "EDA Controller Credentials"
+    eda_credentials: "Controller Credentials"
     #enabled: false
     log_level: debug
 
