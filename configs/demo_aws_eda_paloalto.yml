@@ -70,7 +70,7 @@ controller_templates:
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
     extra_vars:
-      eda_server: "{{ groups['aap'][0] }}"
+      http_address: "{{ groups['aap'][0] }}"
   - name: "AWS EDA Paloalto: 4. Rules Provisioning"
     description: ""
     organization: "Default"
