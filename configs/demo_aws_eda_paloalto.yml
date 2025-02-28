@@ -188,6 +188,13 @@ controller_workflows:
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
+          - Wait Time
+      - identifier: Wait Time
+        approval_node:
+          name: Wait Time
+          description: Wait Time to EDA run fixes
+          timeout: 300 # 5 minutes    
+        always_nodes:
           - Paloalto Rules Delete
       - identifier: "Paloalto Rules Delete"
         workflow_job_template: "AWS EDA Paloalto: Workflow"
