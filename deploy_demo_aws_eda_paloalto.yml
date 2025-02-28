@@ -34,13 +34,10 @@
   roles:
     - {role: infra.aap_configuration.controller_credentials, when: controller_credentials is defined}
     - {role: infra.aap_configuration.controller_projects, when: controller_projects is defined}
+    - {role: infra.aap_configuration.eda_projects, when: eda_projects is defined}
     - {role: infra.aap_configuration.controller_project_update, when: controller_projects is defined}
     - {role: infra.aap_configuration.controller_job_templates, when: controller_templates is defined}
     - {role: infra.aap_configuration.controller_workflow_job_templates, when: controller_workflows is defined}
-
-    # - {role: infra.aap_configuration.eda_credentials, when: eda_credentials is defined}
-    # - {role: infra.aap_configuration.eda_decision_environments, when: eda_decision_environments is defined}
-    - {role: infra.aap_configuration.eda_projects, when: eda_projects is defined}
     - {role: infra.aap_configuration.eda_rulebook_activations, when: eda_rulebook_activations is defined}
 
 
