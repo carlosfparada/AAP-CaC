@@ -35,6 +35,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Credential"
+      - "AWS RHEL Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
   - name: "AWS RHEL: 2. RHEL Config"
@@ -60,6 +61,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Credential"
+      - "AWS RHEL Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
 
