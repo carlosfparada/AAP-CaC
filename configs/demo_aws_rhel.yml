@@ -58,7 +58,6 @@ controller_templates:
     playbook: "aws_undeploy.yml"
     verbosity: 0
     job_type: "run"
-    ask_skip_tags_on_launch: yes
     credentials:
       - "AWS Credential"
     execution_environment: "{{ ee_name }}"
@@ -76,18 +75,17 @@ controller_workflows:
         unified_job_template: "AWS RHEL: 1. AWS Deploy"
         organization: "Default"
         all_parents_must_converge: "False"
-        skip_tags: "full"
         always_nodes:
           - RHEL Configs
       - identifier: "RHEL Configs"
         workflow_job_template: "AWS RHEL: Workflow"
-        unified_job_template: "AWS RHEL: 5. RHEL Configs"
+        unified_job_template: "AWS RHEL: 2. RHEL Configs"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
           - AWS Undeploy        
       - identifier: "AWS Undeploy"
         workflow_job_template: "AWS RHEL: Workflow"
-        unified_job_template: "AWS RHEL: 6. AWS Undeploy"
+        unified_job_template: "AWS RHEL: 3. AWS Undeploy"
         organization: "Default"
         all_parents_must_converge: "False"
