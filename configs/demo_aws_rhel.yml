@@ -1,0 +1,93 @@
+---
+
+# Credentials
+controller_credentials:
+  - name: "AWS RHEL Credential"
+    description: "AWS RHEL Credential"
+    credential_type: "Machine"
+    organization: "Default"
+    inputs:
+      password: "{{ rhel_admin_password }}"
+      username: admin
+
+
+# Projects
+controller_projects:
+  - name: "AWS RHEL Project"
+    description: "AWS RHEL Project"
+    organization: "Default"
+    scm_type: "git"
+    scm_url: "{{ project_url }}"
+    scm_update_on_launch: "True"
+    execution_environment: "{{ ee_name }}"
+    wait: true
+
+
+# Job Templates
+controller_templates:
+  - name: "AWS RHEL: 1. AWS Deploy"
+    description: ""
+    organization: "Default"
+    project: "AWS RHEL Project"
+    inventory: "AWS Inventory"
+    playbook: "aws.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS RHEL: 2. RHEL Config"
+    description: ""
+    organization: "Default"
+    project: "AWS RHEL Project"
+    inventory: "AWS Inventory"
+    playbook: "rhel.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS RHEL Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS RHEL: 3. AWS Undeploy"
+    description: ""
+    organization: "Default"
+    project: "AWS RHEL Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_undeploy.yml"
+    verbosity: 0
+    job_type: "run"
+    ask_skip_tags_on_launch: yes
+    credentials:
+      - "AWS Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+
+# Workflow Job Templates
+controller_workflows:
+  - name: "AWS RHEL: Workflow FortiGate"
+    description: "AWS RHEL: Workflow FortiGate"
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "AWS Deploy"
+        workflow_job_template: "AWS RHEL: Workflow FortiGate"
+        unified_job_template: "AWS RHEL: 1. AWS Deploy"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        skip_tags: "full"
+        always_nodes:
+          - RHEL Configs
+      - identifier: "RHEL Configs"
+        workflow_job_template: "AWS RHEL: Workflow"
+        unified_job_template: "AWS RHEL: 5. RHEL Configs"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - AWS Undeploy        
+      - identifier: "AWS Undeploy"
+        workflow_job_template: "AWS RHEL: Workflow"
+        unified_job_template: "AWS RHEL: 6. AWS Undeploy"
+        organization: "Default"
+        all_parents_must_converge: "False"
