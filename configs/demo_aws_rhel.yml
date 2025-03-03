@@ -51,6 +51,10 @@ controller_templates:
       - "AWS RHEL Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
+    extra_vars:
+      subscription_user: "{{ subscription_user }}"
+      subscription_pass: "{{ subscription_pass }}"
+      rh_subs_pool_id: "{{ rh_subs_pool_id }}"
   - name: "AWS RHEL: 3. AWS Undeploy"
     description: ""
     organization: "Default"
