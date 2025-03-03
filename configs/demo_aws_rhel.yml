@@ -76,10 +76,10 @@ controller_workflows:
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
-          - RHEL Configs
-      - identifier: "RHEL Configs"
+          - RHEL Config
+      - identifier: "RHEL Config"
         workflow_job_template: "AWS RHEL: Workflow"
-        unified_job_template: "AWS RHEL: 2. RHEL Configs"
+        unified_job_template: "AWS RHEL: 2. RHEL Config"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
