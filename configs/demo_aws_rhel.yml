@@ -83,7 +83,7 @@ controller_workflows:
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
-          - AWS Undeploy        
+          - AWS Undeploy
       - identifier: "AWS Undeploy"
         workflow_job_template: "AWS RHEL: Workflow"
         unified_job_template: "AWS RHEL: 3. AWS Undeploy"
