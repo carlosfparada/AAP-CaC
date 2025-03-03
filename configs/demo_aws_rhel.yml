@@ -66,13 +66,13 @@ controller_templates:
 
 # Workflow Job Templates
 controller_workflows:
-  - name: "AWS RHEL: Workflow FortiGate"
-    description: "AWS RHEL: Workflow FortiGate"
+  - name: "AWS RHEL: Workflow"
+    description: "AWS RHEL: Workflow"
     organization: "Default"
     state: "present"
     simplified_workflow_nodes:
       - identifier: "AWS Deploy"
-        workflow_job_template: "AWS RHEL: Workflow FortiGate"
+        workflow_job_template: "AWS RHEL: Workflow"
         unified_job_template: "AWS RHEL: 1. AWS Deploy"
         organization: "Default"
         all_parents_must_converge: "False"
