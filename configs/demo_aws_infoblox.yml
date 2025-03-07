@@ -57,7 +57,7 @@ controller_templates:
     organization: "Default"
     project: "AWS Infoblox Project"
     inventory: "AWS Inventory"
-    playbook: "aws_infoblox_setiphost.yml.yml"
+    playbook: "aws_infoblox_setiphost.yml"
     verbosity: 0
     job_type: "run"
     credentials:
