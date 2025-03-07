@@ -36,6 +36,7 @@ controller_templates:
     ask_skip_tags_on_launch: yes
     credentials:
       - "AWS Credential"
+      - "AWS Infoblox Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
   - name: "AWS Infoblox: 2. Config"
@@ -101,6 +102,7 @@ controller_templates:
     ask_skip_tags_on_launch: yes
     credentials:
       - "AWS Credential"
+      - "AWS Infoblox Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
 
