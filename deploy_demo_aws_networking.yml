@@ -31,7 +31,7 @@
     - name: Include CaC vars
       ansible.builtin.include_vars: 'configs/demo_aws_networking.yml'
   roles:
-    - {role: infra.aap_configuration.controller_credentials, when: controller_credentials is defined}
+    # - {role: infra.aap_configuration.controller_credentials, when: controller_credentials is defined}
     - {role: infra.aap_configuration.controller_projects, when: controller_projects is defined}
     - {role: infra.aap_configuration.controller_project_update, when: controller_projects is defined}
     - {role: infra.aap_configuration.controller_job_templates, when: controller_templates is defined}
