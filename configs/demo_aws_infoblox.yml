@@ -99,7 +99,6 @@ controller_templates:
     playbook: "aws_infoblox_undeploy.yml"
     verbosity: 0
     job_type: "run"
-    ask_skip_tags_on_launch: yes
     credentials:
       - "AWS Credential"
       - "AWS Infoblox Credential"
@@ -118,7 +117,6 @@ controller_workflows:
         unified_job_template: "AWS Infoblox: 1. AWS Deploy"
         organization: "Default"
         all_parents_must_converge: "False"
-        skip_tags: "never"
         always_nodes:
           - Infoblox Config
       - identifier: "Infoblox Config"
@@ -154,4 +152,3 @@ controller_workflows:
         unified_job_template: "AWS Infoblox: 6. AWS Undeploy"
         organization: "Default"
         all_parents_must_converge: "False"
-        skip_tags: "never"
