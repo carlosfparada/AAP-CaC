@@ -1,14 +1,6 @@
 ---
 
-# # Credentials
-# controller_credentials:
-#   - name: "AWS Infoblox Credential"
-#     description: "AWS Infoblox Credential"
-#     credential_type: "Machine"
-#     organization: "Default"
-#     inputs:
-#       password: "{{ infoblox_admin_password }}"
-#       username: admin
+# Credentials
 
 
 # Projects
@@ -28,7 +20,7 @@ controller_templates:
   - name: "AWS Networking: 1. VPC Peering"
     description: ""
     organization: "Default"
-    project: "AWS Infoblox Project"
+    project: "AWS Networking Project"
     inventory: "AWS Inventory"
     playbook: "aws_vpc_peering.yml"
     verbosity: 0
