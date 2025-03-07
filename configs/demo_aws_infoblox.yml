@@ -1,0 +1,155 @@
+---
+
+# Credentials
+controller_credentials:
+  - name: "AWS Infoblox Credential"
+    description: "AWS Infoblox Credential"
+    credential_type: "Machine"
+    organization: "Default"
+    inputs:
+      password: "{{ infoblox_admin_password }}"
+      username: admin
+
+
+# Projects
+controller_projects:
+  - name: "AWS Infoblox Project"
+    description: "AWS Infoblox Project"
+    organization: "Default"
+    scm_type: "git"
+    scm_url: "{{ project_url }}"
+    scm_update_on_launch: "True"
+    execution_environment: "{{ ee_name }}"
+    wait: true
+
+
+# Job Templates
+controller_templates:
+  - name: "AWS Infoblox: 1. AWS Deploy"
+    description: ""
+    organization: "Default"
+    project: "AWS Infoblox Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_infoblox_deploy.yml"
+    verbosity: 0
+    job_type: "run"
+    ask_skip_tags_on_launch: yes
+    credentials:
+      - "AWS Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS Infoblox: 2. Config"
+    description: ""
+    organization: "Default"
+    project: "AWS Infoblox Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_infoblox_config.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Infoblox Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS Infoblox: 3. Set IP/Host"
+    description: ""
+    organization: "Default"
+    project: "AWS Infoblox Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_infoblox_setiphost.yml.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Infoblox Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS Infoblox: 4. Query"
+    description: ""
+    organization: "Default"
+    project: "AWS Infoblox Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_infoblox_query.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Infoblox Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS Infoblox: 5. Unconfig"
+    description: ""
+    organization: "Default"
+    project: "AWS Infoblox Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_infoblox_unconfig.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Infoblox Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS Infoblox: 6. AWS Undeploy"
+    description: ""
+    organization: "Default"
+    project: "AWS Infoblox Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_infoblox_undeploy.yml"
+    verbosity: 0
+    job_type: "run"
+    ask_skip_tags_on_launch: yes
+    credentials:
+      - "AWS Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+
+# Workflow Job Templates
+controller_workflows:
+  - name: "AWS Infoblox: Workflow"
+    description: "AWS Infoblox: Workflow"
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "AWS Deploy"
+        workflow_job_template: "AWS Infoblox: Workflow"
+        unified_job_template: "AWS Infoblox: 1. AWS Deploy"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        skip_tags: "never"
+        always_nodes:
+          - Infoblox Config
+      - identifier: "Infoblox Config"
+        workflow_job_template: "AWS Infoblox: Workflow"
+        unified_job_template: "AWS Infoblox: 2. Config"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Infoblox Set IP/Host
+      - identifier: "Infoblox Set IP/Host"
+        workflow_job_template: "AWS Infoblox: Workflow"
+        unified_job_template: "AWS Infoblox: 3. Set IP/Host"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Infoblox Query
+      - identifier: "Infoblox Query"
+        workflow_job_template: "AWS Infoblox: Workflow"
+        unified_job_template: "AWS Infoblox: 4. Query"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Infoblox Unconfig
+      - identifier: "Infoblox Unconfig"
+        workflow_job_template: "AWS Infoblox: Workflow"
+        unified_job_template: "AWS Infoblox: 5. Unconfig"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - AWS Undeploy
+      - identifier: "AWS Undeploy"
+        workflow_job_template: "AWS Infoblox: Workflow"
+        unified_job_template: "AWS Infoblox: 6. AWS Undeploy"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        skip_tags: "never"
