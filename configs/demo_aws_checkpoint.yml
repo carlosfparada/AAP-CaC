@@ -60,7 +60,7 @@ controller_templates:
       - "AWS Checkpoint Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS Checkpoint: 2.b Setup Windows
+  - name: "AWS Checkpoint: 2.b Setup Windows"
     description: ""
     organization: "Default"
     project: "AWS Checkpoint Project"
