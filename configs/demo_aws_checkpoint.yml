@@ -1,0 +1,162 @@
+---
+
+# Credentials
+controller_credentials:
+  - name: "AWS Checkpoint Credential"
+    description: "AWS Checkpoint Credential"
+    credential_type: "Machine"
+    organization: "Default"
+    inputs:
+      password: "{{ checkpoint_admin_password }}"
+      username: admin
+
+# Execution Environments
+controller_execution_environments:
+  - name: "{{ ee_custom.name }}"
+    description: "{{ ee_name }}"
+    organization: Default
+    image: "{{ ee_url }}"
+    pull: always
+    credential: "QUAY.IO Credentials"
+
+# Projects
+controller_projects:
+  - name: "AWS Checkpoint Project"
+    description: "AWS Checkpoint Project"
+    organization: "Default"
+    scm_type: "git"
+    scm_url: "{{ project_url }}"
+    scm_update_on_launch: "True"
+    execution_environment: "{{ ee_name }}"
+    wait: true
+
+
+# Job Templates
+controller_templates:
+  - name: "AWS Checkpoint: 1. AWS Deploy"
+    description: ""
+    organization: "Default"
+    project: "AWS Checkpoint Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_checkpoint_deploy.yml"
+    verbosity: 0
+    job_type: "run"
+    ask_skip_tags_on_launch: yes
+    credentials:
+      - "AWS Credential"
+      - "AWS Checkpoint Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS Checkpoint: 2. Config"
+    description: ""
+    organization: "Default"
+    project: "AWS Checkpoint Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_infoblox_config.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Infoblox Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS Checkpoint: 3. Set IP/Host"
+    description: ""
+    organization: "Default"
+    project: "AWS Checkpoint Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_infoblox_setiphost.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Checkpoint Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS Checkpoint: 4. Query"
+    description: ""
+    organization: "Default"
+    project: "AWS Checkpoint Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_infoblox_query.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Checkpoint Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS Infoblox: 5. Unconfig"
+    description: ""
+    organization: "Default"
+    project: "AWS Checkpoint Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_infoblox_unconfig.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Checkpoint Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS Checkpoint: 6. AWS Undeploy"
+    description: ""
+    organization: "Default"
+    project: "AWS Checkpoint Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_infoblox_undeploy.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Checkpoint Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+
+# Workflow Job Templates
+controller_workflows:
+  - name: "AWS Checkpoint: Workflow"
+    description: "AWS Checkpoint: Workflow"
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "AWS Deploy"
+        workflow_job_template: "AWS Checkpoint: Workflow"
+        unified_job_template: "AWS Checkpoint: 1. AWS Deploy"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Checkpoint Config
+      - identifier: "Checkpoint Config"
+        workflow_job_template: "AWS Checkpoint: Workflow"
+        unified_job_template: "AWS Checkpoint: 2. Config"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Checkpoint Set IP/Host
+      - identifier: "Checkpoint Set IP/Host"
+        workflow_job_template: "AWS Checkpoint: Workflow"
+        unified_job_template: "AWS Checkpoint: 3. Set IP/Host"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Checkpoint Query
+      - identifier: "Checkpoint Query"
+        workflow_job_template: "AWS Checkpoint: Workflow"
+        unified_job_template: "AWS Checkpoint: 4. Query"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Checkpoint Unconfig
+      - identifier: "Checkpoint Unconfig"
+        workflow_job_template: "AWS Checkpoint: Workflow"
+        unified_job_template: "AWS Checkpoint: 5. Unconfig"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - AWS Undeploy
+      - identifier: "AWS Undeploy"
+        workflow_job_template: "AWS Checkpoint: Workflow"
+        unified_job_template: "AWS Checkpoint: 6. AWS Undeploy"
+        organization: "Default"
+        all_parents_must_converge: "False"
