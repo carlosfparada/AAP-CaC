@@ -12,7 +12,7 @@ controller_credentials:
 
 # Execution Environments
 controller_execution_environments:
-  - name: "{{ ee_custom.name }}"
+  - name: "{{ ee_name }}"
     description: "{{ ee_name }}"
     organization: Default
     image: "{{ ee_url }}"
