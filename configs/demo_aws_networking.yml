@@ -1,7 +1,14 @@
 ---
 
 # Credentials
-
+controller_credentials:
+  - name: "AWS Networking Credential"
+    description: "AWS Networking Credential"
+    credential_type: "Machine"
+    organization: "Default"
+    inputs:
+      password: "{{ rhel_password }}"
+      username: "{{ rhel_user }}"
 
 # Projects
 controller_projects:
@@ -27,6 +34,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Credential"
+      - "AWS Networking Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
   - name: "AWS Networking: 2. VPC Peering Delete"
@@ -51,6 +59,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Credential"
+      - "AWS Networking Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
   - name: "AWS Networking: 4. VPC Transit Delete"
