@@ -9,6 +9,12 @@ controller_credentials:
     inputs:
       password: "{{ checkpoint_admin_password }}"
       username: admin
+  - name: "AWS Checkpoint Vault"
+    description: "AWS Checkpoint Vault "
+    credential_type: "Vault"
+    organization: "Default"
+    inputs:
+      vault_password: "{{ checkpoint_vault_secret }}"
 
 # Execution Environments
 controller_execution_environments:
