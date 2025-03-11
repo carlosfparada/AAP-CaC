@@ -47,7 +47,6 @@ controller_templates:
     playbook: "aws_checkpoint_deploy.yml"
     verbosity: 0
     job_type: "run"
-    ask_skip_tags_on_launch: yes
     credentials:
       - "AWS Credential"
       - "AWS Checkpoint Credential"

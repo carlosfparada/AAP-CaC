@@ -33,7 +33,6 @@ controller_templates:
     playbook: "aws_infoblox_deploy.yml"
     verbosity: 0
     job_type: "run"
-    ask_skip_tags_on_launch: yes
     credentials:
       - "AWS Credential"
       - "AWS Infoblox Credential"
