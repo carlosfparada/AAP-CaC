@@ -9,6 +9,13 @@ controller_credentials:
     inputs:
       password: "{{ checkpoint_admin_password }}"
       username: admin
+  - name: "AWS Checkpoint Credential"
+    description: "AWS Windows Credential"
+    credential_type: "Machine"
+    organization: "Default"
+    inputs:
+      password: "{{ checkpoint_admin_password }}"
+      username: Administrator
   - name: "AWS Checkpoint Vault"
     description: "AWS Checkpoint Vault "
     credential_type: "Vault"
@@ -49,7 +56,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS Checkpoint Credential"
+      - "AWS Windows Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
   - name: "AWS Checkpoint: 2.a Setup Checkpoint"
@@ -76,7 +83,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS Checkpoint Credential"
+      - "AWS Windows Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
   - name: "AWS Checkpoint: 3. Rules Provisioning"
