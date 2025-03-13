@@ -14,7 +14,7 @@ controller_credentials:
     credential_type: "Machine"
     organization: "Default"
     inputs:
-      password: "{{ checkpoint_admin_password }}"
+      password: "{{ windows_administrator_password }}"
       username: Administrator
   - name: "AWS Checkpoint Vault"
     description: "AWS Checkpoint Vault "
