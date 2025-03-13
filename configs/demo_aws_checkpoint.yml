@@ -25,10 +25,10 @@ controller_credentials:
 
 # Execution Environments
 controller_execution_environments:
-  - name: "{{ ee_name }}"
-    description: "{{ ee_name }}"
+  - name: "{{ ee_checkpoint_name }}"
+    description: "{{ ee_chedckpoint_name }}"
     organization: Default
-    image: "{{ ee_url }}"
+    image: "{{ ee_checkpoint_url }}"
     pull: always
     credential: "QUAY.IO Credentials"
 
@@ -71,7 +71,7 @@ controller_templates:
       - "AWS Credential"
       - "AWS Checkpoint Credential"
       - "AWS Checkpoint Vault"
-    execution_environment: "{{ ee_name }}"
+    execution_environment: "{{ ee_checkpoint_ame }}"
     survey_enabled: false
   - name: "AWS Checkpoint: 2.b Setup Windows"
     description: ""
