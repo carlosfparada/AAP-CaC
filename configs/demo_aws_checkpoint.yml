@@ -9,7 +9,7 @@ controller_credentials:
     inputs:
       password: "{{ checkpoint_admin_password }}"
       username: admin
-  - name: "AWS Checkpoint Credential"
+  - name: "AWS Windows Credential"
     description: "AWS Windows Credential"
     credential_type: "Machine"
     organization: "Default"
