@@ -71,7 +71,7 @@ controller_templates:
       - "AWS Credential"
       - "AWS Checkpoint Credential"
       - "AWS Checkpoint Vault"
-    execution_environment: "{{ ee_checkpoint_ame }}"
+    execution_environment: "{{ ee_name }}"
     survey_enabled: false
   - name: "AWS Checkpoint: 2.b Setup Windows"
     description: ""
@@ -84,7 +84,7 @@ controller_templates:
     credentials:
       - "AWS Credential"
       - "AWS Windows Credential"
-    execution_environment: "{{ ee_name }}"
+    execution_environment: "{{ ee_checkpoint_name }}"
     survey_enabled: false
   - name: "AWS Checkpoint: 3. Rules Provisioning"
     description: ""
