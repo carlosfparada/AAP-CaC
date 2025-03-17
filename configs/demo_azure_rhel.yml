@@ -55,7 +55,7 @@ controller_inventory_source_update:
   - name: Azure Inventory Source Update
     description: Azure Inventory Source Update
     organization: Default
-    inventory: Azure Inverntory
+    inventory: Azure Inventory
     wait: True
 
 # Job Templates
