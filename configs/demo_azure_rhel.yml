@@ -42,7 +42,7 @@ controller_inventory_sources:
   - name: Azure Inventory Source
     description: Azure Inventory Source
     organization: Default
-    source: 'ec2'
+    source: 'azure_rm'
     credential: Azure Credential
     inventory: Azure Inventory
     execution_environment: Default execution environment
