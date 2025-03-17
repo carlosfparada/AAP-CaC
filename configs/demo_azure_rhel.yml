@@ -1,0 +1,130 @@
+---
+
+# Credentials
+controller_credentials:
+  - name: Azure Credential
+    description: Azure Credential
+    credential_type: "Amazon Web Services"
+    organization: "Default"
+    inputs:
+      username: "{{ aws_access_key }}"
+      password: "{{ aws_secret_key }}"
+  - name: "Azure RHEL Credential"
+    description: "Azure RHEL Credential"
+    credential_type: "Machine"
+    organization: "Default"
+    inputs:
+      password: "{{ rhel_password }}"
+      username: "{{ rhel_user }}"
+
+
+# Projects
+controller_projects:
+  - name: "Azure RHEL Project"
+    description: "Azure RHEL Project"
+    organization: "Default"
+    scm_type: "git"
+    scm_url: "{{ project_url }}"
+    scm_update_on_launch: "True"
+    execution_environment: "{{ ee_name }}"
+    wait: true
+
+# Inventories
+controller_inventories:
+  - name: "Azure Inventory"
+    description: "Azure Inventory"
+    organization: "Default"
+
+# Inventory Sources
+controller_inventory_sources:
+  - name: Azure Inventory Source
+    description: Azure Inventory Source
+    organization: Default
+    source: 'ec2'
+    credential: Azure Credential
+    inventory: Azure Inventory
+    execution_environment: Default execution environment
+    update_on_launch: True
+    update_cache_timeout: 0
+    overwrite: True
+
+# Inventory Sources Update
+controller_inventory_source_update:
+  - name: Azure Inventory Source Update
+    description: Azure Inventory Source Update
+    organization: Default
+    inventory: Azure Inverntory
+    wait: True
+
+# Job Templates
+controller_templates:
+  - name: "Azure RHEL: 1. Azure Deploy"
+    description: ""
+    organization: "Default"
+    project: "Azure RHEL Project"
+    inventory: "Azure Inventory"
+    playbook: "aws.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "Azure Credential"
+      - "Azure RHEL Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "Azure RHEL: 2. RHEL Config"
+    description: ""
+    organization: "Default"
+    project: "Azure RHEL Project"
+    inventory: "Azure Inventory"
+    playbook: "rhel.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "Azure Credential"
+      - "Azure RHEL Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+    extra_vars:
+      subscription_user: "{{ subscription_user }}"
+      subscription_pass: "{{ subscription_pass }}"
+      rh_subs_pool_id: "{{ rh_subs_pool_id }}"
+  - name: "Azure RHEL: 3. Azure Undeploy"
+    description: ""
+    organization: "Default"
+    project: "Azure RHEL Project"
+    inventory: "Azure Inventory"
+    playbook: "aws_undeploy.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "Azure Credential"
+      - "Azure RHEL Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+
+# Workflow Job Templates
+controller_workflows:
+  - name: "Azure RHEL: Workflow"
+    description: "Azure RHEL: Workflow"
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "Azure Deploy"
+        workflow_job_template: "Azure RHEL: Workflow"
+        unified_job_template: "Azure RHEL: 1. Azure Deploy"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - RHEL Config
+      - identifier: "RHEL Config"
+        workflow_job_template: "Azure RHEL: Workflow"
+        unified_job_template: "Azure RHEL: 2. RHEL Config"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Azure Undeploy
+      - identifier: "Azure Undeploy"
+        workflow_job_template: "Azure RHEL: Workflow"
+        unified_job_template: "Azure RHEL: 3. Azure Undeploy"
+        organization: "Default"
+        all_parents_must_converge: "False"
