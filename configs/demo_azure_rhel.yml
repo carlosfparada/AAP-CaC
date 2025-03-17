@@ -4,11 +4,13 @@
 controller_credentials:
   - name: Azure Credential
     description: Azure Credential
-    credential_type: "Amazon Web Services"
+    credential_type: "Microsoft Azure Resource Manager"
     organization: "Default"
     inputs:
-      username: "{{ aws_access_key }}"
-      password: "{{ aws_secret_key }}"
+      subscription: "{{ azure_subscription_id }}"
+      client: "{{ azure_client_id }}"
+      secret: "{{ azure_client_secret }}"
+      tenant: "{{ azure_tenant_id }}"
   - name: "Azure RHEL Credential"
     description: "Azure RHEL Credential"
     credential_type: "Machine"
@@ -63,7 +65,7 @@ controller_templates:
     organization: "Default"
     project: "Azure RHEL Project"
     inventory: "Azure Inventory"
-    playbook: "aws.yml"
+    playbook: "azure_deploy.yml"
     verbosity: 0
     job_type: "run"
     credentials:
@@ -93,7 +95,7 @@ controller_templates:
     organization: "Default"
     project: "Azure RHEL Project"
     inventory: "Azure Inventory"
-    playbook: "aws_undeploy.yml"
+    playbook: "azure_undeploy.yml"
     verbosity: 0
     job_type: "run"
     credentials:
