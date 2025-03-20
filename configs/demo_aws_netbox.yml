@@ -2,19 +2,19 @@
 
 # Credentials
 controller_credentials:
-  - name: "AWS RHEL Credential"
-    description: "AWS RHEL Credential"
+  - name: "AWS Netbox Credential"
+    description: "AWS Netbox Credential"
     credential_type: "Machine"
     organization: "Default"
     inputs:
-      password: "{{ rhel_password }}"
-      username: "{{ rhel_user }}"
+      password: "{{ netbox_password }}"
+      username: "{{ netbox_user }}"
 
 
 # Projects
 controller_projects:
-  - name: "AWS RHEL Project"
-    description: "AWS RHEL Project"
+  - name: "AWS Netbox Project"
+    description: "AWS Netbox Project"
     organization: "Default"
     scm_type: "git"
     scm_url: "{{ project_url }}"
@@ -25,73 +25,69 @@ controller_projects:
 
 # Job Templates
 controller_templates:
-  - name: "AWS RHEL: 1. AWS Deploy"
+  - name: "AWS Netbox: 1. AWS Deploy"
     description: ""
     organization: "Default"
-    project: "AWS RHEL Project"
+    project: "AWS Netbox Project"
     inventory: "AWS Inventory"
     playbook: "aws_deploy.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS RHEL Credential"
+      - "AWS Netbox Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS RHEL: 2. Config"
+  - name: "AWS Netbox: 2. Get Facts and Push"
     description: ""
     organization: "Default"
-    project: "AWS RHEL Project"
+    project: "AWS Netbox Project"
     inventory: "AWS Inventory"
-    playbook: "rhel.yml"
+    playbook: "get_facts_push_netbox.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS RHEL Credential"
+      - "AWS Netbox Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-    extra_vars:
-      subscription_user: "{{ subscription_user }}"
-      subscription_pass: "{{ subscription_pass }}"
-      rh_subs_pool_id: "{{ rh_subs_pool_id }}"
-  - name: "AWS RHEL: 3. AWS Undeploy"
+  - name: "AWS Netbox: 3. AWS Undeploy"
     description: ""
     organization: "Default"
-    project: "AWS RHEL Project"
+    project: "AWS Netbox Project"
     inventory: "AWS Inventory"
     playbook: "aws_undeploy.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS RHEL Credential"
+      - "AWS Netbox Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
 
 # Workflow Job Templates
 controller_workflows:
-  - name: "AWS RHEL: Workflow"
-    description: "AWS RHEL: Workflow"
+  - name: "AWS Netbox: Workflow"
+    description: "AWS Netbox: Workflow"
     organization: "Default"
     state: "present"
     simplified_workflow_nodes:
       - identifier: "AWS Deploy"
-        workflow_job_template: "AWS RHEL: Workflow"
-        unified_job_template: "AWS RHEL: 1. AWS Deploy"
+        workflow_job_template: "AWS Netbox: Workflow"
+        unified_job_template: "AWS Netbox: 1. AWS Deploy"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
-          - RHEL Config
-      - identifier: "RHEL Config"
-        workflow_job_template: "AWS RHEL: Workflow"
-        unified_job_template: "AWS RHEL: 2. Config"
+          - Netbox Config
+      - identifier: "Netbox Config"
+        workflow_job_template: "AWS Netbox: Workflow"
+        unified_job_template: "AWS Netbox: 2. Get Facts and Push"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
           - AWS Undeploy
       - identifier: "AWS Undeploy"
-        workflow_job_template: "AWS RHEL: Workflow"
-        unified_job_template: "AWS RHEL: 3. AWS Undeploy"
+        workflow_job_template: "AWS Netbox: Workflow"
+        unified_job_template: "AWS Netbox: 3. AWS Undeploy"
         organization: "Default"
         all_parents_must_converge: "False"
