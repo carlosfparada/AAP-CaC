@@ -43,7 +43,7 @@ controller_templates:
     organization: "Default"
     project: "AWS Netbox Project"
     inventory: "AWS Inventory"
-    playbook: "aws_get_facts_push_netbox.yml"
+    playbook: "aws_set_password.yml"
     verbosity: 0
     job_type: "run"
     credentials:
@@ -56,7 +56,7 @@ controller_templates:
     organization: "Default"
     project: "AWS Netbox Project"
     inventory: "AWS Inventory"
-    playbook: "aws_set_password.yml"
+    playbook: "aws_get_facts_push_netbox.yml"
     verbosity: 0
     job_type: "run"
     credentials:
