@@ -64,7 +64,33 @@ controller_templates:
       - "AWS Netbox Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS Netbox: 4. AWS Undeploy"
+  - name: "AWS Netbox: 4. Query"
+    description: ""
+    organization: "Default"
+    project: "AWS Netbox Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_query_netbox.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Netbox Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS Netbox: 5. Clean Up"
+    description: ""
+    organization: "Default"
+    project: "AWS Netbox Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_cleanup_netbox.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Netbox Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS Netbox: 6. AWS Undeploy"
     description: ""
     organization: "Default"
     project: "AWS Netbox Project"
@@ -108,6 +134,6 @@ controller_workflows:
           - AWS Undeploy
       - identifier: "AWS Undeploy"
         workflow_job_template: "AWS Netbox: Workflow"
-        unified_job_template: "AWS Netbox: 4. AWS Undeploy"
+        unified_job_template: "AWS Netbox: 6. AWS Undeploy"
         organization: "Default"
         all_parents_must_converge: "False"
