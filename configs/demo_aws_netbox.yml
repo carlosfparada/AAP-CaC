@@ -38,12 +38,12 @@ controller_templates:
       - "AWS Netbox Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS Netbox: 2. Get Facts and Push"
+  - name: "AWS Netbox: 2. Set Password"
     description: ""
     organization: "Default"
     project: "AWS Netbox Project"
     inventory: "AWS Inventory"
-    playbook: "get_facts_push_netbox.yml"
+    playbook: "aws_get_facts_push_netbox.yml"
     verbosity: 0
     job_type: "run"
     credentials:
@@ -51,7 +51,20 @@ controller_templates:
       - "AWS Netbox Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS Netbox: 3. AWS Undeploy"
+  - name: "AWS Netbox: 3. Get Facts and Push"
+    description: ""
+    organization: "Default"
+    project: "AWS Netbox Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_set_password.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Netbox Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS Netbox: 4. AWS Undeploy"
     description: ""
     organization: "Default"
     project: "AWS Netbox Project"
@@ -78,16 +91,23 @@ controller_workflows:
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
-          - Netbox Config
-      - identifier: "Netbox Config"
+          - Netbox Set Password
+      - identifier: "Netbox Set Password"
         workflow_job_template: "AWS Netbox: Workflow"
-        unified_job_template: "AWS Netbox: 2. Get Facts and Push"
+        unified_job_template: "AWS Netbox: 2. Set Password"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Netbox Get Facts and Push
+      - identifier: "Netbox Get Facts and Push"
+        workflow_job_template: "AWS Netbox: Workflow"
+        unified_job_template: "AWS Netbox: 3. Get Facts and Push"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
           - AWS Undeploy
       - identifier: "AWS Undeploy"
         workflow_job_template: "AWS Netbox: Workflow"
-        unified_job_template: "AWS Netbox: 3. AWS Undeploy"
+        unified_job_template: "AWS Netbox: 4. AWS Undeploy"
         organization: "Default"
         all_parents_must_converge: "False"
