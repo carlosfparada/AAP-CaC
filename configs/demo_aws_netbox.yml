@@ -10,7 +10,7 @@ controller_credentials:
       password: "{{ netbox_password }}"
       username: "{{ netbox_user }}"
   - name: "AWS Netbox Vault"
-    description: "AWS Checkpoint Vault "
+    description: "AWS Checkpoint Vault"
     credential_type: "Vault"
     organization: "Default"
     inputs:
@@ -54,6 +54,7 @@ controller_templates:
     credentials:
       - "AWS Credential"
       - "AWS Netbox Credential"
+      - "AWS Checkpoint Vault"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
   - name: "AWS Netbox: 3. Get Facts and Push"

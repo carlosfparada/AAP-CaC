@@ -17,7 +17,7 @@ controller_credentials:
       password: "{{ windows_administrator_password }}"
       username: Administrator
   - name: "AWS Checkpoint Vault"
-    description: "AWS Checkpoint Vault "
+    description: "AWS Checkpoint Vault"
     credential_type: "Vault"
     organization: "Default"
     inputs:
