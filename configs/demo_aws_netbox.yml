@@ -54,7 +54,7 @@ controller_templates:
     credentials:
       - "AWS Credential"
       - "AWS Netbox Credential"
-      - "AWS Checkpoint Vault"
+      - "AWS Netbox Vault"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
   - name: "AWS Netbox: 3. Get Facts and Push"
