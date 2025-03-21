@@ -9,7 +9,12 @@ controller_credentials:
     inputs:
       password: "{{ netbox_password }}"
       username: "{{ netbox_user }}"
-
+  - name: "AWS Netbox Vault"
+    description: "AWS Checkpoint Vault "
+    credential_type: "Vault"
+    organization: "Default"
+    inputs:
+      vault_password: "{{ netbox_vault_secret }}"
 
 # Projects
 controller_projects:
