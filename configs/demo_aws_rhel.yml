@@ -21,7 +21,15 @@ controller_projects:
     scm_update_on_launch: "True"
     execution_environment: "{{ ee_name }}"
     wait: true
-
+    # RHTOUR: TO REMOVE
+  - name: "AWS RHEL Project"
+    description: "AWS RHEL Project"
+    organization: "Default"
+    scm_type: "git"
+    scm_url: "{{ project_url }}"
+    scm_update_on_launch: "True"
+    execution_environment: "{{ ee_name }}"
+    wait: true
 
 # Job Templates
 controller_templates:
