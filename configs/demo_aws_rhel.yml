@@ -77,7 +77,7 @@ controller_templates:
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
   # RHTOUR: TO REMOVE
-  - name: "AWS RHEL: RHEL9"
+  - name: "AWS RHEL: Lightspeed"
     description: ""
     organization: "Default"
     project: "AWS RHEL RHTOUR Project"
@@ -94,7 +94,7 @@ controller_templates:
       subscription_user: "{{ subscription_user }}"
       subscription_pass: "{{ subscription_pass }}"
       rh_subs_pool_id: "{{ rh_subs_pool_id }}"
-  - name: "AWS RHEL: RHEL9 backup"
+  - name: "AWS RHEL: Lightspeed backup"
     description: ""
     organization: "Default"
     project: "AWS RHEL RHTOUR Project"
