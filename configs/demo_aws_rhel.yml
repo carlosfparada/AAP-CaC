@@ -99,7 +99,8 @@ controller_templates:
     organization: "Default"
     project: "AWS RHEL RHTOUR Project"
     inventory: "AWS Inventory"
-    playbook: "RHEL9-backup.yml"
+    #playbook: "RHEL9-backup.yml"
+    playbook: "RHEL9.yml"
     verbosity: 0
     job_type: "run"
     credentials:
