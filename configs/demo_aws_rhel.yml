@@ -21,12 +21,12 @@ controller_projects:
     scm_update_on_launch: "True"
     execution_environment: "{{ ee_name }}"
     wait: true
-    # RHTOUR: TO REMOVE
-  - name: "AWS RHEL Project"
+  # RHTOUR: TO REMOVE
+  - name: "AWS RHEL RHTOUR Project"
     description: "AWS RHEL Project"
     organization: "Default"
     scm_type: "git"
-    scm_url: "{{ project_url }}"
+    scm_url: "https://github.com/naarh/RHTour.git"
     scm_update_on_launch: "True"
     execution_environment: "{{ ee_name }}"
     wait: true
@@ -76,6 +76,41 @@ controller_templates:
       - "AWS RHEL Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
+  # RHTOUR: TO REMOVE
+  - name: "AWS RHEL: RHEL9"
+    description: ""
+    organization: "Default"
+    project: "AWS RHEL RHTOUR Project"
+    inventory: "AWS Inventory"
+    playbook: "RHEL9.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS RHEL Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+    extra_vars:
+      subscription_user: "{{ subscription_user }}"
+      subscription_pass: "{{ subscription_pass }}"
+      rh_subs_pool_id: "{{ rh_subs_pool_id }}"
+  - name: "AWS RHEL: RHEL9 backup"
+    description: ""
+    organization: "Default"
+    project: "AWS RHEL RHTOUR Project"
+    inventory: "AWS Inventory"
+    playbook: "RHEL9-backup.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS RHEL Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+    extra_vars:
+      subscription_user: "{{ subscription_user }}"
+      subscription_pass: "{{ subscription_pass }}"
+      rh_subs_pool_id: "{{ rh_subs_pool_id }}"
 
 # Workflow Job Templates
 controller_workflows:
