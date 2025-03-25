@@ -137,6 +137,20 @@ controller_workflows:
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
+          - Netbox Query
+      - identifier: "Netbox Query"
+        workflow_job_template: "AWS Netbox: Workflow"
+        unified_job_template: "AWS Netbox: 4. Query"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Netbox Clean Up
+      - identifier: "Netbox Clean Up"
+        workflow_job_template: "AWS Netbox: Workflow"
+        unified_job_template: "AWS Netbox: 5. Clean Up"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
           - AWS Undeploy
       - identifier: "AWS Undeploy"
         workflow_job_template: "AWS Netbox: Workflow"
