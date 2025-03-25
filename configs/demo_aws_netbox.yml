@@ -109,6 +109,32 @@ controller_templates:
       - "AWS Netbox Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
+  - name: "AWS Netbox: Update IP Interface"
+    description: ""
+    organization: "Default"
+    project: "AWS Netbox Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_update_ip_interface.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Netbox Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS Netbox: Update VLAN Interface"
+    description: ""
+    organization: "Default"
+    project: "AWS Netbox Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_update_vlan_interface.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Netbox Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
 
 # Workflow Job Templates
 controller_workflows:
