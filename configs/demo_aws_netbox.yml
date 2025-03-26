@@ -124,6 +124,7 @@ controller_templates:
       - "AWS Netbox Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
+    ask_variables_on_launch: true
   - name: "AWS Netbox: Update VLAN Interface"
     description: ""
     organization: "Default"
@@ -137,6 +138,7 @@ controller_templates:
       - "AWS Netbox Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
+    ask_variables_on_launch: true
 
 # Workflow Job Templates
 controller_workflows:
