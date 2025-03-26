@@ -57,6 +57,8 @@ controller_templates:
       - "AWS Netbox Vault"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
+    extra_vars:
+      aap_password: "{{ admin_password }}"
   - name: "AWS Netbox: 3. Get Facts and Push"
     description: ""
     organization: "Default"
