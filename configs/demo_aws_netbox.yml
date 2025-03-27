@@ -43,12 +43,12 @@ controller_templates:
       - "AWS Netbox Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS Netbox: 2. Set Password"
+  - name: "AWS Netbox: 2. Setup"
     description: ""
     organization: "Default"
     project: "AWS Netbox Project"
     inventory: "AWS Inventory"
-    playbook: "aws_set_password.yml"
+    playbook: "aws_setup_netbox.yml"
     verbosity: 0
     job_type: "run"
     credentials:
@@ -156,7 +156,7 @@ controller_workflows:
           - Netbox Set Password
       - identifier: "Netbox Set Password"
         workflow_job_template: "AWS Netbox: Workflow"
-        unified_job_template: "AWS Netbox: 2. Set Password"
+        unified_job_template: "AWS Netbox: 2. Setup"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
