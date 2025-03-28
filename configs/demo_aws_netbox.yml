@@ -35,6 +35,7 @@ controller_projects:
     wait: true
 
 # Inventories
+controller_inventories:
   - name: "Netbox Inventory"
     description: "Netbox Inventory"
     organization: "Default"
