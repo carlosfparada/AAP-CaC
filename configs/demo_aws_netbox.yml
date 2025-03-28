@@ -57,10 +57,10 @@ controller_inventory_sources:
 
 # Inventory Sources Update
 controller_inventory_source_update:
-  - name: AWS Inventory Source Update
-    description: AWS Inventory Source Update
+  - name: Netbox Inventory Source Update
+    description: Netbox Inventory Source Update
     organization: Default
-    inventory: AWS Inventory
+    inventory: Netbox Inventory
     wait: True
 
 # Job Templates
