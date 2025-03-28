@@ -59,13 +59,13 @@ controller_inventory_sources:
       netbox_url: "http://netbox_url:8000"
       netbox_token: "netbox_token"
 
-# Inventory Sources Update
-controller_inventory_source_update:
-  - name: Netbox Inventory Source Update
-    description: Netbox Inventory Source Update
-    organization: Default
-    inventory: Netbox Inventory
-    wait: True
+# # Inventory Sources Update
+# controller_inventory_source_update:
+#   - name: Netbox Inventory Source Update
+#     description: Netbox Inventory Source Update
+#     organization: Default
+#     inventory: Netbox Inventory
+#     wait: True
 
 # Job Templates
 controller_templates:
