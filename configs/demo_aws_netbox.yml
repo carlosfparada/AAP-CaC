@@ -44,13 +44,16 @@ controller_inventory_sources:
   - name: Netbox Inventory Source
     description: Netbox Inventory Source
     organization: Default
-    source: 'project'
+    source: 'scm'
     credential: Netbox Credential
     inventory: Netbox Inventory
-    execution_environment: Default execution environment
+    execution_environment: "{{ ee_name }}"
     update_on_launch: True
     update_cache_timeout: 0
     overwrite: True
+    source_vars:
+      - netbox_url: "netbox_url"
+      - netbox_token: "netbox_token"
 
 # Inventory Sources Update
 controller_inventory_source_update:
