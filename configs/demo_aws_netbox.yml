@@ -46,7 +46,7 @@ controller_inventory_sources:
     description: Netbox Inventory Source
     #organization: Default
     source: 'scm'
-    source_project: "{{ project_url }}"
+    source_project: "{{ project_url }}/aws_hosts.yml"
     credential: Netbox Credential
     inventory: Netbox Inventory
     execution_environment: "{{ ee_name }}"
