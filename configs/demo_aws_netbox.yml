@@ -52,8 +52,8 @@ controller_inventory_sources:
     update_cache_timeout: 0
     overwrite: True
     source_vars:
-      - netbox_url: "http://netbox_url:8000"
-      - netbox_token: "netbox_token"
+      netbox_url: "http://netbox_url:8000"
+      netbox_token: "netbox_token"
 
 # Inventory Sources Update
 controller_inventory_source_update:
