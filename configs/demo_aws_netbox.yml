@@ -44,7 +44,7 @@ controller_inventories:
 controller_inventory_sources:
   - name: Netbox Inventory Source
     description: Netbox Inventory Source
-    organization: Default
+    #organization: Default
     source: 'scm'
     source_project: "{{ project_url }}"
     credential: Netbox Credential
