@@ -59,14 +59,6 @@ controller_inventory_sources:
       NETBOX_API: "http://netbox_url:8000"
       NETBOX_TOKEN: "netbox_token"
 
-# # Inventory Sources Update
-# controller_inventory_source_update:
-#   - name: Netbox Inventory Source Update
-#     description: Netbox Inventory Source Update
-#     organization: Default
-#     inventory: Netbox Inventory
-#     wait: True
-
 # Job Templates
 controller_templates:
   - name: "AWS Netbox: 1. AWS Deploy"
