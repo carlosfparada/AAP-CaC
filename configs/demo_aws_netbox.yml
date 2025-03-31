@@ -95,7 +95,7 @@ controller_templates:
           - question_name: AAP Password
             default: "{{ admin_password }}"
             variable: aap_password
-            "type": "password"
+            type: "password"
             required: true
   - name: "AWS Netbox: 3. Get Facts and Push"
     description: ""

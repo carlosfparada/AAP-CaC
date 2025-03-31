@@ -76,7 +76,7 @@ controller_templates:
           - question_name: AAP Address
             default: "{{ groups['aap'][0] }}"
             variable: http_address
-            "type": "text"
+            type: "text"
             required: true
   - name: "AWS EDA Paloalto: 4. Rules Provisioning"
     description: ""
@@ -125,7 +125,7 @@ controller_templates:
           - question_name: AAP Address
             default: "{{ groups['aap'][0] }}"
             variable: http_address
-            "type": "text"
+            type: "text"
             required: true
   - name: "AWS EDA Paloalto: 7. AWS Undeploy"
     description: ""

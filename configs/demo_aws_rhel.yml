@@ -67,17 +67,17 @@ controller_templates:
           - question_name: Subscription User
             default: "{{ subscription_user }}"
             variable: subscription_user
-            "type": "text"
+            type: "text"
             required: true
           - question_name: Subscription Password
             default: "{{ subscription_pass }}"
             variable: subscription_pass
-            "type": "password"
+            type: "password"
             required: true
           - question_name: Subscription Pool Id
             default: "{{ rh_subs_pool_id }}"
             variable: rh_subs_pool_id
-            "type": "password"
+            type: "password"
             required: true
   - name: "AWS RHEL: 3. AWS Undeploy"
     description: ""
@@ -114,17 +114,17 @@ controller_templates:
           - question_name: Subscription User
             default: "{{ subscription_user }}"
             variable: subscription_user
-            "type": "text"
+            type: "text"
             required: true
           - question_name: Subscription Password
             default: "{{ subscription_pass }}"
             variable: subscription_pass
-            "type": "password"
+            type: "password"
             required: true
           - question_name: Subscription Pool Id
             default: "{{ rh_subs_pool_id }}"
             variable: rh_subs_pool_id
-            "type": "password"
+            type: "password"
             required: true
   # RHTOUR: TO REMOVE
   - name: "AWS RHEL: RHTOUR Lightspeed backup"
@@ -149,17 +149,17 @@ controller_templates:
           - question_name: Subscription User
             default: "{{ subscription_user }}"
             variable: subscription_user
-            "type": "text"
+            type: "text"
             required: true
           - question_name: Subscription Password
             default: "{{ subscription_pass }}"
             variable: subscription_pass
-            "type": "password"
+            type: "password"
             required: true
           - question_name: Subscription Pool Id
             default: "{{ rh_subs_pool_id }}"
             variable: rh_subs_pool_id
-            "type": "password"
+            type: "password"
             required: true
 
 # Workflow Job Templates
