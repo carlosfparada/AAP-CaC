@@ -68,8 +68,6 @@ controller_templates:
       - "AWS Credential"
       - "AWS Paloalto Credential"
     execution_environment: "{{ ee_name }}"
-    extra_vars:
-      http_address: "{{ groups['aap'][0] }}"
     survey_enabled: true
     survey:
         name: Survey
@@ -80,7 +78,6 @@ controller_templates:
             variable: http_address
             "type": "text"
             required: true
-
   - name: "AWS EDA Paloalto: 4. Rules Provisioning"
     description: ""
     organization: "Default"
@@ -120,8 +117,16 @@ controller_templates:
       - "AWS Paloalto Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-    extra_vars:
-      http_address: "{{ groups['aap'][0] }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: AAP Address
+            default: "{{ groups['aap'][0] }}"
+            variable: http_address
+            "type": "text"
+            required: true
   - name: "AWS EDA Paloalto: 7. AWS Undeploy"
     description: ""
     organization: "Default"
