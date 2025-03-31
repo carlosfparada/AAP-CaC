@@ -65,6 +65,7 @@ controller_templates:
     survey_enabled: true
     survey:
         name: Survey
+        description: Survey
         spec:
           - question_name: Subscription User
             default: "{{ subscription_user }}"
@@ -112,6 +113,7 @@ controller_templates:
     survey_enabled: true
     survey:
         name: Survey
+        description: Survey
         spec:
           - question_name: Subscription User
             default: "{{ subscription_user }}"
@@ -148,6 +150,7 @@ controller_templates:
     survey_enabled: true
     survey:
         name: Survey
+        description: Survey
         spec:
           - question_name: Subscription User
             default: "{{ subscription_user }}"
