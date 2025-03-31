@@ -58,10 +58,7 @@ controller_templates:
       - "AWS Credential"
       - "AWS RHEL Credential"
     execution_environment: "{{ ee_name }}"
-    # extra_vars:
-    #   subscription_user: "{{ subscription_user }}"
-    #   subscription_pass: "{{ subscription_pass }}"
-    #   rh_subs_pool_id: "{{ rh_subs_pool_id }}"
+    become_enabled: true
     survey_enabled: true
     survey:
         name: Survey
@@ -82,7 +79,6 @@ controller_templates:
             variable: rh_subs_pool_id
             "type": "password"
             required: true
-
   - name: "AWS RHEL: 3. AWS Undeploy"
     description: ""
     organization: "Default"
@@ -109,10 +105,7 @@ controller_templates:
       - "AWS Credential"
       - "AWS RHEL Credential"
     execution_environment: "{{ ee_name }}"
-    # extra_vars:
-    #   subscription_user: "{{ subscription_user }}"
-    #   subscription_pass: "{{ subscription_pass }}"
-    #   rh_subs_pool_id: "{{ rh_subs_pool_id }}"
+    become_enabled: true
     survey_enabled: true
     survey:
         name: Survey
@@ -133,7 +126,6 @@ controller_templates:
             variable: rh_subs_pool_id
             "type": "password"
             required: true
-
   # RHTOUR: TO REMOVE
   - name: "AWS RHEL: RHTOUR Lightspeed backup"
     description: ""
@@ -149,10 +141,6 @@ controller_templates:
       - "AWS RHEL Credential"
     execution_environment: "{{ ee_name }}"
     become_enabled: true
-    # extra_vars:
-    #   subscription_user: "{{ subscription_user }}"
-    #   subscription_pass: "{{ subscription_pass }}"
-    #   rh_subs_pool_id: "{{ rh_subs_pool_id }}"
     survey_enabled: true
     survey:
         name: Survey
