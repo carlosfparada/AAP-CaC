@@ -64,7 +64,7 @@ controller_templates:
     #   rh_subs_pool_id: "{{ rh_subs_pool_id }}"
     survey_enabled: true
     survey:
-      - name: Survey
+        name: Survey
         spec:
           - question_name: Subscription User
             default: "{{ subscription_user }}"
