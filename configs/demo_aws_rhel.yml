@@ -58,11 +58,27 @@ controller_templates:
       - "AWS Credential"
       - "AWS RHEL Credential"
     execution_environment: "{{ ee_name }}"
-    survey_enabled: false
     # extra_vars:
     #   subscription_user: "{{ subscription_user }}"
     #   subscription_pass: "{{ subscription_pass }}"
     #   rh_subs_pool_id: "{{ rh_subs_pool_id }}"
+    survey_enabled: true
+    survey:
+      - name: Survey
+        spec:
+          - question_name: Subscription User
+            default: "{{ subscription_user }}"
+            variable: subscription_user
+            "type": "text"
+          - question_name: Subscription Password
+            default: "{{ subscription_pass }}"
+            variable: subscription_pass
+            "type": "password"
+          - question_name: Subscription Pool Id
+            default: "{{ rh_subs_pool_id }}"
+            variable: rh_subs_pool_id
+            "type": "password"
+
   - name: "AWS RHEL: 3. AWS Undeploy"
     description: ""
     organization: "Default"
@@ -89,12 +105,27 @@ controller_templates:
       - "AWS Credential"
       - "AWS RHEL Credential"
     execution_environment: "{{ ee_name }}"
-    survey_enabled: false
-    become_enabled: true
     # extra_vars:
     #   subscription_user: "{{ subscription_user }}"
     #   subscription_pass: "{{ subscription_pass }}"
     #   rh_subs_pool_id: "{{ rh_subs_pool_id }}"
+    survey_enabled: true
+    survey:
+      - name: Survey
+        spec:
+          - question_name: Subscription User
+            default: "{{ subscription_user }}"
+            variable: subscription_user
+            "type": "text"
+          - question_name: Subscription Password
+            default: "{{ subscription_pass }}"
+            variable: subscription_pass
+            "type": "password"
+          - question_name: Subscription Pool Id
+            default: "{{ rh_subs_pool_id }}"
+            variable: rh_subs_pool_id
+            "type": "password"
+
   # RHTOUR: TO REMOVE
   - name: "AWS RHEL: RHTOUR Lightspeed backup"
     description: ""
@@ -109,7 +140,6 @@ controller_templates:
       - "AWS Credential"
       - "AWS RHEL Credential"
     execution_environment: "{{ ee_name }}"
-    survey_enabled: false
     become_enabled: true
     # extra_vars:
     #   subscription_user: "{{ subscription_user }}"
