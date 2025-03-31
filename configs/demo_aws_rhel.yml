@@ -111,6 +111,10 @@ controller_templates:
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
     become_enabled: true
+    # extra_vars:
+    #   subscription_user: "{{ subscription_user }}"
+    #   subscription_pass: "{{ subscription_pass }}"
+    #   rh_subs_pool_id: "{{ rh_subs_pool_id }}"
     survey_enabled: true
     survey:
       - name: Survey
@@ -127,10 +131,6 @@ controller_templates:
             default: "{{ rh_subs_pool_id }}"
             variable: rh_subs_pool_id
             "type": "password"
-    # extra_vars:
-    #   subscription_user: "{{ subscription_user }}"
-    #   subscription_pass: "{{ subscription_pass }}"
-    #   rh_subs_pool_id: "{{ rh_subs_pool_id }}"
 
 # Workflow Job Templates
 controller_workflows:
