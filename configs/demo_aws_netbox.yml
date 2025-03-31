@@ -87,9 +87,16 @@ controller_templates:
       - "AWS Netbox Credential"
       - "AWS Netbox Vault"
     execution_environment: "{{ ee_name }}"
-    survey_enabled: false
-    extra_vars:
-      aap_password: "{{ admin_password }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: AAP Password
+            default: "{{ admin_password }}"
+            variable: aap_password
+            "type": "password"
+            required: true
   - name: "AWS Netbox: 3. Get Facts and Push"
     description: ""
     organization: "Default"

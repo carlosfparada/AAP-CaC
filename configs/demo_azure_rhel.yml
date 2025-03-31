@@ -85,11 +85,26 @@ controller_templates:
       - "Azure Credential"
       - "Azure RHEL Credential"
     execution_environment: "{{ ee_name }}"
-    survey_enabled: false
-    extra_vars:
-      subscription_user: "{{ subscription_user }}"
-      subscription_pass: "{{ subscription_pass }}"
-      rh_subs_pool_id: "{{ rh_subs_pool_id }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: Subscription User
+            default: "{{ subscription_user }}"
+            variable: subscription_user
+            "type": "text"
+            required: true
+          - question_name: Subscription Password
+            default: "{{ subscription_pass }}"
+            variable: subscription_pass
+            "type": "password"
+            required: true
+          - question_name: Subscription Pool Id
+            default: "{{ rh_subs_pool_id }}"
+            variable: rh_subs_pool_id
+            "type": "password"
+            required: true
   - name: "Azure RHEL: 3. Azure Undeploy"
     description: ""
     organization: "Default"
