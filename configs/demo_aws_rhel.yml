@@ -90,10 +90,12 @@ controller_templates:
       - "AWS RHEL Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
+    become_enabled: true
     extra_vars:
       subscription_user: "{{ subscription_user }}"
       subscription_pass: "{{ subscription_pass }}"
       rh_subs_pool_id: "{{ rh_subs_pool_id }}"
+  # RHTOUR: TO REMOVE
   - name: "AWS RHEL: RHTOUR Lightspeed backup"
     description: ""
     organization: "Default"
@@ -108,6 +110,7 @@ controller_templates:
       - "AWS RHEL Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
+    become_enabled: true
     extra_vars:
       subscription_user: "{{ subscription_user }}"
       subscription_pass: "{{ subscription_pass }}"
