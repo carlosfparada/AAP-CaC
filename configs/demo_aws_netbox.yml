@@ -191,12 +191,12 @@ controller_templates:
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
     ask_variables_on_launch: true
-  - name: "AWS Netbox: Branch EDA"
+  - name: "AWS Netbox: Update Config Context"
     description: ""
     organization: "Default"
     project: "AWS Netbox Project"
     inventory: "AWS Inventory"
-    playbook: "aws_branch_eda.yml"
+    playbook: "update_config_context.yml"
     verbosity: 0
     job_type: "run"
     credentials:
