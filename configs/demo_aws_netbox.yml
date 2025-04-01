@@ -239,3 +239,24 @@ controller_workflows:
         unified_job_template: "AWS Netbox: 6. AWS Undeploy"
         organization: "Default"
         all_parents_must_converge: "False"
+
+# EDA Projects
+eda_projects:
+  - name: "AWS EDA Netbox Project"
+    description: "AWS EDA Netbox Project"
+    organization: "Default"
+    url: "{{ project_url }}"
+    tls_validation: true
+
+# EDA Rulebook Activations
+eda_rulebook_activations:
+  - name: "AWS EDA Netbox: Branch Merge Configs"
+    description: "AWS EDA Netbox: Branch Merge Configs"
+    organization: "Default"
+    project: "AWS EDA Netbox Project"
+    rulebook: "branch_merge_config_rulebook.yml
+    decision_environment: "{{ de_name }}"
+    eda_credentials: "Controller Credentials"
+    restart_policy: always
+    #enabled: false
+    log_level: debug
