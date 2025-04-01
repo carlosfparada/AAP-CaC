@@ -264,11 +264,11 @@ eda_projects:
 
 # EDA Rulebook Activations
 eda_rulebook_activations:
-  - name: "AWS EDA Netbox: Branch Merge Configs"
+  - name: "AWS EDA Netbox: Update Banner and DNS"
     description: "AWS EDA Netbox: Branch Merge Configs"
     organization: "Default"
     project: "AWS EDA Netbox Project"
-    rulebook: "netbox_merge_rulebook.yml"
+    rulebook: "aws_update_config_context.yml"
     decision_environment: "{{ de_name }}"
     eda_credentials: "Controller Credentials"
     restart_policy: always
