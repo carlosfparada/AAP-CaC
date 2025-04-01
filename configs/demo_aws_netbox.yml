@@ -254,7 +254,7 @@ eda_rulebook_activations:
     description: "AWS EDA Netbox: Branch Merge Configs"
     organization: "Default"
     project: "AWS EDA Netbox Project"
-    rulebook: "branch_merge_config_rulebook.yml
+    rulebook: "netbox_merge_rulebook.yml"
     decision_environment: "{{ de_name }}"
     eda_credentials: "Controller Credentials"
     restart_policy: always
