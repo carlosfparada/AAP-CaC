@@ -268,7 +268,7 @@ eda_rulebook_activations:
     description: "AWS EDA Netbox: Config Context"
     organization: "Default"
     project: "AWS EDA Netbox Project"
-    rulebook: "aws_update_config_context.yml"
+    rulebook: "config_context_rulebook.yml"
     decision_environment: "{{ de_name }}"
     eda_credentials: "Controller Credentials"
     restart_policy: always
