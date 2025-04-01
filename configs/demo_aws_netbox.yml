@@ -191,6 +191,20 @@ controller_templates:
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
     ask_variables_on_launch: true
+  - name: "AWS Netbox: Branch EDA"
+    description: ""
+    organization: "Default"
+    project: "AWS Netbox Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_branch_eda.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Netbox Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+    ask_variables_on_launch: true
 
 # Workflow Job Templates
 controller_workflows:
