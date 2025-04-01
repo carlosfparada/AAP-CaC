@@ -264,8 +264,8 @@ eda_projects:
 
 # EDA Rulebook Activations
 eda_rulebook_activations:
-  - name: "AWS EDA Netbox: Update Banner and DNS"
-    description: "AWS EDA Netbox: Branch Merge Configs"
+  - name: "AWS EDA Netbox: Config Context"
+    description: "AWS EDA Netbox: Config Context"
     organization: "Default"
     project: "AWS EDA Netbox Project"
     rulebook: "aws_update_config_context.yml"
