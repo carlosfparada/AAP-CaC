@@ -196,7 +196,7 @@ controller_templates:
     organization: "Default"
     project: "AWS Netbox Project"
     inventory: "AWS Inventory"
-    playbook: "update_config_context.yml"
+    playbook: "aws_update_config_context.yml"
     verbosity: 0
     job_type: "run"
     credentials:
