@@ -34,30 +34,30 @@ controller_projects:
     execution_environment: "{{ ee_name }}"
     wait: true
 
-# Inventories
-controller_inventories:
-  - name: "GitOps Inventory"
-    description: "GitOps Inventory"
-    organization: "Default"
+# # Inventories
+# controller_inventories:
+#   - name: "GitOps Inventory"
+#     description: "GitOps Inventory"
+#     organization: "Default"
 
-# Inventory Sources
-controller_inventory_sources:
-  - name: GitOps Inventory Source
-    description: GitOps Inventory Source
-    #organization: Default
-    source: 'scm'
-    source_project: "AWS GitOps Project"
-    source_path: "aws_hosts.yml"
-    credential: GitOps Credential
-    inventory: GitOps Inventory
-    execution_environment: "{{ ee_name }}"
-    update_on_launch: True
-    update_cache_timeout: 0
-    overwrite: True
-    overwrite_vars: True
-    source_vars:
-      GITOPS_API: "http://gitops_url:8000"
-      GITOPS_TOKEN: "gitops_token"
+# # Inventory Sources
+# controller_inventory_sources:
+#   - name: GitOps Inventory Source
+#     description: GitOps Inventory Source
+#     #organization: Default
+#     source: 'scm'
+#     source_project: "AWS GitOps Project"
+#     source_path: "aws_hosts.yml"
+#     credential: GitOps Credential
+#     inventory: GitOps Inventory
+#     execution_environment: "{{ ee_name }}"
+#     update_on_launch: True
+#     update_cache_timeout: 0
+#     overwrite: True
+#     overwrite_vars: True
+#     source_vars:
+#       GITOPS_API: "http://gitops_url:8000"
+#       GITOPS_TOKEN: "gitops_token"
 
 # Job Templates
 controller_templates:
