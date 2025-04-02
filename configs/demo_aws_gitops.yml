@@ -1,0 +1,290 @@
+---
+
+# Credentials
+controller_credentials:
+  - name: "AWS GitOps Credential"
+    description: "AWS GitOps Credential"
+    credential_type: "Machine"
+    organization: "Default"
+    inputs:
+      password: "{{ gitops_password }}"
+      username: "{{ gitops_user }}"
+  # - name: "AWS GitOps Vault"
+  #   description: "AWS GitOps Vault"
+  #   credential_type: "Vault"
+  #   organization: "Default"
+  #   inputs:
+  #     vault_password: "{{ gitops_vault_secret }}"
+  # - name: "GitOps Credential"
+  #   description: "GitOps Credential"
+  #   credential_type: "Machine"
+  #   organization: "Default"
+  #   inputs:
+  #     password: "{{ gitops_password }}"
+  #     username: "admin"
+
+# Projects
+controller_projects:
+  - name: "AWS GitOps Project"
+    description: "AWS GitOps Project"
+    organization: "Default"
+    scm_type: "git"
+    scm_url: "{{ project_url }}"
+    scm_update_on_launch: "True"
+    execution_environment: "{{ ee_name }}"
+    wait: true
+
+# Inventories
+controller_inventories:
+  - name: "GitOps Inventory"
+    description: "GitOps Inventory"
+    organization: "Default"
+
+# Inventory Sources
+controller_inventory_sources:
+  - name: GitOps Inventory Source
+    description: GitOps Inventory Source
+    #organization: Default
+    source: 'scm'
+    source_project: "AWS GitOps Project"
+    source_path: "aws_hosts.yml"
+    credential: GitOps Credential
+    inventory: GitOps Inventory
+    execution_environment: "{{ ee_name }}"
+    update_on_launch: True
+    update_cache_timeout: 0
+    overwrite: True
+    overwrite_vars: True
+    source_vars:
+      GITOPS_API: "http://gitops_url:8000"
+      GITOPS_TOKEN: "gitops_token"
+
+# Job Templates
+controller_templates:
+  - name: "AWS GitOps: 1. AWS Deploy"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_deploy.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  # - name: "AWS GitOps: 2. Setup"
+  #   description: ""
+  #   organization: "Default"
+  #   project: "AWS GitOps Project"
+  #   inventory: "AWS Inventory"
+  #   playbook: "aws_setup_gitops.yml"
+  #   verbosity: 0
+  #   job_type: "run"
+  #   credentials:
+  #     - "AWS Credential"
+  #     - "AWS GitOps Credential"
+  #     - "AWS GitOps Vault"
+  #   execution_environment: "{{ ee_name }}"
+  #   survey_enabled: true
+  #   survey:
+  #       name: Survey
+  #       description: Survey
+  #       spec:
+  #         - question_name: AAP Password
+  #           default: "{{ admin_password }}"
+  #           variable: aap_password
+  #           type: "password"
+  #           required: true
+  # - name: "AWS GitOps: 3. Get Facts and Push"
+  #   description: ""
+  #   organization: "Default"
+  #   project: "AWS GitOps Project"
+  #   inventory: "AWS Inventory"
+  #   playbook: "aws_get_facts_push_gitops.yml"
+  #   verbosity: 0
+  #   job_type: "run"
+  #   credentials:
+  #     - "AWS Credential"
+  #     - "AWS GitOps Credential"
+  #   execution_environment: "{{ ee_name }}"
+  #   survey_enabled: false
+  # - name: "AWS GitOps: 4. Query"
+  #   description: ""
+  #   organization: "Default"
+  #   project: "AWS GitOps Project"
+  #   inventory: "AWS Inventory"
+  #   playbook: "aws_query_gitops.yml"
+  #   verbosity: 0
+  #   job_type: "run"
+  #   credentials:
+  #     - "AWS Credential"
+  #     - "AWS GitOps Credential"
+  #   execution_environment: "{{ ee_name }}"
+  #   survey_enabled: false
+  # - name: "AWS GitOps: 5. Clean Up"
+  #   description: ""
+  #   organization: "Default"
+  #   project: "AWS GitOps Project"
+  #   inventory: "AWS Inventory"
+  #   playbook: "aws_cleanup_gitops.yml"
+  #   verbosity: 0
+  #   job_type: "run"
+  #   credentials:
+  #     - "AWS Credential"
+  #     - "AWS GitOps Credential"
+  #   execution_environment: "{{ ee_name }}"
+  #   survey_enabled: false
+  - name: "AWS GitOps: 6. AWS Undeploy"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_undeploy.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  # - name: "AWS GitOps: Update IP Interface"
+  #   description: ""
+  #   organization: "Default"
+  #   project: "AWS GitOps Project"
+  #   inventory: "AWS Inventory"
+  #   playbook: "aws_update_ip_interface.yml"
+  #   verbosity: 0
+  #   job_type: "run"
+  #   credentials:
+  #     - "AWS Credential"
+  #     - "AWS GitOps Credential"
+  #   execution_environment: "{{ ee_name }}"
+  #   survey_enabled: false
+  #   ask_variables_on_launch: true
+  # - name: "AWS GitOps: Update VLAN Interface"
+  #   description: ""
+  #   organization: "Default"
+  #   project: "AWS GitOps Project"
+  #   inventory: "AWS Inventory"
+  #   playbook: "aws_update_vlan_interface.yml"
+  #   verbosity: 0
+  #   job_type: "run"
+  #   credentials:
+  #     - "AWS Credential"
+  #     - "AWS GitOps Credential"
+  #   execution_environment: "{{ ee_name }}"
+  #   survey_enabled: false
+  #   ask_variables_on_launch: true
+  # - name: "AWS GitOps: Update VLAN"
+  #   description: ""
+  #   organization: "Default"
+  #   project: "AWS GitOps Project"
+  #   inventory: "AWS Inventory"
+  #   playbook: "aws_update_vlan.yml"
+  #   verbosity: 0
+  #   job_type: "run"
+  #   credentials:
+  #     - "AWS Credential"
+  #     - "AWS GitOps Credential"
+  #   execution_environment: "{{ ee_name }}"
+  #   survey_enabled: false
+  #   ask_variables_on_launch: true
+  # - name: "AWS GitOps: Update Banner (EDA)"
+  #   description: ""
+  #   organization: "Default"
+  #   project: "AWS GitOps Project"
+  #   inventory: "AWS Inventory"
+  #   playbook: "aws_update_config_context_banner.yml"
+  #   verbosity: 0
+  #   job_type: "run"
+  #   credentials:
+  #     - "AWS Credential"
+  #     - "AWS GitOps Credential"
+  #   execution_environment: "{{ ee_name }}"
+  #   survey_enabled: false
+  #   ask_variables_on_launch: true
+  # - name: "AWS GitOps: Update DNS (EDA)"
+  #   description: ""
+  #   organization: "Default"
+  #   project: "AWS GitOps Project"
+  #   inventory: "AWS Inventory"
+  #   playbook: "aws_update_config_context_dns.yml"
+  #   verbosity: 0
+  #   job_type: "run"
+  #   credentials:
+  #     - "AWS Credential"
+  #     - "AWS GitOps Credential"
+  #   execution_environment: "{{ ee_name }}"
+  #   survey_enabled: false
+  #   ask_variables_on_launch: true
+
+# Workflow Job Templates
+controller_workflows:
+  - name: "AWS GitOps: Workflow"
+    description: "AWS GitOps: Workflow"
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "AWS Deploy"
+        workflow_job_template: "AWS GitOps: Workflow"
+        unified_job_template: "AWS GitOps: 1. AWS Deploy"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+      #     - GitOps Setup
+      # - identifier: "GitOps Setup"
+      #   workflow_job_template: "AWS GitOps: Workflow"
+      #   unified_job_template: "AWS GitOps: 2. Setup"
+      #   organization: "Default"
+      #   all_parents_must_converge: "False"
+      #   always_nodes:
+      #     - GitOps Get Facts and Push
+      # - identifier: "GitOps Get Facts and Push"
+      #   workflow_job_template: "AWS GitOps: Workflow"
+      #   unified_job_template: "AWS GitOps: 3. Get Facts and Push"
+      #   organization: "Default"
+      #   all_parents_must_converge: "False"
+      #   always_nodes:
+      #     - GitOps Query
+      # - identifier: "GitOps Query"
+      #   workflow_job_template: "AWS GitOps: Workflow"
+      #   unified_job_template: "AWS GitOps: 4. Query"
+      #   organization: "Default"
+      #   all_parents_must_converge: "False"
+      #   always_nodes:
+      #     - GitOps Clean Up
+      # - identifier: "GitOps Clean Up"
+      #   workflow_job_template: "AWS GitOps: Workflow"
+      #   unified_job_template: "AWS GitOps: 5. Clean Up"
+      #   organization: "Default"
+      #   all_parents_must_converge: "False"
+      #   always_nodes:
+          - AWS Undeploy
+      - identifier: "AWS Undeploy"
+        workflow_job_template: "AWS GitOps: Workflow"
+        unified_job_template: "AWS GitOps: 6. AWS Undeploy"
+        organization: "Default"
+        all_parents_must_converge: "False"
+
+# EDA Projects
+eda_projects:
+  - name: "AWS EDA GitOps Project"
+    description: "AWS EDA GitOps Project"
+    organization: "Default"
+    url: "{{ project_url }}"
+    tls_validation: true
+
+# EDA Rulebook Activations
+eda_rulebook_activations:
+  - name: "AWS EDA GitOps: Config Context"
+    description: "AWS EDA GitOps: Config Context"
+    organization: "Default"
+    project: "AWS EDA GitOps Project"
+    rulebook: "config_context_rulebook.yml"
+    decision_environment: "{{ de_name }}"
+    eda_credentials: "Controller Credentials"
+    restart_policy: always
+    #enabled: false
+    log_level: debug
