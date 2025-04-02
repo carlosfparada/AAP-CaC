@@ -276,15 +276,15 @@ eda_projects:
     url: "{{ project_url }}"
     tls_validation: true
 
-# EDA Rulebook Activations
-eda_rulebook_activations:
-  - name: "AWS EDA GitOps: Config Context"
-    description: "AWS EDA GitOps: Config Context"
-    organization: "Default"
-    project: "AWS EDA GitOps Project"
-    rulebook: "config_context_rulebook.yml"
-    decision_environment: "{{ de_name }}"
-    eda_credentials: "Controller Credentials"
-    restart_policy: always
-    #enabled: false
-    log_level: debug
+# # EDA Rulebook Activations
+# eda_rulebook_activations:
+#   - name: "AWS EDA GitOps: Config Context"
+#     description: "AWS EDA GitOps: Config Context"
+#     organization: "Default"
+#     project: "AWS EDA GitOps Project"
+#     rulebook: "config_context_rulebook.yml"
+#     decision_environment: "{{ de_name }}"
+#     eda_credentials: "Controller Credentials"
+#     restart_policy: always
+#     #enabled: false
+#     log_level: debug
