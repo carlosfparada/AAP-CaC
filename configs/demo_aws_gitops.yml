@@ -149,7 +149,7 @@ controller_templates:
             required: true
           - question_name: VLAN Operation
             default: "merged"
-            variable: vlan_state
+            variable: vlan_oper
             type: "multiplechoice"
             choices: "merged\noverridden\ndeleted"
             required: true
