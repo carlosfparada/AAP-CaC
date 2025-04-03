@@ -151,7 +151,7 @@ controller_templates:
             default: "merged"
             variable: vlan_state
             type: "multiplechoice"
-            choices: "marged\noverridden\ndeleted"
+            choices: "merged\noverridden\ndeleted"
             required: true
 
 
