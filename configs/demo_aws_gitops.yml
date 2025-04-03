@@ -154,10 +154,10 @@ controller_templates:
             variable: parser
             type: "multiplechoice"
             choices: |
-              ansible.netcommon.ntc_templates\n
-              ansible.netcommon.textfsm\n
-              ansible.netcommon.native\n
-              ansible.netcommon.ttp\n
+              ansible.netcommon.ntc_templates
+              ansible.netcommon.textfsm
+              ansible.netcommon.native
+              ansible.netcommon.ttp
               ansible.netcommon.pyats
             required: true
           - question_name: Parser Template
@@ -165,9 +165,9 @@ controller_templates:
             variable: template
             type: "multiplechoice"
             choices: |
-              \n
-              ios_show_interface.yaml\n
-              ios_show_interface.textfsm\n
+              
+              ios_show_interface.yaml
+              ios_show_interface.textfsm
               ios_show_interface.ttp
             required: false
   - name: "AWS GitOps: 07. VLAN Survey"
