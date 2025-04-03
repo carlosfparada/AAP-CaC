@@ -153,7 +153,19 @@ controller_templates:
             type: "multiplechoice"
             choices: "merged\noverridden\ndeleted"
             required: true
-
+  - name: "AWS GitOps: 6. VLAN"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_vlan.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
 
   # - name: "AWS GitOps: 3. Facts"
   #   description: ""
