@@ -9,12 +9,12 @@ controller_credentials:
     inputs:
       password: "{{ gitops_password }}"
       username: "{{ gitops_user }}"
-  # - name: "AWS GitOps Vault"
-  #   description: "AWS GitOps Vault"
-  #   credential_type: "Vault"
-  #   organization: "Default"
-  #   inputs:
-  #     vault_password: "{{ gitops_vault_secret }}"
+  - name: "AWS GitOps Vault"
+    description: "AWS GitOps Vault"
+    credential_type: "Vault"
+    organization: "Default"
+    inputs:
+      vault_password: "{{ gitops_vault_secret }}"
   # - name: "GitOps Credential"
   #   description: "GitOps Credential"
   #   credential_type: "Machine"
@@ -85,6 +85,7 @@ controller_templates:
     credentials:
       - "AWS Credential"
       - "AWS GitOps Credential"
+      - "AWS GitOps Vault"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
   - name: "AWS GitOps: 3. Ping"
