@@ -179,7 +179,7 @@ controller_templates:
       - "AWS GitOps Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS GitOps: 7. BGP"
+  - name: "AWS GitOps: 8. BGP"
     description: ""
     organization: "Default"
     project: "AWS GitOps Project"
