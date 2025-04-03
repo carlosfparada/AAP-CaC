@@ -61,7 +61,7 @@ controller_projects:
 
 # Job Templates
 controller_templates:
-  - name: "AWS GitOps: 1. AWS Deploy"
+  - name: "AWS GitOps: 01. AWS Deploy"
     description: ""
     organization: "Default"
     project: "AWS GitOps Project"
@@ -74,7 +74,7 @@ controller_templates:
       - "AWS GitOps Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS GitOps: 2. Setup"
+  - name: "AWS GitOps: 02. Setup"
     description: ""
     organization: "Default"
     project: "AWS GitOps Project"
@@ -88,7 +88,7 @@ controller_templates:
       - "AWS GitOps Vault"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS GitOps: 3. Ping"
+  - name: "AWS GitOps: 03. Ping"
     description: ""
     organization: "Default"
     project: "AWS GitOps Project"
@@ -101,7 +101,7 @@ controller_templates:
       - "AWS GitOps Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS GitOps: 4. Facts"
+  - name: "AWS GitOps: 04. Facts"
     description: ""
     organization: "Default"
     project: "AWS GitOps Project"
@@ -114,7 +114,33 @@ controller_templates:
       - "AWS GitOps Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS GitOps: 5. VLAN Survey"
+  - name: "AWS GitOps: 05. Show"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_show.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false    
+  - name: "AWS GitOps: 06. Show Survey"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_show_survey.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false  
+  - name: "AWS GitOps: 07. VLAN Survey"
     description: ""
     organization: "Default"
     project: "AWS GitOps Project"
@@ -153,7 +179,7 @@ controller_templates:
             type: "multiplechoice"
             choices: "merged\noverridden\ndeleted"
             required: true
-  - name: "AWS GitOps: 6. VLAN"
+  - name: "AWS GitOps: 08. VLAN"
     description: ""
     organization: "Default"
     project: "AWS GitOps Project"
@@ -166,7 +192,7 @@ controller_templates:
       - "AWS GitOps Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS GitOps: 7. IP"
+  - name: "AWS GitOps: 09. IP"
     description: ""
     organization: "Default"
     project: "AWS GitOps Project"
@@ -179,7 +205,7 @@ controller_templates:
       - "AWS GitOps Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS GitOps: 8. BGP"
+  - name: "AWS GitOps: 10. BGP"
     description: ""
     organization: "Default"
     project: "AWS GitOps Project"
@@ -192,47 +218,7 @@ controller_templates:
       - "AWS GitOps Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-
-  # - name: "AWS GitOps: 3. Facts"
-  #   description: ""
-  #   organization: "Default"
-  #   project: "AWS GitOps Project"
-  #   inventory: "AWS Inventory"
-  #   playbook: "aws_get_facts_push_gitops.yml"
-  #   verbosity: 0
-  #   job_type: "run"
-  #   credentials:
-  #     - "AWS Credential"
-  #     - "AWS GitOps Credential"
-  #   execution_environment: "{{ ee_name }}"
-  #   survey_enabled: false
-  # - name: "AWS GitOps: 4. Query"
-  #   description: ""
-  #   organization: "Default"
-  #   project: "AWS GitOps Project"
-  #   inventory: "AWS Inventory"
-  #   playbook: "aws_query_gitops.yml"
-  #   verbosity: 0
-  #   job_type: "run"
-  #   credentials:
-  #     - "AWS Credential"
-  #     - "AWS GitOps Credential"
-  #   execution_environment: "{{ ee_name }}"
-  #   survey_enabled: false
-  # - name: "AWS GitOps: 5. Clean Up"
-  #   description: ""
-  #   organization: "Default"
-  #   project: "AWS GitOps Project"
-  #   inventory: "AWS Inventory"
-  #   playbook: "aws_cleanup_gitops.yml"
-  #   verbosity: 0
-  #   job_type: "run"
-  #   credentials:
-  #     - "AWS Credential"
-  #     - "AWS GitOps Credential"
-  #   execution_environment: "{{ ee_name }}"
-  #   survey_enabled: false
-  - name: "AWS GitOps: 6. AWS Undeploy"
+  - name: "AWS GitOps: 11. AWS Undeploy"
     description: ""
     organization: "Default"
     project: "AWS GitOps Project"
@@ -245,76 +231,6 @@ controller_templates:
       - "AWS GitOps Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  # - name: "AWS GitOps: Update IP Interface"
-  #   description: ""
-  #   organization: "Default"
-  #   project: "AWS GitOps Project"
-  #   inventory: "AWS Inventory"
-  #   playbook: "aws_update_ip_interface.yml"
-  #   verbosity: 0
-  #   job_type: "run"
-  #   credentials:
-  #     - "AWS Credential"
-  #     - "AWS GitOps Credential"
-  #   execution_environment: "{{ ee_name }}"
-  #   survey_enabled: false
-  #   ask_variables_on_launch: true
-  # - name: "AWS GitOps: Update VLAN Interface"
-  #   description: ""
-  #   organization: "Default"
-  #   project: "AWS GitOps Project"
-  #   inventory: "AWS Inventory"
-  #   playbook: "aws_update_vlan_interface.yml"
-  #   verbosity: 0
-  #   job_type: "run"
-  #   credentials:
-  #     - "AWS Credential"
-  #     - "AWS GitOps Credential"
-  #   execution_environment: "{{ ee_name }}"
-  #   survey_enabled: false
-  #   ask_variables_on_launch: true
-  # - name: "AWS GitOps: Update VLAN"
-  #   description: ""
-  #   organization: "Default"
-  #   project: "AWS GitOps Project"
-  #   inventory: "AWS Inventory"
-  #   playbook: "aws_update_vlan.yml"
-  #   verbosity: 0
-  #   job_type: "run"
-  #   credentials:
-  #     - "AWS Credential"
-  #     - "AWS GitOps Credential"
-  #   execution_environment: "{{ ee_name }}"
-  #   survey_enabled: false
-  #   ask_variables_on_launch: true
-  # - name: "AWS GitOps: Update Banner (EDA)"
-  #   description: ""
-  #   organization: "Default"
-  #   project: "AWS GitOps Project"
-  #   inventory: "AWS Inventory"
-  #   playbook: "aws_update_config_context_banner.yml"
-  #   verbosity: 0
-  #   job_type: "run"
-  #   credentials:
-  #     - "AWS Credential"
-  #     - "AWS GitOps Credential"
-  #   execution_environment: "{{ ee_name }}"
-  #   survey_enabled: false
-  #   ask_variables_on_launch: true
-  # - name: "AWS GitOps: Update DNS (EDA)"
-  #   description: ""
-  #   organization: "Default"
-  #   project: "AWS GitOps Project"
-  #   inventory: "AWS Inventory"
-  #   playbook: "aws_update_config_context_dns.yml"
-  #   verbosity: 0
-  #   job_type: "run"
-  #   credentials:
-  #     - "AWS Credential"
-  #     - "AWS GitOps Credential"
-  #   execution_environment: "{{ ee_name }}"
-  #   survey_enabled: false
-  #   ask_variables_on_launch: true
 
 # Workflow Job Templates
 controller_workflows:
@@ -325,35 +241,77 @@ controller_workflows:
     simplified_workflow_nodes:
       - identifier: "AWS Deploy"
         workflow_job_template: "AWS GitOps: Workflow"
-        unified_job_template: "AWS GitOps: 1. AWS Deploy"
+        unified_job_template: "AWS GitOps: 01. AWS Deploy"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
           - GitOps Setup
       - identifier: "GitOps Setup"
         workflow_job_template: "AWS GitOps: Workflow"
-        unified_job_template: "AWS GitOps: 2. Setup"
+        unified_job_template: "AWS GitOps: 02. Setup"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
           - GitOps Ping
       - identifier: "GitOps Ping"
         workflow_job_template: "AWS GitOps: Workflow"
-        unified_job_template: "AWS GitOps: 3. Ping"
+        unified_job_template: "AWS GitOps: 03. Ping"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
           - GitOps Facts
       - identifier: "GitOps Facts"
         workflow_job_template: "AWS GitOps: Workflow"
-        unified_job_template: "AWS GitOps: 4. Facts"
+        unified_job_template: "AWS GitOps: 04. Facts"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - GitOps Show
+      - identifier: "GitOps Show"
+        workflow_job_template: "AWS GitOps: Workflow"
+        unified_job_template: "AWS GitOps: 05. Show"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - GitOps Show Survey
+      - identifier: "GitOps Show Survey"
+        workflow_job_template: "AWS GitOps: Workflow"
+        unified_job_template: "AWS GitOps: 06. Show Survey"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - GitOps VLAN Survey
+      - identifier: "GitOps VLAN Survey"
+        workflow_job_template: "AWS GitOps: Workflow"
+        unified_job_template: "AWS GitOps: 07. VLAN Survey"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - GitOps VLAN
+      - identifier: "GitOps VLAN"
+        workflow_job_template: "AWS GitOps: Workflow"
+        unified_job_template: "AWS GitOps: 08. VLAN"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - GitOps IP
+      - identifier: "GitOps IP"
+        workflow_job_template: "AWS GitOps: Workflow"
+        unified_job_template: "AWS GitOps: 09. IP"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - GitOps BGP
+      - identifier: "GitOps BGP"
+        workflow_job_template: "AWS GitOps: Workflow"
+        unified_job_template: "AWS GitOps: 10. BGP"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
           - AWS Undeploy
       - identifier: "AWS Undeploy"
         workflow_job_template: "AWS GitOps: Workflow"
-        unified_job_template: "AWS GitOps: 6. AWS Undeploy"
+        unified_job_template: "AWS GitOps: 11. AWS Undeploy"
         organization: "Default"
         all_parents_must_converge: "False"
 
