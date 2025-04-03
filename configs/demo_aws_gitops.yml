@@ -137,7 +137,7 @@ controller_templates:
             type: "text"
             required: true
           - question_name: VLAN Id
-            default: 100
+            default: "100"
             variable: vlan_id
             type: "text"
             required: true
