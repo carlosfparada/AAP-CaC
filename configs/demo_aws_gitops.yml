@@ -139,7 +139,36 @@ controller_templates:
       - "AWS Credential"
       - "AWS GitOps Credential"
     execution_environment: "{{ ee_name }}"
-    survey_enabled: false  
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: Show Command
+            default: show interfaces
+            variable: command
+            type: "text"
+            required: true
+          - question_name: Parser
+            default: "ansible.netcommon.ntc_templates"
+            variable: parser
+            type: "multiplechoice"
+            choices: |
+              ansible.netcommon.ntc_templates\n
+              ansible.netcommon.textfsm\n
+              ansible.netcommon.native\n
+              ansible.netcommon.ttp\n
+              ansible.netcommon.pyats\n
+            required: true
+          - question_name: Parser
+            default: "ansible.netcommon.ntc_templates"
+            variable: parser
+            type: "multiplechoice"
+            choices: |
+              ios_show_interface.yaml\n
+              ios_show_interface.textfsm\n
+              ios_show_interface.ttp\n
+            required: false
   - name: "AWS GitOps: 07. VLAN Survey"
     description: ""
     organization: "Default"
