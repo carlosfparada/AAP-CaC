@@ -166,6 +166,32 @@ controller_templates:
       - "AWS GitOps Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
+  - name: "AWS GitOps: 7. IP"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_ip.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS GitOps: 7. BGP"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_bgp.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
 
   # - name: "AWS GitOps: 3. Facts"
   #   description: ""
