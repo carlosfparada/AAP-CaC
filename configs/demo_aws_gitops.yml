@@ -145,7 +145,7 @@ controller_templates:
             default: "active"
             variable: vlan_state
             type: "multiplechoice"
-            choices: "active\nsuspended"
+            choices: "active\nsuspend"
             required: true
           - question_name: VLAN Operation
             default: "merged"
