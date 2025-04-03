@@ -114,6 +114,47 @@ controller_templates:
       - "AWS GitOps Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
+  - name: "AWS GitOps: 5. VLAN Survey"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_vlan_survey.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: VLAN Name
+            default: Vlan100
+            variable: vlan_name
+            type: "text"
+            required: true
+          - question_name: VLAN Id
+            default: 100
+            variable: vlan_id
+            type: "text"
+            required: true
+          - question_name: VLAN State
+            default: "active"
+            variable: vlan_state
+            type: "multiplechoice"
+            choices: "active\nsuspended"
+            required: true
+          - question_name: VLAN Operation
+            default: "merged"
+            variable: vlan_state
+            type: "multiplechoice"
+            choices: "marged\noverridden\ndeleted"
+            required: true
+
+
   # - name: "AWS GitOps: 3. Facts"
   #   description: ""
   #   organization: "Default"
