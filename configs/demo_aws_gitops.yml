@@ -74,7 +74,20 @@ controller_templates:
       - "AWS GitOps Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS GitOps: 2. Ping"
+  - name: "AWS GitOps: 2. Setup"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_setup.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS GitOps: 3. Ping"
     description: ""
     organization: "Default"
     project: "AWS GitOps Project"
@@ -87,7 +100,7 @@ controller_templates:
       - "AWS GitOps Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS GitOps: 3. Facts"
+  - name: "AWS GitOps: 4. Facts"
     description: ""
     organization: "Default"
     project: "AWS GitOps Project"
@@ -100,7 +113,7 @@ controller_templates:
       - "AWS GitOps Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  # - name: "AWS GitOps: 3. Get Facts and Push"
+  # - name: "AWS GitOps: 3. Facts"
   #   description: ""
   #   organization: "Default"
   #   project: "AWS GitOps Project"
@@ -236,34 +249,27 @@ controller_workflows:
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
-      #     - GitOps Setup
-      # - identifier: "GitOps Setup"
-      #   workflow_job_template: "AWS GitOps: Workflow"
-      #   unified_job_template: "AWS GitOps: 2. Setup"
-      #   organization: "Default"
-      #   all_parents_must_converge: "False"
-      #   always_nodes:
-      #     - GitOps Get Facts and Push
-      # - identifier: "GitOps Get Facts and Push"
-      #   workflow_job_template: "AWS GitOps: Workflow"
-      #   unified_job_template: "AWS GitOps: 3. Get Facts and Push"
-      #   organization: "Default"
-      #   all_parents_must_converge: "False"
-      #   always_nodes:
-      #     - GitOps Query
-      # - identifier: "GitOps Query"
-      #   workflow_job_template: "AWS GitOps: Workflow"
-      #   unified_job_template: "AWS GitOps: 4. Query"
-      #   organization: "Default"
-      #   all_parents_must_converge: "False"
-      #   always_nodes:
-      #     - GitOps Clean Up
-      # - identifier: "GitOps Clean Up"
-      #   workflow_job_template: "AWS GitOps: Workflow"
-      #   unified_job_template: "AWS GitOps: 5. Clean Up"
-      #   organization: "Default"
-      #   all_parents_must_converge: "False"
-      #   always_nodes:
+          - GitOps Setup
+      - identifier: "GitOps Setup"
+        workflow_job_template: "AWS GitOps: Workflow"
+        unified_job_template: "AWS GitOps: 2. Setup"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - GitOps Ping
+      - identifier: "GitOps Ping"
+        workflow_job_template: "AWS GitOps: Workflow"
+        unified_job_template: "AWS GitOps: 3. Ping"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - GitOps Facts
+      - identifier: "GitOps Facts"
+        workflow_job_template: "AWS GitOps: Workflow"
+        unified_job_template: "AWS GitOps: 4. Facts"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
           - AWS Undeploy
       - identifier: "AWS Undeploy"
         workflow_job_template: "AWS GitOps: Workflow"
