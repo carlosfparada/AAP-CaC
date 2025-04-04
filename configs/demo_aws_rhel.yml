@@ -126,7 +126,7 @@ controller_templates:
             type: "password"
             required: true
   # RHTOUR: TO REMOVE
-  - name: "AWS RHEL: RHTOUR Lightspeed backup"
+  - name: "AWS RHEL: RHTOUR Lightspeed (backup)"
     description: ""
     organization: "Default"
     project: "AWS RHEL RHTOUR Project"
