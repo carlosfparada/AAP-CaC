@@ -155,9 +155,9 @@ controller_templates:
             type: "multiplechoice"
             choices: |
               ansible.netcommon.ntc_templates
-              ansible.netcommon.textfsm
+              ansible.utils.textfsm
               ansible.netcommon.native
-              ansible.netcommon.ttp
+              ansible.utils.ttp
               ansible.netcommon.pyats
             required: true
           - question_name: Parser Template
