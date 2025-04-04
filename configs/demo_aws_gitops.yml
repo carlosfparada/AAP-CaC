@@ -248,7 +248,33 @@ controller_templates:
       - "AWS GitOps Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS GitOps: 11. AWS Undeploy"
+  - name: "AWS GitOps: 11. Banner"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_banner.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS GitOps: 12. DNS Servers"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_dns_servers.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS GitOps: 13. AWS Undeploy"
     description: ""
     organization: "Default"
     project: "AWS GitOps Project"
@@ -338,10 +364,24 @@ controller_workflows:
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
+          - GitOps Banner
+      - identifier: "GitOps Banner"
+        workflow_job_template: "AWS GitOps: Workflow"
+        unified_job_template: "AWS GitOps: 11. Banner"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - GitOps DNS Servers
+      - identifier: "GitOps DNS Servers"
+        workflow_job_template: "AWS GitOps: Workflow"
+        unified_job_template: "AWS GitOps: 12. DNS Servers"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
           - AWS Undeploy
       - identifier: "AWS Undeploy"
         workflow_job_template: "AWS GitOps: Workflow"
-        unified_job_template: "AWS GitOps: 11. AWS Undeploy"
+        unified_job_template: "AWS GitOps: 13. AWS Undeploy"
         organization: "Default"
         all_parents_must_converge: "False"
 
