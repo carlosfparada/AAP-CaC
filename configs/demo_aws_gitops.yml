@@ -151,7 +151,7 @@ controller_templates:
             choices: "ios\neos"
             required: true
           - question_name: Command
-            default: show interfaces
+            default: show interface
             variable: command
             type: "text"
             required: true
