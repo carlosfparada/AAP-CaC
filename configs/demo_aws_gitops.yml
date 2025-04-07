@@ -258,6 +258,44 @@ controller_templates:
 
 # Workflow Job Templates
 controller_workflows:
+  - name: "AWS GitOps: Update Configs"
+    description: "AWS GitOps: Update Configs"
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "GitOps VLAN"
+        workflow_job_template: "AWS GitOps: Update Configs"
+        unified_job_template: "AWS GitOps: 08. VLAN"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - GitOps IP
+      - identifier: "GitOps IP"
+        workflow_job_template: "AWS GitOps: Update Configs"
+        unified_job_template: "AWS GitOps: 09. IP"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - GitOps BGP
+      - identifier: "GitOps BGP"
+        workflow_job_template: "AWS GitOps: Update Configs"
+        unified_job_template: "AWS GitOps: 10. BGP"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - GitOps Banner
+      - identifier: "GitOps Banner"
+        workflow_job_template: "AWS GitOps: Update Configs"
+        unified_job_template: "AWS GitOps: 11. Banner"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - GitOps DNS Servers
+      - identifier: "GitOps DNS Servers"
+        workflow_job_template: "AWS GitOps: Update Configs"
+        unified_job_template: "AWS GitOps: 12. DNS Servers"
+        organization: "Default"
+        all_parents_must_converge: "False"
   - name: "AWS GitOps: Workflow"
     description: "AWS GitOps: Workflow"
     organization: "Default"
@@ -350,45 +388,6 @@ controller_workflows:
       - identifier: "AWS Undeploy"
         workflow_job_template: "AWS GitOps: Workflow"
         unified_job_template: "AWS GitOps: 13. AWS Undeploy"
-        organization: "Default"
-        all_parents_must_converge: "False"
-# Workflow Update Config
-  - name: "AWS GitOps: Update Configs"
-    description: "AWS GitOps: Workflow"
-    organization: "Default"
-    state: "present"
-    simplified_workflow_nodes:
-      - identifier: "GitOps VLAN"
-        workflow_job_template: "AWS GitOps: Workflow"
-        unified_job_template: "AWS GitOps: 08. VLAN"
-        organization: "Default"
-        all_parents_must_converge: "False"
-        always_nodes:
-          - GitOps IP
-      - identifier: "GitOps IP"
-        workflow_job_template: "AWS GitOps: Workflow"
-        unified_job_template: "AWS GitOps: 09. IP"
-        organization: "Default"
-        all_parents_must_converge: "False"
-        always_nodes:
-          - GitOps BGP
-      - identifier: "GitOps BGP"
-        workflow_job_template: "AWS GitOps: Workflow"
-        unified_job_template: "AWS GitOps: 10. BGP"
-        organization: "Default"
-        all_parents_must_converge: "False"
-        always_nodes:
-          - GitOps Banner
-      - identifier: "GitOps Banner"
-        workflow_job_template: "AWS GitOps: Workflow"
-        unified_job_template: "AWS GitOps: 11. Banner"
-        organization: "Default"
-        all_parents_must_converge: "False"
-        always_nodes:
-          - GitOps DNS Servers
-      - identifier: "GitOps DNS Servers"
-        workflow_job_template: "AWS GitOps: Workflow"
-        unified_job_template: "AWS GitOps: 12. DNS Servers"
         organization: "Default"
         all_parents_must_converge: "False"
 
