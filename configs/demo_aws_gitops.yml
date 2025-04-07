@@ -358,13 +358,6 @@ controller_workflows:
     organization: "Default"
     state: "present"
     simplified_workflow_nodes:
-      - identifier: "GitOps VLAN Survey"
-        workflow_job_template: "AWS GitOps: Workflow"
-        unified_job_template: "AWS GitOps: 07. VLAN Survey"
-        organization: "Default"
-        all_parents_must_converge: "False"
-        always_nodes:
-          - GitOps VLAN
       - identifier: "GitOps VLAN"
         workflow_job_template: "AWS GitOps: Workflow"
         unified_job_template: "AWS GitOps: 08. VLAN"
