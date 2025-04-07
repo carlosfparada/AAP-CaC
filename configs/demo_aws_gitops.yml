@@ -15,13 +15,6 @@ controller_credentials:
     organization: "Default"
     inputs:
       vault_password: "{{ gitops_vault_secret }}"
-  # - name: "GitOps Credential"
-  #   description: "GitOps Credential"
-  #   credential_type: "Machine"
-  #   organization: "Default"
-  #   inputs:
-  #     password: "{{ gitops_password }}"
-  #     username: "admin"
 
 # Projects
 controller_projects:
@@ -33,31 +26,6 @@ controller_projects:
     scm_update_on_launch: "True"
     execution_environment: "{{ ee_name }}"
     wait: true
-
-# # Inventories
-# controller_inventories:
-#   - name: "GitOps Inventory"
-#     description: "GitOps Inventory"
-#     organization: "Default"
-
-# # Inventory Sources
-# controller_inventory_sources:
-#   - name: GitOps Inventory Source
-#     description: GitOps Inventory Source
-#     #organization: Default
-#     source: 'scm'
-#     source_project: "AWS GitOps Project"
-#     source_path: "aws_hosts.yml"
-#     credential: GitOps Credential
-#     inventory: GitOps Inventory
-#     execution_environment: "{{ ee_name }}"
-#     update_on_launch: True
-#     update_cache_timeout: 0
-#     overwrite: True
-#     overwrite_vars: True
-#     source_vars:
-#       GITOPS_API: "http://gitops_url:8000"
-#       GITOPS_TOKEN: "gitops_token"
 
 # Job Templates
 controller_templates:

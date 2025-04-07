@@ -1,0 +1,143 @@
+---
+
+# Credentials
+controller_credentials:
+  - name: "AWS GitOps Credential"
+    description: "AWS GitOps Credential"
+    credential_type: "Machine"
+    organization: "Default"
+    inputs:
+      password: "{{ gitops_password }}"
+      username: "{{ gitops_user }}"
+
+# Projects
+controller_projects:
+  - name: "AWS GitOps Project"
+    description: "AWS GitOps Project"
+    organization: "Default"
+    scm_type: "git"
+    scm_url: "{{ project_url }}"
+    scm_update_on_launch: "True"
+    execution_environment: "{{ ee_name }}"
+    wait: true
+
+# # Inventories
+# controller_inventories:
+#   - name: "GitOps Inventory"
+#     description: "GitOps Inventory"
+#     organization: "Default"
+
+# # Inventory Sources
+# controller_inventory_sources:
+#   - name: GitOps Inventory Source
+#     description: GitOps Inventory Source
+#     #organization: Default
+#     source: 'scm'
+#     source_project: "AWS GitOps Project"
+#     source_path: "aws_hosts.yml"
+#     credential: GitOps Credential
+#     inventory: GitOps Inventory
+#     execution_environment: "{{ ee_name }}"
+#     update_on_launch: True
+#     update_cache_timeout: 0
+#     overwrite: True
+#     overwrite_vars: True
+#     source_vars:
+#       GITOPS_API: "http://gitops_url:8000"
+#       GITOPS_TOKEN: "gitops_token"
+
+# Job Templates
+controller_templates:
+  - name: "AWS GitOps: 01. AWS Deploy"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_deploy.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  # - name: "AWS GitOps: 07. VLAN Survey"
+  #   description: ""
+  #   organization: "Default"
+  #   project: "AWS GitOps Project"
+  #   inventory: "AWS Inventory"
+  #   playbook: "aws_vlan_survey.yml"
+  #   verbosity: 0
+  #   job_type: "run"
+  #   credentials:
+  #     - "AWS Credential"
+  #     - "AWS GitOps Credential"
+  #   execution_environment: "{{ ee_name }}"
+  #   survey_enabled: true
+  #   survey:
+  #       name: Survey
+  #       description: Survey
+  #       spec:
+  #         - question_name: VLAN Name
+  #           default: Vlan100
+  #           variable: vlan_name
+  #           type: "text"
+  #           required: true
+  #         - question_name: VLAN Id
+  #           default: "100"
+  #           variable: vlan_id
+  #           type: "text"
+  #           required: true
+  #         - question_name: VLAN State
+  #           default: "active"
+  #           variable: vlan_state
+  #           type: "multiplechoice"
+  #           choices: "active\nsuspend"
+  #           required: true
+  #         - question_name: VLAN Operation
+  #           default: "merged"
+  #           variable: vlan_oper
+  #           type: "multiplechoice"
+  #           choices: "merged\noverridden\ndeleted"
+  #           required: true
+
+# Workflow Job Templates
+controller_workflows:
+  - name: "AWS GitOps: Workflow"
+    description: "AWS GitOps: Workflow"
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "AWS Deploy"
+        workflow_job_template: "AWS GitOps: Workflow"
+        unified_job_template: "AWS GitOps: 01. AWS Deploy"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - AWS Undeploy
+      - identifier: "AWS Undeploy"
+        workflow_job_template: "AWS GitOps: Workflow"
+        unified_job_template: "AWS GitOps: 13. AWS Undeploy"
+        organization: "Default"
+        all_parents_must_converge: "False"
+
+# EDA Projects
+eda_projects:
+  - name: "AWS EDA Cisco ACI Project"
+    description: "AWS EDA Cisco ACI Project"
+    organization: "Default"
+    url: "{{ project_url }}"
+    tls_validation: true
+
+# EDA Rulebook Activations
+eda_rulebook_activations:
+  - name: "AWS EDA Cisco ACI: Compliance"
+    description: "AWS EDA Cisco ACI: Compliance"
+    organization: "Default"
+    project: "AWS EDA Cisco ACI Project"
+    rulebook: "compliance_cisco_aci_rulebook.yml"
+    decision_environment: "{{ de_name }}"
+    eda_credentials: "Controller Credentials"
+    restart_policy: always
+    #enabled: false
+    log_level: debug
