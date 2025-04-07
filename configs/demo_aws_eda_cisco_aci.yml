@@ -51,7 +51,7 @@ eda_rulebook_activations:
     description: "AWS EDA Cisco ACI: Compliance"
     organization: "Default"
     project: "AWS EDA Cisco ACI Project"
-    rulebook: "compliance_cisco_aci_rulebook.yml"
+    rulebook: "compliance_rulebook.yml"
     decision_environment: "{{ de_name }}"
     eda_credentials: "Controller Credentials"
     restart_policy: always
