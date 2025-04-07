@@ -28,7 +28,7 @@ controller_templates:
     organization: "Default"
     project: "AWS EDA Cisco ACI Project"
     inventory: "AWS Inventory"
-    playbook: "aws_eda_cisco_aci_compliance.yml"
+    playbook: "aws_eda_compliance.yml"
     verbosity: 0
     job_type: "run"
     credentials:
