@@ -19,7 +19,6 @@ controller_credentials:
       password: "{{ rhel_password }}"
       username: "{{ rhel_user }}"
 
-
 # Projects
 controller_projects:
   - name: "Azure RHEL Project"
