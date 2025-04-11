@@ -22,6 +22,7 @@ controller_hosts:
     inventory: Cisco ACI Inventory
     organization: Default
 
+# Groups
 controller_groups:
 - name: apic
   description: apic group
