@@ -107,7 +107,7 @@ controller_workflows:
     simplified_workflow_nodes:
       - identifier: "Cisco ACI Tenants"
         workflow_job_template: "Cisco ACI: Workflow"
-        unified_job_template: "Cisco ACI: 1. Tenants"
+        unified_job_template: "Cisco ACI: 1. Tenants + APs"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
