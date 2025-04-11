@@ -112,28 +112,28 @@ controller_workflows:
         all_parents_must_converge: "False"
         always_nodes:
           - Cisco ACI VRFs
-      - identifier: "Networking VPC Peering Delete"
+      - identifier: "Cisco ACI VRFs"
         workflow_job_template: "Cisco ACI: Workflow"
         unified_job_template: "Cisco ACI: 2. VRFs"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
           - Cisco ACI BDs + Subnets
-      - identifier: "Networking VPC Transit"
+      - identifier: "Cisco ACI BDs + Subnets"
         workflow_job_template: "Cisco ACI: Workflow"
         unified_job_template: "Cisco ACI: 3. BDs + Subnets"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
           - Cisco ACI EPGs + Contracts
-      - identifier: "Networking VPC Transit Delete"
+      - identifier: "Cisco ACI EPGs + Contracts"
         workflow_job_template: "Cisco ACI: Workflow"
         unified_job_template: "Cisco ACI: 4. EPGs + Contracts"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
           - Cisco ACI Queries
-      - identifier: "Networking VPC Transit Delete"
+      - identifier: "Cisco ACI Queries"
         workflow_job_template: "Cisco ACI: Workflow"
         unified_job_template: "Cisco ACI: 5. Queries"
         organization: "Default"
