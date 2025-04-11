@@ -52,7 +52,6 @@ controller_templates:
     verbosity: 0
     job_type: "run"
     credentials:
-      - "AWS Credential"
       - "Cisco ACI Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
@@ -65,7 +64,7 @@ controller_templates:
     verbosity: 0
     job_type: "run"
     credentials:
-      - "AWS Credential"
+      - "Cisco ACI Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
   - name: "Cisco ACI: 3. BDs + Subnets"
@@ -77,7 +76,6 @@ controller_templates:
     verbosity: 0
     job_type: "run"
     credentials:
-      - "AWS Credential"
       - "Cisco ACI Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
@@ -90,7 +88,7 @@ controller_templates:
     verbosity: 0
     job_type: "run"
     credentials:
-      - "AWS Credential"
+      - "Cisco ACI Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
   - name: "Cisco ACI: 5. Queries"
@@ -102,7 +100,7 @@ controller_templates:
     verbosity: 0
     job_type: "run"
     credentials:
-      - "AWS Credential"
+      - "Cisco ACI Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
 
