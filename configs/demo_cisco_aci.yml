@@ -121,7 +121,7 @@ controller_workflows:
           - Cisco ACI BDs + Subnets
       - identifier: "Networking VPC Transit"
         workflow_job_template: "Cisco ACI: Workflow"
-        unified_job_template: "Cisco ACI: 3. EPGs + Subnets"
+        unified_job_template: "Cisco ACI: 3. BDs + Subnets"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
