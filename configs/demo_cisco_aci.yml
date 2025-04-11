@@ -48,7 +48,7 @@ controller_templates:
     organization: "Default"
     project: "Cisco ACI Project"
     inventory: "Cisco ACI Inventory"
-    playbook: "playbooks/tenant.yml"
+    playbook: "tenant.yml"
     verbosity: 0
     job_type: "run"
     credentials:
@@ -60,7 +60,7 @@ controller_templates:
     organization: "Default"
     project: "Cisco ACI Project"
     inventory: "Cisco ACI Inventory"
-    playbook: "playbooks/vrf.yml"
+    playbook: "vrf.yml"
     verbosity: 0
     job_type: "run"
     credentials:
@@ -72,7 +72,7 @@ controller_templates:
     organization: "Default"
     project: "Cisco ACI Project"
     inventory: "Cisco ACI Inventory"
-    playbook: "playbooks/bd.yml"
+    playbook: "bd.yml"
     verbosity: 0
     job_type: "run"
     credentials:
@@ -84,7 +84,7 @@ controller_templates:
     organization: "Default"
     project: "Cisco ACI Project"
     inventory: "Cisco ACI Inventory"
-    playbook: "playbooks/epg.yml"
+    playbook: "epg.yml"
     verbosity: 0
     job_type: "run"
     credentials:
@@ -96,7 +96,7 @@ controller_templates:
     organization: "Default"
     project: "Cisco ACI Project"
     inventory: "Cisco ACI Inventory"
-    playbook: "playbooks/query.yml"
+    playbook: "query.yml"
     verbosity: 0
     job_type: "run"
     credentials:
