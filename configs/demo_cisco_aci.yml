@@ -22,6 +22,13 @@ controller_hosts:
     inventory: Cisco ACI Inventory
     organization: Default
 
+controller_groups:
+- name: apic
+  description: apic group
+  inventory: Cisco ACI Inventory
+  hosts:
+   - "{{ cisco_aci_endpoint }}"
+
 # Projects
 controller_projects:
   - name: "Cisco ACI Project"
