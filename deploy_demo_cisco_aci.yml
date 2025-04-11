@@ -17,7 +17,7 @@
       groups: "aap"
     when: node_name is defined
 
-- name: Deploy Demo EDA Cisco ACI
+- name: Deploy Demo Cisco ACI
   hosts: localhost
   connection: local
   gather_facts: no
@@ -29,14 +29,10 @@
     aap_validate_certs: false
   pre_tasks:
     - name: Include CaC vars
-      ansible.builtin.include_vars: 'configs/demo_eda_cisco_aci.yml'
+      ansible.builtin.include_vars: 'configs/demo_cisco_aci.yml'
   roles:
     - {role: infra.aap_configuration.controller_credentials, when: controller_credentials is defined}
     - {role: infra.aap_configuration.controller_projects, when: controller_projects is defined}
     - {role: infra.aap_configuration.controller_project_update, when: controller_projects is defined}
-    - {role: infra.aap_configuration.eda_projects, when: eda_projects is defined}
-    - {role: infra.aap_configuration.controller_inventories, when: controller_inventories is defined}
-    - {role: infra.aap_configuration.controller_inventory_sources, when: controller_inventory_sources is defined}
     - {role: infra.aap_configuration.controller_job_templates, when: controller_templates is defined}
     - {role: infra.aap_configuration.controller_workflow_job_templates, when: controller_workflows is defined}
-    - {role: infra.aap_configuration.eda_rulebook_activations, when: eda_rulebook_activations is defined}

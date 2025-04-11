@@ -1,0 +1,140 @@
+---
+
+# Credentials
+controller_credentials:
+  - name: "Cisco ACI Credential"
+    description: "Cisco ACI Credential"
+    credential_type: "Machine"
+    organization: "Default"
+    inputs:
+      username: "{{ cisco_aci_user }}"
+      password: "{{ cisco_aci_password }}"
+
+# Inventories
+controller_inventories:
+  - name: Cisco ACI Inventory
+    description: Cisco ACI Inventory
+    organization: Default
+
+# Hosts
+controller_hosts:
+  - name: "{{ cisco_aci_endpoint }}"
+    inventory: Cisco ACI Inventory
+    organization: Default
+
+# Projects
+controller_projects:
+  - name: "Cisco ACI Project"
+    description: "Cisco ACI Project"
+    organization: "Default"
+    scm_type: "git"
+    scm_url: "{{ project_url }}"
+    scm_update_on_launch: "True"
+    execution_environment: "{{ ee_name }}"
+    wait: true
+
+# Job Templates
+controller_templates:
+  - name: "Cisco ACI: 1. Tenants + APs"
+    description: ""
+    organization: "Default"
+    project: "Cisco ACI Project"
+    inventory: "Cisco ACI Inventory"
+    playbook: "tenant.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "Cisco ACI Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "Cisco ACI: 2. VRFs"
+    description: ""
+    organization: "Default"
+    project: "Cisco ACI Project"
+    inventory: "AWS Inventory"
+    playbook: "vrf.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "Cisco ACI: 3. BDs + Subnets"
+    description: ""
+    organization: "Default"
+    project: "Cisco ACI Project"
+    inventory: "AWS Inventory"
+    playbook: "bd.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "Cisco ACI Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "Cisco ACI: 4. EPGs + Contracts"
+    description: ""
+    organization: "Default"
+    project: "Cisco ACI Project"
+    inventory: "AWS Inventory"
+    playbook: "epg.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "Cisco ACI: 5. Queries"
+    description: ""
+    organization: "Default"
+    project: "Cisco ACI Project"
+    inventory: "AWS Inventory"
+    playbook: "query.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+
+# Workflow Job Templates
+controller_workflows:
+  - name: "Cisco ACI: Workflow"
+    description: "Cisco ACI: Workflow"
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "Cisco ACI Tenants"
+        workflow_job_template: "Cisco ACI: Workflow"
+        unified_job_template: "Cisco ACI: 1. Tenants"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Cisco ACI VRFs
+      - identifier: "Networking VPC Peering Delete"
+        workflow_job_template: "Cisco ACI: Workflow"
+        unified_job_template: "Cisco ACI: 2. VRFs"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Cisco ACI BDs + Subnets
+      - identifier: "Networking VPC Transit"
+        workflow_job_template: "Cisco ACI: Workflow"
+        unified_job_template: "Cisco ACI: 3. EPGs + Subnets"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Cisco ACI EPGs + Contracts
+      - identifier: "Networking VPC Transit Delete"
+        workflow_job_template: "Cisco ACI: Workflow"
+        unified_job_template: "Cisco ACI: 4. EPGs + Contracts"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Cisco ACI Queries
+      - identifier: "Networking VPC Transit Delete"
+        workflow_job_template: "Cisco ACI: Workflow"
+        unified_job_template: "Cisco ACI: 5. Queries"
+        organization: "Default"
+        all_parents_must_converge: "False"
