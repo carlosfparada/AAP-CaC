@@ -1,0 +1,57 @@
+---
+
+# Credentials
+controller_credentials:
+  - name: "Cisco Meraki Credential"
+    description: "Cisco Meraki Credential"
+    credential_type: "Machine"
+    organization: "Default"
+    inputs:
+      username: "{{ cisco_meraki_user }}"
+      password: "{{ cisco_meraki_password }}"
+
+# Inventories
+controller_inventories:
+  - name: Cisco Meraki Inventory
+    description: Cisco Meraki Inventory
+    organization: Default
+
+# Hosts
+controller_hosts:
+  - name: "{{ cisco_meraki_endpoint }}"
+    inventory: Cisco Meraki Inventory
+    organization: Default
+
+# Groups
+controller_groups:
+- name: meraki
+  description: meraki group
+  inventory: Cisco Meraki Inventory
+  hosts:
+   - "{{ cisco_meraki_endpoint }}"
+
+# Projects
+controller_projects:
+  - name: "Cisco Meraki Project"
+    description: "Cisco Meraki Project"
+    organization: "Default"
+    scm_type: "git"
+    scm_url: "{{ project_url }}"
+    scm_update_on_launch: "True"
+    execution_environment: "{{ ee_name }}"
+    wait: true
+
+# Job Templates
+controller_templates:
+  - name: "Cisco Meraki: 1. Tenants + APs"
+    description: ""
+    organization: "Default"
+    project: "Cisco Meraki Project"
+    inventory: "Cisco Meraki Inventory"
+    playbook: "tenant.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "Cisco Meraki Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
