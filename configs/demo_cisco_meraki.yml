@@ -43,12 +43,12 @@ controller_projects:
 
 # Job Templates
 controller_templates:
-  - name: "Cisco Meraki: 1. Tenants + APs"
+  - name: "Cisco Meraki: 1. Query"
     description: ""
     organization: "Default"
     project: "Cisco Meraki Project"
     inventory: "Cisco Meraki Inventory"
-    playbook: "tenant.yml"
+    playbook: "main.yml"
     verbosity: 0
     job_type: "run"
     credentials:
