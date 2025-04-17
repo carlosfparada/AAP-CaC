@@ -16,20 +16,6 @@ controller_inventories:
     description: Cisco Meraki Inventory
     organization: Default
 
-# Hosts
-controller_hosts:
-  - name: "{{ cisco_meraki_endpoint }}"
-    inventory: Cisco Meraki Inventory
-    organization: Default
-
-# Groups
-controller_groups:
-- name: meraki
-  description: meraki group
-  inventory: Cisco Meraki Inventory
-  hosts:
-   - "{{ cisco_meraki_endpoint }}"
-
 # Projects
 controller_projects:
   - name: "Cisco Meraki Project"
