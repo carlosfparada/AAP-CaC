@@ -29,7 +29,7 @@
     aap_validate_certs: false
   pre_tasks:
     - name: Include CaC vars
-      ansible.builtin.include_vars: 'configs/demo_cisco_aci.yml'
+      ansible.builtin.include_vars: 'configs/demo_cisco_meraki.yml'
   roles:
     - {role: infra.aap_configuration.controller_credentials, when: controller_credentials is defined}
     - {role: infra.aap_configuration.controller_projects, when: controller_projects is defined}
