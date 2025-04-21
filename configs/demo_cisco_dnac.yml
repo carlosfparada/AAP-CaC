@@ -1,0 +1,43 @@
+---
+
+# Credentials
+controller_credentials:
+  - name: "Cisco DNAC Credential"
+    description: "Cisco DNAC Credential"
+    credential_type: "Machine"
+    organization: "Default"
+    inputs:
+      username: "{{ cisco_dnac_user }}"
+      password: "{{ cisco_dnac_password }}"
+
+# Inventories
+controller_inventories:
+  - name: Cisco DNAC Inventory
+    description: Cisco DNAC Inventory
+    organization: Default
+
+# Projects
+controller_projects:
+  - name: "Cisco DNAC Project"
+    description: "Cisco DNAC Project"
+    organization: "Default"
+    scm_type: "git"
+    scm_url: "{{ project_url }}"
+    scm_update_on_launch: "True"
+    execution_environment: "{{ ee_name }}"
+    wait: true
+
+# Job Templates
+controller_templates:
+  - name: "Cisco DNAC: 1. Query"
+    description: ""
+    organization: "Default"
+    project: "Cisco DNAC Project"
+    inventory: "Cisco DNAC Inventory"
+    playbook: "main.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "Cisco DNAC Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
