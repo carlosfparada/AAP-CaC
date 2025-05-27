@@ -8,7 +8,7 @@ controller_credentials:
     organization: "Default"
     inputs:
       username: "{{ cisco_intersight_user }}"
-      password: "{{ cisco_intersight_token }}"
+      password: "{{ cisco_intersight_apikeyid }}"
 
 # Inventories
 controller_inventories:
