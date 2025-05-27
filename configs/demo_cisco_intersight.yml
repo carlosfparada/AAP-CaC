@@ -45,6 +45,11 @@ controller_templates:
         name: Survey
         description: Survey
         spec:
+          - question_name: Intersight API Key ID
+            default: "{{ cisco_intersight_privatekey }}"
+            variable: intersight_apikeyid
+            type: "password"
+            required: true
           - question_name: Intersight Private Key
             default: "{{ cisco_intersight_privatekey }}"
             variable: intersight_privatekey
