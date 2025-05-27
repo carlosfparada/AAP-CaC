@@ -40,4 +40,13 @@ controller_templates:
     credentials:
       - "Cisco Intersight Credential"
     execution_environment: "{{ ee_name }}"
-    survey_enabled: false
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: Intersight Private Key
+            default: "{{ cisco_intersight_privatekey }}"
+            variable: intersight_privatekey
+            type: "password"
+            required: true
