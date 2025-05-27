@@ -1,0 +1,43 @@
+---
+
+# Credentials
+controller_credentials:
+  - name: "Cisco Intersight Credential"
+    description: "Cisco Intersight Credential"
+    credential_type: "Machine"
+    organization: "Default"
+    inputs:
+      username: "{{ cisco_intersight_user }}"
+      password: "{{ cisco_intersight_token }}"
+
+# Inventories
+controller_inventories:
+  - name: Cisco Intersight Inventory
+    description: Cisco Intersight Inventory
+    organization: Default
+
+# Projects
+controller_projects:
+  - name: "Cisco Intersight Project"
+    description: "Cisco Intersight Project"
+    organization: "Default"
+    scm_type: "git"
+    scm_url: "{{ project_url }}"
+    scm_update_on_launch: "True"
+    execution_environment: "{{ ee_name }}"
+    wait: true
+
+# Job Templates
+controller_templates:
+  - name: "Cisco Intersight: 1. Query"
+    description: ""
+    organization: "Default"
+    project: "Cisco Intersight Project"
+    inventory: "Cisco Intersight Inventory"
+    playbook: "main.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "Cisco Intersight Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
