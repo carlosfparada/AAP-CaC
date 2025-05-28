@@ -29,7 +29,7 @@ controller_projects:
 
 # Job Templates
 controller_templates:
-  - name: "Cisco Intersight: 1. Query"
+  - name: "Cisco Intersight: 1. Create"
     description: ""
     organization: "Default"
     project: "Cisco Intersight Project"
@@ -60,3 +60,54 @@ controller_templates:
             variable: intersight_privatekey
             type: "password"
             required: true
+  - name: "Cisco Intersight: 2. Delete"
+    description: ""
+    organization: "Default"
+    project: "Cisco Intersight Project"
+    inventory: "Cisco Intersight Inventory"
+    playbook: "delete.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "Cisco Intersight Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: Intersight Endpoint
+            default: "{{ cisco_intersight_endpoint }}"
+            variable: intersight_endpoint
+            type: "text"
+            required: true
+          - question_name: Intersight API Key ID
+            default: "{{ cisco_intersight_apikeyid }}"
+            variable: intersight_apikeyid
+            type: "password"
+            required: true
+          - question_name: Intersight Private Key
+            default: "{{ cisco_intersight_privatekey }}"
+            variable: intersight_privatekey
+            type: "password"
+            required: true
+
+# Workflow Job Templates
+controller_workflows:
+  - name: "Cisco Intersight: Workflow"
+    description: "Cisco Intersight: Workflow"
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "Cisco Intersight Create"
+        workflow_job_template: "Cisco Intersight: Workflow"
+        unified_job_template: "Cisco Intersight: 1. Create"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Cisco Intersight Delete
+      - identifier: "Cisco Intersight Delete"
+        workflow_job_template: "Cisco Intersight: Workflow"
+        unified_job_template: "Cisco Intersight: 2. Delete"
+        organization: "Default"
+        all_parents_must_converge: "False"
