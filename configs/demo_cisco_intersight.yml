@@ -34,7 +34,7 @@ controller_templates:
     organization: "Default"
     project: "Cisco Intersight Project"
     inventory: "Cisco Intersight Inventory"
-    playbook: "main.yml"
+    playbook: "create.yml"
     verbosity: 0
     job_type: "run"
     credentials:
