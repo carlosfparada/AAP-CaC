@@ -1,0 +1,413 @@
+---
+
+# Credentials
+controller_credentials:
+  - name: "AWS GitOps Orange Credential"
+    description: "AWS GitOps Orange Credential"
+    credential_type: "Machine"
+    organization: "Default"
+    inputs:
+      password: "{{ gitops_password }}"
+      username: "{{ gitops_user }}"
+  - name: "AWS GitOps Orange Vault"
+    description: "AWS GitOps Orange Vault"
+    credential_type: "Vault"
+    organization: "Default"
+    inputs:
+      vault_password: "{{ gitops_vault_secret }}"
+
+# Projects
+controller_projects:
+  - name: "AWS GitOps Orange Project"
+    description: "AWS GitOps Orange Project"
+    organization: "Default"
+    scm_type: "git"
+    scm_url: "{{ project_url }}"
+    scm_update_on_launch: "True"
+    execution_environment: "{{ ee_name }}"
+    wait: true
+
+# Job Templates
+controller_templates:
+  - name: "AWS GitOps Orange: 01. AWS Deploy"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Orange Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_deploy.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Orange Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS GitOps Orange: 02. Setup"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Orange Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_setup.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Orange Credential"
+      - "AWS GitOps Orange Vault"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS GitOps Orange: 03. Ping"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Orange Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_ping.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Orange Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS GitOps Orange: 04. Facts"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Orange Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_facts.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Orange Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS GitOps Orange: 05. Show"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Orange Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_show.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Orange Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false    
+  - name: "AWS GitOps Orange: 06. Show Survey"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Orange Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_show_survey.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Orange Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: Command
+            default: show interface
+            variable: command
+            type: "text"
+            required: true
+          - question_name: Parser
+            default: "ansible.netcommon.ntc_templates"
+            variable: parser
+            type: "multiplechoice"
+            choices: |
+              ansible.netcommon.ntc_templates
+              ansible.utils.textfsm
+              ansible.netcommon.native
+              ansible.utils.ttp
+              ansible.netcommon.pyats
+            required: true
+          - question_name: Parser Template
+            default: ""
+            variable: template
+            type: "multiplechoice"
+            choices: |
+              
+              ios_show_interface.yaml
+              ios_show_interface.textfsm
+              ios_show_interface.ttp
+            required: false
+  - name: "AWS GitOps Orange: 07. VLAN Survey"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Orange Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_vlan_survey.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Orange Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: VLAN Name
+            default: Vlan100
+            variable: vlan_name
+            type: "text"
+            required: true
+          - question_name: VLAN Id
+            default: "100"
+            variable: vlan_id
+            type: "text"
+            required: true
+          - question_name: VLAN State
+            default: "active"
+            variable: vlan_state
+            type: "multiplechoice"
+            choices: "active\nsuspend"
+            required: true
+          - question_name: VLAN Operation
+            default: "merged"
+            variable: vlan_oper
+            type: "multiplechoice"
+            choices: "merged\noverridden\ndeleted"
+            required: true
+  - name: "AWS GitOps Orange: 08. VLAN"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Orange Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_vlan.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Orange Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS GitOps Orange: 09. IP"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Orange Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_ip.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Orange Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS GitOps Orange: 10. BGP"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Orange Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_bgp.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Orange Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS GitOps Orange: 11. Banner"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Orange Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_banner.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Orange Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS GitOps Orange: 12. DNS Servers"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Orange Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_dns_servers.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Orange Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS GitOps Orange: 13. AWS Undeploy"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Orange Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_undeploy.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Orange Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+
+# Workflow Job Templates
+controller_workflows:
+  - name: "AWS GitOps Orange: Update Configs"
+    description: "AWS GitOps Orange: Update Configs"
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "GitOps VLAN"
+        workflow_job_template: "AWS GitOps Orange: Update Configs"
+        unified_job_template: "AWS GitOps Orange: 08. VLAN"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - GitOps IP
+      - identifier: "GitOps IP"
+        workflow_job_template: "AWS GitOps Orange: Update Configs"
+        unified_job_template: "AWS GitOps Orange: 09. IP"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - GitOps BGP
+      - identifier: "GitOps BGP"
+        workflow_job_template: "AWS GitOps Orange: Update Configs"
+        unified_job_template: "AWS GitOps Orange: 10. BGP"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - GitOps Banner
+      - identifier: "GitOps Banner"
+        workflow_job_template: "AWS GitOps Orange: Update Configs"
+        unified_job_template: "AWS GitOps Orange: 11. Banner"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - GitOps DNS Servers
+      - identifier: "GitOps DNS Servers"
+        workflow_job_template: "AWS GitOps Orange: Update Configs"
+        unified_job_template: "AWS GitOps Orange: 12. DNS Servers"
+        organization: "Default"
+        all_parents_must_converge: "False"
+  - name: "AWS GitOps Orange: Workflow"
+    description: "AWS GitOps Orange: Workflow"
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "AWS Deploy"
+        workflow_job_template: "AWS GitOps Orange: Workflow"
+        unified_job_template: "AWS GitOps Orange: 01. AWS Deploy"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - GitOps Setup
+      - identifier: "GitOps Setup"
+        workflow_job_template: "AWS GitOps Orange: Workflow"
+        unified_job_template: "AWS GitOps Orange: 02. Setup"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - GitOps Ping
+      - identifier: "GitOps Ping"
+        workflow_job_template: "AWS GitOps Orange: Workflow"
+        unified_job_template: "AWS GitOps Orange: 03. Ping"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - GitOps Facts
+      - identifier: "GitOps Facts"
+        workflow_job_template: "AWS GitOps Orange: Workflow"
+        unified_job_template: "AWS GitOps Orange: 04. Facts"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - GitOps Show
+      - identifier: "GitOps Show"
+        workflow_job_template: "AWS GitOps Orange: Workflow"
+        unified_job_template: "AWS GitOps Orange: 05. Show"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - GitOps Show Survey
+      - identifier: "GitOps Show Survey"
+        workflow_job_template: "AWS GitOps Orange: Workflow"
+        unified_job_template: "AWS GitOps Orange: 06. Show Survey"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - GitOps VLAN Survey
+      - identifier: "GitOps VLAN Survey"
+        workflow_job_template: "AWS GitOps Orange: Workflow"
+        unified_job_template: "AWS GitOps Orange: 07. VLAN Survey"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - GitOps VLAN
+      - identifier: "GitOps VLAN"
+        workflow_job_template: "AWS GitOps Orange: Workflow"
+        unified_job_template: "AWS GitOps Orange: 08. VLAN"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - GitOps IP
+      - identifier: "GitOps IP"
+        workflow_job_template: "AWS GitOps Orange: Workflow"
+        unified_job_template: "AWS GitOps Orange: 09. IP"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - GitOps BGP
+      - identifier: "GitOps BGP"
+        workflow_job_template: "AWS GitOps Orange: Workflow"
+        unified_job_template: "AWS GitOps Orange: 10. BGP"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - GitOps Banner
+      - identifier: "GitOps Banner"
+        workflow_job_template: "AWS GitOps Orange: Workflow"
+        unified_job_template: "AWS GitOps Orange: 11. Banner"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - GitOps DNS Servers
+      - identifier: "GitOps DNS Servers"
+        workflow_job_template: "AWS GitOps Orange: Workflow"
+        unified_job_template: "AWS GitOps Orange: 12. DNS Servers"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - AWS Undeploy
+      - identifier: "AWS Undeploy"
+        workflow_job_template: "AWS GitOps Orange: Workflow"
+        unified_job_template: "AWS GitOps Orange: 13. AWS Undeploy"
+        organization: "Default"
+        all_parents_must_converge: "False"
+
+# EDA Projects
+eda_projects:
+  - name: "AWS EDA GitOps Project"
+    description: "AWS EDA GitOps Project"
+    organization: "Default"
+    url: "{{ project_url }}"
+    tls_validation: true
+
+# # EDA Rulebook Activations
+# eda_rulebook_activations:
+#   - name: "AWS EDA GitOps: Config Context"
+#     description: "AWS EDA GitOps: Config Context"
+#     organization: "Default"
+#     project: "AWS EDA GitOps Project"
+#     rulebook: "config_context_rulebook.yml"
+#     decision_environment: "{{ de_name }}"
+#     eda_credentials: "Controller Credentials"
+#     restart_policy: always
+#     #enabled: false
+#     log_level: debug
