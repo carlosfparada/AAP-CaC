@@ -268,6 +268,45 @@ controller_templates:
       - "AWS GitOps Orange Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
+  - name: "AWS GitOps Orange: EVPN Juniper"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Orange Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_evpn_juniper.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Orange Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS GitOps Orange: EVPN Cisco XR"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Orange Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_evpn_ciscoxr.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Orange Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS GitOps Orange: EVPN Rollback"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Orange Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_evpn_rollback.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Orange Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
 
 # Workflow Job Templates
 controller_workflows:
