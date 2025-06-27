@@ -328,7 +328,7 @@ controller_workflows:
         unified_job_template: "AWS GitOps Orange: EVPN Cisco XR"
         organization: "Default"
         all_parents_must_converge: "False"
-        always_nodes:
+        fail_nodes:
           - EVPN Rollback
       - identifier: "EVPN Rollback"
         workflow_job_template: "AWS GitOps Orange: Update Configs"
