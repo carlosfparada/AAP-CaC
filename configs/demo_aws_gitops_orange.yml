@@ -311,8 +311,8 @@ controller_templates:
 
 # Workflow Job Templates
 controller_workflows:
-  - name: "AWS GitOps Orange: Update Configs"
-    description: "AWS GitOps Orange: Update Configs"
+  - name: "AWS GitOps Orange: EVPN Provisioning"
+    description: "AWS GitOps Orange: EVPN Provisioning"
     organization: "Default"
     state: "present"
     simplified_workflow_nodes:
