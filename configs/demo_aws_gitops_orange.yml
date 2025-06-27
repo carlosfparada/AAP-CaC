@@ -307,6 +307,19 @@ controller_templates:
       - "AWS GitOps Orange Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
+  - name: "AWS GitOps Orange: EVPN Update CMDB"
+    description: ""
+    organization: "Default"
+    project: "AWS GitOps Orange Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_evpn_updatecmdb.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS GitOps Orange Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
 
 
 # Workflow Job Templates
@@ -323,6 +336,8 @@ controller_workflows:
         all_parents_must_converge: "False"
         failure_nodes:
           - EVPN Rollback
+        success_nodes:
+          - EVPN Update CMDB
       - identifier: "EVPN Cisco XR"
         workflow_job_template: "AWS GitOps Orange: Update Configs"
         unified_job_template: "AWS GitOps Orange: EVPN Cisco XR"
@@ -330,9 +345,16 @@ controller_workflows:
         all_parents_must_converge: "False"
         failure_nodes:
           - EVPN Rollback
+        success_nodes:
+          - EVPN Update CMDB
       - identifier: "EVPN Rollback"
         workflow_job_template: "AWS GitOps Orange: Update Configs"
         unified_job_template: "AWS GitOps Orange: EVPN Rollback"
+        organization: "Default"
+        all_parents_must_converge: "False"
+      - identifier: "EVPN Update CMDB"
+        workflow_job_template: "AWS GitOps Orange: Update Configs"
+        unified_job_template: "AWS GitOps Orange: EVPN Update CMDB"
         organization: "Default"
         all_parents_must_converge: "False"
 
