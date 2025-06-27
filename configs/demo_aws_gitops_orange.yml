@@ -308,8 +308,34 @@ controller_templates:
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
 
+
 # Workflow Job Templates
 controller_workflows:
+  - name: "AWS GitOps Orange: Update Configs"
+    description: "AWS GitOps Orange: Update Configs"
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "EVPN Juniper"
+        workflow_job_template: "AWS GitOps Orange: Update Configs"
+        unified_job_template: "AWS GitOps Orange: EVPN Juniper"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        fail_nodes:
+          - EVPN Rollback
+      - identifier: "EVPN Cisco XR"
+        workflow_job_template: "AWS GitOps Orange: Update Configs"
+        unified_job_template: "AWS GitOps Orange: EVPN Cisco XR"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - EVPN Rollback
+      - identifier: "EVPN Rollback"
+        workflow_job_template: "AWS GitOps Orange: Update Configs"
+        unified_job_template: "AWS GitOps Orange: EVPN Rollback"
+        organization: "Default"
+        all_parents_must_converge: "False"
+
   - name: "AWS GitOps Orange: Update Configs"
     description: "AWS GitOps Orange: Update Configs"
     organization: "Default"
@@ -348,6 +374,7 @@ controller_workflows:
         unified_job_template: "AWS GitOps Orange: 12. DNS Servers"
         organization: "Default"
         all_parents_must_converge: "False"
+
   - name: "AWS GitOps Orange: Workflow"
     description: "AWS GitOps Orange: Workflow"
     organization: "Default"
