@@ -330,7 +330,7 @@ controller_workflows:
     state: "present"
     simplified_workflow_nodes:
       - identifier: "EVPN Juniper"
-        workflow_job_template: "AWS GitOps Orange: Update Configs"
+        workflow_job_template: "AWS GitOps Orange: EVPN Provisioning"
         unified_job_template: "AWS GitOps Orange: EVPN Juniper"
         organization: "Default"
         all_parents_must_converge: "False"
@@ -339,7 +339,7 @@ controller_workflows:
         success_nodes:
           - EVPN Update CMDB
       - identifier: "EVPN Cisco XR"
-        workflow_job_template: "AWS GitOps Orange: Update Configs"
+        workflow_job_template: "AWS GitOps Orange: EVPN Provisioning"
         unified_job_template: "AWS GitOps Orange: EVPN Cisco XR"
         organization: "Default"
         all_parents_must_converge: "False"
@@ -348,12 +348,12 @@ controller_workflows:
         success_nodes:
           - EVPN Update CMDB
       - identifier: "EVPN Rollback"
-        workflow_job_template: "AWS GitOps Orange: Update Configs"
+        workflow_job_template: "AWS GitOps Orange: EVPN Provisioning"
         unified_job_template: "AWS GitOps Orange: EVPN Rollback"
         organization: "Default"
         all_parents_must_converge: "False"
       - identifier: "EVPN Update CMDB"
-        workflow_job_template: "AWS GitOps Orange: Update Configs"
+        workflow_job_template: "AWS GitOps Orange: EVPN Provisioning"
         unified_job_template: "AWS GitOps Orange: EVPN Update CMDB"
         organization: "Default"
         all_parents_must_converge: "False"
