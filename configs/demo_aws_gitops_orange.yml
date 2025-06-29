@@ -356,7 +356,7 @@ controller_workflows:
         workflow_job_template: "AWS GitOps Orange: EVPN Provisioning"
         unified_job_template: "AWS GitOps Orange: EVPN Update CMDB"
         organization: "Default"
-        all_parents_must_converge: "False"
+        all_parents_must_converge: "True"
 
   - name: "AWS GitOps Orange: Update Configs"
     description: "AWS GitOps Orange: Update Configs"
