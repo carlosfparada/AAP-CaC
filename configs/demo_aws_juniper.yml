@@ -138,14 +138,14 @@ controller_workflows:
         all_parents_must_converge: "False"
         always_nodes:
           - Juniper IP
-      - identifier: "GitOps IP"
+      - identifier: "Juniper IP"
         workflow_job_template: "AWS Juniper: Workflow"
         unified_job_template: "AWS Juniper: 04. IP"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
           - Juniper Rules
-      - identifier: "GitOps Rules"
+      - identifier: "Juniper Rules"
         workflow_job_template: "AWS Juniper: Workflow"
         unified_job_template: "AWS Juniper: 05. Rules"
         organization: "Default"
