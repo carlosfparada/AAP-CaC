@@ -87,7 +87,7 @@ controller_templates:
     organization: "Default"
     project: "AWS Juniper Project"
     inventory: "AWS Inventory"
-    playbook: "aws_rules_create.yml"
+    playbook: "aws_rules.yml"
     verbosity: 0
     job_type: "run"
     credentials:
@@ -95,7 +95,7 @@ controller_templates:
       - "AWS Juniper Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS Juniper: 13. AWS Undeploy"
+  - name: "AWS Juniper: 06. AWS Undeploy"
     description: ""
     organization: "Default"
     project: "AWS Juniper Project"
