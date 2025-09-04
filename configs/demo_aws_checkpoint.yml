@@ -73,6 +73,19 @@ controller_templates:
       - "AWS Checkpoint Vault"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
+  - name: "AWS Checkpoint: 2.b Setup Windows"
+    description: ""
+    organization: "Default"
+    project: "AWS Checkpoint Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_checkpoint_setup-windows.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Windows Credential"
+    execution_environment: "{{ ee_checkpoint_name }}"
+    survey_enabled: false
   - name: "AWS Checkpoint: 3. Rules Provisioning"
     description: ""
     organization: "Default"
