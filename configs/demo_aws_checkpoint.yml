@@ -59,32 +59,31 @@ controller_templates:
       - "AWS Windows Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS Checkpoint: 2.a Setup Checkpoint"
+  - name: "AWS Checkpoint: 3. Rules Provisioning"
     description: ""
     organization: "Default"
     project: "AWS Checkpoint Project"
     inventory: "AWS Inventory"
-    playbook: "aws_checkpoint_setup-checkpoint.yml"
+    playbook: "aws_checkpoint_rules.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
       - "AWS Checkpoint Credential"
-      - "AWS Checkpoint Vault"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS Checkpoint: 2.b Setup Windows"
+  - name: "AWS Checkpoint: 4. AWS Undeploy"
     description: ""
     organization: "Default"
     project: "AWS Checkpoint Project"
     inventory: "AWS Inventory"
-    playbook: "aws_checkpoint_setup-windows.yml"
+    playbook: "aws_checkpoint_undeploy.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS Windows Credential"
-    execution_environment: "{{ ee_checkpoint_name }}"
+      - "AWS Checkpoint Credential"
+    execution_environment: "{{ ee_name }}"
     survey_enabled: false
 
 # Workflow Job Templates
