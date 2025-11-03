@@ -265,7 +265,7 @@ eda_projects:
   - name: "AWS EDA Paloalto Project"
     description: "AWS EDA Paloalto Project"
     organization: "Default"
-    url: "{{ project_url }}"
+    url: "https://{{ project_url }}"
     tls_validation: true
 
 # EDA Rulebook Activations
