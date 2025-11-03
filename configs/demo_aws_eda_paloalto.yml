@@ -261,23 +261,23 @@ controller_workflows:
 #     credential: QUAY.IO Credentials
 
 # EDA Projects
-# eda_projects:
-#   - name: "AWS EDA Paloalto Project"
-#     description: "AWS EDA Paloalto Project"
-#     organization: "Default"
-#     url: "{{ project_url }}"
-#     tls_validation: true
+eda_projects:
+  - name: "AWS EDA Paloalto Project"
+    description: "AWS EDA Paloalto Project"
+    organization: "Default"
+    url: "{{ project_url }}"
+    tls_validation: true
 
 # EDA Rulebook Activations
-# eda_rulebook_activations:
-#   - name: "AWS EDA Paloalto: Config Compliance"
-#     description: "AWS EDA Paloalto: Config Compliance"
-#     organization: "Default"
-#     project: "AWS EDA Paloalto Project"
-#     rulebook: config_rulebook.yml
-#     decision_environment: "{{ de_name }}"
-#     eda_credentials: "Controller Credentials"
-#     restart_policy: always
-#     #enabled: false
-#     log_level: debug
+eda_rulebook_activations:
+  - name: "AWS EDA Paloalto: Config Compliance"
+    description: "AWS EDA Paloalto: Config Compliance"
+    organization: "Default"
+    project: "AWS EDA Paloalto Project"
+    rulebook: config_rulebook.yml
+    decision_environment: "{{ de_name }}"
+    eda_credentials: "Controller Credentials"
+    restart_policy: always
+    #enabled: false
+    log_level: debug
 
