@@ -269,15 +269,15 @@ controller_workflows:
 #     tls_validation: true
 
 # EDA Rulebook Activations
-eda_rulebook_activations:
-  - name: "AWS EDA Paloalto: Config Compliance"
-    description: "AWS EDA Paloalto: Config Compliance"
-    organization: "Default"
-    project: "AWS EDA Paloalto Project"
-    rulebook: config_rulebook.yml
-    decision_environment: "{{ de_name }}"
-    eda_credentials: "Controller Credentials"
-    restart_policy: always
-    #enabled: false
-    log_level: debug
+# eda_rulebook_activations:
+#   - name: "AWS EDA Paloalto: Config Compliance"
+#     description: "AWS EDA Paloalto: Config Compliance"
+#     organization: "Default"
+#     project: "AWS EDA Paloalto Project"
+#     rulebook: config_rulebook.yml
+#     decision_environment: "{{ de_name }}"
+#     eda_credentials: "Controller Credentials"
+#     restart_policy: always
+#     #enabled: false
+#     log_level: debug
 
