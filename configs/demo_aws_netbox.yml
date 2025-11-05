@@ -39,6 +39,7 @@ controller_inventories:
   - name: "Netbox Inventory"
     description: "Netbox Inventory"
     organization: "Default"
+    variables: {}
 
 # Inventory Sources
 controller_inventory_sources:
