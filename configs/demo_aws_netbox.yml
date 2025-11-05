@@ -39,7 +39,7 @@ controller_inventories:
   - name: "Netbox Inventory"
     description: "Netbox Inventory"
     organization: "Default"
-    variables: {}
+    variables: { test: "aap"}
 
 # Inventory Sources
 controller_inventory_sources:
