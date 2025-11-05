@@ -39,7 +39,7 @@ controller_inventories:
   - name: "Netbox Inventory"
     description: "Netbox Inventory"
     organization: "Default"
-    variables: { test: "aap" }
+    variables: { name: "netbox" } # just to not be empty as this breaks for 2.19
 
 # Inventory Sources
 controller_inventory_sources:
