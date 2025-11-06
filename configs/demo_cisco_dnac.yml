@@ -15,6 +15,7 @@ controller_inventories:
   - name: Cisco DNAC Inventory
     description: Cisco DNAC Inventory
     organization: Default
+    variables: { name: "dnac" } # added just to not be empty as this breaks for 2.19
 
 # Projects
 controller_projects:

@@ -15,6 +15,7 @@ controller_inventories:
   - name: Cisco Intersight Inventory
     description: Cisco Intersight Inventory
     organization: Default
+    variables: { name: "intersight" } # added just to not be empty as this breaks for 2.19
 
 # Projects
 controller_projects:

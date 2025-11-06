@@ -15,6 +15,7 @@ controller_inventories:
   - name: Cisco ACI Inventory
     description: Cisco ACI Inventory
     organization: Default
+    variables: { name: "aci" } # added just to not be empty as this breaks for 2.19
 
 # Hosts
 controller_hosts:

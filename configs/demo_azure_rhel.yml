@@ -35,6 +35,7 @@ controller_inventories:
   - name: "Azure Inventory"
     description: "Azure Inventory"
     organization: "Default"
+    variables: { name: "azure" } # added just to not be empty as this breaks for 2.19
 
 # Inventory Sources
 controller_inventory_sources:

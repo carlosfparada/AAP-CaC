@@ -15,6 +15,7 @@ controller_inventories:
   - name: Cisco Meraki Inventory
     description: Cisco Meraki Inventory
     organization: Default
+    variables: { name: "meraki" } # added just to not be empty as this breaks for 2.19
 
 # Projects
 controller_projects:
