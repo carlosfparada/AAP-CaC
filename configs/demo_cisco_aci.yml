@@ -22,6 +22,7 @@ controller_hosts:
   - name: "{{ cisco_aci_endpoint }}"
     inventory: Cisco ACI Inventory
     organization: Default
+    variables: { name: "sandbox" } # added just to not be empty as this breaks for 2.19
 
 # Groups
 controller_groups:
