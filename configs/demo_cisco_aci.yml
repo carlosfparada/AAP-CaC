@@ -26,11 +26,12 @@ controller_hosts:
 
 # Groups
 controller_groups:
-- name: apic
-  description: apic group
-  inventory: Cisco ACI Inventory
-  hosts:
-   - "{{ cisco_aci_endpoint }}"
+  - name: apic
+    description: apic group
+    inventory: Cisco ACI Inventory
+    hosts:
+    - "{{ cisco_aci_endpoint }}"
+    variables: { name: "sandbox" } # added just to not be empty as this breaks for 2.19
 
 # Projects
 controller_projects:
