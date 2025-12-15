@@ -7,7 +7,7 @@ controller_credentials:
     credential_type: "Machine"
     organization: "Default"
     inputs:
-      password: "{{ paloalto_admin_password }}"
+      password: "{{ ainetops_admin_password }}"
       username: admin
 
 # Projects
@@ -36,7 +36,7 @@ controller_templates:
       - "AWS Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS EDA Paloalto: 2. AWS Undeploy"
+  - name: "AWS AINetOps: 2. AWS Undeploy"
     description: ""
     organization: "Default"
     project: "AWS AINetOps Project"
@@ -80,7 +80,7 @@ eda_projects:
 
 # EDA Rulebook Activations
 eda_rulebook_activations:
-  - name: "AWS EAINetOps: Config Compliance"
+  - name: "AWS AINetOps: Config Compliance"
     description: "AWS AINetOps: Config Compliance"
     organization: "Default"
     project: "AWS AINetOps Project"
