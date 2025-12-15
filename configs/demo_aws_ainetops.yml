@@ -2,8 +2,8 @@
 
 # Credentials
 controller_credentials:
-  - name: "AINetOps Credential"
-    description: "AINetOps Credential"
+  - name: "AWS AINetOps Credential"
+    description: "AWS AINetOps Credential"
     credential_type: "Machine"
     organization: "Default"
     inputs:
