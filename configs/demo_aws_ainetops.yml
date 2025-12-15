@@ -1,0 +1,93 @@
+---
+
+# Credentials
+controller_credentials:
+  - name: "AINetOps Credential"
+    description: "AINetOps Credential"
+    credential_type: "Machine"
+    organization: "Default"
+    inputs:
+      password: "{{ paloalto_admin_password }}"
+      username: admin
+
+# Projects
+controller_projects:
+  - name: "AWS AINetOps Project"
+    description: "AWS AINetOps Project"
+    organization: "Default"
+    scm_type: "git"
+    scm_url: "{{ project_url }}"
+    scm_update_on_launch: "True"
+    execution_environment: "{{ ee_name }}"
+    wait: true
+
+# Job Templates
+controller_templates:
+  - name: "AWS AINetOps: 1. AWS Deploy"
+    description: ""
+    organization: "Default"
+    project: "AWS AINetOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_ainetops_deploy.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS AINetOps Credential"
+      - "AWS Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS EDA Paloalto: 2. AWS Undeploy"
+    description: ""
+    organization: "Default"
+    project: "AWS AINetOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_ainetops_undeploy.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AINetOps Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+
+# Workflow Job Templates
+controller_workflows:
+  - name: "AWS AINetOps: Workflow"
+    description: "AWS AINetOps: Workflow"
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "AWS Deploy"
+        workflow_job_template: "AWS AINetOps: Workflow"
+        unified_job_template: "AWS AINetOps: 1. AWS Deploy"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - AWS Undeploy        
+      - identifier: "AWS Undeploy"
+        workflow_job_template: "AWS AINetOps: Workflow"
+        unified_job_template: "AWS AINetOps: 2. AWS Undeploy"
+        organization: "Default"
+        all_parents_must_converge: "False"
+
+# EDA Projects
+eda_projects:
+  - name: "AWS AINetOps Project"
+    description: "AWS AINetOps Project"
+    organization: "Default"
+    url: "{{ project_url }}"
+    tls_validation: true
+
+# EDA Rulebook Activations
+eda_rulebook_activations:
+  - name: "AWS EAINetOps: Config Compliance"
+    description: "AWS AINetOps: Config Compliance"
+    organization: "Default"
+    project: "AWS AINetOps Project"
+    rulebook: config_rulebook.yml
+    decision_environment: "{{ de_name }}"
+    eda_credentials: "Controller Credentials"
+    restart_policy: always
+    #enabled: false
+    log_level: debug
+
