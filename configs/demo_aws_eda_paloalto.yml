@@ -280,4 +280,13 @@ eda_rulebook_activations:
     restart_policy: always
     #enabled: false
     log_level: debug
-
+  - name: "AWS EDA Paloalto: System Compliance"
+    description: "AWS EDA Paloalto: System Compliance"
+    organization: "Default"
+    project: "AWS EDA Paloalto Project"
+    rulebook: system_rulebook.yml
+    decision_environment: "{{ de_name }}"
+    eda_credentials: "Controller Credentials"
+    restart_policy: always
+    #enabled: false
+    log_level: debug
