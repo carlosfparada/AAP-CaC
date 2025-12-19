@@ -116,7 +116,6 @@ controller_templates:
       - "AWS Credential"
       - "AWS Paloalto Credential"
     execution_environment: "{{ ee_name }}"
-    survey_enabled: false
     survey_enabled: true
     survey:
         name: Survey
@@ -180,9 +179,17 @@ controller_templates:
       - "AWS Credential"
       - "AWS Paloalto Credential"
     execution_environment: "{{ ee_name }}"
-    survey_enabled: false
     ask_variables_on_launch: true
-
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: Slack Token
+            default: "{{ slack_token }}"
+            variable: slack_token
+            type: "password"
+            required: true
 # Workflow Job Templates
 controller_workflows:
   - name: "AWS EDA Paloalto: Workflow"
