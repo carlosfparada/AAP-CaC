@@ -294,7 +294,7 @@ eda_rulebook_activations:
     restart_policy: always
     #enabled: false
     log_level: debug
-  - name: "AWS EDA Paloalto: System Authenticatio"
+  - name: "AWS EDA Paloalto: System Authentication"
     description: "AWS EDA Paloalto: System Authentication"
     organization: "Default"
     project: "AWS EDA Paloalto Project"
