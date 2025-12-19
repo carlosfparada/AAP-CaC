@@ -168,6 +168,20 @@ controller_templates:
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
     ask_variables_on_launch: true
+  - name: "AWS EDA Paloalto: Notify Slack"
+    description: ""
+    organization: "Default"
+    project: "AWS EDA Paloalto Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_paloalto_notify_slack.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Paloalto Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+    ask_variables_on_launch: true
 
 # Workflow Job Templates
 controller_workflows:
@@ -280,8 +294,8 @@ eda_rulebook_activations:
     restart_policy: always
     #enabled: false
     log_level: debug
-  - name: "AWS EDA Paloalto: System Auth"
-    description: "AWS EDA Paloalto: System Auth"
+  - name: "AWS EDA Paloalto: System Authenticatio"
+    description: "AWS EDA Paloalto: System Authentication"
     organization: "Default"
     project: "AWS EDA Paloalto Project"
     rulebook: system_rulebook.yml
