@@ -15,6 +15,12 @@ controller_credentials:
     organization: "Default"
     inputs:
       vault_password: "{{ paloalto_vault_secret }}"
+  - name: "AWS Slack Token"
+    description: "AWS Slack Token"
+    credential_type: "Machine"
+    organization: "Default"
+    inputs:
+      password: "{{ slack_token }}"
 
 # Projects
 controller_projects:
@@ -177,7 +183,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS Paloalto Credential"
+      - "AWS Slack Token"
     execution_environment: "{{ ee_name }}"
     ask_variables_on_launch: true
     survey_enabled: true
@@ -190,6 +196,7 @@ controller_templates:
             variable: slack_token
             type: "password"
             required: true
+
 # Workflow Job Templates
 controller_workflows:
   - name: "AWS EDA Paloalto: Workflow"
