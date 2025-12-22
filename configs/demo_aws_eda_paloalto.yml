@@ -173,12 +173,12 @@ controller_templates:
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
     ask_variables_on_launch: true
-  - name: "AWS EDA Paloalto: Notify Slack"
+  - name: "AWS EDA Paloalto: Notify Auth"
     description: ""
     organization: "Default"
     project: "AWS EDA Paloalto Project"
     inventory: "AWS Inventory"
-    playbook: "aws_paloalto_notify_slack.yml"
+    playbook: "aws_paloalto_notify_auth.yml"
     verbosity: 0
     job_type: "run"
     credentials:
