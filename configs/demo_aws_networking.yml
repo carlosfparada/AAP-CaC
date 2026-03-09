@@ -29,7 +29,7 @@ controller_templates:
     organization: "Default"
     project: "AWS Networking Project"
     inventory: "AWS Inventory"
-    playbook: "aws_vpc_peering.yml"
+    playbook: "aws_vpc_create.yml"
     verbosity: 0
     job_type: "run"
     credentials:
