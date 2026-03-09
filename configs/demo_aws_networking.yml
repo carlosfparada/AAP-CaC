@@ -24,7 +24,7 @@ controller_projects:
 
 # Job Templates
 controller_templates:
-  - name: "AWS Networking: 1. VPC Peering"
+  - name: "AWS Networking: 1. VPC Create"
     description: ""
     organization: "Default"
     project: "AWS Networking Project"
@@ -37,7 +37,20 @@ controller_templates:
       - "AWS Networking Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS Networking: 2. VPC Peering Delete"
+  - name: "AWS Networking: 2. VPC Peering"
+    description: ""
+    organization: "Default"
+    project: "AWS Networking Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_vpc_peering.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Networking Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS Networking: 3. VPC Peering Delete"
     description: ""
     organization: "Default"
     project: "AWS Networking Project"
@@ -49,7 +62,7 @@ controller_templates:
       - "AWS Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS Networking: 3. VPC Transit"
+  - name: "AWS Networking: 4. VPC Transit"
     description: ""
     organization: "Default"
     project: "AWS Networking Project"
@@ -62,7 +75,7 @@ controller_templates:
       - "AWS Networking Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS Networking: 4. VPC Transit Delete"
+  - name: "AWS Networking: 5. VPC Transit Delete"
     description: ""
     organization: "Default"
     project: "AWS Networking Project"
@@ -74,6 +87,19 @@ controller_templates:
       - "AWS Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
+  - name: "AWS Networking: 6. VPC Delete"
+    description: ""
+    organization: "Default"
+    project: "AWS Networking Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_vpc_delete.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Networking Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
 
 # Workflow Job Templates
 controller_workflows:
@@ -82,29 +108,43 @@ controller_workflows:
     organization: "Default"
     state: "present"
     simplified_workflow_nodes:
-      - identifier: "AWS VPC Peering"
+      - identifier: "Networking VPC Create"
         workflow_job_template: "AWS Networking: Workflow"
-        unified_job_template: "AWS Networking: 1. VPC Peering"
+        unified_job_template: "AWS Networking: 1. VPC Create"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Networking VPC Peering
+      - identifier: "Networking VPC Peering"
+        workflow_job_template: "AWS Networking: Workflow"
+        unified_job_template: "AWS Networking: 2. VPC Peering"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
           - Networking VPC Peering Delete
       - identifier: "Networking VPC Peering Delete"
         workflow_job_template: "AWS Networking: Workflow"
-        unified_job_template: "AWS Networking: 2. VPC Peering Delete"
+        unified_job_template: "AWS Networking: 3. VPC Peering Delete"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
           - Networking VPC Transit
       - identifier: "Networking VPC Transit"
         workflow_job_template: "AWS Networking: Workflow"
-        unified_job_template: "AWS Networking: 3. VPC Transit"
+        unified_job_template: "AWS Networking: 4. VPC Transit"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
           - Networking VPC Transit Delete
       - identifier: "Networking VPC Transit Delete"
         workflow_job_template: "AWS Networking: Workflow"
-        unified_job_template: "AWS Networking: 4. VPC Transit Delete"
+        unified_job_template: "AWS Networking: 5. VPC Transit Delete"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Networking VPC Delete
+      - identifier: "Networking VPC Delete"
+        workflow_job_template: "AWS Networking: Workflow"
+        unified_job_template: "AWS Networking: 6. VPC Delete"
         organization: "Default"
         all_parents_must_converge: "False"
