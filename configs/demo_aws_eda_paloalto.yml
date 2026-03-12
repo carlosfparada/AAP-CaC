@@ -91,7 +91,7 @@ controller_templates:
             variable: http_address
             type: "text"
             required: true
-  - name: "AWS EDA Paloalto: 3. Setup RHEL"
+  - name: "AWS EDA Paloalto: 4. Setup RHEL"
     description: ""
     organization: "Default"
     project: "AWS EDA Paloalto Project"
@@ -123,7 +123,7 @@ controller_templates:
             variable: rh_subs_pool_id
             type: "password"
             required: true
-  - name: "AWS EDA Paloalto: 4. Rules Provisioning"
+  - name: "AWS EDA Paloalto: 5. Rules Provisioning"
     description: ""
     organization: "Default"
     project: "AWS EDA Paloalto Project"
@@ -136,7 +136,7 @@ controller_templates:
       - "AWS Paloalto Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS EDA Paloalto: 5. Rules Delete"
+  - name: "AWS EDA Paloalto: 6. Rules Delete"
     description: ""
     organization: "Default"
     project: "AWS EDA Paloalto Project"
@@ -149,7 +149,7 @@ controller_templates:
       - "AWS Paloalto Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS EDA Paloalto: 6. Setup Delete"
+  - name: "AWS EDA Paloalto: 7. Setup Delete"
     description: ""
     organization: "Default"
     project: "AWS EDA Paloalto Project"
@@ -171,7 +171,7 @@ controller_templates:
             variable: http_address
             type: "text"
             required: true
-  - name: "AWS EDA Paloalto: 7. AWS Undeploy"
+  - name: "AWS EDA Paloalto: 8. AWS Undeploy"
     description: ""
     organization: "Default"
     project: "AWS EDA Paloalto Project"
@@ -248,24 +248,23 @@ controller_workflows:
         all_parents_must_converge: "False"
         always_nodes:
           - Paloalto Setup
-          - RHEL Setup
       - identifier: "Paloalto Setup"
         workflow_job_template: "AWS EDA Paloalto: Workflow"
         unified_job_template: "AWS EDA Paloalto: 3. Setup Paloalto"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
-          - Paloalto Rules Provisioning
+          - RHEL Setup
       - identifier: "RHEL Setup"
         workflow_job_template: "AWS EDA Paloalto: Workflow"
-        unified_job_template: "AWS EDA Paloalto: 3. Setup RHEL"
+        unified_job_template: "AWS EDA Paloalto: 4. Setup RHEL"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
           - Paloalto Rules Provisioning
       - identifier: "Paloalto Rules Provisioning"
         workflow_job_template: "AWS EDA Paloalto: Workflow"
-        unified_job_template: "AWS EDA Paloalto: 4. Rules Provisioning"
+        unified_job_template: "AWS EDA Paloalto: 5. Rules Provisioning"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
@@ -274,57 +273,28 @@ controller_workflows:
         approval_node:
           name: Wait Time
           description: Wait Time to EDA run fixes
-          timeout: 300 # 5 minutes    
+          timeout: 120 # 2 minutes    
         always_nodes:
           - Paloalto Rules Delete
       - identifier: "Paloalto Rules Delete"
         workflow_job_template: "AWS EDA Paloalto: Workflow"
-        unified_job_template: "AWS EDA Paloalto: 5. Rules Delete"
+        unified_job_template: "AWS EDA Paloalto: 6. Rules Delete"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
           - Paloalto Setup Delete
       - identifier: "Paloalto Setup Delete"
         workflow_job_template: "AWS EDA Paloalto: Workflow"
-        unified_job_template: "AWS EDA Paloalto: 6. Setup Delete"
+        unified_job_template: "AWS EDA Paloalto: 7. Setup Delete"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
           - AWS Undeploy        
       - identifier: "AWS Undeploy"
         workflow_job_template: "AWS EDA Paloalto: Workflow"
-        unified_job_template: "AWS EDA Paloalto: 7. AWS Undeploy"
+        unified_job_template: "AWS EDA Paloalto: 8. AWS Undeploy"
         organization: "Default"
         all_parents_must_converge: "False"
-
-# # EDA Credentials
-# eda_credentials:
-#   - name: "QUAY.IO Credentials"
-#     description: "QUAY.IO Credentials"
-#     credential_type: "Container Registry"
-#     organization: Default
-#     inputs:
-#       host: quay.io
-#       username: "{{ quay_username }}"
-#       password: "{{ quay_password }}"
-#       verify_ssl: true
-#   - name: "Controller Credentials"
-#     description: "Controller Credentials"
-#     credential_type: "Red Hat Ansible Automation Platform"
-#     organization: Default
-#     inputs:
-#       host: "{{ groups['aap'][0] }}"
-#       username: "admin"
-#       password: "{{ admin_password }}"
-#       verify_ssl: false
-
-# # EDA Decision Environment
-# eda_decision_environments:
-#   - name: "{{ de_name }}"
-#     description: "{{ de_name }}"
-#     organization: "Default"
-#     image_url: "{{ de_url }}"
-#     credential: QUAY.IO Credentials
 
 # EDA Projects
 eda_projects:
