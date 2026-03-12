@@ -9,6 +9,13 @@ controller_credentials:
     inputs:
       password: "{{ paloalto_admin_password }}"
       username: admin
+  - name: "AWS RHEL Credential"
+    description: "AWS RHEL Credential"
+    credential_type: "Machine"
+    organization: "Default"
+    inputs:
+      password: "{{ rhel_password }}"
+      username: "{{ rhel_user }}"
   - name: "AWS Paloalto Vault"
     description: "AWS Paloalto Vault "
     credential_type: "Vault"
@@ -62,7 +69,7 @@ controller_templates:
       - "AWS Paloalto Vault"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS EDA Paloalto: 3. Setup"
+  - name: "AWS EDA Paloalto: 3. Setup Paloalto"
     description: ""
     organization: "Default"
     project: "AWS EDA Paloalto Project"
@@ -83,6 +90,38 @@ controller_templates:
             default: "{{ groups['aap'][0] }}"
             variable: http_address
             type: "text"
+            required: true
+  - name: "AWS EDA Paloalto: 3. Setup RHEL"
+    description: ""
+    organization: "Default"
+    project: "AWS EDA Paloalto Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_rhel_setup.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS RHEL Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: Subscription User
+            default: "{{ subscription_user }}"
+            variable: subscription_user
+            type: "text"
+            required: true
+          - question_name: Subscription Password
+            default: "{{ subscription_pass }}"
+            variable: subscription_pass
+            type: "password"
+            required: true
+          - question_name: Subscription Pool Id
+            default: "{{ rh_subs_pool_id }}"
+            variable: rh_subs_pool_id
+            type: "password"
             required: true
   - name: "AWS EDA Paloalto: 4. Rules Provisioning"
     description: ""
@@ -209,9 +248,17 @@ controller_workflows:
         all_parents_must_converge: "False"
         always_nodes:
           - Paloalto Setup
+          - RHEL Setup
       - identifier: "Paloalto Setup"
         workflow_job_template: "AWS EDA Paloalto: Workflow"
-        unified_job_template: "AWS EDA Paloalto: 3. Setup"
+        unified_job_template: "AWS EDA Paloalto: 3. Setup Paloalto"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Paloalto Rules Provisioning
+      - identifier: "RHEL Setup"
+        workflow_job_template: "AWS EDA Paloalto: Workflow"
+        unified_job_template: "AWS EDA Paloalto: 3. Setup RHEL"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
