@@ -226,6 +226,19 @@ controller_templates:
     execution_environment: "{{ ee_name }}"
     ask_variables_on_launch: true
     survey_enabled: false
+  - name: "AWS EDA Paloalto: Threat Virus"
+    description: ""
+    organization: "Default"
+    project: "AWS EDA Paloalto Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_paloalto_threat_virus.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+    execution_environment: "{{ ee_name }}"
+    ask_variables_on_launch: true
+    survey_enabled: false
 
 # Workflow Job Templates
 controller_workflows:
@@ -352,6 +365,16 @@ eda_rulebook_activations:
     organization: "Default"
     project: "AWS EDA Paloalto Project"
     rulebook: system_rulebook.yml
+    decision_environment: "{{ de_name }}"
+    eda_credentials: "Controller Credentials"
+    restart_policy: always
+    #enabled: false
+    log_level: debug
+  - name: "AWS EDA Paloalto: Thread Anti-Virus"
+    description: "AWS EDA Paloalto: Thread Anti-Virus"
+    organization: "Default"
+    project: "AWS EDA Paloalto Project"
+    rulebook: threat_rulebook.yml
     decision_environment: "{{ de_name }}"
     eda_credentials: "Controller Credentials"
     restart_policy: always
