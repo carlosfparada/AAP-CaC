@@ -499,6 +499,7 @@ eda_projects:
     organization: "Default"
     url: "{{ project_url }}"
     tls_validation: true
+    sync: true
 
 # # EDA Rulebook Activations
 # eda_rulebook_activations:
