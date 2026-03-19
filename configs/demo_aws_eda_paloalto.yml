@@ -236,6 +236,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Credential"
+      - "AWS Paloalto Credential"
     execution_environment: "{{ ee_name }}"
     ask_variables_on_launch: true
     survey_enabled: false
