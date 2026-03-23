@@ -255,6 +255,7 @@ controller_templates:
     ask_variables_on_launch: true
     survey_enabled: false
 
+
 # Workflow Job Templates
 controller_workflows:
   - name: "AWS EDA Paloalto: Setup Workflow"
