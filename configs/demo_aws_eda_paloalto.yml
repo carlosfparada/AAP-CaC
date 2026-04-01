@@ -248,7 +248,7 @@ controller_templates:
             default: "{{ slack_token }}"
             variable: slack_token
             type: "password"
-            required: true
+            required: false
   - name: "AWS EDA Paloalto: X. Threat Vulnerability"
     description: ""
     organization: "Default"
@@ -271,7 +271,7 @@ controller_templates:
             default: "{{ slack_token }}"
             variable: slack_token
             type: "password"
-            required: true
+            required: false
 
 # Workflow Job Templates
 controller_workflows:
