@@ -2,13 +2,13 @@
 
 # Credentials
 controller_credentials:
-  - name: "AWS MCP Credential"
-    description: "AWS MCP Credential"
+  - name: "AWS MCP Ansible Credential"
+    description: "AWS MCP Ansible Credential"
     credential_type: "Machine"
     organization: "Default"
     inputs:
-      password: "{{ mcp_password }}"
-      username: "{{ mcp_user }}"
+      password: "{{ mcp_ansible_token }}"
+      username: "ansible"
 
 # Projects
 controller_projects:
@@ -33,7 +33,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS MCP Credential"
+      - "AWS MCP Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
   - name: "AWS MCP: AWS"
@@ -46,7 +46,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS MCP Credential"
+      - "AWS MCP Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
   - name: "AWS MCP: GITHUB"
@@ -59,7 +59,7 @@ controller_templates:
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS MCP Credential"
+      - "AWS MCP Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
 
