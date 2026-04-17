@@ -79,14 +79,14 @@ controller_workflows:
         always_nodes:
           - MCP AWS
       - identifier: "MCP AWS"
-        workflow_job_template: "AWS Juniper: Workflow"
+        workflow_job_template: "AWS MCP: Workflow"
         unified_job_template: "AWS MCP: AWS"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
           - MCP GITHUB
       - identifier: "MCP GITHUB"
-        workflow_job_template: "AWS Juniper: Workflow"
+        workflow_job_template: "AWS MCP: Workflow"
         unified_job_template: "AWS MCP: GIHUB"
         organization: "Default"
         all_parents_must_converge: "False"
