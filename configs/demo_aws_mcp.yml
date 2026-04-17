@@ -1,0 +1,114 @@
+---
+
+# Credentials
+controller_credentials:
+  - name: "AWS MCP Credential"
+    description: "AWS MCP Credential"
+    credential_type: "Machine"
+    organization: "Default"
+    inputs:
+      password: "{{ mcp_password }}"
+      username: "{{ mcp_user }}"
+
+# Projects
+controller_projects:
+  - name: "AWS MCP Project"
+    description: "AWS MCP Project"
+    organization: "Default"
+    scm_type: "git"
+    scm_url: "{{ project_url }}"
+    scm_update_on_launch: "True"
+    execution_environment: "{{ ee_name }}"
+    wait: true
+
+# Job Templates
+controller_templates:
+  - name: "AWS MCP: ANSIBLE"
+    description: ""
+    organization: "Default"
+    project: "AWS MCP Project"
+    inventory: "AWS Inventory"
+    playbook: "ansible.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS MCP Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS MCP: AWS"
+    description: ""
+    organization: "Default"
+    project: "AWS MCP Project"
+    inventory: "AWS Inventory"
+    playbook: "aws.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS MCP Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS MCP: GITHUB"
+    description: ""
+    organization: "Default"
+    project: "AWS MCP Project"
+    inventory: "AWS Inventory"
+    playbook: "aws.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS MCP Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+
+
+# Workflow Job Templates
+controller_workflows:
+  - name: "AWS Juniper: Workflow"
+    description: "AWS Juniper: Workflow"
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "AWS Deploy"
+        workflow_job_template: "AWS Juniper: Workflow"
+        unified_job_template: "AWS Juniper: 01. AWS Deploy"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Juniper Setup
+      - identifier: "Juniper Setup"
+        workflow_job_template: "AWS Juniper: Workflow"
+        unified_job_template: "AWS Juniper: 02. Setup"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Juniper Facts
+      - identifier: "Juniper Facts"
+        workflow_job_template: "AWS Juniper: Workflow"
+        unified_job_template: "AWS Juniper: 03. Facts"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Juniper IP
+      - identifier: "Juniper IP"
+        workflow_job_template: "AWS Juniper: Workflow"
+        unified_job_template: "AWS Juniper: 04. IP"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Juniper Rules
+      - identifier: "Juniper Rules"
+        workflow_job_template: "AWS Juniper: Workflow"
+        unified_job_template: "AWS Juniper: 05. Rules"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - AWS Undeploy
+      - identifier: "AWS Undeploy"
+        workflow_job_template: "AWS Juniper: Workflow"
+        unified_job_template: "AWS Juniper: 06. AWS Undeploy"
+        organization: "Default"
+        all_parents_must_converge: "False"
+
