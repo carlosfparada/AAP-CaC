@@ -54,7 +54,7 @@ controller_templates:
     organization: "Default"
     project: "AWS MCP Project"
     inventory: "AWS Inventory"
-    playbook: "aws.yml"
+    playbook: "github.yml"
     verbosity: 0
     job_type: "run"
     credentials:
