@@ -21,6 +21,7 @@ controller_projects:
     scm_update_on_launch: "True"
     execution_environment: "{{ ee_name }}"
     wait: true
+    request_timeout: 10
 
 
 # Job Templates
