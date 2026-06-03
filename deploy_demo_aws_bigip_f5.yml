@@ -41,7 +41,7 @@
           - "value=[{{ aap_request_timeout }}]"
           - "type={{ aap_request_timeout | type_debug }}"        
     - debug:
-        var: hostvars[inventory_hostname].aap_request_timeout        
+        var: hostvars[inventory_hostname]
     - name: Include CaC vars
       ansible.builtin.include_vars: 'configs/demo_aws_bigip_f5.yml'
   roles:
