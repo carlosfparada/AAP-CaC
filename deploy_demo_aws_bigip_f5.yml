@@ -32,6 +32,8 @@
     aap_password: "{{ admin_password }}"
     aap_request_timeout: 10
   pre_tasks:
+    - set_fact:
+        aap_request_timeout: 10
     - debug:
         msg: "{{ aap_request_timeout }}"
     - name: Include CaC vars
