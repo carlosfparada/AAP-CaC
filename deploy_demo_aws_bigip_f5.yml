@@ -30,16 +30,10 @@
     # aap_validate_certs: false
     aap_username: admin
     aap_password: "{{ admin_password }}"
-    aap_request_timeout: "admin"
+    aap_request_timeout: 10
   pre_tasks:
-    - set_fact:
-        aap_request_timeout: "admin"
     - debug:
         msg: "{{ aap_request_timeout }}"
-    - debug:
-        msg:
-          - "value=[{{ aap_request_timeout }}]"
-          - "type={{ aap_request_timeout | type_debug }}"        
     - debug:
         var: hostvars[inventory_hostname]
     - name: Include CaC vars
