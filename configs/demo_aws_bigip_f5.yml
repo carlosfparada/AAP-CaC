@@ -22,7 +22,8 @@ controller_projects:
     execution_environment: "{{ ee_name }}"
     wait: true
     request_timeout: 10
-
+    aap_request_timeout: 10
+    controller_request_timeout: 10
 
 # Job Templates
 controller_templates:
