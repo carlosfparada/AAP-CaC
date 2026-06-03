@@ -30,9 +30,7 @@
     # aap_validate_certs: false
     aap_username: admin
     aap_password: "{{ admin_password }}"
-    aap_request_timeout: 10
-    controller_request_timeout: 10
-    request_timeout: 10
+    aap_request_timeout: "{{ aap_request_timeout | default(10, true) | float }}"  
   pre_tasks:
     - name: Include CaC vars
       ansible.builtin.include_vars: 'configs/demo_aws_bigip_f5.yml'
