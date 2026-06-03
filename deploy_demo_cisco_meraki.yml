@@ -24,10 +24,12 @@
   gather_facts: no
   vars_files: ../vars/main.yml
   vars:
-    aap_hostname: "https://{{ groups['aap'][0] }}"
+    aap_hostname: "https://{{ aap_fqdn }}"
+    aap_validate_certs: true
+    # aap_hostname: "https://{{ groups['aap'][0] }}"
+    # aap_validate_certs: false
     aap_username: admin
     aap_password: "{{ admin_password }}"
-    aap_validate_certs: false
   pre_tasks:
     - name: Include CaC vars
       ansible.builtin.include_vars: 'configs/demo_cisco_meraki.yml'
