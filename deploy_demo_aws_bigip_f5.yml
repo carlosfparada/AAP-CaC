@@ -25,9 +25,9 @@
   vars_files: ../vars/main.yml
   vars:
     aap_hostname: "https://{{ aap_fqdn }}"
-    aap_validate_certs: true
+    # aap_validate_certs: true
     # aap_hostname: "https://{{ groups['aap'][0] }}"
-    # aap_validate_certs: false
+    aap_validate_certs: false
     aap_username: admin
     aap_password: "{{ admin_password }}"
     aap_request_timeout: "{{ aap_request_timeout | default(10, true) | float }}"  
