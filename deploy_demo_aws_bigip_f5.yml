@@ -33,7 +33,7 @@
     aap_request_timeout: 10
   pre_tasks:
     - debug:
-        var: aap_request_timeout
+        msg: "{{ aap_request_timeout }}"
     - name: Include CaC vars
       ansible.builtin.include_vars: 'configs/demo_aws_bigip_f5.yml'
   roles:
