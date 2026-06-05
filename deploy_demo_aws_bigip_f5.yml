@@ -31,6 +31,7 @@
     aap_username: admin
     aap_password: "{{ admin_password }}"
     aap_request_timeout: 10
+    hostvars[inventory_hostname].aap_request_timeout: 10
   pre_tasks:
     - debug:
         msg: "{{ aap_request_timeout }}"
