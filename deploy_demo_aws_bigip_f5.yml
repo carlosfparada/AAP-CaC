@@ -30,7 +30,7 @@
     # aap_validate_certs: false
     aap_username: admin
     aap_password: "{{ admin_password }}"
-    aap_request_timeout: 10
+    #aap_request_timeout: 10
   pre_tasks:
     - debug:
         msg: "{{ aap_request_timeout }}"
