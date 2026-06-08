@@ -87,7 +87,7 @@ controller_workflows:
           - MCP GITHUB
       - identifier: "MCP GITHUB"
         workflow_job_template: "AWS MCP: Workflow"
-        unified_job_template: "AWS MCP: GIHUB"
+        unified_job_template: "AWS MCP: GITHUB"
         organization: "Default"
         all_parents_must_converge: "False"
 
