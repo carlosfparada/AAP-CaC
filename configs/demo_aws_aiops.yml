@@ -7,7 +7,7 @@ controller_credentials:
     credential_type: "Machine"
     organization: "Default"
     inputs:
-      password: "aiops_secret"
+      password: "{{ secret }}"
       username: "ansible"
 
 # Projects
