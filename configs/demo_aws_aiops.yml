@@ -28,7 +28,7 @@ controller_templates:
     organization: "Default"
     project: "AWS AIOps Project"
     inventory: "AWS Inventory"
-    playbook: "xxx.yml"
+    playbook: "aws_aiops_xxx.yml"
     verbosity: 0
     job_type: "run"
     credentials:
@@ -51,3 +51,25 @@ controller_workflows:
         all_parents_must_converge: "False"
         # always_nodes:
         #   - MCP AWS
+
+# EDA Projects
+eda_projects:
+  - name: "AWS AIOps Project"
+    description: "AWS AIOps Project"
+    organization: "Default"
+    url: "{{ project_url }}"
+    tls_validation: true
+    sync: true
+
+# EDA Rulebook Activations
+eda_rulebook_activations:
+  - name: "AWS AIOps: XXX"
+    description: "AWS AIOps: XXX"
+    organization: "Default"
+    project: "AWS AIOps Project"
+    rulebook: lightspeed_rulebook.yml
+    decision_environment: "{{ de_name }}"
+    eda_credentials: "Controller Credentials"
+    restart_policy: always
+    #enabled: false
+    log_level: debug
