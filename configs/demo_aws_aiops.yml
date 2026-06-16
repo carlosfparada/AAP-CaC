@@ -1,0 +1,53 @@
+---
+
+# Credentials
+controller_credentials:
+  - name: "AWS AIOps Ansible Credential"
+    description: "AWS MCP Ansible Credential"
+    credential_type: "Machine"
+    organization: "Default"
+    inputs:
+      password: "aiops_secret"
+      username: "ansible"
+
+# Projects
+controller_projects:
+  - name: "AWS AIOps Project"
+    description: "AWS AIOps Project"
+    organization: "Default"
+    scm_type: "git"
+    scm_url: "{{ project_url }}"
+    scm_update_on_launch: "True"
+    execution_environment: "{{ ee_name }}"
+    wait: true
+
+# Job Templates
+controller_templates:
+  - name: "AWS AIOps: XXX"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Project"
+    inventory: "AWS Inventory"
+    playbook: "xxx.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+
+# Workflow Job Templates
+controller_workflows:
+  - name: "AWS AIOps: Workflow"
+    description: "AWS AIOps: Workflow"
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "AIOps XXX"
+        workflow_job_template: "AWS AIOps: Workflow"
+        unified_job_template: "AWS AIOps: XXX"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        # always_nodes:
+        #   - MCP AWS
