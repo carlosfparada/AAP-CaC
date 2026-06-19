@@ -3,12 +3,12 @@
 # Credentials
 controller_credentials:
   - name: "AWS AIOps Ansible Credential"
-    description: "AWS MCP Ansible Credential"
+    description: "AWS AIOps Ansible Credential"
     credential_type: "Machine"
     organization: "Default"
     inputs:
-      password: "{{ secret }}"
-      username: "ansible"
+      password: "{{ rhel_password }}"
+      username: "{{ rhel_user }}"
 
 # Projects
 controller_projects:
@@ -23,12 +23,25 @@ controller_projects:
 
 # Job Templates
 controller_templates:
-  - name: "AWS AIOps: XXX"
+  - name: "AWS AIOps: Deploy"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_xxx.yml"
+    playbook: "aws_aiops_deploy.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS AIOps: Undeploy"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_undeploy.yml"
     verbosity: 0
     job_type: "run"
     credentials:
@@ -44,13 +57,18 @@ controller_workflows:
     organization: "Default"
     state: "present"
     simplified_workflow_nodes:
-      - identifier: "AIOps XXX"
+      - identifier: "AIOps Deploy"
         workflow_job_template: "AWS AIOps: Workflow"
-        unified_job_template: "AWS AIOps: XXX"
+        unified_job_template: "AWS AIOps: Deploy"
         organization: "Default"
         all_parents_must_converge: "False"
-        # always_nodes:
-        #   - MCP AWS
+        always_nodes:
+          - AIOps Undeploy
+      - identifier: "AIOps Undeploy"
+        workflow_job_template: "AWS AIOps: Workflow"
+        unified_job_template: "AWS AIOps: Undeploy"
+        organization: "Default"
+        all_parents_must_converge: "False"
 
 # EDA Projects
 eda_projects:
