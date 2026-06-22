@@ -48,6 +48,7 @@ controller_templates:
       - "AWS Credential"
       - "AWS AIOps Ansible Credential"
     execution_environment: "{{ ee_name }}"
+    survey_enabled: true
     survey:
         name: Survey
         description: Survey
