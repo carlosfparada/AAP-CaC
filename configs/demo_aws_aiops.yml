@@ -56,7 +56,7 @@ controller_templates:
           - question_name: Org ID
             default: "{{ org_id }}"
             variable: org_id
-            type: "password"
+            type: "text"
             required: true
           - question_name: Activation Key
             default: "{{ activation_key }}"
