@@ -36,6 +36,32 @@ controller_templates:
       - "AWS AIOps Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
+  - name: "AWS AIOps: Setup"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_setup.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: Org ID
+            default: "{{ org_id }}"
+            variable: org_id
+            type: "password"
+            required: true
+          - question_name: Activation Key
+            default: "{{ activation_key }}"
+            variable: activation_key
+            type: "password"
+            required: true
   - name: "AWS AIOps: Undeploy"
     description: ""
     organization: "Default"
@@ -60,6 +86,13 @@ controller_workflows:
       - identifier: "AIOps Deploy"
         workflow_job_template: "AWS AIOps: Workflow"
         unified_job_template: "AWS AIOps: Deploy"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - AIOps Setup
+      - identifier: "AIOps Setup"
+        workflow_job_template: "AWS AIOps: Workflow"
+        unified_job_template: "AWS AIOps: Setup"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:

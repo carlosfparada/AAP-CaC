@@ -250,7 +250,7 @@ controller_templates:
             default: "{{ slack_token }}"
             variable: slack_token
             type: "password"
-            required: false
+            required: true
   - name: "AWS EDA Paloalto: X. Threat Vulnerability"
     description: ""
     organization: "Default"
