@@ -149,7 +149,7 @@ eda_projects:
 
 # EDA Rulebook Activations
 eda_rulebook_activations:
-  - name: "AWS AIOps: XXX"
+  - name: "AWS AIOps: XXXaa"
     description: "AWS AIOps: XXX"
     organization: "Default"
     project: "AWS AIOps Project"
