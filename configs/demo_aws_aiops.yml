@@ -153,7 +153,7 @@ eda_rulebook_activations:
     description: "AWS AIOps: XXX"
     organization: "Default"
     project: "AWS AIOps Project"
-    rulebook: lightspeed_rulebook.yml
+    rulebook: lightspeed_rulebook.ymlaa
     decision_environment: "{{ de_name }}"
     eda_credentials: "Controller Credentials"
     restart_policy: always
