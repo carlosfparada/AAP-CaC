@@ -63,6 +63,33 @@ controller_templates:
             variable: activation_key
             type: "password"
             required: true
+  - name: "AWS AIOps: Unsetup"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_unsetup.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: Org ID
+            default: "{{ org_id }}"
+            variable: org_id
+            type: "text"
+            required: true
+          - question_name: Activation Key
+            default: "{{ activation_key }}"
+            variable: activation_key
+            type: "password"
+            required: true
   - name: "AWS AIOps: Undeploy"
     description: ""
     organization: "Default"
@@ -94,6 +121,13 @@ controller_workflows:
       - identifier: "AIOps Setup"
         workflow_job_template: "AWS AIOps: Workflow"
         unified_job_template: "AWS AIOps: Setup"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - AIOps Unsetup
+      - identifier: "AIOps Unsetup"
+        workflow_job_template: "AWS AIOps: Workflow"
+        unified_job_template: "AWS AIOps: Unsetup"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
