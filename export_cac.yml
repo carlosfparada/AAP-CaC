@@ -86,6 +86,10 @@
     - name: Publish the changes
       ansible.scm.git_publish:
         path: "{{ repository['path'] }}"
+        user:
+          name: "carlosfparada"
+          email: "cparada@redhat.com"
+        token: "{{ github_token }}"
 
     # - name: Create CaC folder on server
     #   ansible.builtin.file:
