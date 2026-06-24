@@ -21,14 +21,13 @@
   hosts: localhost
   connection: local
   gather_facts: false
-  vars:
-    git_repository: "github.com/carlosfparada/AAP-CaC-export.git"
-    git_email: "cparada@redhat.com"
-    git_username: "carlosfparada"
-    controller_validate_certs: "false"
-    controller_password: "{{ controller_password }}"
-    output_path:	"/tmp/filetree_output"
-    flatten_output: yes
+  # vars:
+  #   git_repository: "github.com/carlosfparada/AAP-CaC-export.git"
+  #   git_email: "cparada@redhat.com"
+  #   git_username: "carlosfparada"
+  #   controller_validate_certs: "false"
+  #   controller_password: "{{ controller_password }}"
+  #   output_path:	"/tmp/filetree_output"
   tasks:
     - name: "Get the Authentication Token for the future requests"
       ansible.builtin.uri:
@@ -56,6 +55,7 @@
         aap_password: "{{ admin_password }}"
         aap_hostname: "{{ aap_fqdn }}"
         aap_validate_certs: false
+        flatten_output: yes
 
     - name: "Delete the Authentication Token used"
       ansible.builtin.uri:
