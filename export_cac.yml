@@ -33,7 +33,7 @@
     - name: "Get the Authentication Token for the future requests"
       ansible.builtin.uri:
         url: "https://{{ aap_fqdn }}/api/gateway/v1/tokens/"
-        user: "admin"
+        user: admin
         password: "{{ admin_password }}"
         method: POST
         force_basic_auth: true
@@ -60,7 +60,7 @@
     - name: "Delete the Authentication Token used"
       ansible.builtin.uri:
         url: "https://{{ aap_fqdn }}{{ aap_oauthtoken_url }}"
-        user: "admin"
+        user: admin
         password: "{{ admin_password }}"
         method: DELETE
         force_basic_auth: true
@@ -71,12 +71,11 @@
     - name: Retrieve a repository
       ansible.scm.git_retrieve:
         origin:
-          url: https://github.com/carlosfparada/AAP-CaC-export.git
+          url: "{{ export_url }}"
         upstream:
-          url: https://github.com/carlosfparada/AAP-CaC-export.git
+          url: "{{ export_url }}"
         branch: 
-          duplicate_detection: false
-          name: main
+          name: "{{ export_url }}"
       register: repository
 
     - debug: 
