@@ -40,11 +40,13 @@
         validate_certs: yes
         status_code: 201
       register: authtoken_res
+      when: aap_oauthtoken is not defined
 
     - name: "Set the oauth token to be used since now"
       ansible.builtin.set_fact:
         aap_oauthtoken: "{{ authtoken_res.json.token }}"
         aap_oauthtoken_url: "{{ authtoken_res.json.url }}"
+      when: aap_oauthtoken is not defined
 
     - name: Generate CaC (role filetree_create)
       ansible.builtin.import_role:
@@ -64,6 +66,7 @@
         force_basic_auth: true
         validate_certs: yes
         status_code: 204
+      when: aap_oauthtoken_url is defined
 
     - name: Retrieve a repository
       ansible.scm.git_retrieve:
