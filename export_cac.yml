@@ -88,6 +88,8 @@
 
     - name: Publish the changes
       ansible.scm.git_publish:
+        commit:
+          message: Generated CaC from AAP objects
         path: "{{ repository['path'] }}"
         user:
           name: "carlosfparada"
