@@ -75,6 +75,7 @@
         upstream:
           url: https://github.com/carlosfparada/AAP-CaC-export.git
           branch: 
+            duplicate_detection: false
             name: main
       register: repository
 
