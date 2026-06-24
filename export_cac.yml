@@ -74,7 +74,8 @@
           url: https://github.com/carlosfparada/AAP-CaC-export.git
         upstream:
           url: https://github.com/carlosfparada/AAP-CaC-export.git
-          branch: main
+          branch: 
+            name: main
       register: repository
 
     - debug: 
