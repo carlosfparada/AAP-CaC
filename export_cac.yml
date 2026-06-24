@@ -71,11 +71,11 @@
     - name: Retrieve a repository
       ansible.scm.git_retrieve:
         origin:
-          url: "{{ export_url }}"
+          url: "{{ github_url }}"
         upstream:
-          url: "{{ export_url }}"
+          url: "{{ github_url }}"
         branch: 
-          name: "{{ export_url }}"
+          name: "{{ github_url }}"
       register: repository
 
     - debug: 
@@ -93,6 +93,6 @@
           message: Generated CaC from AAP objects
         path: "{{ repository['path'] }}"
         user:
-          name: "carlosfparada"
-          email: "cparada@redhat.com"
+          name: "{{ github_user }}"
+          email: "{{ github_email }}"
         token: "{{ github_token }}"
