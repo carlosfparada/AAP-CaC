@@ -25,9 +25,7 @@
     git_repository: "github.com/carlosfparada/AAP-CaC-export.git"
     git_email: "cparada@redhat.com"
     git_username: "carlosfparada"
-    controller_hostname: "{{ ansible_host }}"
     controller_validate_certs: "false"
-    controller_username: "{{ controller_username }}"
     controller_password: "{{ controller_password }}"
     output_path:	"/tmp/filetree_output"
     flatten_output: yes
@@ -55,11 +53,11 @@
     - name: "Delete the Authentication Token used"
       ansible.builtin.uri:
         url: "https://{{ aap_fqdn }}{{ aap_oauthtoken_url }}"
-        user: "{{ controller_username }}"
-        password: "{{ controller_password }}"
+        user: "admin"
+        password: "{{ admin_password }}"
         method: DELETE
         force_basic_auth: true
-        validate_certs: "{{ controller_validate_certs }}"
+        validate_certs: yes
         status_code: 204
 
     - name: Retrieve a repository
