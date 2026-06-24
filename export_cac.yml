@@ -49,6 +49,11 @@
     - name: Generate CaC (role filetree_create)
       ansible.builtin.import_role:
         name: infra.aap_configuration_extended.filetree_create
+      vars:
+        aap_username: "admin"
+        aap_password: "{{ admin_password }}"
+        aap_hostname: "{{ aap_fqdn }}"
+        aap_validate_certs: true
 
     - name: "Delete the Authentication Token used"
       ansible.builtin.uri:
