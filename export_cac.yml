@@ -32,41 +32,35 @@
     output_path:	"/tmp/filetree_output"
     flatten_output: yes
   tasks:
-    # - name: "Get the Authentication Token for the future requests"
-    #   ansible.builtin.uri:
-    #     url: "https://{{ aap_fqdn }}/api/gateway/v1/tokens/"
-    #     user: "admin"
-    #     password: "{{ admin_password }}"
-    #     method: POST
-    #     force_basic_auth: true
-    #     validate_certs: yes
-    #     status_code: 201
-    #   register: authtoken_res
+    - name: "Get the Authentication Token for the future requests"
+      ansible.builtin.uri:
+        url: "https://{{ aap_fqdn }}/api/gateway/v1/tokens/"
+        user: "admin"
+        password: "{{ admin_password }}"
+        method: POST
+        force_basic_auth: true
+        validate_certs: yes
+        status_code: 201
+      register: authtoken_res
 
-    # - name: "Set the oauth token to be used since now"
-    #   ansible.builtin.set_fact:
-    #     aap_oauthtoken: "{{ authtoken_res.json.token }}"
-    #     aap_oauthtoken_url: "{{ authtoken_res.json.url }}"
+    - name: "Set the oauth token to be used since now"
+      ansible.builtin.set_fact:
+        aap_oauthtoken: "{{ authtoken_res.json.token }}"
+        aap_oauthtoken_url: "{{ authtoken_res.json.url }}"
 
-    # # - name: Debug (why this debug is needed?)
-    # #   ansible.builtin.debug:
-    # #     msg: "{{ lookup('ansible.controller.controller_api', 'ping', 
-    # #                   host=aap_fqdn, oauth_token=aap_oauthtoken,
-    # #                   verify_ssl='yes') }}"
+    - name: Generate CaC (role filetree_create)
+      ansible.builtin.import_role:
+        name: infra.aap_configuration_extended.filetree_create
 
-    # - name: Generate CaC (role filetree_create)
-    #   ansible.builtin.import_role:
-    #     name: infra.aap_configuration_extended.filetree_create
-
-    # - name: "Delete the Authentication Token used"
-    #   ansible.builtin.uri:
-    #     url: "https://{{ aap_fqdn }}{{ aap_oauthtoken_url }}"
-    #     user: "{{ controller_username }}"
-    #     password: "{{ controller_password }}"
-    #     method: DELETE
-    #     force_basic_auth: true
-    #     validate_certs: "{{ controller_validate_certs }}"
-    #     status_code: 204
+    - name: "Delete the Authentication Token used"
+      ansible.builtin.uri:
+        url: "https://{{ aap_fqdn }}{{ aap_oauthtoken_url }}"
+        user: "{{ controller_username }}"
+        password: "{{ controller_password }}"
+        method: DELETE
+        force_basic_auth: true
+        validate_certs: "{{ controller_validate_certs }}"
+        status_code: 204
 
     - name: Retrieve a repository
       ansible.scm.git_retrieve:
@@ -82,11 +76,11 @@
     - debug: 
         var: repository
 
-    - name: Add to the repository
-      ansible.builtin.copy:
-        content: "La la"
-        dest: "{{ repository['path'] }}/details.yaml"
-        mode: '0644'
+    # - name: Add to the repository
+    #   ansible.builtin.copy:
+    #     content: "La la"
+    #     dest: "{{ repository['path'] }}/details.yaml"
+    #     mode: '0644'
 
     - name: Publish the changes
       ansible.scm.git_publish:
