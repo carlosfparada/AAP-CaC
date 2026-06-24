@@ -33,7 +33,8 @@
   tasks:
     - name: "Get the Authentication Token for the future requests"
       ansible.builtin.uri:
-        url: "https://{{ aap_fqdn }}/api/v2/tokens/"
+        #url: "https://{{ controller_hostname }}/api/v2/tokens/"
+        url: "https://{{ aap_fqdn }}/api/gateway/v1/tokens/"
         user: "admin"
         password: "{{ admin_password }}"
         method: POST
