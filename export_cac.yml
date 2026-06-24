@@ -1,16 +1,21 @@
 ---
 
-- name: Get AAP node from Inventory
-  ansible.builtin.set_fact:
-    node_name: "{{ item }}"
-  loop: "{{ groups['all'] }}"
-  when: hostvars[item].tags is defined and hostvars[item].tags.Name is match("^aap-1$")
+- name: Get nodes from Inventory and add to Groups
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: Get AAP node from Inventory
+      ansible.builtin.set_fact:
+        node_name: "{{ item }}"
+      loop: "{{ groups['all'] }}"
+      when: hostvars[item].tags is defined and hostvars[item].tags.Name is match("^aap-1$")
 
-- name: Add AAP node to the aap group
-  add_host:
-    name: "{{ node_name }}"
-    groups: "aap"
-  when: node_name is defined
+    - name: Add AAP node to the aap group
+      add_host:
+        name: "{{ node_name }}"
+        groups: "aap"
+      when: node_name is defined
 
 - name: Extract AAP artifacts to a CaC format
   hosts: aap
