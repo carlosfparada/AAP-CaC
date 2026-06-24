@@ -18,7 +18,8 @@
       when: node_name is defined
 
 - name: Extract AAP artifacts to a CaC format
-  hosts: aap
+  hosts: localhost
+  connection: local
   gather_facts: false
   vars:
     git_repository: "github.com/carlosfparada/AAP-CaC-export.git"
