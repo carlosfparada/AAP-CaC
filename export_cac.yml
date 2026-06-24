@@ -16,7 +16,7 @@
   hosts: aap
   gather_facts: false
   vars:
-    git_repository: "github.com/carlosfparada/AAP-CaC.git"
+    git_repository: "github.com/carlosfparada/AAP-CaC-export.git"
     git_email: "cparada@redhat.com"
     git_username: "carlosfparada"
     controller_hostname: "{{ ansible_host }}"
