@@ -55,7 +55,7 @@
         aap_username: "admin"
         aap_password: "{{ admin_password }}"
         aap_hostname: "{{ aap_fqdn }}"
-        aap_validate_certs: true
+        aap_validate_certs: false
 
     - name: "Delete the Authentication Token used"
       ansible.builtin.uri:
