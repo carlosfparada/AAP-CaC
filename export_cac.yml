@@ -70,8 +70,9 @@
 
     - name: Retrieve a repository
       ansible.scm.git_retrieve:
-        branch: main
         origin:
+          url: https://github.com/carlosfparada/AAP-CaC-export.git
+        upstream:
           url: https://github.com/carlosfparada/AAP-CaC-export.git
       register: repository
 
