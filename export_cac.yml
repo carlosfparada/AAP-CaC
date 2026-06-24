@@ -76,6 +76,7 @@
           url: "{{ github_url }}"
         branch: 
           name: "{{ github_branch }}"
+          duplicate_detection: false
       register: repository
 
     - debug: 
