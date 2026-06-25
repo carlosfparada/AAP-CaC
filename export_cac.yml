@@ -21,15 +21,8 @@
   hosts: localhost
   connection: local
   gather_facts: false
-  ansible_command_timeout: 300
-
-  # vars:
-  #   git_repository: "github.com/carlosfparada/AAP-CaC-export.git"
-  #   git_email: "cparada@redhat.com"
-  #   git_username: "carlosfparada"
-  #   controller_validate_certs: "false"
-  #   controller_password: "{{ controller_password }}"
-  #   output_path:	"/tmp/filetree_output"
+  vars:
+    ansible_command_timeout: 300
   tasks:
     - name: "Get the Authentication Token for the future requests"
       ansible.builtin.uri:
