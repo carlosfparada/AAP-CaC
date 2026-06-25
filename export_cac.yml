@@ -22,7 +22,8 @@
   connection: local
   gather_facts: false
   vars:
-    ansible_command_timeout: 300
+    #ansible_command_timeout: 300
+    cac_dir: "/tmp/filetree_output/"
   tasks:
     - name: "Get the Authentication Token for the future requests"
       ansible.builtin.uri:
@@ -82,6 +83,14 @@
     #     content: "La la"
     #     dest: "{{ repository['path'] }}/details.yaml"
     #     mode: '0644'
+
+    - name: Copy CaC content to the GIT folder
+      ansible.builtin.copy:
+        src: "{{ cac_dir }}/"
+        dest: "{{ repository['path'] }}/"
+        remote_src: false
+        force: true
+        mode: '0644'
 
     - name: Publish the changes
       ansible.scm.git_publish:
