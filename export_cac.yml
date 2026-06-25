@@ -21,6 +21,8 @@
   hosts: localhost
   connection: local
   gather_facts: false
+  ansible_command_timeout: 300
+
   # vars:
   #   git_repository: "github.com/carlosfparada/AAP-CaC-export.git"
   #   git_email: "cparada@redhat.com"
