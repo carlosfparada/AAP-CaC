@@ -64,16 +64,16 @@
     #     status_code: 204
     #   when: aap_oauthtoken_url is defined
 
-    # - name: Retrieve a repository
-    #   ansible.scm.git_retrieve:
-    #     origin:
-    #       url: "{{ github_url }}"
-    #     upstream:
-    #       url: "{{ github_url }}"
-    #     branch: 
-    #       name: "{{ github_branch }}"
-    #       duplicate_detection: false
-    #   register: repository
+    - name: Retrieve a repository
+      ansible.scm.git_retrieve:
+        origin:
+          url: "{{ github_url }}"
+        upstream:
+          url: "{{ github_url }}"
+        branch: 
+          name: "{{ github_branch }}"
+          duplicate_detection: false
+      register: repository
 
     - debug: 
         var: repository
