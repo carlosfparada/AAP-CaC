@@ -78,12 +78,6 @@
     - debug: 
         var: repository
 
-    # - name: Add to the repository
-    #   ansible.builtin.copy:
-    #     content: "La la"
-    #     dest: "{{ repository['path'] }}/details.yaml"
-    #     mode: '0644'
-
     # - name: Copy CaC content to the GIT folder
     #   ansible.builtin.copy:
     #     src: "{{ cac_dir }}/"
