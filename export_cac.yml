@@ -84,13 +84,13 @@
     #     dest: "{{ repository['path'] }}/details.yaml"
     #     mode: '0644'
 
-    - name: Copy CaC content to the GIT folder
-      ansible.builtin.copy:
-        src: "{{ cac_dir }}/"
-        dest: "{{ repository['path'] }}/CaC/"
-        remote_src: false
-        force: true
-        mode: '0644'
+    # - name: Copy CaC content to the GIT folder
+    #   ansible.builtin.copy:
+    #     src: "{{ cac_dir }}/"
+    #     dest: "{{ repository['path'] }}/CaC/"
+    #     remote_src: false
+    #     force: true
+    #     mode: '0644'
 
     - name: List files matching '*rhel6*'
       find:
