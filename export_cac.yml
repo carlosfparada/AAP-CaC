@@ -87,7 +87,7 @@
     - name: Copy CaC content to the GIT folder
       ansible.builtin.copy:
         src: "{{ cac_dir }}/"
-        dest: "{{ repository['path'] }}/"
+        dest: "{{ repository['path'] }}/CaC/"
         remote_src: false
         force: true
         mode: '0644'
