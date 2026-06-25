@@ -4,8 +4,8 @@
   hosts: localhost
   connection: local
   gather_facts: false
-  vars:
-    cac_dir: "/tmp/filetree_output/"
+  # vars:
+  #   cac_dir: "/tmp/filetree_output/"
   tasks:
     - name: Retrieve a repository
       ansible.scm.git_retrieve:
@@ -21,13 +21,13 @@
     - debug: 
         var: repository
 
-    - name: Copy CaC content to the GIT folder
-      ansible.builtin.copy:
-        src: "{{ cac_dir }}/"
-        dest: "{{ repository['path'] }}"
-        remote_src: false
-        force: true
-        mode: '0644'
+    # - name: Copy CaC content to the GIT folder
+    #   ansible.builtin.copy:
+    #     src: "{{ cac_dir }}/"
+    #     dest: "{{ repository['path'] }}"
+    #     remote_src: false
+    #     force: true
+    #     mode: '0644'
 
     - name: List files matching '*.yaml'
       ansible.builtin.find:
