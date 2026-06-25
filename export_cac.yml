@@ -25,55 +25,55 @@
     #ansible_command_timeout: 300
     cac_dir: "/tmp/filetree_output/"
   tasks:
-    - name: "Get the Authentication Token for the future requests"
-      ansible.builtin.uri:
-        url: "https://{{ aap_fqdn }}/api/gateway/v1/tokens/"
-        user: admin
-        password: "{{ admin_password }}"
-        method: POST
-        force_basic_auth: true
-        validate_certs: yes
-        status_code: 201
-      register: authtoken_res
-      when: aap_oauthtoken is not defined
+    # - name: "Get the Authentication Token for the future requests"
+    #   ansible.builtin.uri:
+    #     url: "https://{{ aap_fqdn }}/api/gateway/v1/tokens/"
+    #     user: admin
+    #     password: "{{ admin_password }}"
+    #     method: POST
+    #     force_basic_auth: true
+    #     validate_certs: yes
+    #     status_code: 201
+    #   register: authtoken_res
+    #   when: aap_oauthtoken is not defined
 
-    - name: "Set the oauth token to be used since now"
-      ansible.builtin.set_fact:
-        aap_oauthtoken: "{{ authtoken_res.json.token }}"
-        aap_oauthtoken_url: "{{ authtoken_res.json.url }}"
-      when: aap_oauthtoken is not defined
+    # - name: "Set the oauth token to be used since now"
+    #   ansible.builtin.set_fact:
+    #     aap_oauthtoken: "{{ authtoken_res.json.token }}"
+    #     aap_oauthtoken_url: "{{ authtoken_res.json.url }}"
+    #   when: aap_oauthtoken is not defined
 
-    - name: Generate CaC (role filetree_create)
-      ansible.builtin.import_role:
-        name: infra.aap_configuration_extended.filetree_create
-      vars:
-        aap_username: "admin"
-        aap_password: "{{ admin_password }}"
-        aap_hostname: "{{ aap_fqdn }}"
-        aap_validate_certs: false
-        flatten_output: yes
+    # - name: Generate CaC (role filetree_create)
+    #   ansible.builtin.import_role:
+    #     name: infra.aap_configuration_extended.filetree_create
+    #   vars:
+    #     aap_username: "admin"
+    #     aap_password: "{{ admin_password }}"
+    #     aap_hostname: "{{ aap_fqdn }}"
+    #     aap_validate_certs: false
+    #     flatten_output: yes
 
-    - name: "Delete the Authentication Token used"
-      ansible.builtin.uri:
-        url: "https://{{ aap_fqdn }}{{ aap_oauthtoken_url }}"
-        user: admin
-        password: "{{ admin_password }}"
-        method: DELETE
-        force_basic_auth: true
-        validate_certs: yes
-        status_code: 204
-      when: aap_oauthtoken_url is defined
+    # - name: "Delete the Authentication Token used"
+    #   ansible.builtin.uri:
+    #     url: "https://{{ aap_fqdn }}{{ aap_oauthtoken_url }}"
+    #     user: admin
+    #     password: "{{ admin_password }}"
+    #     method: DELETE
+    #     force_basic_auth: true
+    #     validate_certs: yes
+    #     status_code: 204
+    #   when: aap_oauthtoken_url is defined
 
-    - name: Retrieve a repository
-      ansible.scm.git_retrieve:
-        origin:
-          url: "{{ github_url }}"
-        upstream:
-          url: "{{ github_url }}"
-        branch: 
-          name: "{{ github_branch }}"
-          duplicate_detection: false
-      register: repository
+    # - name: Retrieve a repository
+    #   ansible.scm.git_retrieve:
+    #     origin:
+    #       url: "{{ github_url }}"
+    #     upstream:
+    #       url: "{{ github_url }}"
+    #     branch: 
+    #       name: "{{ github_branch }}"
+    #       duplicate_detection: false
+    #   register: repository
 
     - debug: 
         var: repository
@@ -91,6 +91,17 @@
         remote_src: false
         force: true
         mode: '0644'
+
+    - name: List files matching '*rhel6*'
+      find:
+        paths: "{{ repository['path'] }}/"
+        patterns: '*'
+      register: to_remove
+    - name: Remove EPEL repo files
+      file:
+        path: "{{ item.path }}"
+        state: absent
+      with_items: "{{ to_remove.files }}"
 
     - name: Publish the changes
       ansible.scm.git_publish:
