@@ -57,7 +57,8 @@
           duplicate_detection: false
       register: repository
 
-    - debug: 
+    - name: Debug repository data
+      debug: 
         var: repository
 
     - name: Copy CaC content to the GIT folder
@@ -67,17 +68,6 @@
         remote_src: false
         force: true
         mode: '0644'
-
-    - name: List files matching '*rhel6*'
-      find:
-        paths: "{{ repository['path'] }}/CaC/"
-        patterns: '*'
-      register: to_remove
-    - name: Remove EPEL repo files
-      file:
-        path: "{{ item.path }}"
-        state: absent
-      with_items: "{{ to_remove.files }}"
 
     - name: Publish the changes
       ansible.scm.git_publish:
