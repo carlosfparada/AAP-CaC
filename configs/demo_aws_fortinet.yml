@@ -103,6 +103,19 @@ controller_templates:
       - "AWS Fortinet Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
+  - name: "AWS Fortinet: 5. FortiGate Create Rules Excel"
+    description: ""
+    organization: "Default"
+    project: "AWS Fortinet Project"
+    inventory: "AWS Inventory"
+    playbook: "fortigate_create_rules_excel.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Fortinet Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
   - name: "AWS Fortinet: 6. AWS Undeploy"
     description: ""
     organization: "Default"
