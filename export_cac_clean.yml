@@ -22,7 +22,7 @@
     
     - name: List files matching '*.yaml'
       ansible.builtin.find:
-        paths: "{{ repository['path'] }}+/"
+        paths: "{{ repository['path'] }}/"
         patterns: '*.yaml'
       register: to_remove
 
