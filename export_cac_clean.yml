@@ -1,69 +1,12 @@
 ---
 
-# - name: Get nodes from Inventory and add to Groups
-#   hosts: localhost
-#   connection: local
-#   gather_facts: no
-#   tasks:
-#     - name: Get AAP node from Inventory
-#       ansible.builtin.set_fact:
-#         node_name: "{{ item }}"
-#       loop: "{{ groups['all'] }}"
-#       when: hostvars[item].tags is defined and hostvars[item].tags.Name is match("^aap-1$")
-
-#     - name: Add AAP node to the aap group
-#       add_host:
-#         name: "{{ node_name }}"
-#         groups: "aap"
-#       when: node_name is defined
-
-- name: Extract AAP artifacts to a CaC format
+- name: Clean AAP artifacts to a CaC format
   hosts: localhost
   connection: local
   gather_facts: false
   vars:
-    #ansible_command_timeout: 300
     cac_dir: "/tmp/filetree_output/"
   tasks:
-    # - name: "Get the Authentication Token for the future requests"
-    #   ansible.builtin.uri:
-    #     url: "https://{{ aap_fqdn }}/api/gateway/v1/tokens/"
-    #     user: admin
-    #     password: "{{ admin_password }}"
-    #     method: POST
-    #     force_basic_auth: true
-    #     validate_certs: yes
-    #     status_code: 201
-    #   register: authtoken_res
-    #   when: aap_oauthtoken is not defined
-
-    # - name: "Set the oauth token to be used since now"
-    #   ansible.builtin.set_fact:
-    #     aap_oauthtoken: "{{ authtoken_res.json.token }}"
-    #     aap_oauthtoken_url: "{{ authtoken_res.json.url }}"
-    #   when: aap_oauthtoken is not defined
-
-    # - name: Generate CaC (role filetree_create)
-    #   ansible.builtin.import_role:
-    #     name: infra.aap_configuration_extended.filetree_create
-    #   vars:
-    #     aap_username: "admin"
-    #     aap_password: "{{ admin_password }}"
-    #     aap_hostname: "{{ aap_fqdn }}"
-    #     aap_validate_certs: false
-    #     flatten_output: yes
-
-    # - name: "Delete the Authentication Token used"
-    #   ansible.builtin.uri:
-    #     url: "https://{{ aap_fqdn }}{{ aap_oauthtoken_url }}"
-    #     user: admin
-    #     password: "{{ admin_password }}"
-    #     method: DELETE
-    #     force_basic_auth: true
-    #     validate_certs: yes
-    #     status_code: 204
-    #   when: aap_oauthtoken_url is defined
-
     - name: Retrieve a repository
       ansible.scm.git_retrieve:
         origin:
@@ -78,21 +21,22 @@
     - debug: 
         var: repository
 
-    # - name: Copy CaC content to the GIT folder
-    #   ansible.builtin.copy:
-    #     src: "{{ cac_dir }}/"
-    #     dest: "{{ repository['path'] }}/CaC/"
-    #     remote_src: false
-    #     force: true
-    #     mode: '0644'
+    - name: Copy CaC content to the GIT folder
+      ansible.builtin.copy:
+        src: "{{ cac_dir }}/"
+        dest: "{{ repository['path'] }}"
+        remote_src: false
+        force: true
+        mode: '0644'
 
-    - name: List files matching '*rhel6*'
-      find:
-        paths: "{{ repository['path'] }}/CaC/"
-        patterns: '*'
+    - name: List files matching '*.yaml'
+      ansible.builtin.find:
+        paths: "{{ repository['path'] }}+/"
+        patterns: '*.yaml'
       register: to_remove
-    - name: Remove EPEL repo files
-      file:
+
+    - name: Remove *.yaml repo files
+      ansible.builtin.file:
         path: "{{ item.path }}"
         state: absent
       with_items: "{{ to_remove.files }}"
@@ -100,7 +44,7 @@
     - name: Publish the changes
       ansible.scm.git_publish:
         commit:
-          message: Generated CaC from AAP objects
+          message: Cleaned CaC AAP objects
         path: "{{ repository['path'] }}"
         user:
           name: "{{ github_user }}"
