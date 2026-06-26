@@ -77,7 +77,7 @@ controller_templates:
       - "AWS Fortinet Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS Fortinet: 5. FortiGate Create Rules"
+  - name: "AWS Fortinet: 5. FortiGate Create Rules Day2"
     description: ""
     organization: "Default"
     project: "AWS Fortinet Project"
@@ -154,7 +154,7 @@ controller_workflows:
           - FortiGate Create Rules
       - identifier: "FortiGate Create Rules"
         workflow_job_template: "AWS Fortinet: Workflow FortiGate"
-        unified_job_template: "AWS Fortinet: 5. FortiGate Create Rules"
+        unified_job_template: "AWS Fortinet: 5. FortiGate Create Rules Day2"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
