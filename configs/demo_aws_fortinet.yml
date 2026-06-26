@@ -82,7 +82,7 @@ controller_templates:
     organization: "Default"
     project: "AWS Fortinet Project"
     inventory: "AWS Inventory"
-    playbook: "fortigate_create_rules.yml"
+    playbook: "fortigate_create_rules_day2.yml"
     verbosity: 0
     job_type: "run"
     credentials:
