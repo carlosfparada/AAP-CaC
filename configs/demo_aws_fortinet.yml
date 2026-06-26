@@ -103,12 +103,12 @@ controller_templates:
       - "AWS Fortinet Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS Fortinet: 5. FortiGate Create Rules Excel"
+  - name: "AWS Fortinet: 5. FortiGate Create Rules Day2 Excel"
     description: ""
     organization: "Default"
     project: "AWS Fortinet Project"
     inventory: "AWS Inventory"
-    playbook: "fortigate_create_rules_excel.yml"
+    playbook: "fortigate_create_rules_day2_excel.yml"
     verbosity: 0
     job_type: "run"
     credentials:
