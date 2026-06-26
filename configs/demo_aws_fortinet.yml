@@ -90,12 +90,12 @@ controller_templates:
       - "AWS Fortinet Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS Fortinet: 5. FortiGate Create Rules Reorder"
+  - name: "AWS Fortinet: 5. FortiGate Create Rules Day2 Reorder"
     description: ""
     organization: "Default"
     project: "AWS Fortinet Project"
     inventory: "AWS Inventory"
-    playbook: "fortigate_create_rules_reorder.yml"
+    playbook: "fortigate_create_rules_day2_reorder.yml"
     verbosity: 0
     job_type: "run"
     credentials:
