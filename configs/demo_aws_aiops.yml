@@ -23,7 +23,7 @@ controller_projects:
 
 # Job Templates
 controller_templates:
-  - name: "AWS AIOps: Deploy"
+  - name: "AWS AIOps: 1. Deploy"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
@@ -36,7 +36,7 @@ controller_templates:
       - "AWS AIOps Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS AIOps: Setup"
+  - name: "AWS AIOps: 2. Setup"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
@@ -63,7 +63,7 @@ controller_templates:
             variable: activation_key
             type: "password"
             required: true
-  - name: "AWS AIOps: Unsetup"
+  - name: "AWS AIOps: 3. Unsetup"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
@@ -90,12 +90,25 @@ controller_templates:
             variable: activation_key
             type: "password"
             required: true
-  - name: "AWS AIOps: Undeploy"
+  - name: "AWS AIOps: 4. Undeploy"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
     inventory: "AWS Inventory"
     playbook: "aws_aiops_undeploy.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS AIOps: X. Action"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_action.yml"
     verbosity: 0
     job_type: "run"
     credentials:
