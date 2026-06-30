@@ -126,28 +126,28 @@ controller_workflows:
     simplified_workflow_nodes:
       - identifier: "AIOps Deploy"
         workflow_job_template: "AWS AIOps: Workflow"
-        unified_job_template: "AWS AIOps: Deploy"
+        unified_job_template: "AWS AIOps: 1. Deploy"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
           - AIOps Setup
       - identifier: "AIOps Setup"
         workflow_job_template: "AWS AIOps: Workflow"
-        unified_job_template: "AWS AIOps: Setup"
+        unified_job_template: "AWS AIOps: 2. Setup"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
           - AIOps Unsetup
       - identifier: "AIOps Unsetup"
         workflow_job_template: "AWS AIOps: Workflow"
-        unified_job_template: "AWS AIOps: Unsetup"
+        unified_job_template: "AWS AIOps: 3. Unsetup"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
           - AIOps Undeploy
       - identifier: "AIOps Undeploy"
         workflow_job_template: "AWS AIOps: Workflow"
-        unified_job_template: "AWS AIOps: Undeploy"
+        unified_job_template: "AWS AIOps: 4. Undeploy"
         organization: "Default"
         all_parents_must_converge: "False"
 
