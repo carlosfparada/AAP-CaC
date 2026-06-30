@@ -63,7 +63,20 @@ controller_templates:
             variable: activation_key
             type: "password"
             required: true
-  - name: "AWS AIOps: 3. Unsetup"
+  - name: "AWS AIOps: 3. CVE Event"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_cve_event.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+  - name: "AWS AIOps: 4. Unsetup"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
@@ -90,7 +103,7 @@ controller_templates:
             variable: activation_key
             type: "password"
             required: true
-  - name: "AWS AIOps: 4. Undeploy"
+  - name: "AWS AIOps: 5. Undeploy"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
@@ -138,17 +151,24 @@ controller_workflows:
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
+          - AIOps CVE Event
+      - identifier: "AIOps CVE Event"
+        workflow_job_template: "AWS AIOps: Workflow"
+        unified_job_template: "AWS AIOps: 3. CVE Event"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
           - AIOps Unsetup
       - identifier: "AIOps Unsetup"
         workflow_job_template: "AWS AIOps: Workflow"
-        unified_job_template: "AWS AIOps: 3. Unsetup"
+        unified_job_template: "AWS AIOps: 4. Unsetup"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
           - AIOps Undeploy
       - identifier: "AIOps Undeploy"
         workflow_job_template: "AWS AIOps: Workflow"
-        unified_job_template: "AWS AIOps: 4. Undeploy"
+        unified_job_template: "AWS AIOps: 5. Undeploy"
         organization: "Default"
         all_parents_must_converge: "False"
 
