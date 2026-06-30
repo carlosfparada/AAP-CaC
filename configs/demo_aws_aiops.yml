@@ -149,8 +149,8 @@ eda_projects:
 
 # EDA Rulebook Activations
 eda_rulebook_activations:
-  - name: "AWS AIOps: XXX"
-    description: "AWS AIOps: XXX"
+  - name: "AWS AIOps: Lightspeed (Insights)"
+    description: "AWS AIOps: Lightspeed (Insights)"
     organization: "Default"
     project: "AWS AIOps Project"
     rulebook: lightspeed_rulebook.yml
