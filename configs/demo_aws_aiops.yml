@@ -128,7 +128,31 @@ controller_templates:
       - "AWS Credential"
       - "AWS AIOps Ansible Credential"
     execution_environment: "{{ ee_name }}"
-    survey_enabled: false
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: AI Endpoint
+            default: "{{ ai_endpoint }}"
+            variable: ai_endpoint
+            type: "text"
+            required: false
+          - question_name: AI Model
+            default: "{{ ai_model }}"
+            variable: ai_model
+            type: "text"
+            required: false
+          - question_name: AI Max Tokens
+            default: "{{ ai_max_tokens }}"
+            variable: ai_max_tokens
+            type: "text"
+            required: false
+          - question_name: AI Token
+            default: "{{ ai_token }}"
+            variable: ai_token
+            type: "password"
+            required: false
     ask_variables_on_launch: true
 
 # Workflow Job Templates
