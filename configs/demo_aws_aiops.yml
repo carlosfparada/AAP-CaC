@@ -153,6 +153,34 @@ controller_templates:
             variable: ai_token
             type: "password"
             required: false
+          - question_name: GitHub User
+            default: "{{ github_user }}"
+            variable: github_user
+            "type": "text"
+            required: true
+          - question_name: GitHub Email
+            default: "{{ github_email }}"
+            variable: github_email
+            "type": "text"
+            required: true
+          - question_name: GitHub Token
+            default: "{{ github_token }}"
+            variable: github_token
+            "type": "password"
+            required: true
+          - question_name: GitHub URL
+            default: "{{ github_url }}"
+            variable: github_url
+            "type": "text"
+            required: true
+          - question_name: GitHub Branch
+            default: "{{ github_branch }}"
+            variable: github_branch
+            "type": "text"
+            required: true
+
+
+
     ask_variables_on_launch: true
 
 # Workflow Job Templates
