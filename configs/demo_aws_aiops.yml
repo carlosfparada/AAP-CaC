@@ -178,6 +178,11 @@ controller_templates:
             variable: github_branch
             "type": "text"
             required: false
+          - question_name: Execution Environment
+            default: "{{ ee_name }}"
+            variable: ee_name
+            "type": "text"
+            required: false
     ask_variables_on_launch: true
 
 # Workflow Job Templates
