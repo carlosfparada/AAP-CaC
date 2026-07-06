@@ -183,6 +183,16 @@ controller_templates:
             variable: ee_name
             "type": "text"
             required: false
+          - question_name: AAP FQDN
+            default: "{{ aap_fqdn }}"
+            variable: aap_fqdn
+            "type": "text"
+            required: false
+          - question_name: Admin Password
+            default: "{{ admin_password }}"
+            variable: admin_password
+            "type": "password"
+            required: false
     ask_variables_on_launch: true
 
 # Workflow Job Templates
