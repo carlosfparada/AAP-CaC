@@ -133,6 +133,16 @@ controller_templates:
         name: Survey
         description: Survey
         spec:
+          - question_name: Lightspeed Client ID
+            default: "{{ lightspeed_client_id }}"
+            variable: lightspeed_client_id
+            type: "password"
+            required: false
+          - question_name: Lightspeed Client Secret
+            default: "{{ lightspeed_client_secret }}"
+            variable: lightspeed_client_secret
+            type: "password"
+            required: false
           - question_name: AI Endpoint
             default: "{{ ai_endpoint }}"
             variable: ai_endpoint
