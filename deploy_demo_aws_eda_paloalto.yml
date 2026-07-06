@@ -32,7 +32,7 @@
     aap_username: admin
     aap_password: "{{ admin_password }}"
     #controller_configuration_credentials_secure_logging: false
-  pre_tasks:
+  tasks:
     - name: Include CaC vars
       ansible.builtin.include_vars: 'configs/demo_aws_eda_paloalto.yml'
   # roles:
