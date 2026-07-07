@@ -111,7 +111,7 @@ controller_templates:
       - "AWS AIOps Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS AIOps: X. Generate CVE Event"
+  - name: "AWS AIOps: Generate CVE Event"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
@@ -124,12 +124,100 @@ controller_templates:
       - "AWS AIOps Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
-  - name: "AWS AIOps: X. Action"
+  - name: "AWS AIOps: Action"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
     inventory: "AWS Inventory"
     playbook: "aws_aiops_action.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: Lightspeed Client ID
+            default: "{{ lightspeed_client_id }}"
+            variable: lightspeed_client_id
+            type: "password"
+            required: false
+          - question_name: Lightspeed Client Secret
+            default: "{{ lightspeed_client_secret }}"
+            variable: lightspeed_client_secret
+            type: "password"
+            required: false
+          - question_name: AI Endpoint
+            default: "{{ ai_endpoint }}"
+            variable: ai_endpoint
+            type: "text"
+            required: false
+          - question_name: AI Model
+            default: "{{ ai_model }}"
+            variable: ai_model
+            type: "text"
+            required: false
+          - question_name: AI Max Tokens
+            default: "{{ ai_max_tokens }}"
+            variable: ai_max_tokens
+            type: "text"
+            required: false
+          - question_name: AI Token
+            default: "{{ ai_token }}"
+            variable: ai_token
+            type: "password"
+            required: false
+          - question_name: GitHub User
+            default: "{{ github_user }}"
+            variable: github_user
+            "type": "text"
+            required: false
+          - question_name: GitHub Email
+            default: "{{ github_email }}"
+            variable: github_email
+            "type": "text"
+            required: false
+          - question_name: GitHub Token
+            default: "{{ github_token }}"
+            variable: github_token
+            "type": "password"
+            required: false
+          - question_name: GitHub URL
+            default: "{{ github_url }}"
+            variable: github_url
+            "type": "text"
+            required: false
+          - question_name: GitHub Branch
+            default: "{{ github_branch }}"
+            variable: github_branch
+            "type": "text"
+            required: false
+          - question_name: Execution Environment
+            default: "{{ ee_name }}"
+            variable: ee_name
+            "type": "text"
+            required: false
+          - question_name: AAP FQDN
+            default: "{{ aap_fqdn }}"
+            variable: aap_fqdn
+            "type": "text"
+            required: false
+          - question_name: Admin Password
+            default: "{{ admin_password }}"
+            variable: admin_password
+            "type": "password"
+            required: false
+    ask_variables_on_launch: true
+  - name: "AWS AIOps: Get CVE Desc"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_get_cve_desc.yml"
     verbosity: 0
     job_type: "run"
     credentials:
@@ -220,9 +308,21 @@ controller_workflows:
     organization: "Default"
     state: "present"
     simplified_workflow_nodes:
+      - identifier: "AIOps Get CVE Desc"
+        workflow_job_template: "AWS AIOps: Mitigation Workflow"
+        unified_job_template: "AWS AIOps: Action"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        # always_nodes:
+        #   - AIOps Action
+  - name: "AWS AIOps: Mitigation Workflow"
+    description: "AWS AIOps: Mitigation Workflow"
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
       - identifier: "AIOps Action"
         workflow_job_template: "AWS AIOps: Mitigation Workflow"
-        unified_job_template: "AWS AIOps: X. Action"
+        unified_job_template: "AWS AIOps: Action"
         organization: "Default"
         all_parents_must_converge: "False"
         # always_nodes:
