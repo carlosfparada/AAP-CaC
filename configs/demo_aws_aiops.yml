@@ -227,6 +227,8 @@ controller_workflows:
         all_parents_must_converge: "False"
         # always_nodes:
         #   - AIOps Unsetup
+    ask_variables_on_launch: true
+
 
 # EDA Projects
 eda_projects:
