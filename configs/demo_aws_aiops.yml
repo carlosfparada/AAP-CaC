@@ -313,13 +313,8 @@ controller_workflows:
         unified_job_template: "AWS AIOps: Action"
         organization: "Default"
         all_parents_must_converge: "False"
-        # always_nodes:
-        #   - AIOps Action
-  - name: "AWS AIOps: Mitigation Workflow"
-    description: "AWS AIOps: Mitigation Workflow"
-    organization: "Default"
-    state: "present"
-    simplified_workflow_nodes:
+        always_nodes:
+          - AIOps Action
       - identifier: "AIOps Action"
         workflow_job_template: "AWS AIOps: Mitigation Workflow"
         unified_job_template: "AWS AIOps: Action"
