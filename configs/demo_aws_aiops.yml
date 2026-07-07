@@ -111,7 +111,7 @@ controller_templates:
       - "AWS AIOps Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS AIOps: X. CVE Event"
+  - name: "AWS AIOps: X. Generate CVE Event"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
