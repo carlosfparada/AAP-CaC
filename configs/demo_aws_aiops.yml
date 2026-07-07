@@ -310,7 +310,7 @@ controller_workflows:
     simplified_workflow_nodes:
       - identifier: "AIOps Get CVE Desc"
         workflow_job_template: "AWS AIOps: Mitigation Workflow"
-        unified_job_template: "AWS AIOps: Action"
+        unified_job_template: "AWS AIOps: Get CVE Desc"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
