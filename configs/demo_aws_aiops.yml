@@ -20,6 +20,14 @@ controller_projects:
     scm_update_on_launch: "True"
     execution_environment: "{{ ee_name }}"
     wait: true
+  - name: "AWS AIOps Fix Project"
+    description: "AWS AIOps Fix Project"
+    organization: "Default"
+    scm_type: "git"
+    scm_url: "{{ github_url }}"
+    scm_update_on_launch: "True"
+    execution_environment: "{{ ee_name }}"
+    wait: true            
 
 # Job Templates
 controller_templates:
@@ -63,20 +71,7 @@ controller_templates:
             variable: activation_key
             type: "password"
             required: true
-  - name: "AWS AIOps: 3. CVE Event"
-    description: ""
-    organization: "Default"
-    project: "AWS AIOps Project"
-    inventory: "AWS Inventory"
-    playbook: "aws_aiops_cve_event.yml"
-    verbosity: 0
-    job_type: "run"
-    credentials:
-      - "AWS Credential"
-      - "AWS AIOps Ansible Credential"
-    execution_environment: "{{ ee_name }}"
-    survey_enabled: true
-  - name: "AWS AIOps: 4. Unsetup"
+  - name: "AWS AIOps: 3. Unsetup"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
@@ -103,7 +98,7 @@ controller_templates:
             variable: activation_key
             type: "password"
             required: true
-  - name: "AWS AIOps: 5. Undeploy"
+  - name: "AWS AIOps: 4. Undeploy"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
@@ -116,6 +111,19 @@ controller_templates:
       - "AWS AIOps Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
+  - name: "AWS AIOps: X. CVE Event"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_cve_event.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
   - name: "AWS AIOps: X. Action"
     description: ""
     organization: "Default"
@@ -207,44 +215,18 @@ controller_templates:
 
 # Workflow Job Templates
 controller_workflows:
-  - name: "AWS AIOps: Workflow"
-    description: "AWS AIOps: Workflow"
+  - name: "AWS AIOps: Mitigation Workflow"
+    description: "AWS AIOps: Mitigation Workflow"
     organization: "Default"
     state: "present"
     simplified_workflow_nodes:
-      - identifier: "AIOps Deploy"
-        workflow_job_template: "AWS AIOps: Workflow"
-        unified_job_template: "AWS AIOps: 1. Deploy"
+      - identifier: "AIOps Action"
+        workflow_job_template: "AWS AIOps: Mitigation Workflow"
+        unified_job_template: "AWS AIOps: X. Action"
         organization: "Default"
         all_parents_must_converge: "False"
-        always_nodes:
-          - AIOps Setup
-      - identifier: "AIOps Setup"
-        workflow_job_template: "AWS AIOps: Workflow"
-        unified_job_template: "AWS AIOps: 2. Setup"
-        organization: "Default"
-        all_parents_must_converge: "False"
-        always_nodes:
-          - AIOps CVE Event
-      - identifier: "AIOps CVE Event"
-        workflow_job_template: "AWS AIOps: Workflow"
-        unified_job_template: "AWS AIOps: 3. CVE Event"
-        organization: "Default"
-        all_parents_must_converge: "False"
-        always_nodes:
-          - AIOps Unsetup
-      - identifier: "AIOps Unsetup"
-        workflow_job_template: "AWS AIOps: Workflow"
-        unified_job_template: "AWS AIOps: 4. Unsetup"
-        organization: "Default"
-        all_parents_must_converge: "False"
-        always_nodes:
-          - AIOps Undeploy
-      - identifier: "AIOps Undeploy"
-        workflow_job_template: "AWS AIOps: Workflow"
-        unified_job_template: "AWS AIOps: 5. Undeploy"
-        organization: "Default"
-        all_parents_must_converge: "False"
+        # always_nodes:
+        #   - AIOps Unsetup
 
 # EDA Projects
 eda_projects:
