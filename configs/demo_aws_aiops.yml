@@ -151,66 +151,6 @@ controller_templates:
             variable: lightspeed_client_secret
             type: "password"
             required: false
-          # - question_name: AI Endpoint
-          #   default: "{{ ai_endpoint }}"
-          #   variable: ai_endpoint
-          #   type: "text"
-          #   required: false
-          # - question_name: AI Model
-          #   default: "{{ ai_model }}"
-          #   variable: ai_model
-          #   type: "text"
-          #   required: false
-          # - question_name: AI Max Tokens
-          #   default: "{{ ai_max_tokens }}"
-          #   variable: ai_max_tokens
-          #   type: "text"
-          #   required: false
-          # - question_name: AI Token
-          #   default: "{{ ai_token }}"
-          #   variable: ai_token
-          #   type: "password"
-          #   required: false
-          # - question_name: GitHub User
-          #   default: "{{ github_user }}"
-          #   variable: github_user
-          #   "type": "text"
-          #   required: false
-          # - question_name: GitHub Email
-          #   default: "{{ github_email }}"
-          #   variable: github_email
-          #   "type": "text"
-          #   required: false
-          # - question_name: GitHub Token
-          #   default: "{{ github_token }}"
-          #   variable: github_token
-          #   "type": "password"
-          #   required: false
-          # - question_name: GitHub URL
-          #   default: "{{ github_url }}"
-          #   variable: github_url
-          #   "type": "text"
-          #   required: false
-          # - question_name: GitHub Branch
-          #   default: "{{ github_branch }}"
-          #   variable: github_branch
-          #   "type": "text"
-          #   required: false
-          # - question_name: Execution Environment
-          #   default: "{{ ee_name }}"
-          #   variable: ee_name
-          #   "type": "text"
-          #   required: false
-          # - question_name: AAP FQDN
-          #   default: "{{ aap_fqdn }}"
-          #   variable: aap_fqdn
-          #   "type": "text"
-          #   required: false
-          # - question_name: Admin Password
-          #   default: "{{ admin_password }}"
-          #   variable: admin_password
-          #   "type": "password"
-          #   required: false
   - name: "AWS AIOps: Get AI Code"
     description: ""
     organization: "Default"
@@ -228,16 +168,6 @@ controller_templates:
         name: Survey
         description: Survey
         spec:
-          # - question_name: Lightspeed Client ID
-          #   default: "{{ lightspeed_client_id }}"
-          #   variable: lightspeed_client_id
-          #   type: "password"
-          #   required: false
-          # - question_name: Lightspeed Client Secret
-          #   default: "{{ lightspeed_client_secret }}"
-          #   variable: lightspeed_client_secret
-          #   type: "password"
-          #   required: false
           - question_name: AI Endpoint
             default: "{{ ai_endpoint }}"
             variable: ai_endpoint
@@ -258,46 +188,6 @@ controller_templates:
             variable: ai_token
             type: "password"
             required: false
-          # - question_name: GitHub User
-          #   default: "{{ github_user }}"
-          #   variable: github_user
-          #   "type": "text"
-          #   required: false
-          # - question_name: GitHub Email
-          #   default: "{{ github_email }}"
-          #   variable: github_email
-          #   "type": "text"
-          #   required: false
-          # - question_name: GitHub Token
-          #   default: "{{ github_token }}"
-          #   variable: github_token
-          #   "type": "password"
-          #   required: false
-          # - question_name: GitHub URL
-          #   default: "{{ github_url }}"
-          #   variable: github_url
-          #   "type": "text"
-          #   required: false
-          # - question_name: GitHub Branch
-          #   default: "{{ github_branch }}"
-          #   variable: github_branch
-          #   "type": "text"
-          #   required: false
-          # - question_name: Execution Environment
-          #   default: "{{ ee_name }}"
-          #   variable: ee_name
-          #   "type": "text"
-          #   required: false
-          # - question_name: AAP FQDN
-          #   default: "{{ aap_fqdn }}"
-          #   variable: aap_fqdn
-          #   "type": "text"
-          #   required: false
-          # - question_name: Admin Password
-          #   default: "{{ admin_password }}"
-          #   variable: admin_password
-          #   "type": "password"
-          #   required: false
   - name: "AWS AIOps: Store Code Git"
     description: ""
     organization: "Default"
@@ -315,36 +205,6 @@ controller_templates:
         name: Survey
         description: Survey
         spec:
-          # - question_name: Lightspeed Client ID
-          #   default: "{{ lightspeed_client_id }}"
-          #   variable: lightspeed_client_id
-          #   type: "password"
-          #   required: false
-          # - question_name: Lightspeed Client Secret
-          #   default: "{{ lightspeed_client_secret }}"
-          #   variable: lightspeed_client_secret
-          #   type: "password"
-          #   required: false
-          # - question_name: AI Endpoint
-          #   default: "{{ ai_endpoint }}"
-          #   variable: ai_endpoint
-          #   type: "text"
-          #   required: false
-          # - question_name: AI Model
-          #   default: "{{ ai_model }}"
-          #   variable: ai_model
-          #   type: "text"
-          #   required: false
-          # - question_name: AI Max Tokens
-          #   default: "{{ ai_max_tokens }}"
-          #   variable: ai_max_tokens
-          #   type: "text"
-          #   required: false
-          # - question_name: AI Token
-          #   default: "{{ ai_token }}"
-          #   variable: ai_token
-          #   type: "password"
-          #   required: false
           - question_name: GitHub User
             default: "{{ github_user }}"
             variable: github_user
@@ -370,21 +230,6 @@ controller_templates:
             variable: github_branch
             "type": "text"
             required: false
-          # - question_name: Execution Environment
-          #   default: "{{ ee_name }}"
-          #   variable: ee_name
-          #   "type": "text"
-          #   required: false
-          # - question_name: AAP FQDN
-          #   default: "{{ aap_fqdn }}"
-          #   variable: aap_fqdn
-          #   "type": "text"
-          #   required: false
-          # - question_name: Admin Password
-          #   default: "{{ admin_password }}"
-          #   variable: admin_password
-          #   "type": "password"
-          #   required: false
   - name: "AWS AIOps: Run Mitigation"
     description: ""
     organization: "Default"
@@ -406,42 +251,42 @@ controller_workflows:
     organization: "Default"
     state: "present"
     simplified_workflow_nodes:
-      - identifier: "AIOps Get CVE Desc"
+      - identifier: "Get CVE Desc"
         workflow_job_template: "AWS AIOps: Mitigation Workflow"
         unified_job_template: "AWS AIOps: Get CVE Desc"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
-          - AIOps Get AI Code
-      - identifier: "AIOps Get AI Code"
+          - Get AI Code
+      - identifier: "Get AI Code"
         workflow_job_template: "AWS AIOps: Mitigation Workflow"
         unified_job_template: "AWS AIOps: Get AI Code"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
-          - AIOps Store Code GIT
-      - identifier: "AIOps Store Code GIT"
+          - Store Code GIT
+      - identifier: "Store Code GIT"
         workflow_job_template: "AWS AIOps: Mitigation Workflow"
         unified_job_template: "AWS AIOps: Store Code Git"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
-          - AIOps Sync Project
-      - identifier: "AIOps Sync Project"
+          - Sync Project
+      - identifier: "Sync Project"
         workflow_job_template: "AWS AIOps: Mitigation Workflow"
         unified_job_template: "AWS AIOps Fix Project"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
-          - AIOps Mitigation Approval
-      - identifier: AIOps Mitigation Approval
+          - Mitigation Approval
+      - identifier: Mitigation Approval
         approval_node:
           name: Mitigation Approval
           description: Approve or not proposed Mitigation
           timeout: 300 # 2 minutes    
         success_nodes:
-          - AIOps Run Mitigation
-      - identifier: "AIOps Run Mitigation"
+          - Run Mitigation
+      - identifier: "Run Mitigation"
         workflow_job_template: "AWS AIOps: Mitigation Workflow"
         unified_job_template: "AWS AIOps: Run Mitigation"
         organization: "Default"
