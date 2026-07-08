@@ -315,36 +315,36 @@ controller_templates:
         name: Survey
         description: Survey
         spec:
-          - question_name: Lightspeed Client ID
-            default: "{{ lightspeed_client_id }}"
-            variable: lightspeed_client_id
-            type: "password"
-            required: false
-          - question_name: Lightspeed Client Secret
-            default: "{{ lightspeed_client_secret }}"
-            variable: lightspeed_client_secret
-            type: "password"
-            required: false
-          - question_name: AI Endpoint
-            default: "{{ ai_endpoint }}"
-            variable: ai_endpoint
-            type: "text"
-            required: false
-          - question_name: AI Model
-            default: "{{ ai_model }}"
-            variable: ai_model
-            type: "text"
-            required: false
-          - question_name: AI Max Tokens
-            default: "{{ ai_max_tokens }}"
-            variable: ai_max_tokens
-            type: "text"
-            required: false
-          - question_name: AI Token
-            default: "{{ ai_token }}"
-            variable: ai_token
-            type: "password"
-            required: false
+          # - question_name: Lightspeed Client ID
+          #   default: "{{ lightspeed_client_id }}"
+          #   variable: lightspeed_client_id
+          #   type: "password"
+          #   required: false
+          # - question_name: Lightspeed Client Secret
+          #   default: "{{ lightspeed_client_secret }}"
+          #   variable: lightspeed_client_secret
+          #   type: "password"
+          #   required: false
+          # - question_name: AI Endpoint
+          #   default: "{{ ai_endpoint }}"
+          #   variable: ai_endpoint
+          #   type: "text"
+          #   required: false
+          # - question_name: AI Model
+          #   default: "{{ ai_model }}"
+          #   variable: ai_model
+          #   type: "text"
+          #   required: false
+          # - question_name: AI Max Tokens
+          #   default: "{{ ai_max_tokens }}"
+          #   variable: ai_max_tokens
+          #   type: "text"
+          #   required: false
+          # - question_name: AI Token
+          #   default: "{{ ai_token }}"
+          #   variable: ai_token
+          #   type: "password"
+          #   required: false
           - question_name: GitHub User
             default: "{{ github_user }}"
             variable: github_user
@@ -370,21 +370,21 @@ controller_templates:
             variable: github_branch
             "type": "text"
             required: false
-          - question_name: Execution Environment
-            default: "{{ ee_name }}"
-            variable: ee_name
-            "type": "text"
-            required: false
-          - question_name: AAP FQDN
-            default: "{{ aap_fqdn }}"
-            variable: aap_fqdn
-            "type": "text"
-            required: false
-          - question_name: Admin Password
-            default: "{{ admin_password }}"
-            variable: admin_password
-            "type": "password"
-            required: false
+          # - question_name: Execution Environment
+          #   default: "{{ ee_name }}"
+          #   variable: ee_name
+          #   "type": "text"
+          #   required: false
+          # - question_name: AAP FQDN
+          #   default: "{{ aap_fqdn }}"
+          #   variable: aap_fqdn
+          #   "type": "text"
+          #   required: false
+          # - question_name: Admin Password
+          #   default: "{{ admin_password }}"
+          #   variable: admin_password
+          #   "type": "password"
+          #   required: false
   - name: "AWS AIOps: Run Mitigation"
     description: ""
     organization: "Default"
