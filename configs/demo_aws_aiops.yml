@@ -496,7 +496,7 @@ controller_workflows:
           - AIOps Store Code GIT
       - identifier: "AIOps Store Code GIT"
         workflow_job_template: "AWS AIOps: Mitigation Workflow"
-        unified_job_template: "AWS AIOps: Store Code GIT"
+        unified_job_template: "AWS AIOps: Store Code Git"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
