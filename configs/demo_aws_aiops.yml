@@ -500,6 +500,13 @@ controller_workflows:
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
+          - AIOps Mitigation Approval
+      - identifier: AIOps Mitigation Approval
+        approval_node:
+          name: Mitigation Approval
+          description: Approve or not proposed Mitigation
+          timeout: 120 # 2 minutes    
+        always_nodes:
           - AIOps Run Mitigation
       - identifier: "AIOps Run Mitigation"
         workflow_job_template: "AWS AIOps: Mitigation Workflow"
