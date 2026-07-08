@@ -398,14 +398,14 @@ controller_workflows:
         unified_job_template: "AWS AIOps: Get CVE Desc"
         organization: "Default"
         all_parents_must_converge: "False"
-        always_nodes:
+        success_nodes:
           - AIOps Get AI Code
       - identifier: "AIOps Get AI Code"
         workflow_job_template: "AWS AIOps: Mitigation Workflow"
         unified_job_template: "AWS AIOps: Get AI Code"
         organization: "Default"
         all_parents_must_converge: "False"
-        always_nodes:
+        success_nodes:
           - AIOps Run Mitigation
       - identifier: "AIOps Run Mitigation"
         workflow_job_template: "AWS AIOps: Mitigation Workflow"
