@@ -500,6 +500,13 @@ controller_workflows:
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
+          - AIOps Sync Project
+      - identifier: "AIOps Sync Project"
+        workflow_job_template: "AWS AIOps: Mitigation Workflow"
+        unified_job_template: "AWS AIOps Fix Project"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
           - AIOps Mitigation Approval
       - identifier: AIOps Mitigation Approval
         approval_node:
