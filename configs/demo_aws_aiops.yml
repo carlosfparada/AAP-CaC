@@ -230,6 +230,19 @@ controller_templates:
             variable: github_branch
             "type": "text"
             required: false
+  - name: "AWS AIOps: Check Mitigation"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Fix Project"
+    inventory: "AWS Inventory"
+    playbook: "playbook_mitigation.yml"
+    verbosity: 0
+    job_type: "check"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
   - name: "AWS AIOps: Run Mitigation"
     description: ""
     organization: "Default"
@@ -278,6 +291,13 @@ controller_workflows:
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
+          - Check Mitigation
+      - identifier: "Check Mitigation"
+        workflow_job_template: "AWS AIOps: Mitigation Workflow"
+        unified_job_template: "AWS AIOps: Run Mitigation"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
           - Mitigation Approval
       - identifier: Mitigation Approval
         approval_node:
