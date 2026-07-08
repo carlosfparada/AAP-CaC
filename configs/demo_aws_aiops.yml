@@ -512,7 +512,7 @@ controller_workflows:
         approval_node:
           name: Mitigation Approval
           description: Approve or not proposed Mitigation
-          timeout: 120 # 2 minutes    
+          timeout: 300 # 2 minutes    
         success_nodes:
           - AIOps Run Mitigation
       - identifier: "AIOps Run Mitigation"
