@@ -398,10 +398,10 @@ controller_workflows:
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
-          - Store Code GIT
+          - Store GIT Mitigation
       - identifier: "Store GIT Mitigation"
         workflow_job_template: "AWS AIOps: FIX/MITIGATION Workflow"
-        unified_job_template: "AWS AIOps: Store Code Git"
+        unified_job_template: "AWS AIOps: Store GIT Mitigation"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
@@ -442,7 +442,7 @@ controller_workflows:
           - Store GIT Fix
       - identifier: "Store GIT Fix"
         workflow_job_template: "AWS AIOps: FIX/MITIGATION Workflow"
-        unified_job_template: "AWS AIOps: Store Code Git"
+        unified_job_template: "AWS AIOps: Store Git Fix"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
