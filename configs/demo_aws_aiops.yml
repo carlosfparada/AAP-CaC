@@ -129,7 +129,7 @@ controller_templates:
     organization: "Default"
     project: "AWS AIOps Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_get_cve_desc.yml"
+    playbook: "aws_aiops_get_cve_details.yml"
     verbosity: 0
     job_type: "run"
     credentials:
