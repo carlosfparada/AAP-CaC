@@ -377,13 +377,13 @@ controller_templates:
 
 # Workflow Job Templates
 controller_workflows:
-  - name: "AWS AIOps: FIX/MITIGATION Workflow"
-    description: "AWS AIOps: FIX/MITIGATION Workflow"
+  - name: "AWS AIOps: FIX & MITIGATION Workflow"
+    description: "AWS AIOps: FIX & MITIGATION Workflow"
     organization: "Default"
     state: "present"
     simplified_workflow_nodes:
       - identifier: "Check CVE Details"
-        workflow_job_template: "AWS AIOps: FIX/MITIGATION Workflow"
+        workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
         unified_job_template: "AWS AIOps: Check CVE Details"
         organization: "Default"
         all_parents_must_converge: "False"
@@ -393,28 +393,28 @@ controller_workflows:
           - Get CVE Fix
       # MITIGATION          
       - identifier: "Get CVE Mitigation"
-        workflow_job_template: "AWS AIOps: FIX/MITIGATION Workflow"
+        workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
         unified_job_template: "AWS AIOps: Get CVE Mitigation"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
           - Store GIT Mitigation
       - identifier: "Store GIT Mitigation"
-        workflow_job_template: "AWS AIOps: FIX/MITIGATION Workflow"
+        workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
         unified_job_template: "AWS AIOps: Store GIT Mitigation"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
           - Sync Project Mitigation
       - identifier: "Sync Project Mitigation"
-        workflow_job_template: "AWS AIOps: FIX/MITIGATION Workflow"
+        workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
         unified_job_template: "AWS AIOps Fix Project"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
           - Check Mitigation
       - identifier: "Check Mitigation"
-        workflow_job_template: "AWS AIOps: FIX/MITIGATION Workflow"
+        workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
         unified_job_template: "AWS AIOps: Run Mitigation"
         organization: "Default"
         all_parents_must_converge: "False"
@@ -428,34 +428,34 @@ controller_workflows:
         success_nodes:
           - Run Mitigation
       - identifier: "Run Mitigation"
-        workflow_job_template: "AWS AIOps: FIX/MITIGATION Workflow"
+        workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
         unified_job_template: "AWS AIOps: Run Mitigation"
         organization: "Default"
         all_parents_must_converge: "False"
       # FIX
       - identifier: "Get CVE FIX"
-        workflow_job_template: "AWS AIOps: FIX/MITIGATION Workflow"
+        workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
         unified_job_template: "AWS AIOps: Get CVE Fix"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
           - Store GIT Fix
       - identifier: "Store GIT Fix"
-        workflow_job_template: "AWS AIOps: FIX/MITIGATION Workflow"
+        workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
         unified_job_template: "AWS AIOps: Store Git Fix"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
           - Sync Project Fix
       - identifier: "Sync Project Fix"
-        workflow_job_template: "AWS AIOps: FIX/MITIGATION Workflow"
+        workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
         unified_job_template: "AWS AIOps Fix Project"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
           - Check Fix
       - identifier: "Check Fix"
-        workflow_job_template: "AWS AIOps: FIX/MITIGATION Workflow"
+        workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
         unified_job_template: "AWS AIOps: Run Fix"
         organization: "Default"
         all_parents_must_converge: "False"
@@ -469,7 +469,7 @@ controller_workflows:
         success_nodes:
           - Run Fix
       - identifier: "Run Fix"
-        workflow_job_template: "AWS AIOps: FIX/MITIGATION Workflow"
+        workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
         unified_job_template: "AWS AIOps: Run Fix"
         organization: "Default"
         all_parents_must_converge: "False"          
