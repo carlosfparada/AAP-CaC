@@ -433,7 +433,7 @@ controller_workflows:
         organization: "Default"
         all_parents_must_converge: "False"
       # FIX
-      - identifier: "Get CVE FIX"
+      - identifier: "Get CVE Fix"
         workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
         unified_job_template: "AWS AIOps: Get CVE Fix"
         organization: "Default"
