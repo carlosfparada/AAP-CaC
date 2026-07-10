@@ -171,12 +171,12 @@ controller_templates:
             required: false
 
   # MITIGATION
-  - name: "AWS AIOps: Get CVE Mitigation"
+  - name: "AWS AIOps: Get CVE AI Mitigation"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_get_cve_mitigation.yml"
+    playbook: "aws_aiops_get_cve_ai_mitigation.yml"
     verbosity: 0
     job_type: "run"
     credentials:
@@ -388,13 +388,13 @@ controller_workflows:
         organization: "Default"
         all_parents_must_converge: "False"
         failure_nodes:
-          - Get CVE Mitigation
+          - Get CVE AI Mitigation
         success_nodes:
           - Get CVE Fix
       # MITIGATION          
-      - identifier: "Get CVE Mitigation"
+      - identifier: "Get CVE AI Mitigation"
         workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
-        unified_job_template: "AWS AIOps: Get CVE Mitigation"
+        unified_job_template: "AWS AIOps: Get CVE AI Mitigation"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
