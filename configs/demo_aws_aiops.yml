@@ -398,8 +398,8 @@ controller_workflows:
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
-          - Store GIT Mitigation
-      - identifier: "Store GIT Mitigation"
+          - Store Git Mitigation
+      - identifier: "Store Git Mitigation"
         workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
         unified_job_template: "AWS AIOps: Store Git Mitigation"
         organization: "Default"
@@ -418,9 +418,9 @@ controller_workflows:
         unified_job_template: "AWS AIOps: Run Mitigation"
         organization: "Default"
         all_parents_must_converge: "False"
-        always_nodes:
+        success_nodes:
           - Approval Mitigation
-      - identifier: Approval Mitigation 
+      - identifier: "Approval Mitigation"
         approval_node:
           name: Mitigation Approval
           description: Approve or not proposed Mitigation
@@ -439,8 +439,8 @@ controller_workflows:
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
-          - Store GIT Fix
-      - identifier: "Store GIT Fix"
+          - Store Git Fix
+      - identifier: "Store Git Fix"
         workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
         unified_job_template: "AWS AIOps: Store Git Fix"
         organization: "Default"
@@ -459,9 +459,9 @@ controller_workflows:
         unified_job_template: "AWS AIOps: Run Fix"
         organization: "Default"
         all_parents_must_converge: "False"
-        always_nodes:
+        success_nodes:
           - Approval Fix
-      - identifier: Approval Fix 
+      - identifier: "Approval Fix"
         approval_node:
           name: Approval Fix
           description: Approve or not Fix
