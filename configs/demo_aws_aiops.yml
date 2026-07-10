@@ -415,7 +415,7 @@ controller_workflows:
           - Check Mitigation
       - identifier: "Check Mitigation"
         workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
-        unified_job_template: "AWS AIOps: Run Mitigation"
+        unified_job_template: "AWS AIOps: Check Mitigation"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
@@ -456,7 +456,7 @@ controller_workflows:
           - Check Fix
       - identifier: "Check Fix"
         workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
-        unified_job_template: "AWS AIOps: Run Fix"
+        unified_job_template: "AWS AIOps: Check Fix"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
