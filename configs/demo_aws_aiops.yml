@@ -259,41 +259,41 @@ controller_templates:
 
 # Workflow Job Templates
 controller_workflows:
-  - name: "AWS AIOps: Mitigation Workflow"
-    description: "AWS AIOps: Mitigation Workflow"
+  - name: "AWS AIOps: FIX/MITIGATION Workflow"
+    description: "AWS AIOps: FIX/MITIGATION Workflow"
     organization: "Default"
     state: "present"
     simplified_workflow_nodes:
       - identifier: "Get CVE Details"
-        workflow_job_template: "AWS AIOps: Mitigation Workflow"
+        workflow_job_template: "AWS AIOps: FIX/MITIGATION Workflow"
         unified_job_template: "AWS AIOps: Get CVE Details"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
           - Get AI Code
       - identifier: "Get AI Code"
-        workflow_job_template: "AWS AIOps: Mitigation Workflow"
+        workflow_job_template: "AWS AIOps: FIX/MITIGATION Workflow"
         unified_job_template: "AWS AIOps: Get AI Code"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
           - Store Code GIT
       - identifier: "Store Code GIT"
-        workflow_job_template: "AWS AIOps: Mitigation Workflow"
+        workflow_job_template: "AWS AIOps: FIX/MITIGATION Workflow"
         unified_job_template: "AWS AIOps: Store Code Git"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
           - Sync Project
       - identifier: "Sync Project"
-        workflow_job_template: "AWS AIOps: Mitigation Workflow"
+        workflow_job_template: "AWS AIOps: FIX/MITIGATION Workflow"
         unified_job_template: "AWS AIOps Fix Project"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
           - Check Mitigation
       - identifier: "Check Mitigation"
-        workflow_job_template: "AWS AIOps: Mitigation Workflow"
+        workflow_job_template: "AWS AIOps: FIX/MITIGATION Workflow"
         unified_job_template: "AWS AIOps: Run Mitigation"
         organization: "Default"
         all_parents_must_converge: "False"
@@ -307,7 +307,7 @@ controller_workflows:
         success_nodes:
           - Run Mitigation
       - identifier: "Run Mitigation"
-        workflow_job_template: "AWS AIOps: Mitigation Workflow"
+        workflow_job_template: "AWS AIOps: FIX/MITIGATION Workflow"
         unified_job_template: "AWS AIOps: Run Mitigation"
         organization: "Default"
         all_parents_must_converge: "False"
