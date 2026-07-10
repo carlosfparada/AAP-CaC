@@ -111,7 +111,7 @@ controller_templates:
       - "AWS AIOps Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS AIOps: Generate CVE Event"
+  - name: "AWS AIOps: GENERATE CVE Event"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
@@ -124,7 +124,7 @@ controller_templates:
       - "AWS AIOps Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
-  - name: "AWS AIOps: Get CVE Desc"
+  - name: "AWS AIOps: Get CVE Details"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
@@ -264,9 +264,9 @@ controller_workflows:
     organization: "Default"
     state: "present"
     simplified_workflow_nodes:
-      - identifier: "Get CVE Desc"
+      - identifier: "Get CVE Details"
         workflow_job_template: "AWS AIOps: Mitigation Workflow"
-        unified_job_template: "AWS AIOps: Get CVE Desc"
+        unified_job_template: "AWS AIOps: Get CVE Details"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
