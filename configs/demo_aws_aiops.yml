@@ -401,7 +401,7 @@ controller_workflows:
           - Store GIT Mitigation
       - identifier: "Store GIT Mitigation"
         workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
-        unified_job_template: "AWS AIOps: Store GIT Mitigation"
+        unified_job_template: "AWS AIOps: Store Git Mitigation"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
