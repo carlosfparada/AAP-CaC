@@ -139,12 +139,12 @@ controller_templates:
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
   # MITIGATION & FIX (COMMON)
-  - name: "AWS AIOps: Get CVE Details"
+  - name: "AWS AIOps: Check CVE Details"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_get_cve_details.yml"
+    playbook: "aws_aiops_check_cve_details.yml"
     verbosity: 0
     job_type: "run"
     credentials:
@@ -485,9 +485,9 @@ controller_workflows:
     organization: "Default"
     state: "present"
     simplified_workflow_nodes:
-      - identifier: "Get CVE Details"
+      - identifier: "Check CVE Details"
         workflow_job_template: "AWS AIOps: FIX/MITIGATION Workflow"
-        unified_job_template: "AWS AIOps: Get CVE Details"
+        unified_job_template: "AWS AIOps: Check CVE Details"
         organization: "Default"
         all_parents_must_converge: "False"
         failure_nodes:
