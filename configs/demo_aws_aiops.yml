@@ -111,12 +111,13 @@ controller_templates:
       - "AWS AIOps Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS AIOps: GENERATE CVE Event"
+  # EVENT GENERATION
+  - name: "AWS AIOps: GENERATE CVE Event (MITIGATION)"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_gen_cve_event.yml"
+    playbook: "aws_aiops_gen_cve_event_mitigation.yml"
     verbosity: 0
     job_type: "run"
     credentials:
@@ -124,6 +125,20 @@ controller_templates:
       - "AWS AIOps Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
+  - name: "AWS AIOps: GENERATE CVE Event (FIX)"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_gen_cve_event_fix.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+  # MITIGATION & FIX (COMMON)
   - name: "AWS AIOps: Get CVE Details"
     description: ""
     organization: "Default"
@@ -151,12 +166,13 @@ controller_templates:
             variable: lightspeed_client_secret
             type: "password"
             required: false
-  - name: "AWS AIOps: Get AI Code"
+  # MITIGATION
+  - name: "AWS AIOps: Get CVE Mitigation"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_get_ai_code.yml"
+    playbook: "aws_aiops_get_cve_mitigation.yml"
     verbosity: 0
     job_type: "run"
     credentials:
@@ -188,12 +204,12 @@ controller_templates:
             variable: ai_token
             type: "password"
             required: false
-  - name: "AWS AIOps: Store Code Git"
+  - name: "AWS AIOps: Store Git Mitigation"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_store_code_git.yml"
+    playbook: "aws_aiops_store_git_mitigation.yml"
     verbosity: 0
     job_type: "run"
     credentials:
@@ -257,6 +273,211 @@ controller_templates:
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
 
+  # MITIGATION
+  - name: "AWS AIOps: Get CVE Mitigation"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_get_cve_mitigation.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: AI Endpoint
+            default: "{{ ai_endpoint }}"
+            variable: ai_endpoint
+            type: "text"
+            required: false
+          - question_name: AI Model
+            default: "{{ ai_model }}"
+            variable: ai_model
+            type: "text"
+            required: false
+          - question_name: AI Max Tokens
+            default: "{{ ai_max_tokens }}"
+            variable: ai_max_tokens
+            type: "text"
+            required: false
+          - question_name: AI Token
+            default: "{{ ai_token }}"
+            variable: ai_token
+            type: "password"
+            required: false
+  - name: "AWS AIOps: Store Git Mitigation"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_store_git_mitigation.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: GitHub User
+            default: "{{ github_user }}"
+            variable: github_user
+            "type": "text"
+            required: false
+          - question_name: GitHub Email
+            default: "{{ github_email }}"
+            variable: github_email
+            "type": "text"
+            required: false
+          - question_name: GitHub Token
+            default: "{{ github_token }}"
+            variable: github_token
+            "type": "password"
+            required: false
+          - question_name: GitHub URL
+            default: "{{ github_url }}"
+            variable: github_url
+            "type": "text"
+            required: false
+          - question_name: GitHub Branch
+            default: "{{ github_branch }}"
+            variable: github_branch
+            "type": "text"
+            required: false
+  - name: "AWS AIOps: Check Mitigation"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Fix Project"
+    inventory: "AWS Inventory"
+    playbook: "playbook_mitigation.yml"
+    verbosity: 0
+    job_type: "check"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS AIOps: Run Mitigation"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Fix Project"
+    inventory: "AWS Inventory"
+    playbook: "playbook_mitigation.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+
+  # FIX
+  - name: "AWS AIOps: Get CVE Fix"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_get_cve_fix.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: Lightspeed Client ID
+            default: "{{ lightspeed_client_id }}"
+            variable: lightspeed_client_id
+            type: "password"
+            required: false
+          - question_name: Lightspeed Client Secret
+            default: "{{ lightspeed_client_secret }}"
+            variable: lightspeed_client_secret
+            type: "password"
+            required: false
+  - name: "AWS AIOps: Store Git Fix"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_store_git_fix.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: GitHub User
+            default: "{{ github_user }}"
+            variable: github_user
+            "type": "text"
+            required: false
+          - question_name: GitHub Email
+            default: "{{ github_email }}"
+            variable: github_email
+            "type": "text"
+            required: false
+          - question_name: GitHub Token
+            default: "{{ github_token }}"
+            variable: github_token
+            "type": "password"
+            required: false
+          - question_name: GitHub URL
+            default: "{{ github_url }}"
+            variable: github_url
+            "type": "text"
+            required: false
+          - question_name: GitHub Branch
+            default: "{{ github_branch }}"
+            variable: github_branch
+            "type": "text"
+            required: false
+  - name: "AWS AIOps: Check Fix"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Fix Project"
+    inventory: "AWS Inventory"
+    playbook: "playbook_fix.yml"
+    verbosity: 0
+    job_type: "check"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS AIOps: Run Fix"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Fix Project"
+    inventory: "AWS Inventory"
+    playbook: "playbook_fix.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+
+
 # Workflow Job Templates
 controller_workflows:
   - name: "AWS AIOps: FIX/MITIGATION Workflow"
@@ -269,23 +490,26 @@ controller_workflows:
         unified_job_template: "AWS AIOps: Get CVE Details"
         organization: "Default"
         all_parents_must_converge: "False"
+        failure_nodes:
+          - Get CVE Mitigation
         success_nodes:
-          - Get AI Code
-      - identifier: "Get AI Code"
+          - Get CVE Fix
+      # MITIGATION          
+      - identifier: "Get CVE Mitigation"
         workflow_job_template: "AWS AIOps: FIX/MITIGATION Workflow"
-        unified_job_template: "AWS AIOps: Get AI Code"
+        unified_job_template: "AWS AIOps: Get CVE Mitigation"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
           - Store Code GIT
-      - identifier: "Store Code GIT"
+      - identifier: "Store GIT Mitigation"
         workflow_job_template: "AWS AIOps: FIX/MITIGATION Workflow"
         unified_job_template: "AWS AIOps: Store Code Git"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
-          - Sync Project
-      - identifier: "Sync Project"
+          - Sync Project Mitigation
+      - identifier: "Sync Project Mitigation"
         workflow_job_template: "AWS AIOps: FIX/MITIGATION Workflow"
         unified_job_template: "AWS AIOps Fix Project"
         organization: "Default"
@@ -298,8 +522,8 @@ controller_workflows:
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
-          - Mitigation Approval
-      - identifier: Mitigation Approval
+          - Approval Mitigation
+      - identifier: Approval Mitigation 
         approval_node:
           name: Mitigation Approval
           description: Approve or not proposed Mitigation
@@ -311,6 +535,47 @@ controller_workflows:
         unified_job_template: "AWS AIOps: Run Mitigation"
         organization: "Default"
         all_parents_must_converge: "False"
+      # FIX
+      - identifier: "Get CVE FIX"
+        workflow_job_template: "AWS AIOps: FIX/MITIGATION Workflow"
+        unified_job_template: "AWS AIOps: Get CVE Fix"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - Store GIT Fix
+      - identifier: "Store GIT Fix"
+        workflow_job_template: "AWS AIOps: FIX/MITIGATION Workflow"
+        unified_job_template: "AWS AIOps: Store Code Git"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - Sync Project Fix
+      - identifier: "Sync Project Fix"
+        workflow_job_template: "AWS AIOps: FIX/MITIGATION Workflow"
+        unified_job_template: "AWS AIOps Fix Project"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - Check Fix
+      - identifier: "Check Fix"
+        workflow_job_template: "AWS AIOps: FIX/MITIGATION Workflow"
+        unified_job_template: "AWS AIOps: Run Fix"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Approval Fix
+      - identifier: Approval Fix 
+        approval_node:
+          name: Approval Fix
+          description: Approve or not Fix
+          timeout: 300 # 2 minutes    
+        success_nodes:
+          - Run Fix
+      - identifier: "Run Fix"
+        workflow_job_template: "AWS AIOps: FIX/MITIGATION Workflow"
+        unified_job_template: "AWS AIOps: Run Fix"
+        organization: "Default"
+        all_parents_must_converge: "False"          
     ask_variables_on_launch: true
 
 
