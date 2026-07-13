@@ -142,6 +142,33 @@ controller_templates:
     survey_enabled: true
 
   # MITIGATION & FIX (COMMON)
+  - name: "AWS AIOps: Check CVE Affected Systems"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_check_cve_daffected_systems.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: Lightspeed Client ID
+            default: "{{ lightspeed_client_id }}"
+            variable: lightspeed_client_id
+            type: "password"
+            required: false
+          - question_name: Lightspeed Client Secret
+            default: "{{ lightspeed_client_secret }}"
+            variable: lightspeed_client_secret
+            type: "password"
+            required: false
   - name: "AWS AIOps: Check CVE Details"
     description: ""
     organization: "Default"
@@ -382,7 +409,14 @@ controller_workflows:
     organization: "Default"
     state: "present"
     simplified_workflow_nodes:
-      - identifier: "Check CVE Details"
+      - identifier: "Check CVE Affected Systems"
+        workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
+        unified_job_template: "AWS AIOps: Check CVE Affected Systems"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - Check CVE Affected Systems
+      - identifier: "Check CVE Affected Systems"
         workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
         unified_job_template: "AWS AIOps: Check CVE Details"
         organization: "Default"
