@@ -415,8 +415,8 @@ controller_workflows:
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
-          - Check CVE Affected Systems
-      - identifier: "Check CVE Affected Systems"
+          - Check CVE Details
+      - identifier: "Check CVE Details"
         workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
         unified_job_template: "AWS AIOps: Check CVE Details"
         organization: "Default"
