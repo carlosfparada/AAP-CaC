@@ -147,7 +147,7 @@ controller_templates:
     organization: "Default"
     project: "AWS AIOps Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_check_cve_daffected_systems.yml"
+    playbook: "aws_aiops_check_cve_affected_systems.yml"
     verbosity: 0
     job_type: "run"
     credentials:
