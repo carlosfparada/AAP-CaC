@@ -400,19 +400,6 @@ controller_templates:
       - "AWS AIOps Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS AIOps: Run Fix 2"
-    description: ""
-    organization: "Default"
-    project: "AWS AIOps Fix Project"
-    inventory: "AWS Inventory"
-    playbook: "playbook_fix.yml"
-    verbosity: 0
-    job_type: "run"
-    credentials:
-      - "AWS Credential"
-      - "AWS AIOps Ansible Credential"
-    execution_environment: "{{ ee_name }}"
-    survey_enabled: false
 
 
 # Workflow Job Templates
