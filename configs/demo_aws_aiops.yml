@@ -441,7 +441,7 @@ controller_workflows:
         all_parents_must_converge: "False"
         success_nodes:
           - Approval Mitigation
-        fail_nodes:
+        failure_nodes:
           - Get CVE AI Mitigation
       - identifier: "Approval Mitigation"
         approval_node:
