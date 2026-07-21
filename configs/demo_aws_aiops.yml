@@ -374,19 +374,6 @@ controller_templates:
             variable: github_branch
             "type": "text"
             required: false
-  - name: "AWS AIOps: Check Fix"
-    description: ""
-    organization: "Default"
-    project: "AWS AIOps Fix Project"
-    inventory: "AWS Inventory"
-    playbook: "playbook_fix.yml"
-    verbosity: 0
-    job_type: "check"
-    credentials:
-      - "AWS Credential"
-      - "AWS AIOps Ansible Credential"
-    execution_environment: "{{ ee_name }}"
-    survey_enabled: false
   - name: "AWS AIOps: Run Fix"
     description: ""
     organization: "Default"
@@ -486,20 +473,6 @@ controller_workflows:
         unified_job_template: "AWS AIOps Fix Project"
         organization: "Default"
         all_parents_must_converge: "False"
-        success_nodes:
-          - Check Fix
-      - identifier: "Check Fix"
-        workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
-        unified_job_template: "AWS AIOps: Check Fix"
-        organization: "Default"
-        all_parents_must_converge: "False"
-        always_nodes:
-          - Approval Fix
-      - identifier: "Approval Fix"
-        approval_node:
-          name: Approval Fix
-          description: Approve or not Fix
-          timeout: 300 # 2 minutes    
         success_nodes:
           - Run Fix
       - identifier: "Run Fix"
