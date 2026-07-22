@@ -20,8 +20,8 @@ controller_projects:
     scm_update_on_launch: "True"
     execution_environment: "{{ ee_name }}"
     wait: true
-  - name: "AWS AIOps Fix Project"
-    description: "AWS AIOps Fix Project"
+  - name: "AWS AIOps Remediation Project"
+    description: "AWS AIOps Remediation Project"
     organization: "Default"
     scm_type: "git"
     scm_url: "{{ github_url }}"
@@ -127,12 +127,12 @@ controller_templates:
       - "AWS AIOps Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
-  - name: "AWS AIOps: GENERATE CVE Event (FIX)"
+  - name: "AWS AIOps: GENERATE CVE Event (Remediation)"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_gen_cve_event_fix.yml"
+    playbook: "aws_aiops_gen_cve_event_remediation.yml"
     verbosity: 0
     job_type: "run"
     credentials:
@@ -141,7 +141,7 @@ controller_templates:
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
 
-  # MITIGATION & FIX (COMMON)
+  # MITIGATION & REMEDIATION (COMMON)
   - name: "AWS AIOps: Check CVE Affected Systems"
     description: ""
     organization: "Default"
@@ -280,7 +280,7 @@ controller_templates:
   - name: "AWS AIOps: Check Mitigation"
     description: ""
     organization: "Default"
-    project: "AWS AIOps Fix Project"
+    project: "AWS AIOps Remediation Project"
     inventory: "AWS Inventory"
     playbook: "playbook_mitigation.yml"
     verbosity: 0
@@ -293,7 +293,7 @@ controller_templates:
   - name: "AWS AIOps: Run Mitigation"
     description: ""
     organization: "Default"
-    project: "AWS AIOps Fix Project"
+    project: "AWS AIOps Remediation Project"
     inventory: "AWS Inventory"
     playbook: "playbook_mitigation.yml"
     verbosity: 0
@@ -304,13 +304,13 @@ controller_templates:
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
 
-  # FIX
-  - name: "AWS AIOps: Get CVE Fix"
+  # REMEDIATION
+  - name: "AWS AIOps: Get CVE Remediation"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_get_cve_fix.yml"
+    playbook: "aws_aiops_get_cve_remediation.yml"
     verbosity: 0
     job_type: "run"
     credentials:
@@ -332,12 +332,12 @@ controller_templates:
             variable: lightspeed_client_secret
             type: "password"
             required: false
-  - name: "AWS AIOps: Store Git Fix"
+  - name: "AWS AIOps: Store Git Remediation"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_store_git_fix.yml"
+    playbook: "aws_aiops_store_git_remediation.yml"
     verbosity: 0
     job_type: "run"
     credentials:
@@ -374,12 +374,12 @@ controller_templates:
             variable: github_branch
             "type": "text"
             required: false
-  - name: "AWS AIOps: Run Fix"
+  - name: "AWS AIOps: Run Remediation"
     description: ""
     organization: "Default"
-    project: "AWS AIOps Fix Project"
+    project: "AWS AIOps Remediation Project"
     inventory: "AWS Inventory"
-    playbook: "playbook_fix.yml"
+    playbook: "playbook_remediation.yml"
     verbosity: 0
     job_type: "run"
     credentials:
@@ -391,51 +391,51 @@ controller_templates:
 
 # Workflow Job Templates
 controller_workflows:
-  - name: "AWS AIOps: FIX & MITIGATION Workflow"
-    description: "AWS AIOps: FIX & MITIGATION Workflow"
+  - name: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
+    description: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
     organization: "Default"
     state: "present"
     simplified_workflow_nodes:
       - identifier: "Check CVE Affected Systems"
-        workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
+        workflow_job_template: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
         unified_job_template: "AWS AIOps: Check CVE Affected Systems"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
           - Check CVE Details
       - identifier: "Check CVE Details"
-        workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
+        workflow_job_template: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
         unified_job_template: "AWS AIOps: Check CVE Details"
         organization: "Default"
         all_parents_must_converge: "False"
         failure_nodes:
           - Get CVE AI Mitigation
         success_nodes:
-          - Get CVE Fix
+          - Get CVE Remediation
       # MITIGATION          
       - identifier: "Get CVE AI Mitigation"
-        workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
+        workflow_job_template: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
         unified_job_template: "AWS AIOps: Get CVE AI Mitigation"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
           - Store Git Mitigation
       - identifier: "Store Git Mitigation"
-        workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
+        workflow_job_template: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
         unified_job_template: "AWS AIOps: Store Git Mitigation"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
           - Sync Project Mitigation
       - identifier: "Sync Project Mitigation"
-        workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
-        unified_job_template: "AWS AIOps Fix Project"
+        workflow_job_template: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
+        unified_job_template: "AWS AIOps Remediation Project"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
           - Check Mitigation
       - identifier: "Check Mitigation"
-        workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
+        workflow_job_template: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
         unified_job_template: "AWS AIOps: Check Mitigation"
         organization: "Default"
         all_parents_must_converge: "False"
@@ -451,35 +451,35 @@ controller_workflows:
         success_nodes:
           - Run Mitigation
       - identifier: "Run Mitigation"
-        workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
+        workflow_job_template: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
         unified_job_template: "AWS AIOps: Run Mitigation"
         organization: "Default"
         all_parents_must_converge: "False"
-      # FIX
-      - identifier: "Get CVE Fix"
-        workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
-        unified_job_template: "AWS AIOps: Get CVE Fix"
+      # REMEDIATION
+      - identifier: "Get CVE Remediation"
+        workflow_job_template: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
+        unified_job_template: "AWS AIOps: Get CVE Remediation"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
-          - Store Git Fix
-      - identifier: "Store Git Fix"
-        workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
-        unified_job_template: "AWS AIOps: Store Git Fix"
+          - Store Git Remediation
+      - identifier: "Store Git Remediation"
+        workflow_job_template: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
+        unified_job_template: "AWS AIOps: Store Git Remediation"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
-          - Sync Project Fix
-      - identifier: "Sync Project Fix"
-        workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
-        unified_job_template: "AWS AIOps Fix Project"
+          - Sync Project Remediation
+      - identifier: "Sync Project Remediation"
+        workflow_job_template: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
+        unified_job_template: "AWS AIOps Remediation Project"
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
-          - Run Fix
-      - identifier: "Run Fix"
-        workflow_job_template: "AWS AIOps: FIX & MITIGATION Workflow"
-        unified_job_template: "AWS AIOps: Run Fix"
+          - Run Remediation
+      - identifier: "Run Remediation"
+        workflow_job_template: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
+        unified_job_template: "AWS AIOps: Run Remediation"
         organization: "Default"
         all_parents_must_converge: "False"          
     ask_variables_on_launch: true
