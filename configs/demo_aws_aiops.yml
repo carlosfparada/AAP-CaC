@@ -114,7 +114,7 @@ controller_templates:
     survey_enabled: false
 
   # EVENT GENERATION
-  - name: "AWS AIOps: GENERATE CVE Event (MITIGATION)"
+  - name: "AWS AIOps: Generate CVE Event (MITIGATION)"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
@@ -127,7 +127,7 @@ controller_templates:
       - "AWS AIOps Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
-  - name: "AWS AIOps: GENERATE CVE Event (Remediation)"
+  - name: "AWS AIOps: Generate CVE Event (REMEDIATION)"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
