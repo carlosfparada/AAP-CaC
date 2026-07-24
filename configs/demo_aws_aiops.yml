@@ -449,7 +449,7 @@ controller_workflows:
         unified_job_template: "AWS AIOps: Check Mitigation"
         organization: "Default"
         all_parents_must_converge: "False"
-        success_nodes:
+        always_nodes:
           - Approval Mitigation
         # Cycle - Not Supported
         # failure_nodes:
