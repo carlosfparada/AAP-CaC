@@ -506,4 +506,4 @@ eda_rulebook_activations:
     eda_credentials: "Controller Credentials"
     restart_policy: always
     enabled: true
-    log_level: debug
+    log_level: info
