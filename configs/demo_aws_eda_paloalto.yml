@@ -395,7 +395,7 @@ eda_rulebook_activations:
     eda_credentials: "Controller Credentials"
     restart_policy: always
     #enabled: false
-    log_level: debug
+    log_level: info
   - name: "AWS EDA Paloalto: System Authentication"
     description: "AWS EDA Paloalto: System Authentication"
     organization: "Default"
@@ -405,7 +405,7 @@ eda_rulebook_activations:
     eda_credentials: "Controller Credentials"
     restart_policy: always
     #enabled: false
-    log_level: debug
+    log_level: info
   - name: "AWS EDA Paloalto: Threat Virus and Vulnerability"
     description: "AWS EDA Paloalto: Threat Virus"
     organization: "Default"
@@ -415,4 +415,4 @@ eda_rulebook_activations:
     eda_credentials: "Controller Credentials"
     restart_policy: always
     #enabled: false
-    log_level: debug
+    log_level: info

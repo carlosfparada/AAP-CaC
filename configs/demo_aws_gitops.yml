@@ -411,4 +411,4 @@ eda_projects:
 #     eda_credentials: "Controller Credentials"
 #     restart_policy: always
 #     #enabled: false
-#     log_level: debug
+#     log_level: info
