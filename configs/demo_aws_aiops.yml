@@ -169,12 +169,12 @@ controller_templates:
             variable: lightspeed_client_secret
             type: "password"
             required: false
-  - name: "AWS AIOps: Check CVE Details"
+  - name: "AWS AIOps: Check CVE Remediation"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_check_cve_details.yml"
+    playbook: "aws_aiops_check_cve_remediation.yml"
     verbosity: 0
     job_type: "run"
     credentials:
@@ -402,10 +402,10 @@ controller_workflows:
         organization: "Default"
         all_parents_must_converge: "False"
         success_nodes:
-          - Check CVE Details
-      - identifier: "Check CVE Details"
+          - Check CVE Remediation
+      - identifier: "Check CVE Remediation"
         workflow_job_template: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
-        unified_job_template: "AWS AIOps: Check CVE Details"
+        unified_job_template: "AWS AIOps: Check CVE Remediation"
         organization: "Default"
         all_parents_must_converge: "False"
         failure_nodes:
