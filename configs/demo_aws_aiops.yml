@@ -398,6 +398,19 @@ controller_templates:
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
 
+  - name: "AWS AIOps: Check CVE Systems"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_check_cve_systems.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
 
 # Workflow Job Templates
 controller_workflows:
