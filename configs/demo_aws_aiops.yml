@@ -397,7 +397,7 @@ controller_templates:
       - "AWS AIOps Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-
+  # SETUP
   - name: "AWS AIOps: Check CVE Systems"
     description: ""
     organization: "Default"
