@@ -411,6 +411,7 @@ controller_templates:
       - "AWS AIOps Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
+    ask_variables_on_launch: true
 
 # Workflow Job Templates
 controller_workflows:
