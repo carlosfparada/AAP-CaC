@@ -111,7 +111,21 @@ controller_templates:
       - "AWS Credential"
       - "AWS AIOps Ansible Credential"
     execution_environment: "{{ ee_name }}"
-    survey_enabled: false
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: Org ID
+            default: "{{ org_id }}"
+            variable: org_id
+            type: "text"
+            required: true
+          - question_name: Activation Key
+            default: "{{ activation_key }}"
+            variable: activation_key
+            type: "password"
+            required: true
 
   # EVENT GENERATION
   - name: "AWS AIOps: Generate CVE Event (MITIGATION)"
