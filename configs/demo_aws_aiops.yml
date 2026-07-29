@@ -441,6 +441,7 @@ controller_templates:
             type: "password"
             required: false
     ask_variables_on_launch: true
+    ask_labels_on_launch: true
 
 # Workflow Job Templates
 controller_workflows:
@@ -537,6 +538,7 @@ controller_workflows:
         organization: "Default"
         all_parents_must_converge: "False"          
     ask_variables_on_launch: true
+    ask_labels_on_launch: true
 
 
 # EDA Projects
