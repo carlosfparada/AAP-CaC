@@ -411,7 +411,8 @@ controller_templates:
       - "AWS AIOps Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  # SETUP
+
+  # SYSTEM EVENTS
   - name: "AWS AIOps: Check CVE Systems"
     description: ""
     organization: "Default"
@@ -424,7 +425,21 @@ controller_templates:
       - "AWS Credential"
       - "AWS AIOps Ansible Credential"
     execution_environment: "{{ ee_name }}"
-    survey_enabled: false
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: AAP FQDN
+            default: "{{ aap_fqdn }}"
+            variable: aap_fqdn
+            type: "text"
+            required: false
+          - question_name: AAP Password
+            default: "{{ admin_password }}"
+            variable: aap_password
+            type: "password"
+            required: false
     ask_variables_on_launch: true
 
 # Workflow Job Templates
