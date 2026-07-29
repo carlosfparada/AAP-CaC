@@ -126,6 +126,60 @@ controller_templates:
             variable: activation_key
             type: "password"
             required: true
+  - name: "AWS AIOps: 5. Setup RHEL New"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_setup_rhelnew.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: Org ID
+            default: "{{ org_id }}"
+            variable: org_id
+            type: "text"
+            required: true
+          - question_name: Activation Key
+            default: "{{ activation_key }}"
+            variable: activation_key
+            type: "password"
+            required: true
+  - name: "AWS AIOps: 3. Unsetup RHEL New"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_unsetup_rhelnew.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: Org ID
+            default: "{{ org_id }}"
+            variable: org_id
+            type: "text"
+            required: true
+          - question_name: Activation Key
+            default: "{{ activation_key }}"
+            variable: activation_key
+            type: "password"
+            required: true
 
   # EVENT GENERATION
   - name: "AWS AIOps: Generate CVE Event (MITIGATION)"
