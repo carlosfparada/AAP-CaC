@@ -45,7 +45,7 @@ controller_templates:
       - "AWS AIOps Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS AIOps: 2. Setup"
+  - name: "AWS AIOps: 2. Setup RHELs"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
@@ -72,7 +72,7 @@ controller_templates:
             variable: activation_key
             type: "password"
             required: true
-  - name: "AWS AIOps: 3. Unsetup"
+  - name: "AWS AIOps: 3. Unsetup RHELs"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
@@ -99,34 +99,7 @@ controller_templates:
             variable: activation_key
             type: "password"
             required: true
-  - name: "AWS AIOps: 4. Undeploy"
-    description: ""
-    organization: "Default"
-    project: "AWS AIOps Project"
-    inventory: "AWS Inventory"
-    playbook: "aws_aiops_undeploy.yml"
-    verbosity: 0
-    job_type: "run"
-    credentials:
-      - "AWS Credential"
-      - "AWS AIOps Ansible Credential"
-    execution_environment: "{{ ee_name }}"
-    survey_enabled: true
-    survey:
-        name: Survey
-        description: Survey
-        spec:
-          - question_name: Org ID
-            default: "{{ org_id }}"
-            variable: org_id
-            type: "text"
-            required: true
-          - question_name: Activation Key
-            default: "{{ activation_key }}"
-            variable: activation_key
-            type: "password"
-            required: true
-  - name: "AWS AIOps: 5. Setup RHEL New"
+  - name: "AWS AIOps: 4. Setup RHELs New"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
@@ -153,12 +126,39 @@ controller_templates:
             variable: activation_key
             type: "password"
             required: true
-  - name: "AWS AIOps: 3. Unsetup RHEL New"
+  - name: "AWS AIOps: 5. Unsetup RHELs New"
     description: ""
     organization: "Default"
     project: "AWS AIOps Project"
     inventory: "AWS Inventory"
     playbook: "aws_aiops_unsetup_rhelnew.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: Org ID
+            default: "{{ org_id }}"
+            variable: org_id
+            type: "text"
+            required: true
+          - question_name: Activation Key
+            default: "{{ activation_key }}"
+            variable: activation_key
+            type: "password"
+            required: true
+  - name: "AWS AIOps: 6. Undeploy"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_undeploy.yml"
     verbosity: 0
     job_type: "run"
     credentials:
