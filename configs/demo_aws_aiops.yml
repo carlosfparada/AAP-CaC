@@ -636,5 +636,5 @@ eda_rulebook_activations:
     restart_policy: always
     force_restart: true
     enabled: false
-    state: disabled
+    #state: disabled
     log_level: info
