@@ -635,6 +635,6 @@ eda_rulebook_activations:
     eda_credentials: "Controller Credentials"
     restart_policy: always
     force_restart: true
-    enabled: false
-    #state: disabled
+    #enabled: false
+    state: disabled
     log_level: info
