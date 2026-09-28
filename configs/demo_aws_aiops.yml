@@ -708,7 +708,7 @@ eda_rulebook_activations:
     #enabled: false
     state: disabled
     log_level: info
-  - name: "AWS AIOps: Lightspeed (Insights) - AO"
+  - name: "AWS AIOps: AO Lightspeed (Insights)"
     description: "AWS AIOps: Lightspeed (Insights) - AO Forwarder"
     organization: "Default"
     project: "AWS AIOps Project"
