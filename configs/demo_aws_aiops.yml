@@ -554,6 +554,34 @@ controller_templates:
     ask_variables_on_launch: true
     ask_labels_on_launch: true
 
+  # AO WORKFLOW EVENT GENERATION
+  - name: "AWS AIOps: AO Generate CVE Event (MITIGATION)"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_ao_gen_cve_event_mitigation.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+  - name: "AWS AIOps: AO Generate CVE Event (REMEDIATION)"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_ao_gen_cve_event_remediation.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+
 
 # Workflow Job Templates
 controller_workflows:
