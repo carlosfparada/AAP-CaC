@@ -705,8 +705,9 @@ eda_rulebook_activations:
     eda_credentials: "Controller Credentials"
     restart_policy: always
     force_restart: true
-    #enabled: false
-    state: disabled
+    ##enabled: false
+    #state: disabled
+    state: present
     log_level: info
   - name: "AWS AIOps: AO Lightspeed (Insights)"
     description: "AWS AIOps: Lightspeed (Insights) - AO Forwarder"
@@ -717,6 +718,7 @@ eda_rulebook_activations:
     eda_credentials: "Controller Credentials"
     restart_policy: always
     force_restart: true
-    #enabled: false
-    state: disabled
+    ##enabled: false
+    #state: disabled
+    state: present
     log_level: info
