@@ -513,6 +513,48 @@ controller_templates:
     ask_variables_on_launch: true
     ask_labels_on_launch: true
 
+  # AO WORKFLOW FORWARDER - NEW CVE
+  - name: "AWS AIOps: AO Forwarder - New CVE"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_ao_forwarder_new_cve.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: AO Workflow URL
+            default: "{{ ao_webhook_url }}"
+            variable: ao_webhook_base_url
+            type: "text"
+            required: false
+          - question_name: AO Workflow Path
+            default: "{{ ao_webhook_path }}"
+            variable: ao_webhook_base_path
+            type: "text"
+            required: false
+          - question_name: AO Workflow Client ID
+            default: "{{ ao_webhook_client_id }}"
+            variable: ao_webhook_client_id
+            type: "password"
+            required: false
+          - question_name: AO Workflow Client Secret
+            default: "{{ ao_webhook_client_secret }}"
+            variable: ao_webhook_client_secret
+            type: "password"
+            required: false
+    ask_variables_on_launch: true
+    ask_labels_on_launch: true
+
+
 # Workflow Job Templates
 controller_workflows:
   - name: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
