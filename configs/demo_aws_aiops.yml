@@ -533,12 +533,12 @@ controller_templates:
         spec:
           - question_name: AO Workflow URL
             default: "{{ ao_webhook_url }}"
-            variable: ao_webhook_base_url
+            variable: ao_webhook_url
             type: "text"
             required: false
           - question_name: AO Workflow Path
             default: "{{ ao_webhook_path }}"
-            variable: ao_webhook_base_path
+            variable: ao_webhook_path
             type: "text"
             required: false
           - question_name: AO Workflow Client ID
