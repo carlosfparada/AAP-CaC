@@ -567,7 +567,7 @@ eda_projects:
 # EDA Rulebook Activations
 eda_rulebook_activations:
   - name: "AWS AIOps AO: Lightspeed (Insights)"
-    description: "AWS AIOps AO: Lightspeed (Insights) - Forwarder"
+    description: "AWS AIOps AO: Lightspeed (Insights) Forwarder"
     organization: "Default"
     project: "AWS AIOps AO Project"
     rulebook: lightspeed_rulebook_ao.yml
