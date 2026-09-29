@@ -362,7 +362,7 @@ controller_templates:
     organization: "Default"
     project: "AWS AIOps AO Remediation Project"
     inventory: "AWS Inventory"
-    playbook: "playbook_mitigation_ao.yml"
+    playbook: "playbook_mitigation.yml"
     verbosity: 0
     job_type: "check"
     credentials:
@@ -375,7 +375,7 @@ controller_templates:
     organization: "Default"
     project: "AWS AIOps AO Remediation Project"
     inventory: "AWS Inventory"
-    playbook: "playbook_mitigation_ao.yml"
+    playbook: "playbook_mitigation.yml"
     verbosity: 0
     job_type: "run"
     credentials:
@@ -459,7 +459,7 @@ controller_templates:
     organization: "Default"
     project: "AWS AIOps AO Remediation Project"
     inventory: "AWS Inventory"
-    playbook: "playbook_remediation_ao.yml"
+    playbook: "playbook_remediation.yml"
     verbosity: 0
     job_type: "run"
     credentials:
