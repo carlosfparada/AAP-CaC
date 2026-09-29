@@ -517,6 +517,144 @@ controller_templates:
     ask_variables_on_launch: true
     ask_labels_on_launch: true
 
+  # AO WORKFLOW FORWARDER - NEW CVE
+  - name: "AWS AIOps: AO Forwarder - New CVE"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_ao_forwarder_new_cve.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: AO Workflow URL
+            default: "{{ ao_webhook_url }}"
+            variable: ao_webhook_url
+            type: "text"
+            required: false
+          - question_name: AO Workflow Path
+            default: "{{ ao_webhook_path }}"
+            variable: ao_webhook_path
+            type: "text"
+            required: false
+          - question_name: AO Workflow Client ID
+            default: "{{ ao_webhook_client_id }}"
+            variable: ao_webhook_client_id
+            type: "password"
+            required: false
+          - question_name: AO Workflow Client Secret
+            default: "{{ ao_webhook_client_secret }}"
+            variable: ao_webhook_client_secret
+            type: "password"
+            required: false
+    ask_variables_on_launch: true
+    ask_labels_on_launch: true
+
+
+  ###########################
+  # AUTOMATION ORCHESTRATOR #
+  ###########################
+
+  # AO WORKFLOW EVENT GENERATION
+  - name: "AWS AIOps: AO Generate CVE Event (MITIGATION)"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_ao_gen_cve_event_mitigation.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    extra_vars:
+      eda_port: 10001
+  - name: "AWS AIOps: AO Generate CVE Event (REMEDIATION)"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_ao_gen_cve_event_remediation.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    extra_vars:
+      eda_port: 10001
+
+  # MITIGATION & REMEDIATION (COMMON)
+  - name: "AWS AIOps: AO Check CVE Affected Systems"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_check_cve_affected_systems.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: Lightspeed Client ID
+            default: "{{ lightspeed_client_id }}"
+            variable: lightspeed_client_id
+            type: "password"
+            required: false
+          - question_name: Lightspeed Client Secret
+            default: "{{ lightspeed_client_secret }}"
+            variable: lightspeed_client_secret
+            type: "password"
+            required: false
+    ask_variables_on_launch: true
+    ask_labels_on_launch: true
+  - name: "AWS AIOps: AO Check CVE Remediations"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_check_cve_remediations.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: Lightspeed Client ID
+            default: "{{ lightspeed_client_id }}"
+            variable: lightspeed_client_id
+            type: "password"
+            required: false
+          - question_name: Lightspeed Client Secret
+            default: "{{ lightspeed_client_secret }}"
+            variable: lightspeed_client_secret
+            type: "password"
+            required: false
+    ask_variables_on_launch: true
+    ask_labels_on_launch: true
+
 
 # Workflow Job Templates
 controller_workflows:
@@ -636,6 +774,19 @@ eda_rulebook_activations:
     organization: "Default"
     project: "AWS AIOps Project"
     rulebook: lightspeed_rulebook.yml
+    decision_environment: "{{ de_name }}"
+    eda_credentials: "Controller Credentials"
+    restart_policy: always
+    force_restart: true
+    ##enabled: false
+    #state: disabled
+    state: present
+    log_level: info
+  - name: "AWS AIOps: AO Lightspeed (Insights)"
+    description: "AWS AIOps: Lightspeed (Insights) - AO Forwarder"
+    organization: "Default"
+    project: "AWS AIOps Project"
+    rulebook: lightspeed_rulebook_ao.yml
     decision_environment: "{{ de_name }}"
     eda_credentials: "Controller Credentials"
     restart_policy: always
