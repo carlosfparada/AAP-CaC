@@ -514,7 +514,7 @@ controller_templates:
   #   ask_labels_on_launch: true
 
   # AO WORKFLOW FORWARDER
-  - name: "AWS AIOps AO: Forwarder"
+  - name: "AWS AIOps AO: Lightspeed (Insights) Forwarder"
     description: ""
     organization: "Default"
     project: "AWS AIOps AO Project"
