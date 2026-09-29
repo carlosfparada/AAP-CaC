@@ -513,13 +513,13 @@ controller_templates:
   #   ask_variables_on_launch: true
   #   ask_labels_on_launch: true
 
-  # AO WORKFLOW FORWARDER - NEW CVE
-  - name: "AWS AIOps AO: Forwarder - New CVE"
+  # AO WORKFLOW FORWARDER
+  - name: "AWS AIOps AO: Forwarder"
     description: ""
     organization: "Default"
     project: "AWS AIOps AO Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_ao_forwarder_new_cve.yml"
+    playbook: "aws_aiops_ao_forwarder.yml"
     verbosity: 0
     job_type: "run"
     credentials:
@@ -567,7 +567,7 @@ eda_projects:
 # EDA Rulebook Activations
 eda_rulebook_activations:
   - name: "AWS AIOps AO: Lightspeed (Insights)"
-    description: "AWS AIOps AO: Lightspeed (Insights) Forwarder"
+    description: "AWS AIOps AO: Lightspeed (Insights)"
     organization: "Default"
     project: "AWS AIOps AO Project"
     rulebook: lightspeed_rulebook_ao.yml
