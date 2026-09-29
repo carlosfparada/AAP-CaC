@@ -2,8 +2,8 @@
 
 # Credentials
 controller_credentials:
-  - name: "AWS AIOps Ansible Credential"
-    description: "AWS AIOps Ansible Credential"
+  - name: "AWS AIOps AO Ansible Credential"
+    description: "AWS AIOps AO Ansible Credential"
     credential_type: "Machine"
     organization: "Default"
     inputs:
@@ -12,8 +12,8 @@ controller_credentials:
 
 # Projects
 controller_projects:
-  - name: "AWS AIOps Project"
-    description: "AWS AIOps Project"
+  - name: "AWS AIOps AO Project"
+    description: "AWS AIOps AO Project"
     organization: "Default"
     scm_type: "git"
     scm_url: "{{ project_url }}"
@@ -21,8 +21,8 @@ controller_projects:
     #scm_update_on_launch: "True"
     execution_environment: "{{ ee_name }}"
     wait: true
-  - name: "AWS AIOps Remediation Project"
-    description: "AWS AIOps Remediation Project"
+  - name: "AWS AIOps AO Remediation Project"
+    description: "AWS AIOps AO Remediation Project"
     organization: "Default"
     scm_type: "git"
     scm_url: "{{ github_url }}"
@@ -34,30 +34,30 @@ controller_projects:
 # Job Templates
 controller_templates:
   # DEMO MANAGEMENT
-  - name: "AWS AIOps: 1. Deploy"
+  - name: "AWS AIOps AO: 1. Deploy"
     description: ""
     organization: "Default"
-    project: "AWS AIOps Project"
+    project: "AWS AIOps AO Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_deploy.yml"
+    playbook: "aws_aiops_ao_deploy.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS AIOps Ansible Credential"
+      - "AWS AIOps AO Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS AIOps: 2. Setup RHELs"
+  - name: "AWS AIOps AO: 2. Setup RHELs"
     description: ""
     organization: "Default"
-    project: "AWS AIOps Project"
+    project: "AWS AIOps AO Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_setup.yml"
+    playbook: "aws_aiops_ao_setup.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS AIOps Ansible Credential"
+      - "AWS AIOps AO Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
     survey:
@@ -74,17 +74,17 @@ controller_templates:
             variable: activation_key
             type: "password"
             required: true
-  - name: "AWS AIOps: 3. Unsetup RHELs"
+  - name: "AWS AIOps AO: 3. Unsetup RHELs"
     description: ""
     organization: "Default"
-    project: "AWS AIOps Project"
+    project: "AWS AIOps AO Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_unsetup.yml"
+    playbook: "aws_aiops_ao_unsetup.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS AIOps Ansible Credential"
+      - "AWS AIOps AO Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
     survey:
@@ -101,17 +101,17 @@ controller_templates:
             variable: activation_key
             type: "password"
             required: true
-  - name: "AWS AIOps: 4. Setup RHELs New"
+  - name: "AWS AIOps AO: 4. Setup RHELs New"
     description: ""
     organization: "Default"
-    project: "AWS AIOps Project"
+    project: "AWS AIOps AO Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_setup_rhelnew.yml"
+    playbook: "aws_aiops_ao_setup_rhelnew.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS AIOps Ansible Credential"
+      - "AWS AIOps AO Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
     survey:
@@ -128,17 +128,17 @@ controller_templates:
             variable: activation_key
             type: "password"
             required: true
-  - name: "AWS AIOps: 5. Unsetup RHELs New"
+  - name: "AWS AIOps AO: 5. Unsetup RHELs New"
     description: ""
     organization: "Default"
-    project: "AWS AIOps Project"
+    project: "AWS AIOps AO Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_unsetup_rhelnew.yml"
+    playbook: "aws_aiops_ao_unsetup_rhelnew.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS AIOps Ansible Credential"
+      - "AWS AIOps AO Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
     survey:
@@ -155,17 +155,17 @@ controller_templates:
             variable: activation_key
             type: "password"
             required: true
-  - name: "AWS AIOps: 6. Undeploy"
+  - name: "AWS AIOps AO: 6. Undeploy"
     description: ""
     organization: "Default"
-    project: "AWS AIOps Project"
+    project: "AWS AIOps AO Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_undeploy.yml"
+    playbook: "aws_aiops_ao_undeploy.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS AIOps Ansible Credential"
+      - "AWS AIOps AO Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
     survey:
@@ -184,45 +184,45 @@ controller_templates:
             required: true
 
   # EVENT GENERATION
-  - name: "AWS AIOps: Generate CVE Event (MITIGATION)"
+  - name: "AWS AIOps AO: Generate CVE Event (MITIGATION)"
     description: ""
     organization: "Default"
-    project: "AWS AIOps Project"
+    project: "AWS AIOps AO Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_gen_cve_event_mitigation.yml"
+    playbook: "aws_aiops_ao_gen_cve_event_mitigation.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS AIOps Ansible Credential"
+      - "AWS AIOps AO Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
-  - name: "AWS AIOps: Generate CVE Event (REMEDIATION)"
+  - name: "AWS AIOps AO: Generate CVE Event (REMEDIATION)"
     description: ""
     organization: "Default"
-    project: "AWS AIOps Project"
+    project: "AWS AIOps AO Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_gen_cve_event_remediation.yml"
+    playbook: "aws_aiops_ao_gen_cve_event_remediation.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS AIOps Ansible Credential"
+      - "AWS AIOps AO Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
 
   # MITIGATION & REMEDIATION (COMMON)
-  - name: "AWS AIOps: Check CVE Affected Systems"
+  - name: "AWS AIOps AO: Check CVE Affected Systems"
     description: ""
     organization: "Default"
-    project: "AWS AIOps Project"
+    project: "AWS AIOps AO Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_check_cve_affected_systems.yml"
+    playbook: "aws_aiops_ao_check_cve_affected_systems.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS AIOps Ansible Credential"
+      - "AWS AIOps AO Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
     survey:
@@ -239,17 +239,17 @@ controller_templates:
             variable: lightspeed_client_secret
             type: "password"
             required: false
-  - name: "AWS AIOps: Check CVE Remediations"
+  - name: "AWS AIOps AO: Check CVE Remediations"
     description: ""
     organization: "Default"
-    project: "AWS AIOps Project"
+    project: "AWS AIOps AO Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_check_cve_remediations.yml"
+    playbook: "aws_aiops_ao_check_cve_remediations.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS AIOps Ansible Credential"
+      - "AWS AIOps AO Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
     survey:
@@ -268,17 +268,17 @@ controller_templates:
             required: false
 
   # MITIGATION
-  - name: "AWS AIOps: Get CVE AI Mitigation"
+  - name: "AWS AIOps AO: Get CVE AI Mitigation"
     description: ""
     organization: "Default"
-    project: "AWS AIOps Project"
+    project: "AWS AIOps AO Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_get_cve_ai_mitigation.yml"
+    playbook: "aws_aiops_ao_get_cve_ai_mitigation.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS AIOps Ansible Credential"
+      - "AWS AIOps AO Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
     survey:
@@ -315,17 +315,17 @@ controller_templates:
             variable: ai_token
             type: "password"
             required: false
-  - name: "AWS AIOps: Store Git Mitigation"
+  - name: "AWS AIOps AO: Store Git Mitigation"
     description: ""
     organization: "Default"
-    project: "AWS AIOps Project"
+    project: "AWS AIOps AO Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_store_git_mitigation.yml"
+    playbook: "aws_aiops_ao_store_git_mitigation.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS AIOps Ansible Credential"
+      - "AWS AIOps AO Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
     survey:
@@ -357,12 +357,12 @@ controller_templates:
             variable: github_branch
             "type": "text"
             required: false
-  - name: "AWS AIOps: Check Mitigation"
+  - name: "AWS AIOps AO: Check Mitigation"
     description: ""
     organization: "Default"
-    project: "AWS AIOps Remediation Project"
+    project: "AWS AIOps AO Remediation Project"
     inventory: "AWS Inventory"
-    playbook: "playbook_mitigation.yml"
+    playbook: "playbook_mitigation_ao.yml"
     verbosity: 0
     job_type: "check"
     credentials:
@@ -370,32 +370,32 @@ controller_templates:
       - "AWS AIOps Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS AIOps: Run Mitigation"
+  - name: "AWS AIOps AO: Run Mitigation"
     description: ""
     organization: "Default"
-    project: "AWS AIOps Remediation Project"
+    project: "AWS AIOps AO Remediation Project"
     inventory: "AWS Inventory"
-    playbook: "playbook_mitigation.yml"
+    playbook: "playbook_mitigation_ao.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS AIOps Ansible Credential"
+      - "AWS AIOps AO Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
 
   # REMEDIATION
-  - name: "AWS AIOps: Get CVE Remediation"
+  - name: "AWS AIOps AO: Get CVE Remediation"
     description: ""
     organization: "Default"
-    project: "AWS AIOps Project"
+    project: "AWS AIOps AO Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_get_cve_remediation.yml"
+    playbook: "aws_aiops_ao_get_cve_remediation.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS AIOps Ansible Credential"
+      - "AWS AIOps AO Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
     survey:
@@ -412,17 +412,17 @@ controller_templates:
             variable: lightspeed_client_secret
             type: "password"
             required: false
-  - name: "AWS AIOps: Store Git Remediation"
+  - name: "AWS AIOps AO: Store Git Remediation"
     description: ""
     organization: "Default"
-    project: "AWS AIOps Project"
+    project: "AWS AIOps AO Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_store_git_remediation.yml"
+    playbook: "aws_aiops_ao_store_git_remediation.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS AIOps Ansible Credential"
+      - "AWS AIOps AO Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
     survey:
@@ -454,46 +454,46 @@ controller_templates:
             variable: github_branch
             "type": "text"
             required: false
-  - name: "AWS AIOps: Run Remediation"
+  - name: "AWS AIOps AO: Run Remediation"
     description: ""
     organization: "Default"
-    project: "AWS AIOps Remediation Project"
+    project: "AWS AIOps AO Remediation Project"
     inventory: "AWS Inventory"
-    playbook: "playbook_remediation.yml"
+    playbook: "playbook_remediation_ao.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS AIOps Ansible Credential"
+      - "AWS AIOps AO Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS AIOps: Remove Mitigation"
+  - name: "AWS AIOps AO: Remove Mitigation"
     description: ""
     organization: "Default"
-    project: "AWS AIOps Project"
+    project: "AWS AIOps AO Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_cve_mitigation_remove.yml"
+    playbook: "aws_aiops_ao_cve_mitigation_remove.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS AIOps Ansible Credential"
+      - "AWS AIOps AO Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
 
 
   # SYSTEM EVENTS
-  - name: "AWS AIOps: Check CVE Systems"
+  - name: "AWS AIOps AO: Check CVE Systems"
     description: ""
     organization: "Default"
-    project: "AWS AIOps Project"
+    project: "AWS AIOps AO Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_check_cve_systems.yml"
+    playbook: "aws_aiops_ao_check_cve_systems.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS AIOps Ansible Credential"
+      - "AWS AIOps AO Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
     survey:
@@ -514,17 +514,17 @@ controller_templates:
     ask_labels_on_launch: true
 
   # AO WORKFLOW FORWARDER - NEW CVE
-  - name: "AWS AIOps: AO Forwarder - New CVE"
+  - name: "AWS AIOps AO: Forwarder - New CVE"
     description: ""
     organization: "Default"
-    project: "AWS AIOps Project"
+    project: "AWS AIOps AO Project"
     inventory: "AWS Inventory"
     playbook: "aws_aiops_ao_forwarder_new_cve.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS AIOps Ansible Credential"
+      - "AWS AIOps AO Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
     survey:
@@ -555,49 +555,49 @@ controller_templates:
     ask_labels_on_launch: true
 
   # AO WORKFLOW EVENT GENERATION
-  - name: "AWS AIOps: AO Generate CVE Event (MITIGATION)"
+  - name: "AWS AIOps AO: Generate CVE Event (MITIGATION)"
     description: ""
     organization: "Default"
-    project: "AWS AIOps Project"
+    project: "AWS AIOps AO Project"
     inventory: "AWS Inventory"
     playbook: "aws_aiops_ao_gen_cve_event_mitigation.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS AIOps Ansible Credential"
+      - "AWS AIOps AO Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
     extra_vars:
       eda_port: 10001
-  - name: "AWS AIOps: AO Generate CVE Event (REMEDIATION)"
+  - name: "AWS AIOps AO: AO Generate CVE Event (REMEDIATION)"
     description: ""
     organization: "Default"
-    project: "AWS AIOps Project"
+    project: "AWS AIOps AO Project"
     inventory: "AWS Inventory"
     playbook: "aws_aiops_ao_gen_cve_event_remediation.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS AIOps Ansible Credential"
+      - "AWS AIOps AO Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
     extra_vars:
       eda_port: 10001
 
   # MITIGATION & REMEDIATION (COMMON)
-  - name: "AWS AIOps: AO Check CVE Affected Systems"
+  - name: "AWS AIOps AO: Check CVE Affected Systems"
     description: ""
     organization: "Default"
-    project: "AWS AIOps Project"
+    project: "AWS AIOps AO Project"
     inventory: "AWS Inventory"
     playbook: "aws_aiops_ao_check_cve_affected_systems.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS AIOps Ansible Credential"
+      - "AWS AIOps AO Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
     survey:
@@ -616,17 +616,17 @@ controller_templates:
             required: false
     ask_variables_on_launch: true
     ask_labels_on_launch: true
-  - name: "AWS AIOps: AO Check CVE Remediations"
+  - name: "AWS AIOps AO: Check CVE Remediations"
     description: ""
     organization: "Default"
-    project: "AWS AIOps Project"
+    project: "AWS AIOps AO Project"
     inventory: "AWS Inventory"
     playbook: "aws_aiops_ao_check_cve_remediations.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS AIOps Ansible Credential"
+      - "AWS AIOps AO Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
     survey:
@@ -649,8 +649,8 @@ controller_templates:
 
 # EDA Projects
 eda_projects:
-  - name: "AWS AIOps Project"
-    description: "AWS AIOps Project"
+  - name: "AWS AIOps AO Project"
+    description: "AWS AIOps AO Project"
     organization: "Default"
     url: "{{ project_url }}"
     tls_validation: true
@@ -658,10 +658,10 @@ eda_projects:
 
 # EDA Rulebook Activations
 eda_rulebook_activations:
-  - name: "AWS AIOps: AO Lightspeed (Insights)"
-    description: "AWS AIOps: Lightspeed (Insights) - AO Forwarder"
+  - name: "AWS AIOps AO: Lightspeed (Insights)"
+    description: "AWS AIOps AO: Lightspeed (Insights) - Forwarder"
     organization: "Default"
-    project: "AWS AIOps Project"
+    project: "AWS AIOps AO Project"
     rulebook: lightspeed_rulebook_ao.yml
     decision_environment: "{{ de_name }}"
     eda_credentials: "Controller Credentials"
