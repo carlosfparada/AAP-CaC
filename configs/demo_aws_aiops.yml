@@ -197,8 +197,6 @@ controller_templates:
       - "AWS AIOps Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
-    extra_vars:
-      eda_port: 10000
   - name: "AWS AIOps: Generate CVE Event (REMEDIATION)"
     description: ""
     organization: "Default"
@@ -212,8 +210,6 @@ controller_templates:
       - "AWS AIOps Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
-    extra_vars:
-      eda_port: 10000
 
   # MITIGATION & REMEDIATION (COMMON)
   - name: "AWS AIOps: Check CVE Affected Systems"

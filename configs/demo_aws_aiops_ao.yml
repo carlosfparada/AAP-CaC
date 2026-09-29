@@ -197,8 +197,6 @@ controller_templates:
       - "AWS AIOps Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
-    extra_vars:
-      eda_port: 10000
   - name: "AWS AIOps: Generate CVE Event (REMEDIATION)"
     description: ""
     organization: "Default"
@@ -212,8 +210,6 @@ controller_templates:
       - "AWS AIOps Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
-    extra_vars:
-      eda_port: 10000
 
   # MITIGATION & REMEDIATION (COMMON)
   - name: "AWS AIOps: Check CVE Affected Systems"
@@ -558,11 +554,6 @@ controller_templates:
     ask_variables_on_launch: true
     ask_labels_on_launch: true
 
-
-  ###########################
-  # AUTOMATION ORCHESTRATOR #
-  ###########################
-
   # AO WORKFLOW EVENT GENERATION
   - name: "AWS AIOps: AO Generate CVE Event (MITIGATION)"
     description: ""
@@ -601,7 +592,7 @@ controller_templates:
     organization: "Default"
     project: "AWS AIOps Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_check_cve_affected_systems.yml"
+    playbook: "aws_aiops_ao_check_cve_affected_systems.yml"
     verbosity: 0
     job_type: "run"
     credentials:
@@ -630,7 +621,7 @@ controller_templates:
     organization: "Default"
     project: "AWS AIOps Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_check_cve_remediations.yml"
+    playbook: "aws_aiops_ao_check_cve_remediations.yml"
     verbosity: 0
     job_type: "run"
     credentials:
@@ -656,108 +647,6 @@ controller_templates:
     ask_labels_on_launch: true
 
 
-# Workflow Job Templates
-controller_workflows:
-  - name: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
-    description: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
-    organization: "Default"
-    state: "present"
-    simplified_workflow_nodes:
-      - identifier: "Check CVE Affected Systems"
-        workflow_job_template: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
-        unified_job_template: "AWS AIOps: Check CVE Affected Systems"
-        organization: "Default"
-        all_parents_must_converge: "False"
-        success_nodes:
-          - Check CVE Remediations
-      - identifier: "Check CVE Remediations"
-        workflow_job_template: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
-        unified_job_template: "AWS AIOps: Check CVE Remediations"
-        organization: "Default"
-        all_parents_must_converge: "False"
-        failure_nodes:
-          - Get CVE AI Mitigation
-        success_nodes:
-          - Get CVE Remediation
-      # MITIGATION          
-      - identifier: "Get CVE AI Mitigation"
-        workflow_job_template: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
-        unified_job_template: "AWS AIOps: Get CVE AI Mitigation"
-        organization: "Default"
-        all_parents_must_converge: "False"
-        success_nodes:
-          - Store Git Mitigation
-      - identifier: "Store Git Mitigation"
-        workflow_job_template: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
-        unified_job_template: "AWS AIOps: Store Git Mitigation"
-        organization: "Default"
-        all_parents_must_converge: "False"
-        success_nodes:
-          - Sync Project Mitigation
-      - identifier: "Sync Project Mitigation"
-        workflow_job_template: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
-        unified_job_template: "AWS AIOps Remediation Project"
-        organization: "Default"
-        all_parents_must_converge: "False"
-        success_nodes:
-          - Check Mitigation
-      - identifier: "Check Mitigation"
-        workflow_job_template: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
-        unified_job_template: "AWS AIOps: Check Mitigation"
-        organization: "Default"
-        all_parents_must_converge: "False"
-        success_nodes:
-          - Approval Mitigation
-      - identifier: "Approval Mitigation"
-        approval_node:
-          name: Mitigation Approval
-          description: Approve or not proposed Mitigation
-          timeout: 300 # 2 minutes    
-        success_nodes:
-          - Run Mitigation
-      - identifier: "Run Mitigation"
-        workflow_job_template: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
-        unified_job_template: "AWS AIOps: Run Mitigation"
-        organization: "Default"
-        all_parents_must_converge: "False"
-      # REMEDIATION
-      - identifier: "Get CVE Remediation"
-        workflow_job_template: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
-        unified_job_template: "AWS AIOps: Get CVE Remediation"
-        organization: "Default"
-        all_parents_must_converge: "False"
-        success_nodes:
-          - Store Git Remediation
-      - identifier: "Store Git Remediation"
-        workflow_job_template: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
-        unified_job_template: "AWS AIOps: Store Git Remediation"
-        organization: "Default"
-        all_parents_must_converge: "False"
-        success_nodes:
-          - Sync Project Remediation
-      - identifier: "Sync Project Remediation"
-        workflow_job_template: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
-        unified_job_template: "AWS AIOps Remediation Project"
-        organization: "Default"
-        all_parents_must_converge: "False"
-        success_nodes:
-          - Run Remediation
-      - identifier: "Run Remediation"
-        workflow_job_template: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
-        unified_job_template: "AWS AIOps: Run Remediation"
-        organization: "Default"
-        all_parents_must_converge: "False"          
-        success_nodes:
-          - Remove Mitigation
-      - identifier: "Remove Mitigation"
-        workflow_job_template: "AWS AIOps: MITIGATION & REMEDIATION Workflow"
-        unified_job_template: "AWS AIOps: Remove Mitigation"
-        organization: "Default"
-        all_parents_must_converge: "False"          
-    ask_variables_on_launch: true
-    ask_labels_on_launch: true
-
-
 # EDA Projects
 eda_projects:
   - name: "AWS AIOps Project"
@@ -769,19 +658,6 @@ eda_projects:
 
 # EDA Rulebook Activations
 eda_rulebook_activations:
-  - name: "AWS AIOps: Lightspeed (Insights)"
-    description: "AWS AIOps: Lightspeed (Insights)"
-    organization: "Default"
-    project: "AWS AIOps Project"
-    rulebook: lightspeed_rulebook.yml
-    decision_environment: "{{ de_name }}"
-    eda_credentials: "Controller Credentials"
-    restart_policy: always
-    force_restart: true
-    ##enabled: false
-    #state: disabled
-    state: present
-    log_level: info
   - name: "AWS AIOps: AO Lightspeed (Insights)"
     description: "AWS AIOps: Lightspeed (Insights) - AO Forwarder"
     organization: "Default"
