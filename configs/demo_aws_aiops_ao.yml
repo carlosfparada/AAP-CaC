@@ -272,53 +272,53 @@ controller_templates:
     ask_labels_on_launch: true
 
   # MITIGATION
-  # - name: "AWS AIOps AO: Get CVE AI Mitigation"
-  #   description: ""
-  #   organization: "Default"
-  #   project: "AWS AIOps AO Project"
-  #   inventory: "AWS Inventory"
-  #   playbook: "aws_aiops_ao_get_cve_ai_mitigation.yml"
-  #   verbosity: 0
-  #   job_type: "run"
-  #   credentials:
-  #     - "AWS Credential"
-  #     - "AWS AIOps AO Ansible Credential"
-  #   execution_environment: "{{ ee_name }}"
-  #   survey_enabled: true
-  #   survey:
-  #       name: Survey
-  #       description: Survey
-  #       spec:
-  #         - question_name: Lightspeed Client ID
-  #           default: "{{ lightspeed_client_id }}"
-  #           variable: lightspeed_client_id
-  #           type: "password"
-  #           required: false
-  #         - question_name: Lightspeed Client Secret
-  #           default: "{{ lightspeed_client_secret }}"
-  #           variable: lightspeed_client_secret
-  #           type: "password"
-  #           required: false
-  #         - question_name: AI Endpoint
-  #           default: "{{ ai_endpoint }}"
-  #           variable: ai_endpoint
-  #           type: "text"
-  #           required: false
-  #         - question_name: AI Model
-  #           default: "{{ ai_model }}"
-  #           variable: ai_model
-  #           type: "text"
-  #           required: false
-  #         - question_name: AI Max Tokens
-  #           default: "{{ ai_max_tokens }}"
-  #           variable: ai_max_tokens
-  #           type: "text"
-  #           required: false
-  #         - question_name: AI Token
-  #           default: "{{ ai_token }}"
-  #           variable: ai_token
-  #           type: "password"
-  #           required: false
+  - name: "AWS AIOps AO: Get CVE Data"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps AO Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_ao_get_cve_data.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps AO Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    # survey:
+    #     name: Survey
+    #     description: Survey
+    #     spec:
+    #       - question_name: Lightspeed Client ID
+    #         default: "{{ lightspeed_client_id }}"
+    #         variable: lightspeed_client_id
+    #         type: "password"
+    #         required: false
+    #       - question_name: Lightspeed Client Secret
+    #         default: "{{ lightspeed_client_secret }}"
+    #         variable: lightspeed_client_secret
+    #         type: "password"
+    #         required: false
+    #       - question_name: AI Endpoint
+    #         default: "{{ ai_endpoint }}"
+    #         variable: ai_endpoint
+    #         type: "text"
+    #         required: false
+    #       - question_name: AI Model
+    #         default: "{{ ai_model }}"
+    #         variable: ai_model
+    #         type: "text"
+    #         required: false
+    #       - question_name: AI Max Tokens
+    #         default: "{{ ai_max_tokens }}"
+    #         variable: ai_max_tokens
+    #         type: "text"
+    #         required: false
+    #       - question_name: AI Token
+    #         default: "{{ ai_token }}"
+    #         variable: ai_token
+    #         type: "password"
+    #         required: false
   - name: "AWS AIOps AO: Store Git Mitigation"
     description: ""
     organization: "Default"
