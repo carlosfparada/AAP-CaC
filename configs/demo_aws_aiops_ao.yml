@@ -26,8 +26,8 @@ controller_projects:
     organization: "Default"
     scm_type: "git"
     scm_url: "{{ github_url }}"
-    scm_update_on_launch: "False"
-    #scm_update_on_launch: "True"
+    #scm_update_on_launch: "False"
+    scm_update_on_launch: "True"
     execution_environment: "{{ ee_name }}"
     wait: true            
 
