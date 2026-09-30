@@ -271,7 +271,7 @@ controller_templates:
     ask_variables_on_launch: true
     ask_labels_on_launch: true
 
-  # # MITIGATION
+  # MITIGATION
   # - name: "AWS AIOps AO: Get CVE AI Mitigation"
   #   description: ""
   #   organization: "Default"
@@ -319,74 +319,80 @@ controller_templates:
   #           variable: ai_token
   #           type: "password"
   #           required: false
-  # - name: "AWS AIOps AO: Store Git Mitigation"
-  #   description: ""
-  #   organization: "Default"
-  #   project: "AWS AIOps AO Project"
-  #   inventory: "AWS Inventory"
-  #   playbook: "aws_aiops_ao_store_git_mitigation.yml"
-  #   verbosity: 0
-  #   job_type: "run"
-  #   credentials:
-  #     - "AWS Credential"
-  #     - "AWS AIOps AO Ansible Credential"
-  #   execution_environment: "{{ ee_name }}"
-  #   survey_enabled: true
-  #   survey:
-  #       name: Survey
-  #       description: Survey
-  #       spec:
-  #         - question_name: GitHub User
-  #           default: "{{ github_user }}"
-  #           variable: github_user
-  #           "type": "text"
-  #           required: false
-  #         - question_name: GitHub Email
-  #           default: "{{ github_email }}"
-  #           variable: github_email
-  #           "type": "text"
-  #           required: false
-  #         - question_name: GitHub Token
-  #           default: "{{ github_token }}"
-  #           variable: github_token
-  #           "type": "password"
-  #           required: false
-  #         - question_name: GitHub URL
-  #           default: "{{ github_url }}"
-  #           variable: github_url
-  #           "type": "text"
-  #           required: false
-  #         - question_name: GitHub Branch
-  #           default: "{{ github_branch }}"
-  #           variable: github_branch
-  #           "type": "text"
-  #           required: false
-  # - name: "AWS AIOps AO: Check Mitigation"
-  #   description: ""
-  #   organization: "Default"
-  #   project: "AWS AIOps AO Remediation Project"
-  #   inventory: "AWS Inventory"
-  #   playbook: "playbook_mitigation.yml"
-  #   verbosity: 0
-  #   job_type: "check"
-  #   credentials:
-  #     - "AWS Credential"
-  #     - "AWS AIOps Ansible Credential"
-  #   execution_environment: "{{ ee_name }}"
-  #   survey_enabled: false
-  # - name: "AWS AIOps AO: Run Mitigation"
-  #   description: ""
-  #   organization: "Default"
-  #   project: "AWS AIOps AO Remediation Project"
-  #   inventory: "AWS Inventory"
-  #   playbook: "playbook_mitigation.yml"
-  #   verbosity: 0
-  #   job_type: "run"
-  #   credentials:
-  #     - "AWS Credential"
-  #     - "AWS AIOps AO Ansible Credential"
-  #   execution_environment: "{{ ee_name }}"
-  #   survey_enabled: false
+  - name: "AWS AIOps AO: Store Git Mitigation"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps AO Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_ao_store_git_mitigation.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps AO Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: GitHub User
+            default: "{{ github_user }}"
+            variable: github_user
+            "type": "text"
+            required: false
+          - question_name: GitHub Email
+            default: "{{ github_email }}"
+            variable: github_email
+            "type": "text"
+            required: false
+          - question_name: GitHub Token
+            default: "{{ github_token }}"
+            variable: github_token
+            "type": "password"
+            required: false
+          - question_name: GitHub URL
+            default: "{{ github_url }}"
+            variable: github_url
+            "type": "text"
+            required: false
+          - question_name: GitHub Branch
+            default: "{{ github_branch }}"
+            variable: github_branch
+            "type": "text"
+            required: false
+    ask_variables_on_launch: true
+    ask_labels_on_launch: true
+  - name: "AWS AIOps AO: Check Mitigation"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps AO Remediation Project"
+    inventory: "AWS Inventory"
+    playbook: "playbook_mitigation.yml"
+    verbosity: 0
+    job_type: "check"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+    ask_variables_on_launch: true
+    ask_labels_on_launch: true
+  - name: "AWS AIOps AO: Run Mitigation"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps AO Remediation Project"
+    inventory: "AWS Inventory"
+    playbook: "playbook_mitigation.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps AO Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+    ask_variables_on_launch: true
+    ask_labels_on_launch: true
 
   # REMEDIATION
   - name: "AWS AIOps AO: Get CVE Remediation"
