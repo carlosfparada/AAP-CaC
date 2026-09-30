@@ -373,7 +373,7 @@ controller_templates:
     job_type: "check"
     credentials:
       - "AWS Credential"
-      - "AWS AIOps Ansible Credential"
+      - "AWS AIOps AO Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
     ask_variables_on_launch: true
