@@ -495,6 +495,11 @@ controller_templates:
             variable: aap_password
             type: "password"
             required: false
+          - question_name: Project URL
+            default: "{{ project_url }}"
+            variable: project_url
+            type: "text"
+            required: false
     ask_variables_on_launch: true
     ask_labels_on_launch: true
 
