@@ -471,7 +471,7 @@ controller_templates:
   - name: "AWS AIOps AO: Sync Project"
     description: ""
     organization: "Default"
-    project: "AWS AIOps AO Remediation Project"
+    project: "AWS AIOps AO Project"
     inventory: "AWS Inventory"
     playbook: "aws_aiops_ao_sync_project.yml"
     verbosity: 0
