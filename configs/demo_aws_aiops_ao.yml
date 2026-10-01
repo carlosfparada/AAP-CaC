@@ -17,8 +17,8 @@ controller_projects:
     organization: "Default"
     scm_type: "git"
     scm_url: "{{ project_url }}"
-    #scm_update_on_launch: "False"
-    scm_update_on_launch: "True"
+    scm_update_on_launch: "False"
+    #scm_update_on_launch: "True"
     execution_environment: "{{ ee_name }}"
     wait: true
   - name: "AWS AIOps AO Remediation Project"
@@ -26,8 +26,8 @@ controller_projects:
     organization: "Default"
     scm_type: "git"
     scm_url: "{{ github_url }}"
-    #scm_update_on_launch: "False"
-    scm_update_on_launch: "True"
+    scm_update_on_launch: "False"
+    #scm_update_on_launch: "True"
     execution_environment: "{{ ee_name }}"
     wait: true            
 
@@ -468,36 +468,36 @@ controller_templates:
     ask_labels_on_launch: true
 
 
-  # # SYSTEM EVENTS
-  # - name: "AWS AIOps AO: Check CVE Systems"
-  #   description: ""
-  #   organization: "Default"
-  #   project: "AWS AIOps AO Project"
-  #   inventory: "AWS Inventory"
-  #   playbook: "aws_aiops_ao_check_cve_systems.yml"
-  #   verbosity: 0
-  #   job_type: "run"
-  #   credentials:
-  #     - "AWS Credential"
-  #     - "AWS AIOps AO Ansible Credential"
-  #   execution_environment: "{{ ee_name }}"
-  #   survey_enabled: true
-  #   survey:
-  #       name: Survey
-  #       description: Survey
-  #       spec:
-  #         - question_name: AAP FQDN
-  #           default: "{{ aap_fqdn }}"
-  #           variable: aap_fqdn
-  #           type: "text"
-  #           required: false
-  #         - question_name: AAP Password
-  #           default: "{{ admin_password }}"
-  #           variable: aap_password
-  #           type: "password"
-  #           required: false
-  #   ask_variables_on_launch: true
-  #   ask_labels_on_launch: true
+  # SYNC PROJECT
+  - name: "AWS AIOps AO: Sync Project"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps AO Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_ao_sync_project.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps AO Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: AAP FQDN
+            default: "{{ aap_fqdn }}"
+            variable: aap_fqdn
+            type: "text"
+            required: false
+          - question_name: AAP Password
+            default: "{{ admin_password }}"
+            variable: aap_password
+            type: "password"
+            required: false
+    ask_variables_on_launch: true
+    ask_labels_on_launch: true
 
   # AO WORKFLOW FORWARDER
   - name: "AWS AIOps AO: Lightspeed (Insights) Forwarder"
