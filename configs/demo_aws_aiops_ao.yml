@@ -467,7 +467,6 @@ controller_templates:
     ask_variables_on_launch: true
     ask_labels_on_launch: true
 
-
   # SYNC PROJECT
   - name: "AWS AIOps AO: Sync Project"
     description: ""
