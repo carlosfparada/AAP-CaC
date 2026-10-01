@@ -496,8 +496,8 @@ controller_templates:
             type: "password"
             required: false
           - question_name: Project URL
-            default: "{{ project_url }}"
-            variable: project_url
+            default: "{{ github_url }}"
+            variable: github_url
             type: "text"
             required: false
     ask_variables_on_launch: true
