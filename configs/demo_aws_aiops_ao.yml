@@ -504,7 +504,7 @@ controller_templates:
     ask_labels_on_launch: true
 
   # SET LOOP VARS
-  - name: "AWS AIOps AO: Sync Project"
+  - name: "AWS AIOps AO: Set Loop Vars"
     description: ""
     organization: "Default"
     project: "AWS AIOps AO Project"
