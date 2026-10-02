@@ -503,13 +503,13 @@ controller_templates:
     ask_variables_on_launch: true
     ask_labels_on_launch: true
 
-  # AO WORKFLOW FORWARDER
-  - name: "AWS AIOps AO: Lightspeed (Insights) Forwarder"
+  # AO WORKFLOW FORWARDERS
+  - name: "AWS AIOps AO: Lightspeed (Insights) Forwarder - New CVE"
     description: ""
     organization: "Default"
     project: "AWS AIOps AO Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_ao_forwarder.yml"
+    playbook: "aws_aiops_ao_forwarder_new_cve.yml"
     verbosity: 0
     job_type: "run"
     credentials:
@@ -527,7 +527,46 @@ controller_templates:
             type: "text"
             required: false
           - question_name: AO Workflow Path
-            default: "{{ ao_webhook_path }}"
+            default: "{{ ao_webhook_path_new_cve }}"
+            variable: ao_webhook_path
+            type: "text"
+            required: false
+          - question_name: AO Workflow Client ID
+            default: "{{ ao_webhook_client_id }}"
+            variable: ao_webhook_client_id
+            type: "password"
+            required: false
+          - question_name: AO Workflow Client Secret
+            default: "{{ ao_webhook_client_secret }}"
+            variable: ao_webhook_client_secret
+            type: "password"
+            required: false
+    ask_variables_on_launch: true
+    ask_labels_on_launch: true
+  - name: "AWS AIOps AO: Lightspeed (Insights) Forwarder - New System"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps AO Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_ao_forwarder_new_system.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps AO Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: AO Workflow URL
+            default: "{{ ao_webhook_url }}"
+            variable: ao_webhook_url
+            type: "text"
+            required: false
+          - question_name: AO Workflow Path
+            default: "{{ ao_webhook_path_new_system }}"
             variable: ao_webhook_path
             type: "text"
             required: false
