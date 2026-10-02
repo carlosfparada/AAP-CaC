@@ -503,6 +503,23 @@ controller_templates:
     ask_variables_on_launch: true
     ask_labels_on_launch: true
 
+  # SET LOOP VARS
+  - name: "AWS AIOps AO: Sync Project"
+    description: ""
+    organization: "Default"
+    project: "AWS AIOps AO Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_ao_set_loop_vars.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps AO Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    ask_variables_on_launch: true
+    ask_labels_on_launch: true
+
   # AO WORKFLOW FORWARDERS
   - name: "AWS AIOps AO: Lightspeed (Insights) Forwarder - New CVE"
     description: ""
