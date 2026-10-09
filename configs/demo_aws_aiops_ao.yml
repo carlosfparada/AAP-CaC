@@ -210,19 +210,19 @@ controller_templates:
       - "AWS AIOps AO Ansible Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
-  - name: "AWS AIOps AO: Generate CVE Event (NEW SYSTEM)"
-    description: ""
-    organization: "Default"
-    project: "AWS AIOps AO Project"
-    inventory: "AWS Inventory"
-    playbook: "aws_aiops_ao_gen_cve_event_new_system.yml"
-    verbosity: 0
-    job_type: "run"
-    credentials:
-      - "AWS Credential"
-      - "AWS AIOps AO Ansible Credential"
-    execution_environment: "{{ ee_name }}"
-    survey_enabled: true
+  # - name: "AWS AIOps AO: Generate CVE Event (NEW SYSTEM)"
+  #   description: ""
+  #   organization: "Default"
+  #   project: "AWS AIOps AO Project"
+  #   inventory: "AWS Inventory"
+  #   playbook: "aws_aiops_ao_gen_cve_event_new_system.yml"
+  #   verbosity: 0
+  #   job_type: "run"
+  #   credentials:
+  #     - "AWS Credential"
+  #     - "AWS AIOps AO Ansible Credential"
+  #   execution_environment: "{{ ee_name }}"
+  #   survey_enabled: true
 
   # MITIGATION & REMEDIATION (COMMON)
   - name: "AWS AIOps AO: Check CVE Affected Systems"
