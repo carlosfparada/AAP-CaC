@@ -1,0 +1,142 @@
+---
+
+# Credentials
+controller_credentials:
+  - name: "AWS Splunk Credential"
+    description: "AWS Splunk Credential"
+    credential_type: "Machine"
+    organization: "Default"
+    inputs:
+      password: "{{ splunk_password }}"
+      username: "{{ splunk_user }}"
+  - name: "AWS Splunk Vault"
+    description: "AWS Splunk Vault"
+    credential_type: "Vault"
+    organization: "Default"
+    inputs:
+      vault_password: "{{ splunk_vault_secret }}"
+
+# Projects
+controller_projects:
+  - name: "AWS Splunk Project"
+    description: "AWS Splunk Project"
+    organization: "Default"
+    scm_type: "git"
+    scm_url: "{{ project_url }}"
+    scm_update_on_launch: "True"
+    execution_environment: "{{ ee_name }}"
+    wait: true
+
+# Job Templates
+controller_templates:
+  - name: "AWS Splunk: 01. AWS Deploy"
+    description: ""
+    organization: "Default"
+    project: "AWS Splunk Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_deploy.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Splunk Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS Splunk: 02. Setup"
+    description: ""
+    organization: "Default"
+    project: "AWS Splunk Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_setup.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Splunk Credential"
+      - "AWS Splunk Vault"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS Splunk: 03. Ping"
+    description: ""
+    organization: "Default"
+    project: "AWS Splunk Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_ping.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Splunk Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS Splunk: 04. Facts"
+    description: ""
+    organization: "Default"
+    project: "AWS Splunk Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_facts.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Splunk Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+
+# Workflow Job Templates
+controller_workflows:
+  - name: "AWS Splunk: Workflow"
+    description: "AWS Splunk: Workflow"
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "AWS Deploy"
+        workflow_job_template: "AWS Splunk: Workflow"
+        unified_job_template: "AWS Splunk: 01. AWS Deploy"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Splunk Setup
+      - identifier: "Splunk Setup"
+        workflow_job_template: "AWS Splunk: Workflow"
+        unified_job_template: "AWS Splunk: 02. Setup"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Splunk Ping
+      - identifier: "Splunk Ping"
+        workflow_job_template: "AWS Splunk: Workflow"
+        unified_job_template: "AWS Splunk: 03. Ping"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Splunk Facts
+      - identifier: "Splunk Facts"
+        workflow_job_template: "AWS Splunk: Workflow"
+        unified_job_template: "AWS Splunk: 04. Facts"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Splunk Show
+
+# EDA Projects
+eda_projects:
+  - name: "AWS EDA Splunk Project"
+    description: "AWS EDA Splunk Project"
+    organization: "Default"
+    url: "{{ project_url }}"
+    tls_validation: true
+    sync: true
+
+# EDA Rulebook Activations
+eda_rulebook_activations:
+  - name: "AWS EDA Splunk: Cisco"
+    description: "AWS EDA Splunk: Cisco"
+    organization: "Default"
+    project: "AWS EDA Splunk Project"
+    rulebook: "splunk_cisco_rulebook.yml"
+    decision_environment: "{{ de_name }}"
+    eda_credentials: "Controller Credentials"
+    restart_policy: always
+    #enabled: false
+    log_level: info
