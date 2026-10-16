@@ -47,7 +47,7 @@ controller_templates:
     organization: "Default"
     project: "AWS Splunk Project"
     inventory: "AWS Inventory"
-    playbook: "aws_setup.yml"
+    playbook: "aws_splunk_setup.yml"
     verbosity: 0
     job_type: "run"
     credentials:
