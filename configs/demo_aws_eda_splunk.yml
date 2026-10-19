@@ -99,4 +99,3 @@ eda_rulebook_activations:
     restart_policy: always
     #enabled: false
     log_level: info
-    sync: true
