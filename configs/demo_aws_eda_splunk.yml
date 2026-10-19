@@ -57,6 +57,31 @@ controller_templates:
       - "AWS Splunk Vault"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
+  - name: "AWS Splunk: 03. Unsetup"
+    description: ""
+    organization: "Default"
+    project: "AWS Splunk Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_splunk_setup.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Splunk Credential"
+      - "AWS Splunk Vault"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: false
+  - name: "AWS Splunk: 04. AWS undeploy"
+    description: ""
+    organization: "Default"
+    project: "AWS Splunk Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_undeploy.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Splunk Credential"
 
 # Workflow Job Templates
 controller_workflows:
