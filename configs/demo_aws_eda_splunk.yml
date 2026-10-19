@@ -62,7 +62,7 @@ controller_templates:
     organization: "Default"
     project: "AWS Splunk Project"
     inventory: "AWS Inventory"
-    playbook: "aws_splunk_setup.yml"
+    playbook: "aws_splunk_unsetup.yml"
     verbosity: 0
     job_type: "run"
     credentials:
@@ -106,7 +106,7 @@ controller_workflows:
           - Splunk Unsetup
       - identifier: "AWS Unsetup"
         workflow_job_template: "AWS Splunk: Workflow"
-        unified_job_template: "AWS Splunk: 03. AWS Unsetup"
+        unified_job_template: "AWS Splunk: 03. Unsetup"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
