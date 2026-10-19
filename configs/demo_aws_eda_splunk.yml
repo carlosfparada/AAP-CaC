@@ -77,8 +77,6 @@ controller_workflows:
         unified_job_template: "AWS Splunk: 02. Setup"
         organization: "Default"
         all_parents_must_converge: "False"
-        always_nodes:
-          - Splunk Ping
 
 # EDA Projects
 eda_projects:
