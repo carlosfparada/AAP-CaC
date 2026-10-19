@@ -104,14 +104,14 @@ controller_workflows:
         all_parents_must_converge: "False"
         always_nodes:
           - Splunk Unsetup
-      - identifier: "AWS Unsetup"
+      - identifier: "Splunk Unsetup"
         workflow_job_template: "AWS Splunk: Workflow"
         unified_job_template: "AWS Splunk: 03. Unsetup"
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
-          - Splunk Undeploy
-      - identifier: "Splunk Undeploy"
+          - AWS Undeploy
+      - identifier: "AWS Undeploy"
         workflow_job_template: "AWS Splunk: Workflow"
         unified_job_template: "AWS Splunk: 04. AWS Undeploy"
         organization: "Default"
