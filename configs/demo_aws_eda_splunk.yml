@@ -71,7 +71,7 @@ controller_templates:
       - "AWS Splunk Vault"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS Splunk: 04. AWS undeploy"
+  - name: "AWS Splunk: 04. AWS Undeploy"
     description: ""
     organization: "Default"
     project: "AWS Splunk Project"
@@ -100,6 +100,20 @@ controller_workflows:
       - identifier: "Splunk Setup"
         workflow_job_template: "AWS Splunk: Workflow"
         unified_job_template: "AWS Splunk: 02. Setup"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Splunk Unsetup
+      - identifier: "AWS Unsetup"
+        workflow_job_template: "AWS Splunk: Workflow"
+        unified_job_template: "AWS Splunk: 03. AWS Unsetup"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - Splunk Undeploy
+      - identifier: "Splunk Undeploy"
+        workflow_job_template: "AWS Splunk: Workflow"
+        unified_job_template: "AWS Splunk: 04. Undeploy"
         organization: "Default"
         all_parents_must_converge: "False"
 
