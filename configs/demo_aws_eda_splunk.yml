@@ -113,7 +113,7 @@ controller_workflows:
           - Splunk Undeploy
       - identifier: "Splunk Undeploy"
         workflow_job_template: "AWS Splunk: Workflow"
-        unified_job_template: "AWS Splunk: 04. Undeploy"
+        unified_job_template: "AWS Splunk: 04. AWS Undeploy"
         organization: "Default"
         all_parents_must_converge: "False"
 
