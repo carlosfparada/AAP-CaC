@@ -28,6 +28,7 @@ controller_projects:
     scm_url: "https://github.com/naarh/RHTour.git"
     scm_update_on_launch: "True"
     execution_environment: "{{ ee_name }}"
+    update_project: true
     wait: true
 
 # Job Templates

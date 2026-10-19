@@ -20,6 +20,7 @@ controller_projects:
     scm_update_on_launch: "False"
     #scm_update_on_launch: "True"
     execution_environment: "{{ ee_name }}"
+    update_project: true
     wait: true
   - name: "AWS AIOps AO Remediation Project"
     description: "AWS AIOps AO Remediation Project"
@@ -29,6 +30,7 @@ controller_projects:
     scm_update_on_launch: "False"
     #scm_update_on_launch: "True"
     execution_environment: "{{ ee_name }}"
+    update_project: true
     wait: true            
 
 # Job Templates

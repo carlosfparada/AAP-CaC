@@ -28,6 +28,7 @@ controller_projects:
     scm_url: "{{ project_url }}"
     scm_update_on_launch: "True"
     execution_environment: "{{ ee_name }}"
+    update_project: true
     wait: true
 
 # Inventories
