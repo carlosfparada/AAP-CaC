@@ -56,32 +56,6 @@ controller_templates:
       - "AWS Splunk Vault"
     execution_environment: "{{ ee_name }}"
     survey_enabled: false
-  - name: "AWS Splunk: 03. Ping"
-    description: ""
-    organization: "Default"
-    project: "AWS Splunk Project"
-    inventory: "AWS Inventory"
-    playbook: "aws_ping.yml"
-    verbosity: 0
-    job_type: "run"
-    credentials:
-      - "AWS Credential"
-      - "AWS Splunk Credential"
-    execution_environment: "{{ ee_name }}"
-    survey_enabled: false
-  - name: "AWS Splunk: 04. Facts"
-    description: ""
-    organization: "Default"
-    project: "AWS Splunk Project"
-    inventory: "AWS Inventory"
-    playbook: "aws_facts.yml"
-    verbosity: 0
-    job_type: "run"
-    credentials:
-      - "AWS Credential"
-      - "AWS Splunk Credential"
-    execution_environment: "{{ ee_name }}"
-    survey_enabled: false
 
 # Workflow Job Templates
 controller_workflows:
@@ -104,20 +78,6 @@ controller_workflows:
         all_parents_must_converge: "False"
         always_nodes:
           - Splunk Ping
-      - identifier: "Splunk Ping"
-        workflow_job_template: "AWS Splunk: Workflow"
-        unified_job_template: "AWS Splunk: 03. Ping"
-        organization: "Default"
-        all_parents_must_converge: "False"
-        always_nodes:
-          - Splunk Facts
-      - identifier: "Splunk Facts"
-        workflow_job_template: "AWS Splunk: Workflow"
-        unified_job_template: "AWS Splunk: 04. Facts"
-        organization: "Default"
-        all_parents_must_converge: "False"
-        always_nodes:
-          - Splunk Show
 
 # EDA Projects
 eda_projects:
