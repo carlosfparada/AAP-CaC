@@ -76,6 +76,17 @@ controller_templates:
             variable: rh_subs_pool_id
             type: "password"
             required: true
+          - question_name: AAP FQDN
+            default: "{{ aap_fqdn }}"
+            variable: aap_fqdn
+            type: "text"
+            required: false
+          - question_name: AAP EDA Port
+            default: "{{ aap_eda_port }}"
+            variable: aap_eda_port
+            type: "text"
+            required: false
+
   - name: "AWS Splunk: 03. Unsetup"
     description: ""
     organization: "Default"
