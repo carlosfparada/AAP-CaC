@@ -120,6 +120,17 @@ controller_templates:
     credentials:
       - "AWS Credential"
       - "AWS Splunk Credential"
+  - name: "AWS Splunk: Restart Interface"
+    description: ""
+    organization: "Default"
+    project: "AWS Splunk Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_splunk_restart_int.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Splunk Credential"
 
 # Workflow Job Templates
 controller_workflows:
