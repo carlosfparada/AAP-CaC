@@ -152,7 +152,7 @@ controller_templates:
       - "AWS Credential"
       - "AWS Splunk Credential"
   # AO WORKFLOW FORWARDERS
-  - name: "AWS EDA Splunk: Forwarder"
+  - name: "AWS EDA Splunk: AO Forwarder"
     description: ""
     organization: "Default"
     project: "AWS Splunk Project"
