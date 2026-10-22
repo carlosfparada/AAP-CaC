@@ -157,7 +157,7 @@ controller_templates:
     organization: "Default"
     project: "AWS Splunk Project"
     inventory: "AWS Inventory"
-    playbook: "aws_eda_splunk_forwarder.yml"
+    playbook: "aws_splunk_ao_forwarder.yml"
     verbosity: 0
     job_type: "run"
     credentials:
