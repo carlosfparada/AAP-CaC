@@ -96,7 +96,6 @@ controller_templates:
             variable: match_text
             "type": "text"
             required: false
-
   - name: "AWS Splunk: 03. Unsetup"
     description: ""
     organization: "Default"
@@ -152,6 +151,46 @@ controller_templates:
     credentials:
       - "AWS Credential"
       - "AWS Splunk Credential"
+  # AO WORKFLOW FORWARDERS
+  - name: "AWS EDA Splunk: Forwarder"
+    description: ""
+    organization: "Default"
+    project: "AWS Splunk Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_eda_splunk_forwarder.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Splunk Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: AO Workflow URL
+            default: "{{ ao_webhook_url }}"
+            variable: ao_webhook_url
+            type: "text"
+            required: false
+          - question_name: AO Workflow Path
+            default: "{{ ao_webhook_path }}"
+            variable: ao_webhook_path
+            type: "text"
+            required: false
+          - question_name: AO Workflow Client ID
+            default: "{{ ao_webhook_client_id }}"
+            variable: ao_webhook_client_id
+            type: "password"
+            required: false
+          - question_name: AO Workflow Client Secret
+            default: "{{ ao_webhook_client_secret }}"
+            variable: ao_webhook_client_secret
+            type: "password"
+            required: false
+    ask_variables_on_launch: true
+    ask_labels_on_launch: true
 
 # Workflow Job Templates
 controller_workflows:
