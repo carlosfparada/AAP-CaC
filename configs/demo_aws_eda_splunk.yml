@@ -86,6 +86,11 @@ controller_templates:
             variable: aap_eda_port
             type: "text"
             required: false
+          - question_name: Splunk Download URL
+            default: "{{ splunk_download_url }}"
+            variable: splunk_download_url
+            "type": "text"
+            required: false
           - question_name: Splunk Alert Name
             default: "{{ splunk_alert_name }}"
             variable: splunk_alert_name
