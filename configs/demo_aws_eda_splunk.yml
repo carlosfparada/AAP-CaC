@@ -87,13 +87,13 @@ controller_templates:
             type: "text"
             required: false
           - question_name: Splunk Alert Name
-            default: "{{ alert_name }}"
-            variable: alert_name
+            default: "{{ splunk_alert_name }}"
+            variable: splunk_alert_name
             "type": "text"
             required: false
           - question_name: Splunk Match Text
-            default: "{{ match_text }}"
-            variable: match_text
+            default: "{{ splunk_match_text }}"
+            variable: splunk_match_text
             "type": "text"
             required: false
   - name: "AWS Splunk: 03. Unsetup"
