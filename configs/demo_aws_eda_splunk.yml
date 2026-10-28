@@ -111,40 +111,7 @@ controller_templates:
             variable: splunk_match_text
             "type": "text"
             required: false
-  - name: "AWS Splunk: 03. Unsetup"
-    description: ""
-    organization: "Default"
-    project: "AWS Splunk Project"
-    inventory: "AWS Inventory"
-    playbook: "aws_splunk_unsetup.yml"
-    verbosity: 0
-    job_type: "run"
-    credentials:
-      - "AWS Credential"
-      - "AWS Splunk Credential"
-      - "AWS Splunk Vault"
-    execution_environment: "{{ ee_name }}"
-    survey_enabled: true
-    survey:
-        name: Survey
-        description: Survey
-        spec:
-          - question_name: Subscription User
-            default: "{{ subscription_user }}"
-            variable: subscription_user
-            type: "text"
-            required: true
-          - question_name: Subscription Password
-            default: "{{ subscription_pass }}"
-            variable: subscription_pass
-            type: "password"
-            required: true
-          - question_name: Subscription Pool Id
-            default: "{{ rh_subs_pool_id }}"
-            variable: rh_subs_pool_id
-            type: "password"
-            required: true
-  - name: "AWS Splunk: 04. AWS Undeploy"
+  - name: "AWS Splunk: 03. AWS Undeploy"
     description: ""
     organization: "Default"
     project: "AWS Splunk Project"
@@ -247,17 +214,10 @@ controller_workflows:
         organization: "Default"
         all_parents_must_converge: "False"
         always_nodes:
-          - Splunk Unsetup
-      - identifier: "Splunk Unsetup"
-        workflow_job_template: "AWS Splunk: Workflow"
-        unified_job_template: "AWS Splunk: 03. Unsetup"
-        organization: "Default"
-        all_parents_must_converge: "False"
-        always_nodes:
           - AWS Undeploy
       - identifier: "AWS Undeploy"
         workflow_job_template: "AWS Splunk: Workflow"
-        unified_job_template: "AWS Splunk: 04. AWS Undeploy"
+        unified_job_template: "AWS Splunk: 03. AWS Undeploy"
         organization: "Default"
         all_parents_must_converge: "False"
 
