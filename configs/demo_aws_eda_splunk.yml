@@ -155,17 +155,6 @@ controller_templates:
     credentials:
       - "AWS Credential"
       - "AWS Splunk Credential"
-  - name: "AWS Splunk: Restart Interface"
-    description: ""
-    organization: "Default"
-    project: "AWS Splunk Project"
-    inventory: "AWS Inventory"
-    playbook: "aws_splunk_restart_int.yml"
-    verbosity: 0
-    job_type: "run"
-    credentials:
-      - "AWS Credential"
-      - "AWS Splunk Credential"
   # AO WORKFLOW FORWARDERS
   - name: "AWS Splunk: AO Forwarder"
     description: ""
@@ -206,6 +195,37 @@ controller_templates:
             required: false
     ask_variables_on_launch: true
     ask_labels_on_launch: true
+  # ACTIONS
+  - name: "AWS Splunk: Restart Interface"
+    description: ""
+    organization: "Default"
+    project: "AWS Splunk Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_splunk_restart_int.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Splunk Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: Host Name
+            default: ""
+            variable: host_name
+            type: "text"
+            required: false
+          - question_name: Interface Name
+            default: ""
+            variable: interface_name
+            type: "text"
+            required: false
+    ask_variables_on_launch: true
+    ask_labels_on_launch: true
+
 
 # Workflow Job Templates
 controller_workflows:
