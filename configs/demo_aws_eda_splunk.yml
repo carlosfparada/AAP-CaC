@@ -196,12 +196,12 @@ controller_templates:
     ask_variables_on_launch: true
     ask_labels_on_launch: true
   # ACTIONS
-  - name: "AWS Splunk: Restart Interface"
+  - name: "AWS Splunk: Enable Cisco Interface"
     description: ""
     organization: "Default"
     project: "AWS Splunk Project"
     inventory: "AWS Inventory"
-    playbook: "aws_splunk_restart_int.yml"
+    playbook: "aws_splunk_enable_cisco_int.yml"
     verbosity: 0
     job_type: "run"
     credentials:
