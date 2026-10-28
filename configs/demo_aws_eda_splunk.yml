@@ -18,8 +18,8 @@ controller_credentials:
 
 # Projects
 controller_projects:
-  - name: "AWS Splunk Project"
-    description: "AWS Splunk Project"
+  - name: "AWS Splunk AO Project"
+    description: "AWS Splunk AO Project"
     organization: "Default"
     scm_type: "git"
     scm_url: "{{ project_url }}"
@@ -43,7 +43,7 @@ controller_templates:
   - name: "AWS Splunk: 01. AWS Deploy"
     description: ""
     organization: "Default"
-    project: "AWS Splunk Project"
+    project: "AWS Splunk AO Project"
     inventory: "AWS Inventory"
     playbook: "aws_deploy.yml"
     verbosity: 0
@@ -56,7 +56,7 @@ controller_templates:
   - name: "AWS Splunk: 02. Setup"
     description: ""
     organization: "Default"
-    project: "AWS Splunk Project"
+    project: "AWS Splunk AO Project"
     inventory: "AWS Inventory"
     playbook: "aws_splunk_setup.yml"
     verbosity: 0
@@ -114,7 +114,7 @@ controller_templates:
   - name: "AWS Splunk: 03. AWS Undeploy"
     description: ""
     organization: "Default"
-    project: "AWS Splunk Project"
+    project: "AWS Splunk AO Project"
     inventory: "AWS Inventory"
     playbook: "aws_undeploy.yml"
     verbosity: 0
@@ -126,7 +126,7 @@ controller_templates:
   - name: "AWS Splunk: AO Forwarder"
     description: ""
     organization: "Default"
-    project: "AWS Splunk Project"
+    project: "AWS Splunk AO Project"
     inventory: "AWS Inventory"
     playbook: "aws_splunk_ao_forwarder.yml"
     verbosity: 0
@@ -166,7 +166,7 @@ controller_templates:
   - name: "AWS Splunk: Enable Cisco Interface"
     description: ""
     organization: "Default"
-    project: "AWS Splunk Project"
+    project: "AWS Splunk AO Project"
     inventory: "AWS Inventory"
     playbook: "aws_splunk_enable_cisco_int.yml"
     verbosity: 0
@@ -195,7 +195,7 @@ controller_templates:
   - name: "AWS Splunk: Notify Slack"
     description: ""
     organization: "Default"
-    project: "AWS Splunk Project"
+    project: "AWS Splunk AO Project"
     inventory: "AWS Inventory"
     playbook: "aws_splunk_notify_slack.yml"
     verbosity: 0
