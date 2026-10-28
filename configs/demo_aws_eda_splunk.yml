@@ -192,6 +192,30 @@ controller_templates:
             required: false
     ask_variables_on_launch: true
     ask_labels_on_launch: true
+  - name: "AWS Splunk: Notify Slack"
+    description: ""
+    organization: "Default"
+    project: "AWS Splunk Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_splunk_notify_slack.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS Splunk Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: Slack Token
+            default: "{{ slack_token }}"
+            variable: slack_token
+            type: "password"
+            required: false
+    ask_variables_on_launch: true
+    ask_labels_on_launch: true
 
 
 # Workflow Job Templates
