@@ -192,7 +192,7 @@ controller_templates:
             required: false
     ask_variables_on_launch: true
     ask_labels_on_launch: true
-  - name: "AWS Splunk: Notify Slack"
+  - name: "AWS Splunk: Not S"
     description: ""
     organization: "Default"
     project: "AWS Splunk AO Project"
