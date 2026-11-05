@@ -222,33 +222,69 @@ controller_templates:
     ask_variables_on_launch: true
     ask_labels_on_launch: true
 
-
-# Workflow Job Templates
-controller_workflows:
-  - name: "AWS Splunk: Workflow"
-    description: "AWS Splunk: Workflow"
+# SYNC PROJECT
+  - name: "AWS AIOps AO: Sync Project"
+    description: ""
     organization: "Default"
-    state: "present"
-    simplified_workflow_nodes:
-      - identifier: "AWS Deploy"
-        workflow_job_template: "AWS Splunk: Workflow"
-        unified_job_template: "AWS Splunk: 01. AWS Deploy"
-        organization: "Default"
-        all_parents_must_converge: "False"
-        always_nodes:
-          - Splunk Setup
-      - identifier: "Splunk Setup"
-        workflow_job_template: "AWS Splunk: Workflow"
-        unified_job_template: "AWS Splunk: 02. Setup"
-        organization: "Default"
-        all_parents_must_converge: "False"
-        always_nodes:
-          - AWS Undeploy
-      - identifier: "AWS Undeploy"
-        workflow_job_template: "AWS Splunk: Workflow"
-        unified_job_template: "AWS Splunk: 03. AWS Undeploy"
-        organization: "Default"
-        all_parents_must_converge: "False"
+    project: "AWS AIOps AO Project"
+    inventory: "AWS Inventory"
+    playbook: "aws_aiops_ao_sync_project.yml"
+    verbosity: 0
+    job_type: "run"
+    credentials:
+      - "AWS Credential"
+      - "AWS AIOps AO Ansible Credential"
+    execution_environment: "{{ ee_name }}"
+    survey_enabled: true
+    survey:
+        name: Survey
+        description: Survey
+        spec:
+          - question_name: AAP FQDN
+            default: "{{ aap_fqdn }}"
+            variable: aap_fqdn
+            type: "text"
+            required: false
+          - question_name: AAP Password
+            default: "{{ admin_password }}"
+            variable: aap_password
+            type: "password"
+            required: false
+          - question_name: Project URL
+            default: "{{ github_url }}"
+            variable: github_url
+            type: "text"
+            required: false
+    ask_variables_on_launch: true
+    ask_labels_on_launch: true
+
+
+# # Workflow Job Templates
+# controller_workflows:
+#   - name: "AWS Splunk: Workflow"
+#     description: "AWS Splunk: Workflow"
+#     organization: "Default"
+#     state: "present"
+#     simplified_workflow_nodes:
+#       - identifier: "AWS Deploy"
+#         workflow_job_template: "AWS Splunk: Workflow"
+#         unified_job_template: "AWS Splunk: 01. AWS Deploy"
+#         organization: "Default"
+#         all_parents_must_converge: "False"
+#         always_nodes:
+#           - Splunk Setup
+#       - identifier: "Splunk Setup"
+#         workflow_job_template: "AWS Splunk: Workflow"
+#         unified_job_template: "AWS Splunk: 02. Setup"
+#         organization: "Default"
+#         all_parents_must_converge: "False"
+#         always_nodes:
+#           - AWS Undeploy
+#       - identifier: "AWS Undeploy"
+#         workflow_job_template: "AWS Splunk: Workflow"
+#         unified_job_template: "AWS Splunk: 03. AWS Undeploy"
+#         organization: "Default"
+#         all_parents_must_converge: "False"
 
 # EDA Projects
 eda_projects:
