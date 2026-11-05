@@ -228,7 +228,7 @@ controller_templates:
     organization: "Default"
     project: "AWS Splunk AO Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_sync_project.yml"
+    playbook: "aws_splunk_sync_project.yml"
     verbosity: 0
     job_type: "run"
     credentials:
