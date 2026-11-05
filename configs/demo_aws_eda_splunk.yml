@@ -223,17 +223,17 @@ controller_templates:
     ask_labels_on_launch: true
 
 # SYNC PROJECT
-  - name: "AWS AIOps AO: Sync Project"
+  - name: "AWS Splunk: Sync Project"
     description: ""
     organization: "Default"
-    project: "AWS AIOps AO Project"
+    project: "AWS Splunk AO Project"
     inventory: "AWS Inventory"
-    playbook: "aws_aiops_ao_sync_project.yml"
+    playbook: "aws_aiops_sync_project.yml"
     verbosity: 0
     job_type: "run"
     credentials:
       - "AWS Credential"
-      - "AWS AIOps AO Ansible Credential"
+      - "AWS Splunk Credential"
     execution_environment: "{{ ee_name }}"
     survey_enabled: true
     survey:
