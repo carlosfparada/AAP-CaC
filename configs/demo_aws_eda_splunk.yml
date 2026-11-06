@@ -40,7 +40,7 @@ controller_projects:
 
 # Job Templates
 controller_templates:
-  - name: "AWS Splunk: 01. AWS Deploy"
+  - name: "AWS Splunk: 01. Deploy"
     description: ""
     organization: "Default"
     project: "AWS Splunk AO Project"
@@ -111,7 +111,7 @@ controller_templates:
             variable: splunk_match_text
             "type": "text"
             required: false
-  - name: "AWS Splunk: 03. AWS Undeploy"
+  - name: "AWS Splunk: 03. Undeploy"
     description: ""
     organization: "Default"
     project: "AWS Splunk AO Project"
@@ -268,7 +268,7 @@ controller_templates:
 #     simplified_workflow_nodes:
 #       - identifier: "AWS Deploy"
 #         workflow_job_template: "AWS Splunk: Workflow"
-#         unified_job_template: "AWS Splunk: 01. AWS Deploy"
+#         unified_job_template: "AWS Splunk: 01. Deploy"
 #         organization: "Default"
 #         all_parents_must_converge: "False"
 #         always_nodes:
@@ -282,7 +282,7 @@ controller_templates:
 #           - AWS Undeploy
 #       - identifier: "AWS Undeploy"
 #         workflow_job_template: "AWS Splunk: Workflow"
-#         unified_job_template: "AWS Splunk: 03. AWS Undeploy"
+#         unified_job_template: "AWS Splunk: 03. Undeploy"
 #         organization: "Default"
 #         all_parents_must_converge: "False"
 
