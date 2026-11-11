@@ -184,12 +184,12 @@ controller_templates:
             default: ""
             variable: host_name
             type: "text"
-            required: false
+            required: true
           - question_name: Interface Name
             default: ""
             variable: interface_name
             type: "text"
-            required: false
+            required: true
     ask_variables_on_launch: true
     ask_labels_on_launch: true
   - name: "AWS Splunk: Notify Slack"
