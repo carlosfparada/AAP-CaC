@@ -215,7 +215,7 @@ controller_templates:
             type: "password"
             required: false
           - question_name: Slack Message
-            default: ""
+            default: "Empty Log"
             variable: slack_message
             type: "text"
             required: false
